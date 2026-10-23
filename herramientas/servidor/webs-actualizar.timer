@@ -1,0 +1,10 @@
+[Unit]
+Description=Webs de FreeMEM: mirar cada 15 minutos si hay algo nuevo
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=15min
+RandomizedDelaySec=60
+
+[Install]
+WantedBy=timers.target

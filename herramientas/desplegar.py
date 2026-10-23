@@ -118,7 +118,7 @@ def main():
             subprocess.run(["pnpm", "build"], cwd=carpeta, check=True, stdout=subprocess.DEVNULL)
         print(f"== {nombre}: copiando a {HOST}:/var/www/{dominio}")
         ssh(f"mkdir -p /var/www/{dominio} /var/www/acme")
-        subprocess.run(["rsync", "-a", "--delete", "--chmod=D755,F644", f"{carpeta}/out/", f"{HOST}:/var/www/{dominio}/"], check=True)
+        subprocess.run(["rsync", "-a", "--delete", "--chmod=D755,F644", "--chown=webs:webs", f"{carpeta}/out/", f"{HOST}:/var/www/{dominio}/"], check=True)
 
         tiene = ssh(f"test -f /etc/letsencrypt/live/{dominio}/fullchain.pem").returncode == 0
         if args.certificado and not tiene:

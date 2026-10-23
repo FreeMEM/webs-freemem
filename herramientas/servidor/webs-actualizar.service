@@ -1,0 +1,15 @@
+[Unit]
+Description=Webs de FreeMEM: construir y publicar lo que haya cambiado (repositorio o releases)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=webs
+Group=webs
+Environment=HOME=/var/lib/webs-freemem
+Environment=PATH=/opt/node/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NEXT_TELEMETRY_DISABLED=1
+WorkingDirectory=/srv/webs-freemem
+ExecStart=/usr/bin/python3 /srv/webs-freemem/herramientas/actualizar.py
+Nice=10
