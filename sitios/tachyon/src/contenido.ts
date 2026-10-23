@@ -2,7 +2,7 @@ import { tamano, type Idioma } from "retro";
 
 import version from "./version.json";
 
-/** Los textos de la web de Tachyon. Lo que hace sale de las notas de las versiones (hasta la v0.5.0-alfa) y del README del repositorio. */
+/** Los textos de la web de Tachyon. Lo que hace sale de las notas de las versiones (hasta la v0.6.0-alfa) y del README del repositorio. */
 /** La última release (también las alfas): la pone herramientas/versiones.py antes de construir. */
 export const VERSION = version.version;
 export const REPO = "https://github.com/FreeMEM/tachyon";
@@ -39,7 +39,7 @@ export const CONTENIDO = {
     },
     navegador: {
       titulo: "Todo lo que esperas de un navegador",
-      texto: "Escribe en la barra de dirección y busca: DuckDuckGo de serie, o Google, Bing, Brave, Wikipedia y hasta Aminet. Un candado te dice si la conexión va cifrada y una estrella guarda la página en marcadores. Historial por días, hasta cuatro ventanas, descargas al disco, formularios y cookies que recuerda entre sesiones. Y mientras la página se maqueta, la red sigue bajando: la ventana no se queda congelada.",
+      texto: "Escribe en la barra de dirección y busca: DuckDuckGo de serie, o Google, Bing, Brave, Wikipedia y hasta Aminet. Un candado te dice si la conexión va cifrada y una estrella guarda la página en marcadores. Historial por días, hasta cuatro ventanas, formularios y cookies que recuerda entre sesiones. Las descargas van varias a la vez y siguen aunque cambies de página: en su página ves cuánto llevan, a qué velocidad y lo que falta, y puedes pararlas o reintentarlas. Y mientras la página se maqueta, la red sigue bajando: la ventana no se queda congelada.",
       actualiza: "Además, se cuida solo. Cuando sale una versión nueva se enciende un icono verde: un clic, y Tachyon la baja, comprueba que ha llegado entera y se instala. Sin buscar en Aminet ni descomprimir nada.",
       amigaworld: "amigaworld.net, la web de la comunidad, en Tachyon",
     },
@@ -50,6 +50,7 @@ export const CONTENIDO = {
         "Las páginas grandes (Wikipedia, periódicos) tardan en un Amiga lento: decenas de segundos en maquetarse.",
         "Google te enseña primero su aviso de cookies.",
         "YouTube todavía no se ve dentro del navegador.",
+        "Los dibujos de <canvas>, como muchas animaciones, todavía no se ven.",
         "No se ha medido en hardware real: las pruebas son en emulador (FS-UAE y Amiberry).",
       ],
       avisos: "¿Una web se le atraganta? Cuéntamelo en GitHub",
@@ -67,7 +68,7 @@ export const CONTENIDO = {
     },
     dash: {
       titulo: "Hecho en Dash",
-      texto: "Tachyon es la prueba de fuego de Dash, un lenguaje para el Amiga que compila a 68k nativo: más de 29.000 líneas. Cada cosa que el navegador necesitaba y el lenguaje no tenía (red, TLS, fuentes, imágenes) se añadió a Dash. Ahora también es tuya.",
+      texto: "Tachyon es la prueba de fuego de Dash, un lenguaje para el Amiga que compila a 68k nativo: más de 30.000 líneas. Cada cosa que el navegador necesitaba y el lenguaje no tenía (red, TLS, fuentes, imágenes) se añadió a Dash. Ahora también es tuya.",
       enlace: "Descubre Dash",
     },
     pie: [
@@ -103,7 +104,7 @@ export const CONTENIDO = {
     },
     navegador: {
       titulo: "Everything you expect from a browser",
-      texto: "Type in the address bar and search: DuckDuckGo by default, or Google, Bing, Brave, Wikipedia and even Aminet. A padlock tells you whether the connection is encrypted and a star adds the page to your bookmarks. History by day, up to four windows, downloads to disk, forms and cookies remembered between sessions. And while the page is being laid out, downloads keep going: the window doesn't freeze.",
+      texto: "Type in the address bar and search: DuckDuckGo by default, or Google, Bing, Brave, Wikipedia and even Aminet. A padlock tells you whether the connection is encrypted and a star adds the page to your bookmarks. History by day, up to four windows, forms and cookies remembered between sessions. Downloads run several at a time and keep going when you change page: their page shows how far along they are, the speed and what's left, and lets you pause or retry them. And while the page is being laid out, downloads keep going: the window doesn't freeze.",
       actualiza: "It also looks after itself. When a new version is out, a green icon lights up: one click, and Tachyon downloads it, checks it arrived whole and installs it. No hunting on Aminet, nothing to unpack.",
       amigaworld: "amigaworld.net, the community's home, in Tachyon",
     },
@@ -114,6 +115,7 @@ export const CONTENIDO = {
         "Big pages (Wikipedia, newspapers) are slow on a slow Amiga: tens of seconds to lay out.",
         "Google shows you its cookie notice first.",
         "YouTube doesn't play inside the browser yet.",
+        "<canvas> drawings, like many animations, don't show up yet.",
         "It hasn't been measured on real hardware: testing is on emulators (FS-UAE and Amiberry).",
       ],
       avisos: "A site it chokes on? Tell me on GitHub",
@@ -131,7 +133,7 @@ export const CONTENIDO = {
     },
     dash: {
       titulo: "Made in Dash",
-      texto: "Tachyon is Dash's acid test, an Amiga language that compiles to native 68k: over 29,000 lines. Everything the browser needed that the language lacked (networking, TLS, fonts, images) was added to Dash. Now it's yours too.",
+      texto: "Tachyon is Dash's acid test, an Amiga language that compiles to native 68k: over 30,000 lines. Everything the browser needed that the language lacked (networking, TLS, fonts, images) was added to Dash. Now it's yours too.",
       enlace: "Discover Dash",
     },
     pie: [

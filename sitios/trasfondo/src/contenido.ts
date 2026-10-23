@@ -49,7 +49,7 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "A tu manera",
-      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre.",
+      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo en Exchange",
       commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Si eres más de tooltypes, también los entiende:",
@@ -74,12 +74,12 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "Lo que necesitas",
       lista: [
-        "AmigaOS 3.0 o posterior, con el Workbench en marcha.",
+        "AmigaOS 3.0 o posterior, con el Workbench en marcha. También con Directory Opus 5 haciendo de escritorio.",
         "Cualquier 68k: es código de 68000 y no necesita FPU.",
         "OCS, ECS, AGA o tarjeta gráfica (CyberGraphX o Picasso96).",
         "Para ver la red en bytes por segundo, Roadshow; con otras pilas te da paquetes por segundo.",
       ],
-      probado: "Probado en AmigaOS 3.2.3 (A1200 emulado, AGA y RTG) y en Coffin R65. La red y la WiFi, de momento solo con un driver de pruebas: si lo usas con una tarjeta de verdad, cuéntamelo en GitHub.",
+      probado: "Probado en AmigaOS 3.2.3 (A1200 emulado, AGA y RTG) y en Coffin R65, también con Directory Opus 5 de escritorio. Con Scalos debería ir, pero aún no se ha probado. La red y la WiFi, de momento solo con un driver de pruebas: si lo usas con una tarjeta de verdad, cuéntamelo en GitHub.",
     },
     dash: {
       titulo: "Hecho en Dash",
@@ -128,7 +128,7 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "Your way",
-      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good.",
+      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo in Exchange",
       commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. If you're more of a tooltypes person, it speaks those too:",
@@ -153,12 +153,12 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "What you need",
       lista: [
-        "AmigaOS 3.0 or later, with the Workbench running.",
+        "AmigaOS 3.0 or later, with the Workbench running. Also with Directory Opus 5 as your desktop.",
         "Any 68k: it's 68000 code and needs no FPU.",
         "OCS, ECS, AGA or a graphics card (CyberGraphX or Picasso96).",
         "For network speed in bytes per second, Roadshow; with other stacks you get packets per second.",
       ],
-      probado: "Tested on AmigaOS 3.2.3 (emulated A1200, AGA and RTG) and on Coffin R65. Network and WiFi, so far only with a test driver: if you run it with a real card, tell me on GitHub.",
+      probado: "Tested on AmigaOS 3.2.3 (emulated A1200, AGA and RTG) and on Coffin R65, also with Directory Opus 5 as the desktop. Scalos should work too, but it hasn't been tested yet. Network and WiFi, so far only with a test driver: if you run it with a real card, tell me on GitHub.",
     },
     dash: {
       titulo: "Made in Dash",

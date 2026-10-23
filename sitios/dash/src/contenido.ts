@@ -8,14 +8,14 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 581;
+export const BUILTINS = 590;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
   ["MUI", "MUI", 82],
   ["ReAction", "ReAction", 79],
-  ["Tareas en otro proceso", "Tasks in another process", 58],
-  ["Intuition", "Intuition", 46],
+  ["Tareas en otro proceso", "Tasks in another process", 61],
+  ["Intuition", "Intuition", 52],
   ["Gráficos avanzados", "Advanced graphics", 43],
   ["Entrada", "Input", 30],
   ["Gráficos", "Graphics", 29],
@@ -63,6 +63,7 @@ export const CONTENIDO = {
         ["Gráficos", "Copper, Blitter y BOBs, sprites de hardware y por software, doble búfer, tarjetas gráficas (CyberGraphX y Picasso96) e imágenes IFF, PNG, JPEG o GIF. Lo que hizo famoso al Amiga, a tu alcance."],
         ["Red", "TCP, UDP y HTTPS con AmiSSL 5.1, que reanuda la sesión TLS. Tu Amiga, hablando con la Internet de hoy."],
         ["El lenguaje", "Tipos inferidos, structs con métodos, lambdas, listas y diccionarios con tipo, Float y Fixed 16.16, módulos. La memoria se gestiona sola, por contador de referencias: no hay recolector que pare el programa en mitad de una animación."],
+        ["En tu idioma", "Tu programa puede hablar el idioma de quien lo usa. Sus textos van con tr, y las traducciones, en catálogos de locale.library, como los de los programas del sistema."],
         ["Si hace falta", "¿Toca bajar al metal? Mete C dentro del código (@native, @c) o enlaza la librería que quieras (@link)."],
       ],
     },
@@ -78,7 +79,7 @@ export const CONTENIDO = {
     hecho: {
       titulo: "Hecho con Dash",
       texto: "Un lenguaje se demuestra escribiendo algo grande con él. Estos dos programas han hecho crecer Dash: todo lo que les faltaba se añadió al lenguaje, y ahora lo tienes tú.",
-      tachyon: ["Tachyon", "Un navegador web moderno para AmigaOS 3.x: HTML5, el CSS de ahora, JavaScript ES2023 y HTTPS. Más de 29.000 líneas de Dash. En alfa, y creciendo."],
+      tachyon: ["Tachyon", "Un navegador web moderno para AmigaOS 3.x: HTML5, el CSS de ahora, JavaScript ES2023 y HTTPS. Más de 30.000 líneas de Dash. En alfa, y creciendo."],
       trasfondo: ["Trasfondo", "Tu Amiga te cuenta qué hace, sin tapar nada: un monitor de recursos pintado en el fondo del Workbench. Unas 800 líneas de Dash, ni una de C a mano."],
       tachyonAlt: "Tachyon mostrando un artículo de freemem.space en AmigaOS",
       trasfondoAlt: "El panel de Trasfondo en el escritorio de Coffin",
@@ -127,6 +128,7 @@ export const CONTENIDO = {
         ["Graphics", "Copper, Blitter and BOBs, hardware and software sprites, double buffering, graphics cards (CyberGraphX and Picasso96) and IFF, PNG, JPEG or GIF images. What made the Amiga famous, at your fingertips."],
         ["Network", "TCP, UDP and HTTPS with AmiSSL 5.1, resuming the TLS session. Your Amiga, talking to today's Internet."],
         ["The language", "Type inference, structs with methods, lambdas, typed lists and dictionaries, Float and Fixed 16.16, modules. Memory looks after itself, by reference counting: no garbage collector stopping your program mid-animation."],
+        ["In your language", "Your program can speak its user's language. Its texts go through tr, and the translations live in locale.library catalogs, like those of the system's own programs."],
         ["When you need it", "Need to get down to the metal? Put C right in your code (@native, @c) or link any library (@link)."],
       ],
     },
@@ -142,7 +144,7 @@ export const CONTENIDO = {
     hecho: {
       titulo: "Made with Dash",
       texto: "A language proves itself by building something big. These two programs made Dash grow: whatever they lacked was added to the language, and now you have it too.",
-      tachyon: ["Tachyon", "A modern web browser for AmigaOS 3.x: HTML5, today's CSS, JavaScript ES2023 and HTTPS. Over 29,000 lines of Dash. In alpha, and growing."],
+      tachyon: ["Tachyon", "A modern web browser for AmigaOS 3.x: HTML5, today's CSS, JavaScript ES2023 and HTTPS. Over 30,000 lines of Dash. In alpha, and growing."],
       trasfondo: ["Trasfondo", "Your Amiga tells you what it's up to, without covering anything: a resource monitor painted on the Workbench backdrop. About 800 lines of Dash, not one line of hand-written C."],
       tachyonAlt: "Tachyon showing a freemem.space article on AmigaOS",
       trasfondoAlt: "The Trasfondo panel on the Coffin desktop",
