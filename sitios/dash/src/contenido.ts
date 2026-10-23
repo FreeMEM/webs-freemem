@@ -42,7 +42,7 @@ export const CONTENIDO = {
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     tuberia: {
       titulo: "De tus líneas a un ejecutable de 68k",
-      texto: "Nada de humo: tres programas de verdad. Lo que escribes, el C que Dash genera por ti (un trozo) y lo que aparece en el Amiga. Fíjate en lo poco que ocupan.",
+      texto: "Tres programas de verdad, paso a paso: primero lo que escribes, después un trozo del C que Dash genera por ti y, al final, lo que aparece en el Amiga. Y mira lo poco que ocupan.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "Lo que escribes",
       c: "El C que genera Dash",
@@ -106,7 +106,7 @@ export const CONTENIDO = {
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     tuberia: {
       titulo: "From your lines to a 68k executable",
-      texto: "No smoke and mirrors: three real programs. What you write, the C that Dash writes for you (an excerpt) and what shows up on the Amiga. Look how little they take.",
+      texto: "Three real programs, step by step: first what you write, then an excerpt of the C that Dash writes for you and, finally, what shows up on the Amiga. And look how little they take.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "What you write",
       c: "The C that Dash generates",
