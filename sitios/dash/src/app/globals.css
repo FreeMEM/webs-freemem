@@ -1,0 +1,514 @@
+@import "retro/src/retro.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Dash: los colores del Workbench 1.3 (azul, blanco, naranja y negro), el de la pantalla en la que empezó
+   todo. Topaz para el código y lo que es de la máquina; Atkinson Hyperlegible para leer. */
+:root {
+  --azul: #0055aa;
+  --azul-hondo: #003c7a;
+  --azul-codigo: #002a57;
+  --blanco: #ffffff;
+  --blanco-suave: #c9dcf2;
+  --naranja: #ff8800;
+  --negro: #000000;
+  --gris-wb: #aaaaaa;
+  --medida: 38rem;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--azul);
+  color: var(--blanco);
+  font-family: var(--fuente-texto), system-ui, sans-serif;
+  font-size: 112.5%;
+  line-height: 1.55;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--azul);
+}
+
+a {
+  color: var(--blanco);
+  text-decoration-color: var(--naranja);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--naranja);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+main p,
+main dd {
+  max-width: var(--medida);
+}
+
+/* ---------- Portada: el nombre enorme y la bola Boing ---------- */
+
+.portada {
+  display: grid;
+  grid-template-columns: minmax(18rem, 26rem) 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.portada h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(4.5rem, 11vw, 8.5rem);
+  letter-spacing: -0.03em;
+  color: var(--blanco);
+  text-shadow: 6px 6px 0 var(--negro);
+}
+
+.lema {
+  margin: 0 0 1rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  color: var(--naranja);
+}
+
+.portada-texto > p:not(.lema) {
+  color: var(--blanco-suave);
+}
+
+.portada-bola {
+  border: 2px solid var(--negro);
+  box-shadow: 8px 8px 0 var(--negro);
+}
+
+.bola-boing {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--negro);
+  background: var(--naranja);
+  border: 2px solid var(--negro);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.55), inset -2px -2px 0 rgba(0, 0, 0, 0.3), 3px 3px 0 var(--negro);
+}
+
+.boton:hover {
+  background: #ffa640;
+}
+
+.boton:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.3), 1px 1px 0 var(--negro);
+}
+
+.boton-suave {
+  background: var(--blanco);
+}
+
+.boton-suave:hover {
+  background: var(--blanco-suave);
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+.medida {
+  max-width: var(--medida);
+}
+
+.nota {
+  font-size: 0.9rem;
+  color: var(--blanco-suave);
+}
+
+/* ---------- De Dash a 68k: la cadena y los tres pasos de cada ejemplo ---------- */
+
+.tuberia-cadena {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 2.2rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.tuberia-cadena li {
+  position: relative;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--blanco);
+}
+
+.tuberia-cadena li:last-child {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: var(--negro);
+}
+
+/* la flecha que une un paso con el siguiente */
+.tuberia-cadena li + li::before {
+  content: "";
+  position: absolute;
+  left: calc(-2.2rem - 2px);
+  top: 50%;
+  width: 2.2rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blanco) 70%, var(--naranja) 70%);
+}
+
+.pestanas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  border-bottom: 2px solid var(--blanco);
+}
+
+.pestanas-lista button {
+  padding: 0.5rem 1.1rem;
+  font: inherit;
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--blanco);
+  background: var(--azul-hondo);
+  border: 2px solid var(--blanco);
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.pestanas-lista button[aria-selected="true"] {
+  background: var(--blanco);
+  color: var(--azul);
+}
+
+.pestanas-panel {
+  padding-top: 1.5rem;
+}
+
+.tuberia {
+  display: grid;
+  grid-template-columns: 1fr 1fr minmax(15rem, 0.75fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.tuberia-paso {
+  margin: 0;
+  min-width: 0;
+}
+
+.tuberia-paso figcaption {
+  margin-bottom: 0.5rem;
+  color: var(--blanco-suave);
+  font-size: 0.9rem;
+}
+
+.tuberia-marca {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--blanco);
+  margin-right: 0.4rem;
+}
+
+.tuberia-amiga img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--negro);
+  image-rendering: pixelated;
+}
+
+.tuberia-nota {
+  font-size: 0.95rem;
+  color: var(--blanco-suave);
+}
+
+.tuberia-bytes {
+  margin: 0;
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.tuberia-bytes strong {
+  font-weight: 400;
+  font-size: 2.6rem;
+  color: var(--naranja);
+  margin-right: 0.3rem;
+}
+
+/* ---------- Código: una consola del Workbench 1.3, con su resaltado ---------- */
+
+.codigo {
+  margin: 0;
+  max-height: 34rem;
+  overflow: auto;
+  padding: 1rem 1.1rem;
+  background: var(--azul-codigo);
+  border: 2px solid var(--blanco);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--blanco-suave);
+  tab-size: 4;
+  scrollbar-color: var(--naranja) var(--azul-codigo);
+}
+
+.tuberia-c .codigo {
+  border-color: var(--blanco-suave);
+  color: #a9c2e0;
+}
+
+.co-clave {
+  color: var(--naranja);
+}
+
+.co-llamada {
+  color: var(--blanco);
+}
+
+.co-texto {
+  color: #ffd27a;
+}
+
+.co-numero {
+  color: #7fe0ff;
+}
+
+.co-comentario {
+  color: #7f9cc2;
+}
+
+/* ---------- Todo el Amiga: la lista y las funciones por área ---------- */
+
+.seccion-todo,
+.seccion-editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.lista-todo {
+  margin: 1.5rem 0 0;
+}
+
+.lista-todo > div {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.lista-todo dt {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--naranja);
+}
+
+.lista-todo dd {
+  margin: 0;
+}
+
+.ventana-areas .wb-ventana-cuerpo {
+  background: var(--gris-wb);
+  line-height: 1.3;
+  border: 0;
+}
+
+.areas {
+  margin: 0;
+  padding: 0.6rem 0.5rem;
+  list-style: none;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 0.85rem;
+  color: var(--negro);
+}
+
+.areas li {
+  display: grid;
+  grid-template-columns: 11rem 1fr 2.2rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.18rem 0;
+}
+
+.area-barra {
+  display: block;
+  height: 0.9rem;
+  background: var(--naranja);
+  border: 1px solid var(--negro);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.area-n {
+  text-align: right;
+}
+
+/* ---------- VS Code ---------- */
+
+.editor-mui {
+  grid-column: 1 / -1;
+  max-width: 1000px;
+  margin: 0;
+}
+
+.editor-mui img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--negro);
+  box-shadow: 8px 8px 0 var(--negro);
+}
+
+.editor-mui figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: var(--blanco-suave);
+}
+
+.editor-video .video {
+  border: 2px solid var(--negro);
+  box-shadow: 8px 8px 0 var(--negro);
+}
+
+/* ---------- Hecho con Dash ---------- */
+
+.hechos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hecho {
+  display: grid;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+.hecho img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 0 0;
+  border: 2px solid var(--negro);
+  margin-bottom: 0.6rem;
+}
+
+.hecho strong {
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  text-decoration-color: var(--naranja);
+  text-underline-offset: 4px;
+}
+
+.hecho span {
+  color: var(--blanco-suave);
+}
+
+.hecho:hover img {
+  border-color: var(--naranja);
+}
+
+.familia {
+  background: var(--azul-hondo);
+  border-bottom: 2px solid var(--negro);
+}
+
+.pie {
+  color: var(--blanco-suave);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 66rem) {
+  .tuberia {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tuberia-amiga {
+    grid-column: 1 / -1;
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 62rem) {
+  .portada,
+  .seccion-todo,
+  .seccion-editor,
+  .tuberia {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .hechos,
+  .lista-todo > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .areas li {
+    grid-template-columns: 7.5rem 1fr 2rem;
+  }
+  .tuberia-cadena {
+    gap: 0.5rem;
+  }
+  .tuberia-cadena li + li::before {
+    display: none;
+  }
+  .pestanas-lista button {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

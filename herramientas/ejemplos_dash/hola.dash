@@ -1,0 +1,15 @@
+Window MiVentana
+  title "Hola Dash"
+  width 400
+  height 150
+end
+
+Main
+  MiVentana.open
+  EventLoop
+    On Close
+      Print "Adiós!"
+      Stop
+    end
+  end
+end
