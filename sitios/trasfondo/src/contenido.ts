@@ -53,7 +53,7 @@ export const CONTENIDO = {
       texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo en Exchange",
-      commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Si eres más de tooltypes, también los entiende:",
+      commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Además se pone al día solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Si eres más de tooltypes, también los entiende:",
       tooltypes: [
         ["MOSTRAR=FECHA,CPU,DISCOS", "qué secciones salen y en qué orden"],
         ["TAREAS=3", "cuántas tareas"],
@@ -133,7 +133,7 @@ export const CONTENIDO = {
       texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo in Exchange",
-      commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. If you're more of a tooltypes person, it speaks those too:",
+      commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. It also keeps itself up to date: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. If you're more of a tooltypes person, it speaks those too:",
       tooltypes: [
         ["MOSTRAR=FECHA,CPU,DISCOS", "which sections appear, and in what order"],
         ["TAREAS=3", "how many tasks"],
