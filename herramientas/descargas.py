@@ -5,7 +5,7 @@ total acumulado) y deja el histórico en la página privada de estadísticas.
     python3 herramientas/descargas.py [HISTORICO.json] [PAGINA_DIR]
 
 Por defecto, /var/lib/webs-freemem/descargas.json y /var/www/estadisticas (en el CT 108, con el temporizador de
-herramientas/servidor/webs-descargas.timer). Una toma por día: si se lanza dos veces el mismo día, vale la última.
+herramientas/servidor/webs-descargas.timer, cada hora). Una toma por día: si se lanza varias veces el mismo día, vale la última.
 """
 import datetime
 import json
