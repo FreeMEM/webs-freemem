@@ -1,0 +1,312 @@
+@import "retro/src/retro.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Tachyon: los colores de su logo, el azul del planeta sobre el espacio. Topaz para los títulos (la familia de
+   las tres webs); Atkinson Hyperlegible para leer. */
+:root {
+  --espacio: #0b1736;
+  --espacio-hondo: #070f24;
+  --azul: #2e5bff;
+  --azul-claro: #7f9dff;
+  --luz: #e8ecf8;
+  --luz-suave: #aab5d6;
+  --medida: 38rem;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--espacio-hondo);
+  color: var(--luz);
+  font-family: var(--fuente-texto), system-ui, sans-serif;
+  font-size: 112.5%;
+  line-height: 1.55;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(var(--espacio) 0, var(--espacio-hondo) 90rem);
+}
+
+a {
+  color: var(--azul-claro);
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+main p,
+main li,
+main dd {
+  max-width: var(--medida);
+}
+
+/* ---------- Portada: el salto entre estrellas y la llegada al Workbench ---------- */
+
+.portada {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 4rem 1.25rem 0;
+}
+
+.estrellas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.portada-texto {
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portada h1 {
+  margin: 0 0 1.5rem;
+}
+
+.portada h1 img {
+  width: min(32rem, 90%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.lema {
+  margin: 0 0 1rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+  line-height: 1.25;
+}
+
+.portada-texto p {
+  margin-inline: auto;
+}
+
+.portada-entrada {
+  color: var(--luz-suave);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.portada .acciones {
+  justify-content: center;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--luz);
+  background: var(--azul);
+  border: 1px solid #5b80ff;
+  border-radius: 6px;
+  box-shadow: 0 0 24px rgba(46, 91, 255, 0.45);
+}
+
+.boton:hover {
+  background: #4a71ff;
+}
+
+.boton-suave {
+  background: transparent;
+  border-color: var(--luz-suave);
+  box-shadow: none;
+}
+
+.boton-suave:hover {
+  background: rgba(232, 236, 248, 0.08);
+}
+
+.peso,
+.aviso-alfa {
+  margin: 0.25rem auto;
+  font-size: 0.85rem;
+  color: var(--luz-suave);
+}
+
+.portada-captura {
+  max-width: 68rem;
+  margin: 3.5rem auto 0;
+  /* llega desde el fondo, un poco inclinada, y se asienta */
+  animation: llegada 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both;
+}
+
+.portada-captura img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 0 1px rgba(127, 157, 255, 0.35), 0 -10px 80px rgba(46, 91, 255, 0.35);
+}
+
+@keyframes llegada {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateY(6rem) rotateX(18deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem;
+}
+
+.medida {
+  max-width: var(--medida);
+}
+
+.motor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 2.5rem;
+  margin: 2.5rem 0 0;
+}
+
+.motor div {
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--azul);
+}
+
+.motor dt {
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.motor dd {
+  margin: 0;
+  color: var(--luz-suave);
+}
+
+.acid {
+  margin-top: 2.5rem;
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--azul-claro);
+}
+
+.pareja {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pareja figure {
+  margin: 0;
+}
+
+.pareja img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(127, 157, 255, 0.3);
+}
+
+.pareja figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--luz-suave);
+}
+
+.seccion-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.lista {
+  padding-left: 1.2rem;
+}
+
+.lista li {
+  margin: 0.5rem 0;
+}
+
+.lista li::marker {
+  color: var(--azul-claro);
+}
+
+.seccion-dash a {
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.familia {
+  border-bottom: 1px solid rgba(127, 157, 255, 0.15);
+}
+
+.pie {
+  color: var(--luz-suave);
+  border-top: 1px solid rgba(127, 157, 255, 0.15);
+}
+
+@media (max-width: 62rem) {
+  .motor {
+    grid-template-columns: 1fr 1fr;
+  }
+  .seccion-doble {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .motor,
+  .pareja {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .portada-captura {
+    animation: none;
+  }
+}
