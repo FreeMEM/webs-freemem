@@ -1,0 +1,10 @@
+{
+  "name": "webs-freemem",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r --filter ./sitios/* build",
+    "dev:dash": "pnpm --filter dash dev",
+    "dev:tachyon": "pnpm --filter tachyon dev",
+    "dev:trasfondo": "pnpm --filter trasfondo dev"
+  }
+}

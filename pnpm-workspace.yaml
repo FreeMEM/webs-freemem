@@ -1,0 +1,6 @@
+packages:
+  - "sitios/*"
+  - "paquetes/*"
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
