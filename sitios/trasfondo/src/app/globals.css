@@ -1,26 +1,325 @@
-@import "tailwindcss";
+@import "retro/src/retro.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Trasfondo: el azul de un Workbench de noche, el cian de la gráfica de CPU del panel (el único color que
+   destaca) y el verde de sus discos. Topaz para lo que es de la máquina; Atkinson Hyperlegible para leer. */
+:root {
+  --noche: #13264a;
+  --noche-honda: #0c1a36;
+  --tinta: #e8eef6;
+  --tinta-suave: #b7c4d8;
+  --cian: #50c8ff;
+  --verde: #60d080;
+  --gris-wb: #aaaaaa;
+  --medida: 38rem;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--noche-honda);
+  color: var(--tinta);
+  font-family: var(--fuente-texto), system-ui, sans-serif;
+  font-size: 112.5%;
+  line-height: 1.55;
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(60rem 40rem at 80% -10%, #1f3c72 0%, transparent 60%),
+    linear-gradient(var(--noche) 0, var(--noche-honda) 70rem);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--cian);
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cian);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  color: var(--tinta);
+}
+
+main p,
+main li,
+main dd {
+  max-width: var(--medida);
+}
+
+code {
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 0.95em;
+  color: var(--tinta);
+}
+
+/* ---------- Portada: el título a la izquierda y el escritorio vivo, grande ---------- */
+
+.portada {
+  display: grid;
+  grid-template-columns: minmax(16rem, 22rem) 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.portada h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(3.4rem, 7vw, 5.6rem);
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+  /* la sombra de un rótulo del Workbench, en grande */
+  text-shadow: 4px 4px 0 #000;
+}
+
+.entradilla {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  color: var(--tinta);
+}
+
+.portada-texto > p:not(.entradilla) {
+  color: var(--tinta-suave);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #000;
+  background: var(--cian);
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.55), inset -2px -2px 0 rgba(0, 0, 0, 0.3), 3px 3px 0 #000;
+}
+
+.boton:hover {
+  background: #8adcff;
+}
+
+.boton:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.3), 1px 1px 0 #000;
+}
+
+.boton-suave {
+  background: var(--gris-wb);
+}
+
+.boton-suave:hover {
+  background: #c8c8c8;
+}
+
+.peso {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+.medida {
+  max-width: var(--medida);
+}
+
+.seccion-panel,
+.seccion-eliges,
+.seccion-instalar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.lista-panel {
+  margin: 1.5rem 0 0;
+}
+
+.lista-panel > div {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(80, 200, 255, 0.25);
+}
+
+.lista-panel dt {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--cian);
+}
+
+.lista-panel dd {
+  margin: 0;
+}
+
+.seccion-cuelgue .frase {
+  font-family: var(--fuente-topaz), monospace;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.3;
+  max-width: 44rem;
+  color: var(--verde);
+  margin: 0 0 1rem;
+}
+
+.pareja {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pareja figure {
+  margin: 0;
+}
+
+.pareja img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #000;
+  image-rendering: auto;
+}
+
+/* de la captura AGA, solo la esquina del panel, con sus píxeles */
+.recorte-aga {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 100% 0;
+  image-rendering: pixelated !important;
+}
+
+.pareja figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+}
+
+.tooltypes > div {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1rem;
+  padding: 0.35rem 0;
+}
+
+.tooltypes dd {
+  margin: 0;
+  color: var(--tinta-suave);
+}
+
+.ventanas {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ventanas .wb-ventana img,
+.seccion-panel .wb-ventana img {
+  image-rendering: pixelated;
+}
+
+.seccion-instalar ol {
+  padding-left: 1.4rem;
+  list-style: decimal;
+}
+
+.seccion-instalar ul {
+  padding-left: 1.2rem;
+  list-style: square;
+}
+
+.seccion-instalar li {
+  margin: 0.45rem 0;
+}
+
+.seccion-instalar li::marker {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--cian);
+}
+
+.nota {
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+}
+
+.seccion-dash a {
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.familia {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pie {
+  color: var(--tinta-suave);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 62rem) {
+  .portada,
+  .seccion-panel,
+  .seccion-eliges,
+  .seccion-instalar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .pareja,
+  .tooltypes > div,
+  .lista-panel > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .escritorio-aviso {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

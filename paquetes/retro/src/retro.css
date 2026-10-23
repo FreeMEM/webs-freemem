@@ -1,0 +1,421 @@
+/* Piezas comunes de las webs de FreeMEM: el aspecto del Workbench 3 y el panel de Trasfondo.
+   Cada web pone sus colores en :root; aquí solo lo que es del Amiga y no cambia. */
+
+:root {
+  --wb-gris: #aaaaaa;
+  --wb-gris-oscuro: #959595;
+  --wb-negro: #000000;
+  --wb-blanco: #ffffff;
+  --wb-azul: #6688bb;
+  --pt-velo: rgba(16, 24, 32, 0.6);
+  --pt-texto: #f0f0f0;
+  --pt-suave: #c8d2dc;
+  --pt-cpu: #50c8ff;
+  --pt-disco: #60d080;
+}
+
+/* ---------- Escritorio ---------- */
+
+.escritorio-marco {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid var(--wb-negro);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 24px 60px rgba(0, 0, 0, 0.55);
+  image-rendering: pixelated;
+}
+
+.escritorio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  background-size: cover;
+  background-position: center;
+  font-family: var(--fuente-topaz), monospace;
+  user-select: none;
+  touch-action: none;
+}
+
+.escritorio-aviso {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--wb-blanco);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 13px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.wb-barra-pantalla {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 8px;
+  background: var(--wb-blanco);
+  color: var(--wb-negro);
+  font-size: 13px;
+  border-bottom: 1px solid var(--wb-negro);
+  z-index: 3;
+}
+
+.wb-profundidad {
+  width: 22px;
+  height: 100%;
+  border-left: 1px solid var(--wb-negro);
+  background:
+    linear-gradient(var(--wb-negro), var(--wb-negro)) 5px 5px / 9px 7px no-repeat,
+    linear-gradient(var(--wb-blanco), var(--wb-blanco)) 9px 8px / 8px 6px no-repeat,
+    linear-gradient(var(--wb-negro), var(--wb-negro)) 8px 7px / 10px 8px no-repeat,
+    var(--wb-gris);
+}
+
+.escritorio-fondo {
+  position: absolute;
+  top: 26px;
+  right: 8px;
+  z-index: 1;
+}
+
+.wb-icono {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 2px;
+  border: 0;
+  background: none;
+  cursor: grab;
+  color: var(--wb-blanco);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 13px;
+  line-height: 1;
+  touch-action: none;
+}
+
+.wb-icono:active {
+  cursor: grabbing;
+}
+
+.wb-icono img {
+  image-rendering: pixelated;
+}
+
+.wb-icono span {
+  padding: 1px 2px;
+  text-shadow: 1px 1px 0 var(--wb-negro), -1px 0 0 var(--wb-negro), 0 -1px 0 var(--wb-negro), 1px 0 0 var(--wb-negro);
+}
+
+.wb-icono.elegido img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.wb-icono:focus-visible {
+  outline: 2px dashed var(--wb-blanco);
+  outline-offset: 2px;
+}
+
+.escritorio-ventana {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.escritorio-ventana .wb-ventana-barra {
+  cursor: grab;
+  touch-action: none;
+}
+
+.escritorio-cajon {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 10px 26px;
+  padding: 12px 14px;
+  border: 1px solid var(--wb-negro);
+  box-shadow: inset 1px 1px 0 var(--wb-gris-oscuro);
+  background: var(--wb-gris);
+}
+
+.wb-icono-quieto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--wb-negro);
+  font-size: 13px;
+}
+
+.wb-icono-quieto img {
+  image-rendering: pixelated;
+}
+
+/* ---------- Panel de Trasfondo ---------- */
+
+.panel-trasfondo {
+  width: 300px;
+  padding: 6px 6px 8px;
+  background: var(--pt-velo);
+  color: var(--pt-suave);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.pt-cabecera {
+  display: flex;
+  justify-content: space-between;
+  color: var(--pt-texto);
+  margin-bottom: 4px;
+}
+
+.pt-grafica {
+  position: relative;
+  height: 36px;
+  margin-bottom: 6px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.pt-grafica span {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% / 60 - 1px);
+  background: var(--pt-cpu);
+}
+
+.pt-bloque + .pt-bloque {
+  margin-top: 6px;
+}
+
+.pt-fila {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pt-fila > span {
+  position: relative;
+}
+
+.pt-fila em {
+  font-style: normal;
+  display: inline-block;
+  min-width: 82px;
+  text-align: right;
+}
+
+.pt-cabeza-red {
+  color: var(--pt-texto);
+}
+
+.pt-barra > i {
+  position: absolute;
+  inset: 1px auto 1px 0;
+  opacity: 0.42;
+}
+
+.pt-cpu {
+  background: var(--pt-cpu);
+}
+
+.pt-disco {
+  background: var(--pt-disco);
+}
+
+/* ---------- Ventana del Workbench ---------- */
+
+.wb-ventana {
+  margin: 0;
+  background: var(--wb-gris);
+  border: 1px solid var(--wb-negro);
+  box-shadow: inset 1px 1px 0 var(--wb-blanco);
+  padding: 0 4px 4px;
+}
+
+.wb-ventana-barra {
+  display: flex;
+  align-items: stretch;
+  height: 20px;
+  margin: 0 -4px 4px;
+  background: var(--wb-azul);
+  border-bottom: 1px solid var(--wb-negro);
+  box-shadow: inset 1px 1px 0 #99b3dd;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 13px;
+}
+
+.wb-cierre {
+  width: 20px;
+  border-right: 1px solid var(--wb-negro);
+  background:
+    linear-gradient(var(--wb-negro), var(--wb-negro)) center / 8px 8px no-repeat,
+    linear-gradient(var(--wb-blanco), var(--wb-blanco)) center / 10px 10px no-repeat,
+    var(--wb-azul);
+}
+
+.wb-ventana-titulo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wb-blanco);
+  text-shadow: 1px 1px 0 var(--wb-negro);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.wb-ventana .wb-profundidad {
+  background-color: var(--wb-azul);
+}
+
+.wb-ventana-cuerpo {
+  border: 1px solid var(--wb-negro);
+  background: var(--wb-negro);
+  line-height: 0;
+}
+
+.wb-ventana-cuerpo img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Vídeo ---------- */
+
+.video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  padding: 0;
+  background: var(--wb-negro);
+}
+
+.video iframe,
+.video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.video-portada {
+  cursor: pointer;
+}
+
+.video-boton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 26px;
+  background: var(--wb-gris);
+  color: var(--wb-negro);
+  border: 2px solid var(--wb-negro);
+  box-shadow: inset 2px 2px 0 var(--wb-blanco), inset -2px -2px 0 var(--wb-gris-oscuro);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 18px;
+}
+
+.video-portada:hover .video-boton,
+.video-portada:focus-visible .video-boton {
+  background: var(--wb-blanco);
+}
+
+/* ---------- La familia: cabecera y pie ---------- */
+
+.familia nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+}
+
+.familia ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.familia a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--fuente-topaz), monospace;
+  opacity: 0.7;
+}
+
+.familia a:hover,
+.familia a[aria-current="page"] {
+  opacity: 1;
+}
+
+.familia a[aria-current="page"] span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.familia small {
+  font-family: var(--fuente-texto), sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.familia img {
+  image-rendering: pixelated;
+}
+
+.pie {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  font-size: 0.9rem;
+}
+
+.pie ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.pie a {
+  color: inherit;
+}
+
+@media (max-width: 40rem) {
+  .familia small {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-grafica span {
+    transition: none;
+  }
+}
