@@ -6,5 +6,6 @@
     "dev:dash": "pnpm --filter dash dev",
     "dev:tachyon": "pnpm --filter tachyon dev",
     "dev:trasfondo": "pnpm --filter trasfondo dev"
-  }
+  },
+  "packageManager": "pnpm@11.9.0"
 }
