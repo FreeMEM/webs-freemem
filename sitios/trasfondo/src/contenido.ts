@@ -17,7 +17,7 @@ export const CONTENIDO = {
     descripcion:
       "Trasfondo es un monitor de recursos para AmigaOS 3.x que se pinta en el fondo del Workbench, detrás de tus iconos: la CPU con su último minuto, la memoria, las tareas, los discos y la red. Gratis y libre.",
     entradilla: "Tu Amiga te cuenta qué hace, sin tapar nada.",
-    subtitulo: "La CPU, la memoria, las tareas, los discos y la red, pintados en el fondo del Workbench, detrás de tus iconos. No es una ventana: no estorba, no se pone delante y no se queda con tus clics.",
+    subtitulo: "La fecha y la hora, la CPU, la memoria, las tareas, los discos y la red, pintados en el fondo del Workbench, detrás de tus iconos. No es una ventana: no estorba, no se pone delante y no se queda con tus clics.",
     descargar: `Descargar la ${VERSION}`,
     peso: `${tamano(version.bytes, "es")}, para AmigaOS 3.0 o posterior`,
     verVideo: "Verlo en vídeo",
@@ -29,6 +29,7 @@ export const CONTENIDO = {
       texto: "Arriba a la derecha de tu escritorio, al día cada segundo:",
       imagen: "Trasfondo en un Workbench 3.2 AGA, con un List de todo el disco en marcha",
       cosas: [
+        { que: "Fecha y hora", como: "Arriba del todo, en tu idioma: «sábado 24-oct-26» y la hora." },
         { que: "CPU", como: "Cuánto trabaja tu Amiga y cómo ha ido el último minuto. Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
         { que: "Memoria", como: "La Chip y la Fast que te quedan libres." },
         { que: "Tareas", como: "Quién se está comiendo la CPU: de una a veinte, cada una con su barra." },
@@ -54,7 +55,7 @@ export const CONTENIDO = {
       exchange: "Trasfondo en Exchange",
       commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Si eres más de tooltypes, también los entiende:",
       tooltypes: [
-        ["MOSTRAR=CPU,DISCOS", "qué secciones salen y en qué orden"],
+        ["MOSTRAR=FECHA,CPU,DISCOS", "qué secciones salen y en qué orden"],
         ["TAREAS=3", "cuántas tareas"],
         ["CX_POPKEY=ctrl alt t", "la tecla para ocultarlo y mostrarlo"],
         ["CX_POPUP=NO", "arranca oculto"],
@@ -96,7 +97,7 @@ export const CONTENIDO = {
     descripcion:
       "Trasfondo is a resource monitor for AmigaOS 3.x painted on the Workbench backdrop, behind your icons: the CPU with its last minute, memory, tasks, disks and network. Free and open source.",
     entradilla: "Your Amiga tells you what it's up to, without covering anything.",
-    subtitulo: "CPU, memory, tasks, disks and network, painted on the Workbench backdrop, behind your icons. It isn't a window: it doesn't get in the way, never comes to the front and never steals your clicks.",
+    subtitulo: "Date and time, CPU, memory, tasks, disks and network, painted on the Workbench backdrop, behind your icons. It isn't a window: it doesn't get in the way, never comes to the front and never steals your clicks.",
     descargar: `Download ${VERSION}`,
     peso: `${tamano(version.bytes, "en")}, for AmigaOS 3.0 or later`,
     verVideo: "Watch it in action",
@@ -108,6 +109,7 @@ export const CONTENIDO = {
       texto: "Top right of your desktop, refreshed every second:",
       imagen: "Trasfondo on a Workbench 3.2 AGA, with a List of the whole disk running",
       cosas: [
+        { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
         { que: "CPU", como: "How hard your Amiga is working and how the last minute went. Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
         { que: "Memory", como: "The Chip and Fast memory you have left." },
         { que: "Tasks", como: "Who's eating the CPU: one to twenty of them, each with its bar." },
@@ -133,7 +135,7 @@ export const CONTENIDO = {
       exchange: "Trasfondo in Exchange",
       commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. If you're more of a tooltypes person, it speaks those too:",
       tooltypes: [
-        ["MOSTRAR=CPU,DISCOS", "which sections appear, and in what order"],
+        ["MOSTRAR=FECHA,CPU,DISCOS", "which sections appear, and in what order"],
         ["TAREAS=3", "how many tasks"],
         ["CX_POPKEY=ctrl alt t", "the key to hide and show it"],
         ["CX_POPUP=NO", "start hidden"],
