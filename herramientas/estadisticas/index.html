@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Descargas de FreeMEM</title>
+<style>
+  /* Página privada: cuántas veces se ha bajado cada programa, día a día (herramientas/descargas.py). */
+  :root {
+    color-scheme: light;
+    --fondo: #f6f6f4;
+    --superficie: #fcfcfb;
+    --tinta: #0b0b0b;
+    --tinta-2: #52514e;
+    --tinta-3: #8a8984;
+    --rejilla: #e4e3df;
+    --borde: #d9d8d3;
+    --serie-1: #2a78d6;
+    --serie-2: #eb6834;
+    --serie-3: #1baf7a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --fondo: #121211;
+      --superficie: #1a1a19;
+      --tinta: #f0efec;
+      --tinta-2: #c3c2b7;
+      --tinta-3: #8f8e86;
+      --rejilla: #2c2c2a;
+      --borde: #34342f;
+      --serie-1: #3987e5;
+      --serie-2: #d95926;
+      --serie-3: #199e70;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --fondo: #121211;
+    --superficie: #1a1a19;
+    --tinta: #f0efec;
+    --tinta-2: #c3c2b7;
+    --tinta-3: #8f8e86;
+    --rejilla: #2c2c2a;
+    --borde: #34342f;
+    --serie-1: #3987e5;
+    --serie-2: #d95926;
+    --serie-3: #199e70;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--tinta);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 60rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  h2 { font-size: 1.1rem; margin: 2.5rem 0 0.75rem; }
+  .sub { margin: 0; color: var(--tinta-2); }
+  .totales { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.75rem 0 0; }
+  .total { background: var(--superficie); border: 1px solid var(--borde); border-radius: 8px; padding: 1rem 1.1rem; }
+  .total .nombre { display: flex; align-items: center; gap: 0.5rem; color: var(--tinta-2); font-size: 0.95rem; }
+  .total .marca { width: 10px; height: 10px; border-radius: 50%; }
+  .total .cifra { font-size: 2.2rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.2; margin-top: 0.2rem; }
+  .total .cambio { color: var(--tinta-2); font-size: 0.9rem; }
+  .grafica { background: var(--superficie); border: 1px solid var(--borde); border-radius: 8px; padding: 1rem; position: relative; }
+  .leyenda { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0 0 0.5rem; padding: 0; list-style: none; font-size: 0.9rem; color: var(--tinta-2); }
+  .leyenda li { display: flex; align-items: center; gap: 0.45rem; }
+  .leyenda span { width: 14px; height: 2px; border-radius: 1px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { fill: var(--tinta-2); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .eje line { stroke: var(--rejilla); }
+  .nota { color: var(--tinta-3); font-size: 0.9rem; margin: 0.6rem 0 0; }
+  .globo {
+    position: absolute; pointer-events: none; background: var(--superficie); border: 1px solid var(--borde);
+    border-radius: 6px; padding: 0.45rem 0.6rem; font-size: 0.85rem; box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    white-space: nowrap; display: none;
+  }
+  .globo strong { display: block; margin-bottom: 0.15rem; }
+  .globo div { display: flex; align-items: center; gap: 0.4rem; color: var(--tinta-2); }
+  .globo i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .globo b { color: var(--tinta); font-weight: 600; margin-left: auto; padding-left: 0.8rem; font-variant-numeric: tabular-nums; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: var(--superficie); border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--rejilla); }
+  th { color: var(--tinta-2); font-weight: 500; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: 0; }
+  .otro td { color: var(--tinta-3); }
+  details { margin-top: 1rem; }
+  summary { cursor: pointer; color: var(--tinta-2); }
+  .por-programa { display: grid; gap: 1.5rem; }
+  .por-programa h3 { font-size: 1rem; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .error { color: var(--tinta); background: var(--superficie); border: 1px solid var(--borde); padding: 1rem; border-radius: 8px; }
+  @media (max-width: 40rem) { .totales { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Descargas</h1>
+  <p class="sub" id="sub">Cargando…</p>
+  <section class="totales" id="totales" aria-label="Total por programa"></section>
+
+  <h2>Descargas acumuladas, día a día</h2>
+  <div class="grafica" id="grafica">
+    <ul class="leyenda" id="leyenda"></ul>
+    <svg id="svg" viewBox="0 0 720 300" role="img" aria-labelledby="titulo-svg"><title id="titulo-svg">Descargas acumuladas de cada programa por día</title></svg>
+    <div class="globo" id="globo"></div>
+    <p class="nota" id="nota"></p>
+  </div>
+  <details>
+    <summary>Ver los datos de la gráfica en una tabla</summary>
+    <table id="tabla-dias"></table>
+  </details>
+
+  <h2>Por versión</h2>
+  <div class="por-programa" id="por-version"></div>
+  <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Solo las de GitHub (no Aminet ni otras webs). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
+</main>
+<script>
+const SERIES = ["--serie-1", "--serie-2", "--serie-3"];
+const fmt = new Intl.NumberFormat("es-ES");
+const fecha = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "short" });
+const esPaquete = (fichero) => /\.(lha|vsix)$/i.test(fichero);
+const color = (i) => `var(${SERIES[i]})`;
+
+function el(tag, attrs = {}, hijos = []) {
+  const ns = ["svg", "line", "path", "circle", "text", "g", "rect"].includes(tag) ? "http://www.w3.org/2000/svg" : null;
+  const e = ns ? document.createElementNS(ns, tag) : document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) k === "text" ? (e.textContent = v) : e.setAttribute(k, v);
+  for (const h of hijos) e.append(h);
+  return e;
+}
+
+function paquetes(datos) {
+  return Object.entries(datos).filter(([f]) => esPaquete(f)).reduce((s, [, n]) => s + n, 0);
+}
+
+function pintar(tomas) {
+  const programas = Object.keys(tomas[tomas.length - 1].datos);
+  const ultima = tomas[tomas.length - 1];
+  const serie = programas.map((p) => tomas.map((t) => paquetes(t.datos[p] || {})));
+  document.getElementById("sub").textContent =
+    `Última toma: ${new Date(ultima.fecha + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}. Una toma al día desde el ${new Date(tomas[0].fecha + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "long" })}.`;
+
+  // Totales, con lo que han subido en los últimos 7 días (o desde la primera toma)
+  const totales = document.getElementById("totales");
+  programas.forEach((p, i) => {
+    const v = serie[i];
+    const atras = v[Math.max(0, v.length - 8)];
+    const dias = Math.min(7, v.length - 1);
+    totales.append(el("div", { class: "total" }, [
+      el("div", { class: "nombre" }, [el("span", { class: "marca", style: `background:${color(i)}` }), p]),
+      el("div", { class: "cifra", text: fmt.format(v[v.length - 1]) }),
+      el("div", { class: "cambio", text: dias ? `+${fmt.format(v[v.length - 1] - atras)} en ${dias === 1 ? "el último día" : `los últimos ${dias} días`}` : "Primera toma: el cambio se ve desde mañana" }),
+    ]));
+  });
+
+  // Leyenda
+  const leyenda = document.getElementById("leyenda");
+  programas.forEach((p, i) => leyenda.append(el("li", {}, [el("span", { style: `background:${color(i)}` }), p])));
+
+  // Gráfica de líneas: una por programa, un solo eje
+  const svg = document.getElementById("svg");
+  const W = 720, H = 300, m = { t: 12, r: 92, b: 28, l: 40 };
+  const n = tomas.length;
+  const maximo = Math.max(1, ...serie.flat());
+  // el techo del eje: 4 rayas de un número redondo, lo justo para que quepa el máximo
+  const base = Math.pow(10, Math.floor(Math.log10(maximo / 4)));
+  const raya = Math.max(1, [1, 2, 2.5, 3, 4, 5, 6, 8, 10].map((f) => f * base).find((r) => r * 4 >= maximo));
+  const techo = raya * 4;
+  const x = (i) => m.l + (n === 1 ? (W - m.l - m.r) / 2 : (i * (W - m.l - m.r)) / (n - 1));
+  const y = (v) => H - m.b - (v / techo) * (H - m.t - m.b);
+  const eje = el("g", { class: "eje" });
+  for (let k = 0; k <= 4; k++) {
+    const v = (techo * k) / 4;
+    eje.append(el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }));
+    eje.append(el("text", { x: m.l - 8, y: y(v) + 4, "text-anchor": "end", text: fmt.format(Math.round(v)) }));
+  }
+  const cada = Math.max(1, Math.ceil(n / 6));
+  tomas.forEach((t, i) => {
+    if (i % cada === 0 || i === n - 1) eje.append(el("text", { x: x(i), y: H - 8, "text-anchor": "middle", text: fecha(t.fecha) }));
+  });
+  svg.append(eje);
+  serie.forEach((v, i) => {
+    if (n > 1) svg.append(el("path", { d: v.map((val, j) => `${j ? "L" : "M"}${x(j)},${y(val)}`).join(""), fill: "none", stroke: color(i), "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    svg.append(el("circle", { cx: x(n - 1), cy: y(v[n - 1]), r: 4, fill: color(i), stroke: "var(--superficie)", "stroke-width": 2 }));
+  });
+  // Rótulos al final de cada línea, separados si se pisan
+  const finales = programas.map((p, i) => ({ p, y: y(serie[i][n - 1]), v: serie[i][n - 1] })).sort((a, b) => a.y - b.y);
+  for (let k = 1; k < finales.length; k++) finales[k].y = Math.max(finales[k].y, finales[k - 1].y + 15);
+  finales.forEach((f) => svg.append(el("text", { x: x(n - 1) + 10, y: f.y + 4, text: `${f.p} ${fmt.format(f.v)}` })));
+
+  // Cruz y globo al pasar por encima
+  const guia = el("line", { y1: m.t, y2: H - m.b, stroke: "var(--tinta-3)", "stroke-width": 1, visibility: "hidden" });
+  svg.append(guia);
+  const globo = document.getElementById("globo");
+  const caja = document.getElementById("grafica");
+  const zona = el("rect", { x: m.l - 10, y: m.t, width: W - m.l - m.r + 20, height: H - m.t - m.b, fill: "transparent" });
+  svg.append(zona);
+  const mover = (ev) => {
+    const r = svg.getBoundingClientRect();
+    const px = ((ev.clientX - r.left) / r.width) * W;
+    let i = 0;
+    for (let j = 1; j < n; j++) if (Math.abs(x(j) - px) < Math.abs(x(i) - px)) i = j;
+    guia.setAttribute("x1", x(i));
+    guia.setAttribute("x2", x(i));
+    guia.setAttribute("visibility", "visible");
+    globo.replaceChildren(el("strong", { text: fecha(tomas[i].fecha) }),
+      ...programas.map((p, k) => el("div", {}, [el("i", { style: `background:${color(k)}` }), p, el("b", { text: fmt.format(serie[k][i]) })])));
+    globo.style.display = "block";
+    const cr = caja.getBoundingClientRect();
+    const gx = r.left - cr.left + (x(i) / W) * r.width;
+    globo.style.left = `${Math.min(gx + 12, cr.width - globo.offsetWidth - 8)}px`;
+    globo.style.top = `${r.top - cr.top + 24}px`;
+  };
+  zona.addEventListener("pointermove", mover);
+  zona.addEventListener("pointerleave", () => { globo.style.display = "none"; guia.setAttribute("visibility", "hidden"); });
+  if (n < 3) document.getElementById("nota").textContent = "El histórico empieza con la primera toma; la curva se dibuja a medida que pasan los días.";
+
+  // La misma información, en tabla
+  const tabla = document.getElementById("tabla-dias");
+  tabla.append(el("tr", {}, [el("th", { text: "Día" }), ...programas.map((p) => el("th", { class: "n", text: p }))]));
+  [...tomas.keys()].reverse().forEach((i) =>
+    tabla.append(el("tr", {}, [el("td", { text: fecha(tomas[i].fecha) }), ...serie.map((v) => el("td", { class: "n", text: fmt.format(v[i]) }))])));
+
+  // Por versión, la más nueva arriba; el vídeo y los subtítulos, en gris
+  const porVersion = document.getElementById("por-version");
+  programas.forEach((p, i) => {
+    const filas = Object.entries(ultima.datos[p] || {});
+    const t = el("table", {}, [el("tr", {}, [el("th", { text: "Versión" }), el("th", { text: "Fichero" }), el("th", { class: "n", text: "Descargas" })])]);
+    filas.forEach(([clave, cuenta]) => {
+      const [version, fichero] = clave.split("/");
+      t.append(el("tr", { class: esPaquete(fichero) ? "" : "otro" }, [el("td", { text: version }), el("td", { text: fichero }), el("td", { class: "n", text: fmt.format(cuenta) })]));
+    });
+    porVersion.append(el("div", {}, [el("h3", {}, [el("span", { class: "marca", style: `width:10px;height:10px;border-radius:50%;background:${color(i)}` }), p]), t]));
+  });
+}
+
+fetch("datos.json", { cache: "no-store" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(pintar)
+  .catch((e) => {
+    document.getElementById("sub").replaceWith(el("p", { class: "error", text: `No se pudieron leer los datos (datos.json: ${e.message}). Los guarda cada día herramientas/descargas.py en el servidor.` }));
+  });
+</script>
+</body>
+</html>

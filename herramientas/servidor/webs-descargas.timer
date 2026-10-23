@@ -1,0 +1,9 @@
+[Unit]
+Description=Webs de FreeMEM: una toma de las descargas al día
+
+[Timer]
+OnCalendar=*-*-* 23:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

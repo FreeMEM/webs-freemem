@@ -42,6 +42,19 @@ CUERPO = """
     }}
 """
 
+# La página privada de descargas (herramientas/descargas.py la llena cada día), con usuario y contraseña.
+ESTADISTICAS = """
+    location ^~ /estadisticas/ {{
+        alias /var/www/estadisticas/;
+        auth_basic "Descargas de FreeMEM";
+        auth_basic_user_file /etc/nginx/estadisticas.htpasswd;
+        add_header X-Robots-Tag "noindex, nofollow" always;
+        add_header Cache-Control "no-store" always;
+        add_header Strict-Transport-Security "max-age=31536000" always;
+    }}
+"""
+EXTRA = {"dash.freemem.space": ESTADISTICAS}
+
 SOLO_HTTP = """# {dominio}: generado por herramientas/desplegar.py (sin certificado todavía)
 server {{
     listen 80;
@@ -135,7 +148,10 @@ def main():
 
 
 def poner_conf(dominio, plantilla):
-    conf = plantilla.format(dominio=dominio, cuerpo=CUERPO.format(dominio=dominio))
+    cuerpo = CUERPO.format(dominio=dominio)
+    if plantilla is CON_HTTPS:
+        cuerpo += EXTRA.get(dominio, "").format()
+    conf = plantilla.format(dominio=dominio, cuerpo=cuerpo)
     destino = f"/etc/nginx/sites-available/{dominio}"
     r = ssh(f"cat > {destino} && ln -sf {destino} /etc/nginx/sites-enabled/{dominio} && nginx -t && systemctl reload nginx", conf)
     if r.returncode:

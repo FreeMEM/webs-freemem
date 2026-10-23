@@ -1,0 +1,10 @@
+[Unit]
+Description=Webs de FreeMEM: guardar las descargas del día (contador de GitHub)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=webs
+Group=webs
+ExecStart=/usr/bin/python3 /srv/webs-freemem/herramientas/descargas.py
