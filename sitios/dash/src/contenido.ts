@@ -78,7 +78,7 @@ export const CONTENIDO = {
     hecho: {
       titulo: "Hecho con Dash",
       texto: "Dash crece con programas de verdad: lo que les falta se añade al lenguaje, y luego lo tiene cualquiera.",
-      tachyon: ["Tachyon", "Un navegador web para AmigaOS 3.x: HTML5, CSS moderno, JavaScript ES2023 y HTTPS. Más de 28.000 líneas de Dash. En alfa."],
+      tachyon: ["Tachyon", "Un navegador web para AmigaOS 3.x: HTML5, CSS moderno, JavaScript ES2023 y HTTPS. Más de 29.000 líneas de Dash. En alfa."],
       trasfondo: ["Trasfondo", "Un monitor de recursos pintado en el fondo del Workbench. Unas 800 líneas de Dash, con su configurador, sin C a mano."],
       tachyonAlt: "Tachyon mostrando un artículo de freemem.space en AmigaOS",
       trasfondoAlt: "El panel de Trasfondo en el escritorio de Coffin",
@@ -142,7 +142,7 @@ export const CONTENIDO = {
     hecho: {
       titulo: "Made with Dash",
       texto: "Dash grows with real programs: whatever they lack is added to the language, and then everyone has it.",
-      tachyon: ["Tachyon", "A web browser for AmigaOS 3.x: HTML5, modern CSS, JavaScript ES2023 and HTTPS. Over 28,000 lines of Dash. In alpha."],
+      tachyon: ["Tachyon", "A web browser for AmigaOS 3.x: HTML5, modern CSS, JavaScript ES2023 and HTTPS. Over 29,000 lines of Dash. In alpha."],
       trasfondo: ["Trasfondo", "A resource monitor painted on the Workbench backdrop. About 800 lines of Dash, settings window included, no hand-written C."],
       tachyonAlt: "Tachyon showing a freemem.space article on AmigaOS",
       trasfondoAlt: "The Trasfondo panel on the Coffin desktop",

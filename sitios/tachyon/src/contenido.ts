@@ -2,7 +2,7 @@ import { tamano, type Idioma } from "retro";
 
 import version from "./version.json";
 
-/** Los textos de la web de Tachyon. Lo que hace sale de las notas de las versiones (hasta la v0.4.0-alfa) y del README del repositorio. */
+/** Los textos de la web de Tachyon. Lo que hace sale de las notas de las versiones (hasta la v0.5.0-alfa) y del README del repositorio. */
 /** La última release (también las alfas): la pone herramientas/versiones.py antes de construir. */
 export const VERSION = version.version;
 export const REPO = "https://github.com/FreeMEM/tachyon";
@@ -22,7 +22,8 @@ export const CONTENIDO = {
     peso: `${version.fichero} · versión ${VERSION} · ${tamano(version.bytes, "es")}`,
     codigo: "El código en GitHub",
     alfa: "Es una alfa: hay páginas que no se verán bien o que tardarán.",
-    portadaAlt: "Tachyon mostrando freemem.space en el Workbench de Coffin, con Trasfondo en la esquina",
+    portadaAlt: "Tachyon mostrando freemem.space con tarjeta gráfica: el candado del HTTPS, la estrella de marcadores, el historial y el aviso verde de versión nueva",
+    coffinAlt: "Tachyon en el Workbench de Coffin, con Trasfondo en la esquina",
     motor: {
       titulo: "Lo que entiende",
       texto: "No es un visor de texto: maqueta la página como un navegador de ahora, con sus hojas de estilo, sus fuentes y su JavaScript.",
@@ -38,16 +39,16 @@ export const CONTENIDO = {
     },
     navegador: {
       titulo: "Un navegador de verdad",
-      texto: "Barra de dirección, atrás y adelante, historial, marcadores, página de inicio, hasta cuatro ventanas, descargas al disco, formularios y cookies que se guardan entre sesiones. Las páginas llegan sin congelar la ventana, y la red sigue bajando mientras la página se maqueta.",
+      texto: "La barra de dirección también busca (DuckDuckGo de serie; o Google, Bing, Brave, Wikipedia o Aminet). Un candado dice si la página llega cifrada y una estrella la guarda en marcadores. Historial por días, hasta cuatro ventanas, descargas al disco, formularios y cookies que se guardan entre sesiones. Las páginas llegan sin congelar la ventana, y la red sigue bajando mientras la página se maqueta.",
+      actualiza: "Y se pone al día solo: cuando sale una versión nueva, se enciende un icono verde; un clic la baja, comprueba que llegó entera y la instala.",
       amigaworld: "amigaworld.net en Tachyon",
-      articulo: "Un artículo de freemem.space con su foto",
     },
     alfaSeccion: {
       titulo: "Lo que aún no hace",
       texto: "Es una alfa. Para que nadie se lleve sorpresas:",
       lista: [
         "Las páginas grandes (Wikipedia, periódicos) tardan en un Amiga lento: decenas de segundos en maquetarse.",
-        "Algunos scripts de webs grandes fallan al cargar; la página sale igual.",
+        "Google enseña primero su aviso de cookies.",
         "YouTube todavía no se ve dentro del navegador.",
         "No se ha medido en hardware real: las pruebas son en emulador (FS-UAE y Amiberry).",
       ],
@@ -61,12 +62,12 @@ export const CONTENIDO = {
         "Memoria Fast: decenas de megas para las webs de hoy.",
         "MUI 3.8 o 5, una pila TCP/IP (Roadshow, AmiTCP, Genesis, Miami) y AmiSSL 5.1 o posterior.",
       ],
-      instalar: `Descomprime ${version.fichero} y haz doble clic en Instalar, o copia el cajón Tachyon donde quieras.`,
+      instalar: `Descomprime ${version.fichero} y haz doble clic en Instalar, o copia el cajón Tachyon donde quieras. Si ya lo tenías, respeta tus marcadores, preferencias y cookies.`,
       notas: "Notas de la versión",
     },
     dash: {
       titulo: "Hecho en Dash",
-      texto: "Tachyon está escrito en Dash, un lenguaje para el Amiga que compila a 68k: más de 28.000 líneas. Lo que el navegador ha necesitado (red, TLS, fuentes, imágenes) se ha añadido al lenguaje.",
+      texto: "Tachyon está escrito en Dash, un lenguaje para el Amiga que compila a 68k: más de 29.000 líneas. Lo que el navegador ha necesitado (red, TLS, fuentes, imágenes) se ha añadido al lenguaje.",
       enlace: "Conoce Dash",
     },
     pie: [
@@ -85,7 +86,8 @@ export const CONTENIDO = {
     peso: `${version.fichero} · version ${VERSION} · ${tamano(version.bytes, "en")}`,
     codigo: "Source on GitHub",
     alfa: "It's an alpha: some pages won't look right, or will take a while.",
-    portadaAlt: "Tachyon showing freemem.space on the Coffin Workbench, with Trasfondo in the corner",
+    portadaAlt: "Tachyon showing freemem.space with a graphics card: the HTTPS padlock, the bookmark star, history and the green new-version notice",
+    coffinAlt: "Tachyon on the Coffin Workbench, with Trasfondo in the corner",
     motor: {
       titulo: "What it understands",
       texto: "It isn't a text viewer: it lays out the page like a current browser, with its style sheets, its fonts and its JavaScript.",
@@ -101,16 +103,16 @@ export const CONTENIDO = {
     },
     navegador: {
       titulo: "A real browser",
-      texto: "Address bar, back and forward, history, bookmarks, a home page, up to four windows, downloads to disk, forms and cookies kept between sessions. Pages load without freezing the window, and downloads keep going while the page is laid out.",
+      texto: "The address bar also searches (DuckDuckGo by default; or Google, Bing, Brave, Wikipedia or Aminet). A padlock tells you whether the page arrives encrypted and a star adds it to your bookmarks. History by day, up to four windows, downloads to disk, forms and cookies kept between sessions. Pages load without freezing the window, and downloads keep going while the page is laid out.",
+      actualiza: "And it keeps itself up to date: when a new version is out, a green icon lights up; one click downloads it, checks it arrived whole and installs it.",
       amigaworld: "amigaworld.net in Tachyon",
-      articulo: "A freemem.space article with its photo",
     },
     alfaSeccion: {
       titulo: "What it doesn't do yet",
       texto: "It's an alpha. So nobody gets surprised:",
       lista: [
         "Big pages (Wikipedia, newspapers) are slow on a slow Amiga: tens of seconds to lay out.",
-        "Some scripts on big sites fail to load; the page still shows.",
+        "Google shows its cookie notice first.",
         "YouTube doesn't play inside the browser yet.",
         "It hasn't been measured on real hardware: testing is on emulators (FS-UAE and Amiberry).",
       ],
@@ -124,12 +126,12 @@ export const CONTENIDO = {
         "Fast memory: tens of megabytes for today's sites.",
         "MUI 3.8 or 5, a TCP/IP stack (Roadshow, AmiTCP, Genesis, Miami) and AmiSSL 5.1 or later.",
       ],
-      instalar: `Unpack ${version.fichero} and double-click Instalar (the installer), or copy the Tachyon drawer anywhere you like.`,
+      instalar: `Unpack ${version.fichero} and double-click Instalar (the installer), or copy the Tachyon drawer anywhere you like. If you already had it, your bookmarks, settings and cookies are kept.`,
       notas: "Release notes",
     },
     dash: {
       titulo: "Made in Dash",
-      texto: "Tachyon is written in Dash, an Amiga language that compiles to 68k: over 28,000 lines. Whatever the browser needed (networking, TLS, fonts, images) was added to the language.",
+      texto: "Tachyon is written in Dash, an Amiga language that compiles to 68k: over 29,000 lines. Whatever the browser needed (networking, TLS, fonts, images) was added to the language.",
       enlace: "Meet Dash",
     },
     pie: [

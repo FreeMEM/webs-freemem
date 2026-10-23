@@ -43,7 +43,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             <p className="aviso-alfa">{t.alfa}</p>
           </div>
           <figure className="portada-captura">
-            <img src="/imagenes/coffin-freemem.webp" width={1600} height={1207} alt={t.portadaAlt} fetchPriority="high" />
+            <img src="/imagenes/tachyon-05.webp" width={1024} height={768} alt={t.portadaAlt} fetchPriority="high" />
           </figure>
         </section>
 
@@ -64,14 +64,15 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         <section className="seccion" aria-labelledby="navegador">
           <h2 id="navegador">{t.navegador.titulo}</h2>
           <p className="medida">{t.navegador.texto}</p>
+          <p className="medida">{t.navegador.actualiza}</p>
           <div className="pareja">
             <figure>
               <img src="/imagenes/amigaworld.webp" width={1400} height={992} alt={t.navegador.amigaworld} loading="lazy" />
               <figcaption>{t.navegador.amigaworld}</figcaption>
             </figure>
             <figure>
-              <img src="/imagenes/articulo.webp" width={1400} height={1022} alt={t.navegador.articulo} loading="lazy" />
-              <figcaption>{t.navegador.articulo}</figcaption>
+              <img src="/imagenes/coffin-freemem.webp" width={1600} height={1207} alt={t.coffinAlt} loading="lazy" />
+              <figcaption>{t.coffinAlt}</figcaption>
             </figure>
           </div>
         </section>
