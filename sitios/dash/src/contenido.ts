@@ -1,8 +1,11 @@
 import type { Idioma } from "retro";
 
+import extension from "./version.json";
+
 /** Los textos de la web de Dash. Cifras de docs/BUILTINS.md, el README y el ROADMAP del repositorio. */
 export const REPO = "https://github.com/FreeMEM/dash";
-export const EXTENSION = "https://github.com/FreeMEM/dash/releases/tag/vscode-0.2.1";
+/** La última versión de la extensión de VS Code: la pone herramientas/versiones.py antes de construir. */
+export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
 export const BUILTINS = 581;
@@ -66,7 +69,7 @@ export const CONTENIDO = {
     editor: {
       titulo: "Con VS Code",
       texto: "La extensión «Dash for Amiga» colorea el código, marca los errores mientras escribes, completa, va a la definición y formatea. Compila y ejecuta en FS-UAE o Amiberry, depura con F5 (también en un Amiga de verdad, por la red) y trae un editor visual de ventanas MUI.",
-      instalar: "Se instala desde el fichero .vsix de su página en GitHub (versión 0.2.1).",
+      instalar: `Se instala desde el fichero .vsix de su página en GitHub (versión ${extension.version}).`,
       boton: "Bajar la extensión",
       verVideo: "Reproducir",
       tituloVideo: "Dash para Amiga en VS Code: tutorial de la extensión (6 min)",
@@ -130,7 +133,7 @@ export const CONTENIDO = {
     editor: {
       titulo: "With VS Code",
       texto: "The “Dash for Amiga” extension highlights your code, flags errors as you type, completes, jumps to definitions and formats. It compiles and runs on FS-UAE or Amiberry, debugs with F5 (on a real Amiga too, over the network) and comes with a visual editor for MUI windows.",
-      instalar: "Install it from the .vsix file on its GitHub page (version 0.2.1).",
+      instalar: `Install it from the .vsix file on its GitHub page (version ${extension.version}).`,
       boton: "Download the extension",
       verVideo: "Play",
       tituloVideo: "Dash for Amiga in VS Code: extension tutorial (6 min, Spanish)",

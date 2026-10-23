@@ -1,9 +1,12 @@
-import type { Idioma } from "retro";
+import { tamano, type Idioma } from "retro";
+
+import version from "./version.json";
 
 /** Los textos de la web en sus dos idiomas. Cada promesa, contrastada con el README y las notas de la 0.3. */
-export const VERSION = "0.3";
-export const DESCARGA = "https://github.com/FreeMEM/trasfondo/releases/download/v0.3/trasfondo-0.3.lha";
-export const RELEASE = "https://github.com/FreeMEM/trasfondo/releases/tag/v0.3";
+/** La última release: la pone herramientas/versiones.py antes de construir. */
+export const VERSION = version.version;
+export const DESCARGA = version.descarga;
+export const RELEASE = version.notas;
 export const REPO = "https://github.com/FreeMEM/trasfondo";
 export const VIDEO = "vMqksMRh4rI";
 export const BASE = "https://trasfondo.freemem.space";
@@ -16,7 +19,7 @@ export const CONTENIDO = {
     entradilla: "Un monitor de recursos pintado en el fondo del Workbench.",
     subtitulo: "La CPU, la memoria, las tareas, los discos y la red, siempre a la vista y detrás de tus iconos. No es una ventana: no tapa nada ni recibe clics.",
     descargar: `Descargar la ${VERSION}`,
-    peso: "53 KB, para AmigaOS 3.0 o posterior",
+    peso: `${tamano(version.bytes, "es")}, para AmigaOS 3.0 o posterior`,
     verVideo: "Ver el vídeo",
     aviso: "Arrastra un icono por encima del panel",
     escritorioAlt: "Simulación de un escritorio de Workbench con el panel de Trasfondo",
@@ -61,12 +64,12 @@ export const CONTENIDO = {
     instalar: {
       titulo: "Instalar",
       pasos: [
-        "Descomprime trasfondo-0.3.lha donde quieras.",
+        `Descomprime ${version.fichero} donde quieras.`,
         "Doble clic en Instalar. Si dices que sí, se copia a SYS:WBStartup y arranca solo con el Workbench.",
         "Para pararlo, doble clic otra vez en su icono, o Eliminar en Exchange. El fondo queda como estaba.",
       ],
       codigo: "Código fuente",
-      notas: "Novedades de la 0.3",
+      notas: `Novedades de la ${VERSION}`,
     },
     requisitos: {
       titulo: "Requisitos",
@@ -95,7 +98,7 @@ export const CONTENIDO = {
     entradilla: "A resource monitor painted on the Workbench backdrop.",
     subtitulo: "CPU, memory, tasks, disks and network, always in sight and behind your icons. It is not a window: it covers nothing and takes no clicks.",
     descargar: `Download ${VERSION}`,
-    peso: "53 KB, for AmigaOS 3.0 or later",
+    peso: `${tamano(version.bytes, "en")}, for AmigaOS 3.0 or later`,
     verVideo: "Watch the video",
     aviso: "Drag an icon over the panel",
     escritorioAlt: "Simulated Workbench desktop with the Trasfondo panel",
@@ -140,12 +143,12 @@ export const CONTENIDO = {
     instalar: {
       titulo: "Install",
       pasos: [
-        "Unpack trasfondo-0.3.lha anywhere.",
+        `Unpack ${version.fichero} anywhere.`,
         "Double-click Instalar. If you say yes, it goes to SYS:WBStartup and starts with the Workbench.",
         "To stop it, double-click its icon again, or Remove it in Exchange. The backdrop is left as it was.",
       ],
       codigo: "Source code",
-      notas: "What's new in 0.3",
+      notas: `What's new in ${VERSION}`,
     },
     requisitos: {
       titulo: "Requirements",
