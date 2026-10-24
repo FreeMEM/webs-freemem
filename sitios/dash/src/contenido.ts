@@ -8,7 +8,7 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 609;
+export const BUILTINS = 611;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
@@ -20,7 +20,7 @@ export const AREAS = [
   ["Entrada", "Input", 30],
   ["Gráficos", "Graphics", 29],
   ["Sistema", "System", 26],
-  ["Red (TCP)", "Network (TCP)", 24],
+  ["Red (TCP)", "Network (TCP)", 26],
   ["DOS", "DOS", 24],
   ["RTG", "RTG", 21],
   ["Audio", "Audio", 21],
