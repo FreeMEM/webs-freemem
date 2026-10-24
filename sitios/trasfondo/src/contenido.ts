@@ -26,7 +26,7 @@ export const CONTENIDO = {
     iconos: { ram: "RAM Disk", sistema: "System", work: "Work", cajon: "Trasfondo", prefs: "TrasfondoPrefs" },
     panel: {
       titulo: "Todo a la vista, de un vistazo",
-      texto: "Arriba a la derecha de tu escritorio, al día cada segundo:",
+      texto: "Arriba a la derecha de tu escritorio, al día cada dos segundos (o cada uno, cinco o diez, como prefieras):",
       imagen: "Trasfondo en un Workbench 3.2 AGA, con un List de todo el disco en marcha",
       cosas: [
         { que: "Fecha y hora", como: "Arriba del todo, en tu idioma: «sábado 24-oct-26» y la hora." },
@@ -44,13 +44,13 @@ export const CONTENIDO = {
     },
     pantallas: {
       titulo: "Luce en cualquier pantalla",
-      texto: "Con tarjeta gráfica y color real, el panel es translúcido y deja ver tu fondo de pantalla. En AGA, ECS o con 256 colores lleva un fondo sólido, para que se lea siempre bien.",
+      texto: "Con tarjeta gráfica y color real, el panel es translúcido y deja ver tu fondo de pantalla. En AGA, ECS o con 256 colores lleva un fondo sólido, para que se lea siempre bien. Y si lo prefieres fijo, o de otro color, se elige en TrasfondoPrefs.",
       rtg: "RTG a 1280x1024: el panel translúcido, y un icono encima",
       aga: "AGA a 640x256: fondo sólido",
     },
     eliges: {
       titulo: "A tu manera",
-      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla. Y habla inglés y castellano: sale en el idioma que tengas elegido en tu sistema.",
+      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, cada cuánto mide, el fondo y su color, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla. Y habla inglés y castellano: sale en el idioma que tengas elegido en tu sistema.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo en Exchange",
       commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Además se pone al día solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Si eres más de tooltypes, también los entiende:",
@@ -106,7 +106,7 @@ export const CONTENIDO = {
     iconos: { ram: "RAM Disk", sistema: "System", work: "Work", cajon: "Trasfondo", prefs: "TrasfondoPrefs" },
     panel: {
       titulo: "Everything in view, at a glance",
-      texto: "Top right of your desktop, refreshed every second:",
+      texto: "Top right of your desktop, refreshed every two seconds (or every one, five or ten, as you like):",
       imagen: "Trasfondo on a Workbench 3.2 AGA, with a List of the whole disk running",
       cosas: [
         { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
@@ -124,13 +124,13 @@ export const CONTENIDO = {
     },
     pantallas: {
       titulo: "Looks good on any screen",
-      texto: "With a graphics card in true colour, the panel is translucent and lets your wallpaper show through. On AGA, ECS or 256 colours it gets a solid background, so it always reads well.",
+      texto: "With a graphics card in true colour, the panel is translucent and lets your wallpaper show through. On AGA, ECS or 256 colours it gets a solid background, so it always reads well. Prefer it solid anyway, or in another colour? TrasfondoPrefs lets you choose.",
       rtg: "RTG at 1280x1024: the translucent panel, with an icon on top",
       aga: "AGA at 640x256: solid background",
     },
     eliges: {
       titulo: "Your way",
-      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font. And it speaks English and Spanish, following your system's language settings.",
+      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, how often it measures, the background and its colour, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font. And it speaks English and Spanish, following your system's language settings.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo in Exchange",
       commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. It also keeps itself up to date: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. If you're more of a tooltypes person, it speaks those too:",
