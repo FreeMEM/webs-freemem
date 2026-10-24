@@ -120,9 +120,10 @@ export function Estrellas() {
       const v = velocidad(ahora - inicio);
       avanzar(v);
       dibujar(v);
-      // si un fotograma pasa de 25 ms, menos estrellas (nunca menos de 120); si sobra tiempo, vuelven
+      // si un fotograma pasa de 40 ms, menos estrellas (nunca menos de 300: con menos el cielo se ve vacío);
+      // si sobra tiempo, vuelven. A 10-12 fotogramas por segundo, en un Amiga, se ve bien
       media = media * 0.8 + (performance.now() - t0) * 0.2;
-      if (media > 25 && activas > 120) activas = Math.max(120, Math.floor(activas * 0.85));
+      if (media > 40 && activas > 300) activas = Math.max(300, Math.floor(activas * 0.85));
       else if (media < 6 && activas < N) activas = Math.min(N, activas + 20);
       marco = requestAnimationFrame(paso);
     }
