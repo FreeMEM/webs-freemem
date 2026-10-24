@@ -1,6 +1,6 @@
-import { Cabecera, Pie, datosPrograma, type Idioma } from "retro";
+import { Cabecera, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO, VERSION } from "./contenido";
+import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO, VERSION, VIDEO } from "./contenido";
 import { Estrellas } from "./Estrellas";
 
 export function Inicio({ idioma }: { idioma: Idioma }) {
@@ -38,6 +38,9 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               <a className="boton boton-suave" href={REPO}>
                 {t.codigo}
               </a>
+              <a className="boton boton-suave" href="#video">
+                {t.verVideo}
+              </a>
             </div>
             <p className="peso">{t.peso}</p>
             <p className="aviso-alfa">{t.alfa}</p>
@@ -45,6 +48,12 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <figure className="portada-captura">
             <img src="/imagenes/tachyon-05.webp" width={1024} height={768} alt={t.portadaAlt} fetchPriority="high" />
           </figure>
+        </section>
+
+        <section className="seccion" id="video" aria-labelledby="titulo-video">
+          <h2 id="titulo-video">{t.video.titulo}</h2>
+          <p className="medida">{t.video.texto}</p>
+          <VideoYouTube id={VIDEO[idioma]} titulo={t.video.titulo_video} portada={`/imagenes/video-${idioma}.jpg`} textoBoton={t.video.boton} />
         </section>
 
         <section className="seccion seccion-motor" aria-labelledby="motor">

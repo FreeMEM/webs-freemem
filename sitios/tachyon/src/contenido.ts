@@ -9,6 +9,8 @@ export const REPO = "https://github.com/FreeMEM/tachyon";
 export const RELEASE = version.notas;
 export const DESCARGA = version.descarga;
 export const BASE = "https://tachyon.freemem.space";
+/** El vídeo de YouTube, uno por idioma (el mismo montaje, con sus subtítulos y rótulos en cada uno). */
+export const VIDEO = { es: "rC5oXsmzjX0", en: "HLoaIwRBwMo" } satisfies Record<Idioma, string>;
 
 export const CONTENIDO = {
   es: {
@@ -21,9 +23,16 @@ export const CONTENIDO = {
     descargar: "Bajar la alfa",
     peso: `${version.fichero} · versión ${VERSION} · ${tamano(version.bytes, "es")}`,
     codigo: "El código en GitHub",
+    verVideo: "Verlo en vídeo",
     alfa: "Es una alfa: todavía hay páginas que se le resisten o que tardan.",
     portadaAlt: "Tachyon mostrando freemem.space con tarjeta gráfica: el candado del HTTPS, la estrella de marcadores, el historial y el aviso verde de versión nueva",
     coffinAlt: "Tachyon en el Workbench de Coffin, con Trasfondo en la esquina",
+    video: {
+      titulo: "Míralo en marcha",
+      texto: "Cinco minutos y medio en CoffinOS con tarjeta gráfica (en Amiberry): cómo se instala, cómo se actualiza solo con un clic, la búsqueda desde la barra, webs con JavaScript y canvas, pestañas, menús, descargas y el cambio de idioma. Sin trucos: solo van aceleradas las esperas.",
+      boton: "Reproducir",
+      titulo_video: "Tachyon 0.7.1: la web de hoy en tu Amiga clásico",
+    },
     motor: {
       titulo: "Habla el idioma de la web actual",
       texto: "Nada de enseñar el texto pelado y cruzar los dedos. Tachyon maqueta cada página como lo haría el navegador de tu PC: con sus hojas de estilo, sus tipografías y su JavaScript.",
@@ -74,6 +83,7 @@ export const CONTENIDO = {
     pie: [
       { texto: "Tachyon en GitHub", url: REPO },
       { texto: "Qué trae esta versión", url: RELEASE },
+      { texto: "Vídeo en YouTube", url: `https://youtu.be/${VIDEO.es}` },
     ],
   },
   en: {
@@ -86,9 +96,16 @@ export const CONTENIDO = {
     descargar: "Download the alpha",
     peso: `${version.fichero} · version ${VERSION} · ${tamano(version.bytes, "en")}`,
     codigo: "Source on GitHub",
+    verVideo: "Watch it in action",
     alfa: "It's an alpha: some pages still put up a fight, or take their time.",
     portadaAlt: "Tachyon showing freemem.space with a graphics card: the HTTPS padlock, the bookmark star, history and the green new-version notice",
     coffinAlt: "Tachyon on the Coffin Workbench, with Trasfondo in the corner",
+    video: {
+      titulo: "See it in action",
+      texto: "Five and a half minutes on CoffinOS with a graphics card (in Amiberry): installing it, updating itself with one click, searching from the address bar, sites with JavaScript and canvas, tabs, menus, downloads and switching languages. No tricks: only the waits are sped up.",
+      boton: "Play",
+      titulo_video: "Tachyon 0.7.1: the modern web on your classic Amiga",
+    },
     motor: {
       titulo: "It speaks today's web",
       texto: "No bare text and crossed fingers. Tachyon lays out each page the way the browser on your PC would: with its style sheets, its typefaces and its JavaScript.",
@@ -139,6 +156,7 @@ export const CONTENIDO = {
     pie: [
       { texto: "Tachyon on GitHub", url: REPO },
       { texto: "What's in this version", url: RELEASE },
+      { texto: "Video on YouTube", url: `https://youtu.be/${VIDEO.en}` },
     ],
   },
 } satisfies Record<Idioma, unknown>;
