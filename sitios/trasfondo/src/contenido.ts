@@ -50,7 +50,7 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "A tu manera",
-      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla.",
+      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla. Y habla inglés y castellano: sale en el idioma que tengas elegido en tu sistema.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo en Exchange",
       commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Además se pone al día solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Si eres más de tooltypes, también los entiende:",
@@ -78,13 +78,13 @@ export const CONTENIDO = {
         "AmigaOS 3.0 o posterior, con el Workbench en marcha. También con Directory Opus 5 haciendo de escritorio.",
         "Cualquier 68k: es código de 68000 y no necesita FPU.",
         "OCS, ECS, AGA o tarjeta gráfica (CyberGraphX o Picasso96).",
-        "Para ver la red en bytes por segundo, Roadshow; con otras pilas te da paquetes por segundo.",
+        "Para ver la red en KB/s, Roadshow o un driver de red que cuente bytes; si no, te da paquetes por segundo.",
       ],
       probado: "Probado en AmigaOS 3.2.3 (A1200 emulado, AGA y RTG) y en Coffin R65, también con Directory Opus 5 de escritorio. Con Scalos debería ir, pero aún no se ha probado. La red y la WiFi, de momento solo con un driver de pruebas: si lo usas con una tarjeta de verdad, cuéntamelo en GitHub.",
     },
     dash: {
       titulo: "Hecho en Dash",
-      texto: "Trasfondo son unas 800 líneas de Dash, con su configurador, y ni una línea de C escrita a mano. Lo que el lenguaje no sabía hacer (pintar en el fondo del Workbench, medir la CPU de cada tarea, ser una commodity) lo aprendió para Trasfondo, y ahora lo tiene cualquier programa en Dash.",
+      texto: "Trasfondo son unas 1.600 líneas de Dash, con su configurador y su actualizador, y ni una línea de C escrita a mano. Lo que el lenguaje no sabía hacer (pintar en el fondo del Workbench, medir la CPU de cada tarea, ser una commodity) lo aprendió para Trasfondo, y ahora lo tiene cualquier programa en Dash.",
       enlace: "Descubre Dash",
     },
     pie: [
@@ -130,13 +130,13 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "Your way",
-      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font.",
+      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font. And it speaks English and Spanish, following your system's language settings.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo in Exchange",
       commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. It also keeps itself up to date: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. If you're more of a tooltypes person, it speaks those too:",
       tooltypes: [
-        ["MOSTRAR=FECHA,CPU,DISCOS", "which sections appear, and in what order"],
-        ["TAREAS=3", "how many tasks"],
+        ["SHOW=DATE,CPU,DISKS", "which sections appear, and in what order"],
+        ["TASKS=3", "how many tasks"],
         ["CX_POPKEY=ctrl alt t", "the key to hide and show it"],
         ["CX_POPUP=NO", "start hidden"],
       ],
@@ -158,13 +158,13 @@ export const CONTENIDO = {
         "AmigaOS 3.0 or later, with the Workbench running. Also with Directory Opus 5 as your desktop.",
         "Any 68k: it's 68000 code and needs no FPU.",
         "OCS, ECS, AGA or a graphics card (CyberGraphX or Picasso96).",
-        "For network speed in bytes per second, Roadshow; with other stacks you get packets per second.",
+        "For network speed in KB/s, Roadshow or a network driver that counts bytes; otherwise you get packets per second.",
       ],
       probado: "Tested on AmigaOS 3.2.3 (emulated A1200, AGA and RTG) and on Coffin R65, also with Directory Opus 5 as the desktop. Scalos should work too, but it hasn't been tested yet. Network and WiFi, so far only with a test driver: if you run it with a real card, tell me on GitHub.",
     },
     dash: {
       titulo: "Made in Dash",
-      texto: "Trasfondo is about 800 lines of Dash, settings window included, and not one line of hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, be a commodity) it learned for Trasfondo, and now every Dash program can.",
+      texto: "Trasfondo is about 1,600 lines of Dash, settings window and self-updater included, and not one line of hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, be a commodity) it learned for Trasfondo, and now every Dash program can.",
       enlace: "Discover Dash",
     },
     pie: [
