@@ -31,10 +31,11 @@ export const CONTENIDO = {
       cosas: [
         { que: "Fecha y hora", como: "Arriba del todo, en tu idioma: «sábado 24-oct-26» y la hora." },
         { que: "CPU", como: "Cuánto trabaja tu Amiga y cómo ha ido el último minuto. Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
-        { que: "Memoria", como: "La Chip y la Fast que te quedan libres." },
+        { que: "Memoria", como: "La Chip y la Fast que te quedan libres y, si quieres, su gráfica: lo que está en uso sobre el total." },
         { que: "Tareas", como: "Quién se está comiendo la CPU: de una a veinte, cada una con su barra." },
         { que: "Discos", como: "Lo lleno que está cada volumen montado y su tamaño. Y nunca te pedirá que metas un disco." },
-        { que: "Red y WiFi", como: "Lo que entra y sale por segundo y, si el driver lo cuenta, la señal de tu WiFi en dBm." },
+        { que: "Red y WiFi", como: "Lo que entra y sale por segundo, con su gráfica si la quieres, y, si el driver lo cuenta, la señal de tu WiFi en dBm." },
+        { que: "PiStorm", como: "Si tu Amiga corre en una PiStorm con Emu68, la temperatura de su Raspberry Pi. A partir de 70 °C se pone naranja." },
       ],
     },
     cuelgue: {
@@ -111,10 +112,11 @@ export const CONTENIDO = {
       cosas: [
         { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
         { que: "CPU", como: "How hard your Amiga is working and how the last minute went. Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
-        { que: "Memory", como: "The Chip and Fast memory you have left." },
+        { que: "Memory", como: "The Chip and Fast memory you have left and, if you like, its graph: what's in use over the total." },
         { que: "Tasks", como: "Who's eating the CPU: one to twenty of them, each with its bar." },
         { que: "Disks", como: "How full each mounted volume is and its size. And it will never ask you to insert a disk." },
-        { que: "Network and WiFi", como: "What comes in and goes out per second and, if the driver reports it, your WiFi signal in dBm." },
+        { que: "Network and WiFi", como: "What comes in and goes out per second, with its graph if you want it, and, if the driver reports it, your WiFi signal in dBm." },
+        { que: "PiStorm", como: "If your Amiga runs on a PiStorm with Emu68, its Raspberry Pi's temperature. From 70 °C it turns orange." },
       ],
     },
     cuelgue: {
