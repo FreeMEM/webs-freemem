@@ -8,13 +8,13 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 590;
+export const BUILTINS = 609;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
   ["MUI", "MUI", 82],
+  ["Procesos, escritorio y medidores", "Tasks, desktop and meters", 80],
   ["ReAction", "ReAction", 79],
-  ["Tareas en otro proceso", "Tasks in another process", 61],
   ["Intuition", "Intuition", 52],
   ["Gráficos avanzados", "Advanced graphics", 43],
   ["Entrada", "Input", 30],
