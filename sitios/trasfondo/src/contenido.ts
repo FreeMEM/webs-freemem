@@ -13,9 +13,9 @@ export const BASE = "https://trasfondo.freemem.space";
 
 export const CONTENIDO = {
   es: {
-    titulo: "Trasfondo: tu Amiga te cuenta qué hace, en el fondo del Workbench",
+    titulo: "Trasfondo: monitor de recursos en el fondo del Workbench",
     descripcion:
-      "Trasfondo es un monitor de recursos para AmigaOS 3.x que se pinta en el fondo del Workbench, detrás de tus iconos: la CPU con su último minuto, la memoria, las tareas, los discos y la red. Gratis y libre.",
+      "Monitor de recursos para AmigaOS 3.x pintado en el fondo del Workbench: CPU, memoria, tareas, discos, red y la hora. Se pone al día solo. Gratis y libre.",
     entradilla: "Tu Amiga te cuenta qué hace, sin tapar nada.",
     subtitulo: "La fecha y la hora, la CPU, la memoria, las tareas, los discos y la red, pintados en el fondo del Workbench, detrás de tus iconos. No es una ventana: no estorba, no se pone delante y no se queda con tus clics.",
     descargar: `Descargar la ${VERSION}`,
@@ -93,9 +93,9 @@ export const CONTENIDO = {
     ],
   },
   en: {
-    titulo: "Trasfondo: your Amiga tells you what it's up to, on the Workbench backdrop",
+    titulo: "Trasfondo: a resource monitor on the Workbench backdrop",
     descripcion:
-      "Trasfondo is a resource monitor for AmigaOS 3.x painted on the Workbench backdrop, behind your icons: the CPU with its last minute, memory, tasks, disks and network. Free and open source.",
+      "Resource monitor for AmigaOS 3.x painted on the Workbench backdrop: CPU, memory, tasks, disks, network and the time. Updates itself. Free, open source.",
     entradilla: "Your Amiga tells you what it's up to, without covering anything.",
     subtitulo: "Date and time, CPU, memory, tasks, disks and network, painted on the Workbench backdrop, behind your icons. It isn't a window: it doesn't get in the way, never comes to the front and never steals your clicks.",
     descargar: `Download ${VERSION}`,

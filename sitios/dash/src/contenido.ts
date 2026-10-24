@@ -31,9 +31,9 @@ export const AREAS = [
 
 export const CONTENIDO = {
   es: {
-    titulo: "Dash: programa tu Amiga con un lenguaje moderno que compila a 68k nativo",
+    titulo: "Dash: un lenguaje moderno para el Amiga, a 68k nativo",
     descripcion:
-      "Dash es un lenguaje de alto nivel para el Commodore Amiga: se escribe como Ruby o Python, se traduce a C y se compila a un ejecutable nativo de 68k. Intuition, MUI, ReAction, gráficos, sonido, red y HTTPS, con extensión para VS Code. Libre.",
+      "Lenguaje de alto nivel para el Commodore Amiga: se escribe como Ruby o Python y compila a un ejecutable 68k nativo. MUI, gráficos, red y HTTPS. Libre.",
     lema: "Escribe código limpio, sintetiza ejecutables nativos.",
     texto:
       "Programar el Amiga en C tiene su encanto… hasta que llevas media hora peleándote con punteros, estructuras de Intuition y castings. Dash es la otra forma: un lenguaje que se lee como Ruby o Python y se convierte en un ejecutable de 68k de verdad. Sin intérprete ni máquina virtual: código nativo, como debe ser.",
@@ -96,9 +96,9 @@ export const CONTENIDO = {
     ],
   },
   en: {
-    titulo: "Dash: program your Amiga in a modern language that compiles to native 68k",
+    titulo: "Dash: a modern Amiga language that compiles to native 68k",
     descripcion:
-      "Dash is a high-level language for the Commodore Amiga: it reads like Ruby or Python, translates to C and compiles to a native 68k executable. Intuition, MUI, ReAction, graphics, sound, networking and HTTPS, with a VS Code extension. Open source.",
+      "A high-level language for the Commodore Amiga: reads like Ruby or Python, compiles to a native 68k executable. MUI, graphics, networking, HTTPS. Free.",
     lema: "Write clean code, synthesize native executables.",
     texto:
       "Programming the Amiga in C has its charm… until you've spent half an hour wrestling with pointers, Intuition structures and casts. Dash is the other way: a language that reads like Ruby or Python and turns into a real 68k executable. No interpreter, no virtual machine: native code, the way it should be.",

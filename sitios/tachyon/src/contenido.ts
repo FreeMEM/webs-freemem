@@ -12,9 +12,9 @@ export const BASE = "https://tachyon.freemem.space";
 
 export const CONTENIDO = {
   es: {
-    titulo: "Tachyon: un navegador web moderno para tu Amiga (AmigaOS 3.x)",
+    titulo: "Tachyon: navegador web moderno para Amiga (AmigaOS 3.x)",
     descripcion:
-      "Tachyon es un navegador web moderno para el Amiga clásico con AmigaOS 3.x y MUI: HTML5, CSS de hoy (Flexbox, Grid, @font-face, animaciones), JavaScript ES2023 y HTTPS con AmiSSL. Libre y escrito en Dash. En alfa.",
+      "Navegador web para el Amiga clásico (AmigaOS 3.x, MUI): HTML5, CSS moderno, JavaScript ES2023 y HTTPS con AmiSSL. Libre y escrito en Dash. En alfa.",
     lema: "La web de hoy, en tu Amiga.",
     texto:
       "Abrir una web actual en un Amiga clásico parecía cosa de otro siglo. Tachyon lo hace: entiende HTML5, el CSS de ahora y JavaScript, abre webs por HTTPS, y todo dentro de una ventana MUI de las de siempre, con sus menús y su icono.",
@@ -77,9 +77,9 @@ export const CONTENIDO = {
     ],
   },
   en: {
-    titulo: "Tachyon: a modern web browser for your Amiga (AmigaOS 3.x)",
+    titulo: "Tachyon: a modern web browser for the Amiga (AmigaOS 3.x)",
     descripcion:
-      "Tachyon is a modern web browser for the classic Amiga with AmigaOS 3.x and MUI: HTML5, today's CSS (Flexbox, Grid, @font-face, animations), JavaScript ES2023 and HTTPS with AmiSSL. Open source and written in Dash. In alpha.",
+      "Web browser for the classic Amiga (AmigaOS 3.x, MUI): HTML5, modern CSS, JavaScript ES2023 and HTTPS with AmiSSL. Free, written in Dash. In alpha.",
     lema: "Today's web, on your Amiga.",
     texto:
       "Opening a modern website on a classic Amiga sounded like something from another century. Tachyon does it: it understands HTML5, today's CSS and JavaScript, opens sites over HTTPS, and does it all inside a good old MUI window, with its menus and its icon.",
