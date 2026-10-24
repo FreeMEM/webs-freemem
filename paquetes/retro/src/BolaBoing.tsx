@@ -48,40 +48,35 @@ export function BolaBoing({ etiqueta }: { etiqueta: string }) {
     });
     io.observe(c);
 
+    // la rejilla en un solo trazo (un navegador lento, como Tachyon en un 68k, paga cada stroke)
     function rejilla(suelo: number) {
       ctx!.strokeStyle = "#a020a8";
       ctx!.lineWidth = 1.5;
       const paso = ancho / 14;
+      ctx!.beginPath();
       for (let gx = paso / 2; gx < ancho; gx += paso) {
-        ctx!.beginPath();
         ctx!.moveTo(gx, alto * 0.06);
         ctx!.lineTo(gx, suelo);
-        ctx!.stroke();
       }
       for (let gy = alto * 0.06; gy <= suelo + 0.5; gy += paso) {
-        ctx!.beginPath();
         ctx!.moveTo(paso / 2, gy);
         ctx!.lineTo(ancho - paso / 2, gy);
-        ctx!.stroke();
       }
       // el suelo, en perspectiva
       const fondo = alto * 0.98;
       for (let i = 0; i <= 13; i++) {
         const gx = paso / 2 + i * paso;
-        ctx!.beginPath();
         ctx!.moveTo(gx, suelo);
         ctx!.lineTo(ancho / 2 + (gx - ancho / 2) * 1.35, fondo);
-        ctx!.stroke();
       }
       for (let k = 1; k <= 3; k++) {
         const t = k / 3;
         const yy = suelo + (fondo - suelo) * t;
         const ex = (ancho / 2 - paso / 2) * (1 + 0.35 * t);
-        ctx!.beginPath();
         ctx!.moveTo(ancho / 2 - ex, yy);
         ctx!.lineTo(ancho / 2 + ex, yy);
-        ctx!.stroke();
       }
+      ctx!.stroke();
     }
 
     function punto(lat: number, lon: number, r: number, cx: number, cy: number) {
@@ -110,25 +105,29 @@ export function BolaBoing({ etiqueta }: { etiqueta: string }) {
       ctx!.beginPath();
       ctx!.arc(cx + r * 0.42, cy + r * 0.18, r, 0, Math.PI * 2);
       ctx!.fill();
-      for (let i = 0; i < LAT; i++) {
-        for (let j = 0; j < LON; j++) {
-          const a = punto(i, j, r, cx, cy);
-          const b = punto(i + 1, j, r, cx, cy);
-          const cc = punto(i + 1, j + 1, r, cx, cy);
-          const d = punto(i, j + 1, r, cx, cy);
-          if (a[2] + b[2] + cc[2] + d[2] < 0) continue;
-          ctx!.fillStyle = (i + j) % 2 ? "#e01e1e" : "#f4f4f4";
-          ctx!.beginPath();
-          ctx!.moveTo(a[0], a[1]);
-          ctx!.lineTo(b[0], b[1]);
-          ctx!.lineTo(cc[0], cc[1]);
-          ctx!.lineTo(d[0], d[1]);
-          ctx!.closePath();
-          ctx!.fill();
-          ctx!.strokeStyle = ctx!.fillStyle;
-          ctx!.lineWidth = 0.6;
-          ctx!.stroke();
+      // los cuadros de cada color en un camino: dos rellenos por fotograma, no uno por cuadro
+      for (let color = 0; color < 2; color++) {
+        ctx!.beginPath();
+        for (let i = 0; i < LAT; i++) {
+          for (let j = 0; j < LON; j++) {
+            if ((i + j) % 2 !== color) continue;
+            const a = punto(i, j, r, cx, cy);
+            const b = punto(i + 1, j, r, cx, cy);
+            const cc = punto(i + 1, j + 1, r, cx, cy);
+            const d = punto(i, j + 1, r, cx, cy);
+            if (a[2] + b[2] + cc[2] + d[2] < 0) continue;
+            ctx!.moveTo(a[0], a[1]);
+            ctx!.lineTo(b[0], b[1]);
+            ctx!.lineTo(cc[0], cc[1]);
+            ctx!.lineTo(d[0], d[1]);
+            ctx!.closePath();
+          }
         }
+        ctx!.fillStyle = color ? "#e01e1e" : "#f4f4f4";
+        ctx!.strokeStyle = ctx!.fillStyle;      // un filo del mismo color tapa las rendijas entre cuadros
+        ctx!.lineWidth = 0.6;
+        ctx!.fill();
+        ctx!.stroke();
       }
     }
 

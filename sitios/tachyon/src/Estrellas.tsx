@@ -63,30 +63,44 @@ export function Estrellas() {
       return 0.045 + (0.0016 - 0.045) * suave;
     }
 
+    // Cuatro brillos según lo cerca que estén, cada uno con su color y su grosor ya hechos: un trazo por brillo y
+    // fotograma (no uno por estrella), y ningún texto de color nuevo. Así va bien también en un navegador lento
+    // (Tachyon, en un 68k).
+    const COLOR = ["rgba(120,150,255,0.45)", "rgba(120,150,255,0.7)", "rgba(120,150,255,1)", "rgba(232,236,248,1)"];
+    const GROSOR = [0.9, 1.3, 1.9, 2.4];
+    const VELO_SALTO = "rgba(11,23,54,0.3)";
+    const VELO_PASEO = "rgba(11,23,54,0.6)";
+    let activas = N;                   // las que se mueven: menos si el navegador no llega
+    let media = 0;                     // lo que tarda un fotograma (ms), suavizado
+
+    function nivel(z: number) {
+      return z < 0.25 ? 3 : z < 0.5 ? 2 : z < 0.75 ? 1 : 0;
+    }
+
     function dibujar(v: number) {
-      // con el salto, el rastro dura más
-      ctx!.fillStyle = `rgba(11, 23, 54, ${v > 0.01 ? 0.3 : 0.6})`;
+      ctx!.fillStyle = v > 0.01 ? VELO_SALTO : VELO_PASEO;   // con el salto, el rastro dura más
       ctx!.fillRect(0, 0, ancho, alto);
       const cx = fx * ancho;
       const cy = fy * alto;
       const escala = Math.max(ancho, alto) * 0.6;
-      for (const e of estrellas) {
-        const x = cx + (e.x / e.z) * escala;
-        const y = cy + (e.y / e.z) * escala;
-        const px = cx + (e.x / e.pz) * escala;
-        const py = cy + (e.y / e.pz) * escala;
-        const brillo = Math.min(1, 0.3 + (1 - e.z) * 1.1);
-        ctx!.strokeStyle = e.z < 0.25 ? `rgba(232, 236, 248, ${brillo})` : `rgba(120, 150, 255, ${brillo})`;
-        ctx!.lineWidth = Math.max(0.9, (1 - e.z) * 2.6);
+      const punto = v < 0.003 ? 1 : 0;
+      for (let n = 0; n < 4; n++) {
+        ctx!.strokeStyle = COLOR[n];
+        ctx!.lineWidth = GROSOR[n];
         ctx!.beginPath();
-        ctx!.moveTo(px, py);
-        ctx!.lineTo(x + (v < 0.003 ? 1 : 0), y);
+        for (let i = 0; i < activas; i++) {
+          const e = estrellas[i];
+          if (nivel(e.z) !== n) continue;
+          ctx!.moveTo(cx + (e.x / e.pz) * escala, cy + (e.y / e.pz) * escala);
+          ctx!.lineTo(cx + (e.x / e.z) * escala + punto, cy + (e.y / e.z) * escala);
+        }
         ctx!.stroke();
       }
     }
 
     function avanzar(v: number) {
-      for (const e of estrellas) {
+      for (let i = 0; i < activas; i++) {
+        const e = estrellas[i];
         e.pz = e.z;
         e.z -= v;
         if (e.z <= 0.02) {
@@ -100,11 +114,16 @@ export function Estrellas() {
 
     function paso(ahora: number) {
       if (!visible) return;
+      const t0 = performance.now();
       fx += (objx - fx) * 0.04;
       fy += (objy - fy) * 0.04;
       const v = velocidad(ahora - inicio);
       avanzar(v);
       dibujar(v);
+      // si un fotograma pasa de 25 ms, menos estrellas (nunca menos de 120); si sobra tiempo, vuelven
+      media = media * 0.8 + (performance.now() - t0) * 0.2;
+      if (media > 25 && activas > 120) activas = Math.max(120, Math.floor(activas * 0.85));
+      else if (media < 6 && activas < N) activas = Math.min(N, activas + 20);
       marco = requestAnimationFrame(paso);
     }
 
