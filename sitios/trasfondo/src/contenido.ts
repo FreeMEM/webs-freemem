@@ -8,7 +8,8 @@ export const VERSION = version.version;
 export const DESCARGA = version.descarga;
 export const RELEASE = version.notas;
 export const REPO = "https://github.com/FreeMEM/trasfondo";
-export const VIDEO = "vMqksMRh4rI";
+/** El vídeo de cada idioma (el de la 0.11, grabado en Coffin R65 con tarjeta gráfica). */
+export const VIDEO = { es: "QyzxsXAyeg4", en: "asdHx5MZsJA" } satisfies Record<Idioma, string>;
 export const BASE = "https://trasfondo.freemem.space";
 
 export const CONTENIDO = {
@@ -27,10 +28,10 @@ export const CONTENIDO = {
     panel: {
       titulo: "Todo a la vista, de un vistazo",
       texto: "Arriba a la derecha de tu escritorio, al día cada dos segundos (o cada uno, cinco o diez, como prefieras):",
-      imagen: "Trasfondo en un Workbench 3.2 AGA, con un List de todo el disco en marcha",
+      imagen: "Trasfondo 0.11 en Coffin R65 con tarjeta gráfica: fondo fijo granate, la gráfica de la memoria y un List de todo el disco en marcha",
       cosas: [
         { que: "Fecha y hora", como: "Arriba del todo, en tu idioma: «sábado 24-oct-26» y la hora." },
-        { que: "CPU", como: "Cuánto trabaja tu Amiga y cómo ha ido el último minuto. Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
+        { que: "CPU", como: "Cuánto trabaja tu Amiga y su historia: las últimas 60 medidas (dos minutos, midiendo cada 2 s). Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
         { que: "Memoria", como: "La Chip y la Fast que te quedan libres y, si quieres, su gráfica: lo que está en uso sobre el total." },
         { que: "Tareas", como: "Quién se está comiendo la CPU: de una a veinte, cada una con su barra." },
         { que: "Discos", como: "Lo lleno que está cada volumen montado y su tamaño. Y nunca te pedirá que metas un disco." },
@@ -42,6 +43,7 @@ export const CONTENIDO = {
       titulo: "No se cuelga. Nunca espera",
       frase: "Ninguna pregunta a un disco o a un driver espera más de un tercio de segundo.",
       texto: "Si un volumen o una tarjeta de red no contestan, el panel pone «sin respuesta» y sigue a lo suyo. Si se cae la red, lo ves al momento; cuando vuelve, los datos vuelven solos, sin reiniciar nada.",
+      ligero: "Y gasta poco: solo repinta lo que cambia. Midiendo cada 2 s, un 8 % de un A1200 y un 11 % de un 68030 con tarjeta gráfica (medido en el emulador).",
     },
     pantallas: {
       titulo: "Luce en cualquier pantalla",
@@ -51,7 +53,7 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "A tu manera",
-      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen, cuántas tareas, cada cuánto mide, el fondo y su color, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla. Y habla inglés y castellano: sale en el idioma que tengas elegido en tu sistema.",
+      texto: "Con TrasfondoPrefs (en SYS:Prefs) decides qué secciones salen (también las gráficas de la memoria y de la red), cuántas tareas, cada cuánto mide, el fondo y su color, la tecla rápida y si arranca oculto. «Usar» lo aplica al instante, sin reiniciar nada; «Guardar», para siempre. Su ventana se ajusta a la fuente de tu pantalla. Y habla inglés y castellano: sale en el idioma que tengas elegido en tu sistema.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo en Exchange",
       commodity: "Y como buena commodity, se maneja desde Exchange: ocultarlo, mostrarlo, desactivarlo o cerrarlo. Además se pone al día solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Si eres más de tooltypes, también los entiende:",
@@ -59,10 +61,12 @@ export const CONTENIDO = {
         ["MOSTRAR=FECHA,CPU,DISCOS", "qué secciones salen y en qué orden"],
         ["TAREAS=3", "cuántas tareas"],
         ["CX_POPKEY=ctrl alt t", "la tecla para ocultarlo y mostrarlo"],
+        ["INTERVAL=5", "cada cuántos segundos mide"],
+        ["BACKGROUND=SOLID", "fondo fijo, sin velo"],
         ["CX_POPUP=NO", "arranca oculto"],
       ],
     },
-    video: { titulo: "Míralo en marcha", texto: "Seis minutos para verlo todo: cómo se instala y cómo se usa, en AGA y con tarjeta gráfica.", boton: "Reproducir", titulo_video: "Trasfondo 0.3: instalarlo y usarlo" },
+    video: { titulo: "Míralo en marcha", texto: "Cinco minutos en CoffinOS con tarjeta gráfica (en Amiberry): cómo se instala, todo lo que enseña, cómo se pone al día solo de la 0.9 a la 0.11 con un clic, TrasfondoPrefs y Exchange. Con música de Mantronix & Tip.", boton: "Reproducir", titulo_video: "Trasfondo 0.11: un monitor de recursos en el fondo del Workbench" },
     instalar: {
       titulo: "Listo en un minuto",
       pasos: [
@@ -85,12 +89,12 @@ export const CONTENIDO = {
     },
     dash: {
       titulo: "Hecho en Dash",
-      texto: "Trasfondo son unas 1.600 líneas de Dash, con su configurador y su actualizador, y ni una línea de C escrita a mano. Lo que el lenguaje no sabía hacer (pintar en el fondo del Workbench, medir la CPU de cada tarea, ser una commodity) lo aprendió para Trasfondo, y ahora lo tiene cualquier programa en Dash.",
+      texto: "Trasfondo son unas 2.200 líneas de Dash, con su configurador y su actualizador, y ni una línea de C escrita a mano. Lo que el lenguaje no sabía hacer (pintar en el fondo del Workbench, medir la CPU de cada tarea, ser una commodity) lo aprendió para Trasfondo, y ahora lo tiene cualquier programa en Dash.",
       enlace: "Descubre Dash",
     },
     pie: [
       { texto: "Trasfondo en GitHub", url: REPO },
-      { texto: "Vídeo en YouTube", url: `https://youtu.be/${VIDEO}` },
+      { texto: "Vídeo en YouTube", url: `https://youtu.be/${VIDEO.es}` },
     ],
   },
   en: {
@@ -108,10 +112,10 @@ export const CONTENIDO = {
     panel: {
       titulo: "Everything in view, at a glance",
       texto: "Top right of your desktop, refreshed every two seconds (or every one, five or ten, as you like):",
-      imagen: "Trasfondo on a Workbench 3.2 AGA, with a List of the whole disk running",
+      imagen: "Trasfondo 0.11 on Coffin R65 with a graphics card: solid wine background, the memory graph and a List of the whole disk running",
       cosas: [
         { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
-        { que: "CPU", como: "How hard your Amiga is working and how the last minute went. Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
+        { que: "CPU", como: "How hard your Amiga is working, and its history: the last 60 readings (two minutes, measuring every 2 s). Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
         { que: "Memory", como: "The Chip and Fast memory you have left and, if you like, its graph: what's in use over the total." },
         { que: "Tasks", como: "Who's eating the CPU: one to twenty of them, each with its bar." },
         { que: "Disks", como: "How full each mounted volume is and its size. And it will never ask you to insert a disk." },
@@ -123,6 +127,7 @@ export const CONTENIDO = {
       titulo: "It never hangs. It never waits",
       frase: "No question to a disk or a driver waits longer than a third of a second.",
       texto: "If a volume or a network card doesn't answer, the panel says “no answer” and carries on. If the network drops, you see it at once; when it comes back, the figures come back on their own, with nothing to restart.",
+      ligero: "And it's light: it only repaints what changed. Measuring every 2 s, about 8% of an A1200 and 11% of a 68030 with a graphics card (measured in the emulator).",
     },
     pantallas: {
       titulo: "Looks good on any screen",
@@ -132,7 +137,7 @@ export const CONTENIDO = {
     },
     eliges: {
       titulo: "Your way",
-      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, how many tasks, how often it measures, the background and its colour, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font. And it speaks English and Spanish, following your system's language settings.",
+      texto: "With TrasfondoPrefs (in SYS:Prefs) you choose which sections appear (memory and network graphs included), how many tasks, how often it measures, the background and its colour, the hotkey and whether it starts hidden. Use applies it instantly, with nothing to restart; Save keeps it for good. Its window fits your screen font. And it speaks English and Spanish, following your system's language settings.",
       prefs: "TrasfondoPrefs",
       exchange: "Trasfondo in Exchange",
       commodity: "And like any good commodity, it answers to Exchange: hide it, show it, disable it or quit it. It also keeps itself up to date: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. If you're more of a tooltypes person, it speaks those too:",
@@ -140,10 +145,12 @@ export const CONTENIDO = {
         ["SHOW=DATE,CPU,DISKS", "which sections appear, and in what order"],
         ["TASKS=3", "how many tasks"],
         ["CX_POPKEY=ctrl alt t", "the key to hide and show it"],
+        ["INTERVAL=5", "how many seconds between readings"],
+        ["BACKGROUND=SOLID", "solid background, no veil"],
         ["CX_POPUP=NO", "start hidden"],
       ],
     },
-    video: { titulo: "See it in action", texto: "Six minutes to see it all, in Spanish with subtitles: installing it and using it, on AGA and with a graphics card.", boton: "Play", titulo_video: "Trasfondo 0.3: install and use" },
+    video: { titulo: "See it in action", texto: "Five minutes on CoffinOS with a graphics card (in Amiberry): installing it, everything it shows, updating itself from 0.9 to 0.11 with one click, TrasfondoPrefs and Exchange. With music by Mantronix & Tip.", boton: "Play", titulo_video: "Trasfondo 0.11: a resource monitor on your Workbench backdrop" },
     instalar: {
       titulo: "Ready in a minute",
       pasos: [
@@ -166,12 +173,12 @@ export const CONTENIDO = {
     },
     dash: {
       titulo: "Made in Dash",
-      texto: "Trasfondo is about 1,600 lines of Dash, settings window and self-updater included, and not one line of hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, be a commodity) it learned for Trasfondo, and now every Dash program can.",
+      texto: "Trasfondo is about 2,200 lines of Dash, settings window and self-updater included, and not one line of hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, be a commodity) it learned for Trasfondo, and now every Dash program can.",
       enlace: "Discover Dash",
     },
     pie: [
       { texto: "Trasfondo on GitHub", url: REPO },
-      { texto: "Video on YouTube", url: `https://youtu.be/${VIDEO}` },
+      { texto: "Video on YouTube", url: `https://youtu.be/${VIDEO.en}` },
     ],
   },
 } satisfies Record<Idioma, unknown>;

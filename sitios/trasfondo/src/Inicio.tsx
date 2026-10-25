@@ -56,7 +56,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </dl>
           </div>
           <VentanaWB titulo="Workbench Screen">
-            <img src="/imagenes/aga-panel.webp" width={1280} height={1024} alt={t.panel.imagen} loading="lazy" />
+            <img src={`/imagenes/panel-rtg-${idioma}.webp`} width={870} height={696} alt={t.panel.imagen} loading="lazy" />
           </VentanaWB>
         </section>
 
@@ -64,6 +64,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <h2 id="cuelgues">{t.cuelgue.titulo}</h2>
           <p className="frase">{t.cuelgue.frase}</p>
           <p>{t.cuelgue.texto}</p>
+          <p>{t.cuelgue.ligero}</p>
         </section>
 
         <section className="seccion" aria-labelledby="pantallas">
@@ -99,10 +100,10 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           </div>
           <div className="ventanas">
             <VentanaWB titulo={t.eliges.prefs}>
-              <img src="/imagenes/aga-prefs-ventana.webp" width={664} height={808} alt={t.eliges.prefs} loading="lazy" />
+              <img src={`/imagenes/prefs-${idioma}.webp`} width={772} height={520} alt={t.eliges.prefs} loading="lazy" />
             </VentanaWB>
             <VentanaWB titulo="Exchange">
-              <img src="/imagenes/aga-exchange-ventana.webp" width={922} height={940} alt={t.eliges.exchange} loading="lazy" />
+              <img src={`/imagenes/exchange-${idioma}.webp`} width={914} height={568} alt={t.eliges.exchange} loading="lazy" />
             </VentanaWB>
           </div>
         </section>
@@ -110,7 +111,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         <section className="seccion" id="video" aria-labelledby="titulo-video">
           <h2 id="titulo-video">{t.video.titulo}</h2>
           <p className="medida">{t.video.texto}</p>
-          <VideoYouTube id={VIDEO} titulo={t.video.titulo_video} portada="/imagenes/video.jpg" textoBoton={t.video.boton} />
+          <VideoYouTube id={VIDEO[idioma]} titulo={t.video.titulo_video} portada={`/imagenes/video-${idioma}.jpg`} textoBoton={t.video.boton} />
         </section>
 
         <section className="seccion seccion-instalar" aria-labelledby="instalar">
