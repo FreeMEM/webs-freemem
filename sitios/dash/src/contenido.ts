@@ -101,7 +101,7 @@ export const CONTENIDO = {
     },
     tecnica: {
       titulo: "Bajo el capó",
-      texto: "Dash es un compilador de verdad, no un intérprete. Lo que hace con tu código, y con qué:",
+      texto: "Dash no es un intérprete: traduce tu código a C, y ese C lo compila GCC a código de 68k. Lo que hace con tu código, y con qué:",
       lista: [
         ["La cadena", "Tu .dash pasa por un analizador hecho con Lark, se convierte en un árbol, se comprueba (tipos, nombres, structs) y se escribe en C. Ese C lo compila m68k-amigaos-gcc con -O2 y sale un ejecutable de AmigaOS: hunks de 68k, nada más."],
         ["Los tipos", "Int de 32 bits, Float, Fixed 16.16, String y Bool; listas [T] y diccionarios {String: T} con tipo; structs con métodos y campos weak, enums, constantes y funciones como valor. Los tipos se deducen: casi nunca hace falta escribirlos."],
@@ -227,7 +227,7 @@ export const CONTENIDO = {
     },
     tecnica: {
       titulo: "Under the hood",
-      texto: "Dash is a real compiler, not an interpreter. What it does with your code, and with what:",
+      texto: "Dash is not an interpreter: it translates your code into C, and GCC compiles that C into 68k code. What it does with your code, and with what:",
       lista: [
         ["The pipeline", "Your .dash goes through a parser built with Lark, becomes a tree, gets checked (types, names, structs) and is written out as C. m68k-amigaos-gcc compiles that C with -O2 into an AmigaOS executable: 68k hunks, nothing else."],
         ["The types", "32-bit Int, Float, Fixed 16.16, String and Bool; typed lists [T] and dictionaries {String: T}; structs with methods and weak fields, enums, constants and functions as values. Types are inferred: you hardly ever write them."],
