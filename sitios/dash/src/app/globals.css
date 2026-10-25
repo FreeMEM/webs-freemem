@@ -220,6 +220,10 @@ main dd {
   font-size: 0.9rem;
 }
 
+.comparativa-porque {
+  margin: 2.5rem 0 0;
+}
+
 .comparativa .mal {
   color: var(--blanco-suave);
 }

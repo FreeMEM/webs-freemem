@@ -186,6 +186,15 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </table>
           </div>
           <p className="nota">{t.comparativa.menos}</p>
+          <h3 className="comparativa-porque">{t.comparativa.porqueTitulo}</h3>
+          <dl className="lista-todo lista-tecnica">
+            {t.comparativa.porque.map(([quien, por]) => (
+              <div key={quien}>
+                <dt>{quien}</dt>
+                <dd>{por}</dd>
+              </div>
+            ))}
+          </dl>
           <p>
             <a href={doc("COMPARATIVA", idioma)}>{t.comparativa.enlace}</a>
           </p>
