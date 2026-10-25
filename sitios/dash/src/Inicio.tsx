@@ -13,6 +13,11 @@ const CAPTURAS = {
 
 type IdEjemplo = keyof typeof CAPTURAS;
 
+/** Un documento del repositorio de Dash en GitHub, en el idioma de la página (el inglés es NOMBRE.en.md). */
+function doc(nombre: string, idioma: Idioma) {
+  return `${REPO}/blob/main/docs/${nombre}${idioma === "en" ? ".en" : ""}.md`;
+}
+
 function kb(bytes: number) {
   return `${(bytes / 1024).toFixed(1).replace(".0", "")} KB`;
 }
@@ -127,6 +132,19 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           </VentanaWB>
         </section>
 
+        <section className="seccion" aria-labelledby="tecnica">
+          <h2 id="tecnica">{t.tecnica.titulo}</h2>
+          <p className="medida">{t.tecnica.texto}</p>
+          <dl className="lista-todo lista-tecnica">
+            {t.tecnica.lista.map(([que, como]) => (
+              <div key={que}>
+                <dt>{que}</dt>
+                <dd>{como}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         <section className="seccion seccion-editor" aria-labelledby="editor">
           <div className="editor-texto">
             <h2 id="editor">{t.editor.titulo}</h2>
@@ -164,6 +182,21 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           </div>
         </section>
 
+        <section className="seccion" aria-labelledby="documentacion">
+          <h2 id="documentacion">{t.documentacion.titulo}</h2>
+          <p className="medida">{t.documentacion.texto}</p>
+          <dl className="lista-todo">
+            {t.documentacion.lista.map(([fichero, nombre, que]) => (
+              <div key={fichero}>
+                <dt>
+                  <a href={doc(fichero, idioma)}>{nombre}</a>
+                </dt>
+                <dd>{que}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         <section className="seccion seccion-requisitos" aria-labelledby="requisitos">
           <h2 id="requisitos">{t.requisitos.titulo}</h2>
           <dl className="lista-todo">
@@ -175,7 +208,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             ))}
           </dl>
           <div className="acciones">
-            <a className="boton" href={`${REPO}/blob/main/docs/INSTALACION.md`}>
+            <a className="boton" href={doc("INSTALACION", idioma)}>
               {t.requisitos.guia}
             </a>
           </div>
