@@ -1,3 +1,4 @@
+import type React from "react";
 import { BolaBoing, Cabecera, Codigo, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
@@ -20,6 +21,21 @@ function doc(nombre: string, idioma: Idioma) {
 
 function numero(n: number, idioma: Idioma) {
   return n.toLocaleString(idioma === "es" ? "de-DE" : "en-US");
+}
+
+/** Las secciones, en orden: su id es el ancla (#comparativa) que se puede enlazar, igual en los dos idiomas */
+const SECCIONES = ["tuberia", "todo", "tecnica", "comparativa", "historia", "editor", "hecho", "documentacion", "requisitos"] as const;
+
+/** Título de sección con su ancla: el # lleva a la sección y deja su enlace en la barra del navegador */
+function Titulo({ id, etiqueta, children }: { id: string; etiqueta: string; children: React.ReactNode }) {
+  return (
+    <h2 id={id} className="titulo-ancla">
+      {children}{" "}
+      <a className="ancla" href={`#${id}`} aria-label={etiqueta}>
+        #
+      </a>
+    </h2>
+  );
 }
 
 function kb(bytes: number) {
@@ -99,8 +115,18 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           </div>
         </section>
 
+        <nav className="seccion indice" aria-label={t.indice.titulo}>
+          <ul>
+            {SECCIONES.map((id) => (
+              <li key={id}>
+                <a href={`#${id}`}>{t.indice[id]}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <section className="seccion seccion-tuberia" aria-labelledby="tuberia">
-          <h2 id="tuberia">{t.tuberia.titulo}</h2>
+          <Titulo id="tuberia" etiqueta={t.indice.enlace}>{t.tuberia.titulo}</Titulo>
           <p className="medida">{t.tuberia.texto}</p>
           <ol className="tuberia-cadena">
             {t.tuberia.pasos.map((p) => (
@@ -112,7 +138,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
 
         <section className="seccion seccion-todo" aria-labelledby="todo">
           <div>
-            <h2 id="todo">{t.todo.titulo}</h2>
+            <Titulo id="todo" etiqueta={t.indice.enlace}>{t.todo.titulo}</Titulo>
             <p>{t.todo.texto}</p>
             <dl className="lista-todo">
               {t.todo.lista.map(([que, como]) => (
@@ -137,7 +163,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion" aria-labelledby="tecnica">
-          <h2 id="tecnica">{t.tecnica.titulo}</h2>
+          <Titulo id="tecnica" etiqueta={t.indice.enlace}>{t.tecnica.titulo}</Titulo>
           <p className="medida">{t.tecnica.texto}</p>
           <dl className="lista-todo lista-tecnica">
             {t.tecnica.lista.map(([que, como]) => (
@@ -150,7 +176,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion" aria-labelledby="comparativa">
-          <h2 id="comparativa">{t.comparativa.titulo}</h2>
+          <Titulo id="comparativa" etiqueta={t.indice.enlace}>{t.comparativa.titulo}</Titulo>
           <p className="medida">{t.comparativa.texto}</p>
           <p className="nota">{t.comparativa.velocidad}</p>
           {(["a1200", "a500"] as const).map((maquina) => (
@@ -234,7 +260,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion" aria-labelledby="historia">
-          <h2 id="historia">{t.historia.titulo}</h2>
+          <Titulo id="historia" etiqueta={t.indice.enlace}>{t.historia.titulo}</Titulo>
           <p className="medida">{t.historia.texto}</p>
           <ul className="historia">
             {HISTORIA.map(([es, en, antes, ahora]) => (
@@ -266,7 +292,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
 
         <section className="seccion seccion-editor" aria-labelledby="editor">
           <div className="editor-texto">
-            <h2 id="editor">{t.editor.titulo}</h2>
+            <Titulo id="editor" etiqueta={t.indice.enlace}>{t.editor.titulo}</Titulo>
             <p>{t.editor.texto}</p>
             <p className="nota">{t.editor.instalar}</p>
             <div className="acciones">
@@ -285,7 +311,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion" aria-labelledby="hecho">
-          <h2 id="hecho">{t.hecho.titulo}</h2>
+          <Titulo id="hecho" etiqueta={t.indice.enlace}>{t.hecho.titulo}</Titulo>
           <p className="medida">{t.hecho.texto}</p>
           <div className="hechos">
             <a className="hecho" href={`https://tachyon.freemem.space${raiz}`}>
@@ -302,7 +328,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion" aria-labelledby="documentacion">
-          <h2 id="documentacion">{t.documentacion.titulo}</h2>
+          <Titulo id="documentacion" etiqueta={t.indice.enlace}>{t.documentacion.titulo}</Titulo>
           <p className="medida">{t.documentacion.texto}</p>
           <dl className="lista-todo">
             {t.documentacion.lista.map(([fichero, nombre, que]) => (
@@ -317,7 +343,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         </section>
 
         <section className="seccion seccion-requisitos" aria-labelledby="requisitos">
-          <h2 id="requisitos">{t.requisitos.titulo}</h2>
+          <Titulo id="requisitos" etiqueta={t.indice.enlace}>{t.requisitos.titulo}</Titulo>
           <dl className="lista-todo">
             {[t.requisitos.amiga, t.requisitos.pc].map(([que, como]) => (
               <div key={que}>

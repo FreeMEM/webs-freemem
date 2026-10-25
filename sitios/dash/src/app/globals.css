@@ -170,6 +170,50 @@ main dd {
   color: var(--blanco-suave);
 }
 
+/* ---------- Índice y anclas de las secciones ---------- */
+
+.indice {
+  padding-block: 0 1rem;
+}
+
+.indice ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.indice a {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--blanco);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.indice a:hover {
+  background: var(--blanco);
+  color: var(--azul);
+}
+
+.titulo-ancla {
+  scroll-margin-top: 1.5rem;
+}
+
+.ancla {
+  color: var(--naranja);
+  text-decoration: none;
+  opacity: 0.45;
+}
+
+.titulo-ancla:hover .ancla,
+.ancla:focus-visible {
+  opacity: 1;
+}
+
 /* ---------- Frente a Blitz y AMOS: la tabla de la comparativa ---------- */
 
 .comparativa-caja {
