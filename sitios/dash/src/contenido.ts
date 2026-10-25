@@ -35,14 +35,22 @@ export const AREAS = [
 export const LENGUAJES = ["Dash", "AmiBlitz3", "AMOS Pro", "SAS/C", "GCC (C)"] as const;
 export const COMPARATIVA = [
   ["Arranque (programa vacío), ms", "Startup (empty program), ms", [54, 34, 862, 36, 42]],
-  ["300.000 vueltas de un bucle, ms", "300,000 loop iterations, ms", [629, 7399, 9963, 754, 629]],
-  ["100.000 llamadas a una función, ms", "100,000 function calls, ms", [219, 2115, 9080, 522, 224]],
-  ["20.000 veces texto + número, ms", "20,000 times string + number, ms", [2011, 4001, 3049, 3591, 6062]],
-  ["100.000 accesos a una lista, ms", "100,000 list accesses, ms", [1563, 31375, 25837, 3159, 2399]],
-  ["20.000 operaciones de coma flotante, ms", "20,000 floating point operations, ms", [486, 845, 1865, 277, 497]],
-  ["2.000 líneas en pantalla, ms", "2,000 lines on screen, ms", [5009, 5818, 5694, 4652, 4654]],
   ["Memoria al ejecutar, KB", "Memory while running, KB", [16, 30, 165, 20, 38]],
 ] as const;
+/** Las seis pruebas de velocidad: id, qué hace en castellano y en inglés */
+export const PRUEBAS = [
+  ["bucle", "300.000 vueltas de un bucle", "300,000 loop iterations"],
+  ["llamada", "100.000 llamadas a una función", "100,000 function calls"],
+  ["texto", "20.000 veces texto + número", "20,000 times string + number"],
+  ["lista", "100.000 accesos a una lista", "100,000 list accesses"],
+  ["flotante", "20.000 operaciones de coma flotante", "20,000 floating point operations"],
+  ["lineas", "2.000 líneas en pantalla", "2,000 lines on screen"],
+] as const;
+/** Milisegundos de cada programa (tools/comparativa/res_*.txt de Dash), en el orden de LENGUAJES */
+export const VELOCIDAD = {"a1200": {"bucle": [629, 7399, 9963, 754, 629], "llamada": [219, 2115, 9080, 522, 224], "texto": [2011, 4001, 3049, 3591, 6062], "lista": [1563, 31375, 25837, 3159, 2399], "flotante": [486, 845, 1865, 277, 497], "lineas": [5009, 5818, 5694, 4652, 4654]}, "a500": {"bucle": [2850, 30298, 36385, 3879, 2861], "llamada": [962, 9803, 33674, 2698, 987], "texto": [8714, 13862, 10306, 15421, 29780], "lista": [7527, 106401, 78128, 13437, 16586], "flotante": [2385, 3375, 5355, 1243, 2027], "lineas": [6851, 9549, 9222, 5826, 5744]}} as const;
+/** Lo que ha ganado Dash desde la primera medida (tests/bench/results.json): en un A500, microsegundos por vuelta
+ *  de la primera medida de la prueba y de la última */
+export const HISTORIA = [["Recorrer una lista con for", "Going through a list with for", 696, 80], ["Crear un struct y cambiar un campo", "Creating a struct and changing a field", 531, 121], ["Crear una lista de tres", "Creating a three-item list", 886, 248], ["Interpolar dos números en un texto", "Interpolating two numbers into a string", 2238, 669], ["Leer y escribir en una lista", "Reading and writing a list", 197, 68], ["Crear un struct dentro de otro", "Creating a struct inside another", 2106, 791], ["Texto + número", "String + number", 1141, 468], ["Multiplicar Float", "Multiplying Floats", 175, 118], ["Escribir texto en una ventana", "Drawing text in a window", 5389, 3889]] as const;
 /** Qué pasa ante una división por cero (medido igual): es, en y si es bueno */
 export const DIVISION_CERO = [
   ["Mensaje y salida limpia", "Message and clean exit", true],
@@ -111,12 +119,31 @@ export const CONTENIDO = {
       menos: "Menos es mejor; en naranja, el mejor de cada fila.",
       division: "División por cero",
       enlace: "La comparativa completa: también en un A500, el tamaño de los ejecutables, la estabilidad y cómo se midió",
+      velocidad: "Velocidad: milisegundos de cada programa, de principio a fin. Menos es mejor; la barra, respecto al más lento de cada prueba.",
       porqueTitulo: "Por qué salen así",
       porque: [
         ["Dash y GCC", "Dash no compila mejor que GCC: genera C y lo compila el mismo GCC, y donde hacen lo mismo empatan (bucle y llamadas). Gana donde usa su runtime en lugar de la librería C. Para pasar un número a texto saca dos cifras por división, en vez del sprintf genérico de libnix, que va leyendo el formato. Para el resto (%) usa la división de 16 bits del 68000 cuando los números caben, en vez de la rutina de 32 bits de libgcc. Y escribe con Printf de dos.library, sin los búferes del printf de C: por eso gasta menos memoria. Un programador de C podría hacer lo mismo a mano; la prueba mide lo que sale escribiendo lo normal en cada lenguaje."],
         ["SAS/C", "Un compilador de 1995 que optimiza menos que GCC 6. GCC mete la función dentro del bucle y SAS/C la llama de verdad: las llamadas cuestan más del doble (522 ms frente a 224), y el bucle, un 20 % más. Gana en coma flotante porque con MATH=FFP usa el formato rápido de Motorola de la ROM (mathffp.library), con menos precisión que el IEEE de los demás. Su sprintf es más rápido que el de libnix y sus ejecutables son pequeños."],
         ["AmiBlitz3", "Hace los ejecutables más pequeños (476 bytes uno vacío), porque solo enlaza las rutinas que usas, y es el que antes arranca. Con enteros va de 6 a 13 veces más despacio que C (con GCC). Está compilado con -r, que según su ayuda optimiza el tamaño, y con el resto de opciones por defecto: sin afinar y sin mirar el código que genera. Sin su depurador no comprueba nada: dividir por cero da 2147483647 y un índice fuera de rango escribe en otra memoria."],
         ["AMOS Pro", "Su compilador copia en cada ejecutable las rutinas de su librería y sus datos de sistema (lo dice al compilar). Por eso un programa vacío ocupa 54 KB, tarda casi un segundo en arrancar mientras monta su propio sistema de pantallas, y usa unos 165 KB. Lo más lento son los procedimientos: de 34 a 41 veces más que C. A cambio, comprueba los errores igual que su intérprete: ante una división por cero o un índice fuera de rango, para con un error."],
+      ],
+    },
+    historia: {
+      titulo: "Cada vez más rápido",
+      texto: "Dash se mide en un A500 y un A1200 emulados cada vez que cambia algo que importa, y cada medida se guarda. Desde la primera, del 14 de octubre de 2026, esto es lo que ha ganado en un A500:",
+      antes: "antes",
+      ahora: "ahora",
+      unidad: "µs por vuelta",
+      veces: "veces más rápido",
+      hitosTitulo: "Lo que se hizo",
+      hitos: [
+        ["14 oct.", "Los temporales de cada vuelta se sueltan de golpe; *, / y % usan la división del 68000 cuando caben; los textos salen de una caché de bloques y los números se escriben de dos en dos cifras."],
+        ["14 oct.", "Float propio: la suma y la multiplicación, en ensamblador de 68000: multiplicar es hoy 1,5 veces más rápido que con su primera versión en C."],
+        ["15 oct.", "Una caché de bloques en clases de 8 bytes para structs y listas, funciones static y pila propia de 16 KB."],
+        ["15 oct.", "Conteo de referencias completo: las listas son dueñas de lo que guardan y los objetos nuevos ya no se ponen a cero, porque su constructor rellena cada campo."],
+        ["15 oct.", "Fixed 16.16: decimales con aritmética entera, 2,6 veces más rápidos que Float en un 68000."],
+        ["25 oct.", "--cpu 68020 a 68060: en un 68040, Fixed divide 34 veces más rápido y los textos van un 13 % más deprisa."],
+        ["25 oct.", "Cabecera de objetos de 16 bytes: 1.000 structs pequeños pasan de 33 KB a 24 KB."],
       ],
     },
     documentacion: {
@@ -218,12 +245,31 @@ export const CONTENIDO = {
       menos: "Lower is better; the best of each row in orange.",
       division: "Division by zero",
       enlace: "The full comparison: also on an A500, executable sizes, stability and how it was measured",
+      velocidad: "Speed: milliseconds for each program, start to finish. Lower is better; each bar is relative to the slowest in its test.",
       porqueTitulo: "Why the numbers look like this",
       porque: [
         ["Dash and GCC", "Dash doesn't compile better than GCC: it writes C that the same GCC compiles, and where both do the same work they tie (loop and calls). It wins where it uses its own runtime instead of the C library. To turn a number into text it gets two digits per division, instead of libnix's general-purpose sprintf, which parses the format as it goes. For the remainder (%) it uses the 68000's 16-bit division when the numbers fit, instead of libgcc's 32-bit routine. And it prints with dos.library's Printf, without C's printf buffers: that's why it uses less memory. A C programmer could do the same by hand; the test measures what you get writing the usual way in each language."],
         ["SAS/C", "A 1995 compiler that optimizes less than GCC 6. GCC puts the function inside the loop while SAS/C really calls it: calls cost more than twice as much (522 ms against 224), and the loop 20 % more. It wins floating point because with MATH=FFP it uses Motorola's fast format from the ROM (mathffp.library), less precise than the others' IEEE. Its sprintf is faster than libnix's and its executables are small."],
         ["AmiBlitz3", "It makes the smallest executables (476 bytes for an empty one), since it only links the routines you use, and it starts first. With integers it is 6 to 13 times slower than C (GCC). It was built with -r, which its help says optimizes for size, and every other option at its default: not tuned, and the code it generates not examined. Without its debugger it checks nothing: dividing by zero gives 2147483647 and an index out of range writes over other memory."],
         ["AMOS Pro", "Its compiler copies its library routines and system data into every executable (it says so while compiling). That's why an empty program takes 54 KB, needs almost a second to start while it sets up its own screen system, and uses about 165 KB. Procedures are the slowest part: 34 to 41 times slower than C. In return it checks errors like its interpreter does: on a division by zero or an index out of range, it stops with an error."],
+      ],
+    },
+    historia: {
+      titulo: "Faster and faster",
+      texto: "Dash is measured on an emulated A500 and A1200 whenever something that matters changes, and every run is kept. Since the first one, on 14 October 2026, this is what it has gained on an A500:",
+      antes: "before",
+      ahora: "now",
+      unidad: "µs per iteration",
+      veces: "times faster",
+      hitosTitulo: "What was done",
+      hitos: [
+        ["14 Oct", "Each iteration's temporaries are released in one go; *, / and % use the 68000's division when the numbers fit; strings come from a block cache and numbers are written two digits at a time."],
+        ["14 Oct", "Dash's own Float: addition and multiplication in 68000 assembly: multiplying is now 1.5 times faster than with its first C version."],
+        ["15 Oct", "A block cache in 8-byte classes for structs and lists, static functions and a 16 KB stack of its own."],
+        ["15 Oct", "Full reference counting: lists own what they hold and new objects are no longer cleared, since their constructor fills every field."],
+        ["15 Oct", "Fixed 16.16: decimals with integer maths, 2.6 times faster than Float on a 68000."],
+        ["25 Oct", "--cpu 68020 to 68060: on a 68040, Fixed divides 34 times faster and strings are 13% quicker."],
+        ["25 Oct", "16-byte object header: 1,000 small structs go from 33 KB to 24 KB."],
       ],
     },
     documentacion: {

@@ -1,6 +1,6 @@
 import { BolaBoing, Cabecera, Codigo, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, LENGUAJES, REPO, VIDEO } from "./contenido";
+import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import ejemplos from "./ejemplos.json";
 import { Pestanas } from "./Pestanas";
 
@@ -16,6 +16,10 @@ type IdEjemplo = keyof typeof CAPTURAS;
 /** Un documento del repositorio de Dash en GitHub, en el idioma de la página (el inglés es NOMBRE.en.md). */
 function doc(nombre: string, idioma: Idioma) {
   return `${REPO}/blob/main/docs/${nombre}${idioma === "en" ? ".en" : ""}.md`;
+}
+
+function numero(n: number, idioma: Idioma) {
+  return n.toLocaleString(idioma === "es" ? "de-DE" : "en-US");
 }
 
 function kb(bytes: number) {
@@ -148,6 +152,35 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         <section className="seccion" aria-labelledby="comparativa">
           <h2 id="comparativa">{t.comparativa.titulo}</h2>
           <p className="medida">{t.comparativa.texto}</p>
+          <p className="nota">{t.comparativa.velocidad}</p>
+          {(["a1200", "a500"] as const).map((maquina) => (
+            <div key={maquina} className="velocidad">
+              <h3>
+                {maquina === "a1200" ? "A1200" : "A500"} <small>{maquina === "a1200" ? "68020 · 14 MHz" : "68000 · 7 MHz"}</small>
+              </h3>
+              <div className="velocidad-pruebas">
+                {PRUEBAS.map(([id, es, en]) => {
+                  const valores = VELOCIDAD[maquina][id];
+                  const peor = Math.max(...valores);
+                  const mejor = Math.min(...valores);
+                  return (
+                    <figure key={id} className="prueba">
+                      <figcaption>{idioma === "es" ? es : en}</figcaption>
+                      {valores.map((v, i) => (
+                        <div key={LENGUAJES[i]} className={`barra${i === 0 ? " barra-dash" : ""}${v === mejor ? " barra-mejor" : ""}`}>
+                          <span className="barra-nombre">{LENGUAJES[i]}</span>
+                          <span className="barra-pista">
+                            <span style={{ inlineSize: `${Math.max(1.5, (v / peor) * 100)}%` }} />
+                          </span>
+                          <span className="barra-valor">{numero(v, idioma)}</span>
+                        </div>
+                      ))}
+                    </figure>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
           <div className="comparativa-caja">
             <table className="comparativa">
               <thead>
@@ -168,7 +201,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
                       <th scope="row">{idioma === "es" ? es : en}</th>
                       {valores.map((v, i) => (
                         <td key={LENGUAJES[i]} className={v === mejor ? "mejor" : undefined}>
-                          {v.toLocaleString(idioma === "es" ? "de-DE" : "en-US")}
+                          {numero(v, idioma)}
                         </td>
                       ))}
                     </tr>
@@ -198,6 +231,37 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <p>
             <a href={doc("COMPARATIVA", idioma)}>{t.comparativa.enlace}</a>
           </p>
+        </section>
+
+        <section className="seccion" aria-labelledby="historia">
+          <h2 id="historia">{t.historia.titulo}</h2>
+          <p className="medida">{t.historia.texto}</p>
+          <ul className="historia">
+            {HISTORIA.map(([es, en, antes, ahora]) => (
+              <li key={es}>
+                <span className="historia-que">{idioma === "es" ? es : en}</span>
+                <span className="historia-pista">
+                  <span className="historia-antes" />
+                  <span className="historia-ahora" style={{ inlineSize: `${(ahora / antes) * 100}%` }} />
+                </span>
+                <span className="historia-cifras">
+                  {numero(antes, idioma)} → <strong>{numero(ahora, idioma)}</strong> {t.historia.unidad}
+                </span>
+                <span className="historia-veces">
+                  ×{(antes / ahora).toFixed(1).replace(".", idioma === "es" ? "," : ".")}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <h3 className="comparativa-porque">{t.historia.hitosTitulo}</h3>
+          <dl className="lista-todo">
+            {t.historia.hitos.map(([cuando, que]) => (
+              <div key={que}>
+                <dt>{cuando}</dt>
+                <dd>{que}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section className="seccion seccion-editor" aria-labelledby="editor">

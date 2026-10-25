@@ -220,6 +220,146 @@ main dd {
   font-size: 0.9rem;
 }
 
+.velocidad {
+  margin-top: 2rem;
+}
+
+.velocidad h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--naranja);
+}
+
+.velocidad h3 small {
+  color: var(--blanco-suave);
+  font-size: 0.85rem;
+  margin-inline-start: 0.5rem;
+}
+
+.velocidad-pruebas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1rem;
+}
+
+.prueba {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.prueba figcaption {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.barra {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 4rem;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.barra-pista {
+  block-size: 0.6rem;
+  background: var(--azul-hondo);
+}
+
+.barra-pista > span {
+  display: block;
+  block-size: 100%;
+  background: var(--blanco-suave);
+}
+
+.barra-dash .barra-nombre {
+  color: var(--naranja);
+}
+
+.barra-dash .barra-pista > span {
+  background: var(--naranja);
+}
+
+.barra-valor {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.barra-mejor .barra-valor {
+  color: var(--naranja);
+  font-weight: bold;
+}
+
+.historia {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.historia li {
+  display: grid;
+  grid-template-columns: 16rem 1fr 15rem 3.5rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.historia-pista {
+  position: relative;
+  block-size: 0.8rem;
+}
+
+.historia-antes,
+.historia-ahora {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+}
+
+.historia-antes {
+  inline-size: 100%;
+  background: var(--azul-hondo);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.historia-ahora {
+  background: var(--naranja);
+}
+
+.historia-cifras {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--blanco-suave);
+}
+
+.historia-cifras strong {
+  color: var(--blanco);
+}
+
+.historia-veces {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--naranja);
+  text-align: end;
+}
+
+@media (max-width: 62rem) {
+  .historia li {
+    grid-template-columns: 1fr 3.5rem;
+  }
+  .historia-pista,
+  .historia-cifras {
+    grid-column: 1 / -1;
+  }
+  .historia-veces {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
 .comparativa-porque {
   margin: 2.5rem 0 0;
 }
