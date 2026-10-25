@@ -1,0 +1,18 @@
+[Unit]
+Description=Tachyon: recibe los informes de depuración (https://tachyon.freemem.space/informe)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/webs-freemem/herramientas/servidor/tachyon_informes.py
+DynamicUser=yes
+StateDirectory=tachyon-informes
+StateDirectoryMode=0750
+Restart=on-failure
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+MemoryMax=128M
+
+[Install]
+WantedBy=multi-user.target

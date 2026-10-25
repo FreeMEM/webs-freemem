@@ -53,7 +53,20 @@ ESTADISTICAS = """
         add_header Strict-Transport-Security "max-age=31536000" always;
     }}
 """
-EXTRA = {"dash.freemem.space": ESTADISTICAS}
+# Los informes de depuración de Tachyon (su menú «Enviar informe de depuración...»): los recibe
+# herramientas/servidor/tachyon_informes.py; aquí, el tope de tamaño y de peticiones (la zona, en INFORMES_ZONA).
+INFORMES = """
+    location = /informe {{
+        limit_req zone=informes burst=4 nodelay;
+        limit_req_status 429;
+        client_max_body_size 512k;
+        proxy_pass http://127.0.0.1:8471;
+        proxy_set_header Host $host;
+        add_header X-Robots-Tag "noindex, nofollow" always;
+        add_header Strict-Transport-Security "max-age=31536000" always;
+    }}
+"""
+EXTRA = {"dash.freemem.space": ESTADISTICAS, "tachyon.freemem.space": INFORMES}
 
 SOLO_HTTP = """# {dominio}: generado por herramientas/desplegar.py (sin certificado todavía)
 server {{
@@ -106,6 +119,10 @@ gzip_vary on;
 gzip_comp_level 6;
 gzip_types text/css application/javascript application/json image/svg+xml text/plain application/xml text/xml;
 """
+# seis informes por minuto y por IP (los de Tachyon; la IP es la del visitante, por el PROXY protocol)
+INFORMES_ZONA = """# generado por herramientas/desplegar.py
+limit_req_zone $binary_remote_addr zone=informes:1m rate=6r/m;
+"""
 
 
 def ssh(orden, entrada=None):
@@ -120,6 +137,7 @@ def main():
     args = a.parse_args()
     sitios = args.sitios or list(SITIOS)
     ssh("cat > /etc/nginx/conf.d/webs-gzip.conf", GZIP)
+    ssh("cat > /etc/nginx/conf.d/webs-informes.conf", INFORMES_ZONA)
     if otros := [s for s in sitios if s not in SITIOS]:
         a.error(f"no conozco: {', '.join(otros)}")
 
