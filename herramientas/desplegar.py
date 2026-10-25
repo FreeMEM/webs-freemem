@@ -59,7 +59,11 @@ INFORMES = """
     location = /informe {{
         limit_req zone=informes burst=4 nodelay;
         limit_req_status 429;
-        client_max_body_size 512k;
+        limit_conn informes_conn 2;
+        limit_conn_status 429;
+        client_max_body_size 200k;
+        client_body_timeout 10s;
+        access_log off;
         proxy_pass http://127.0.0.1:8471;
         proxy_set_header Host $host;
         add_header X-Robots-Tag "noindex, nofollow" always;
@@ -119,9 +123,11 @@ gzip_vary on;
 gzip_comp_level 6;
 gzip_types text/css application/javascript application/json image/svg+xml text/plain application/xml text/xml;
 """
-# seis informes por minuto y por IP (los de Tachyon; la IP es la del visitante, por el PROXY protocol)
+# seis informes por minuto y dos conexiones a la vez por IP (los de Tachyon; la IP es la del visitante, por el
+# PROXY protocol); y /informe no se apunta en el registro de nginx (sin IPs de quien los manda)
 INFORMES_ZONA = """# generado por herramientas/desplegar.py
 limit_req_zone $binary_remote_addr zone=informes:1m rate=6r/m;
+limit_conn_zone $binary_remote_addr zone=informes_conn:1m;
 """
 
 
