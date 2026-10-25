@@ -1,9 +1,9 @@
 {
- "version": "0.4",
- "etiqueta": "v0.4",
- "fecha": "2026-10-23",
- "notas": "https://github.com/FreeMEM/trasfondo/releases/tag/v0.4",
- "descarga": "https://github.com/FreeMEM/trasfondo/releases/download/v0.4/trasfondo-0.4.lha",
- "fichero": "trasfondo-0.4.lha",
- "bytes": 55002
+ "version": "0.11",
+ "etiqueta": "v0.11",
+ "fecha": "2026-10-24",
+ "notas": "https://github.com/FreeMEM/trasfondo/releases/tag/v0.11",
+ "descarga": "https://github.com/FreeMEM/trasfondo/releases/download/v0.11/trasfondo-0.11.lha",
+ "fichero": "trasfondo-0.11.lha",
+ "bytes": 111028
 }

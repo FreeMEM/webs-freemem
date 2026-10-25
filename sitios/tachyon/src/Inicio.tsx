@@ -95,6 +95,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
                 <li key={l}>{l}</li>
               ))}
             </ul>
+            <p>{t.alfaSeccion.informe}</p>
             <a href={`${REPO}/issues`}>{t.alfaSeccion.avisos}</a>
           </div>
           <div>

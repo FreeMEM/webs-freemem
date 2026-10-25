@@ -1,9 +1,9 @@
 {
- "version": "0.5.0-alfa",
- "etiqueta": "v0.5.0-alfa",
- "fecha": "2026-10-23",
- "notas": "https://github.com/FreeMEM/tachyon/releases/tag/v0.5.0-alfa",
- "descarga": "https://github.com/FreeMEM/tachyon/releases/download/v0.5.0-alfa/tachyon.lha",
+ "version": "0.7.4-alfa",
+ "etiqueta": "v0.7.4-alfa",
+ "fecha": "2026-10-25",
+ "notas": "https://github.com/FreeMEM/tachyon/releases/tag/v0.7.4-alfa",
+ "descarga": "https://github.com/FreeMEM/tachyon/releases/download/v0.7.4-alfa/tachyon.lha",
  "fichero": "tachyon.lha",
- "bytes": 6929268
+ "bytes": 7273436
 }
