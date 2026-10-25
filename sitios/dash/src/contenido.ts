@@ -133,6 +133,8 @@ export const CONTENIDO = {
       division: "División por cero",
       enlace: "La comparativa completa: también en un A500, el tamaño de los ejecutables, la estabilidad y cómo se midió",
       velocidad: "Velocidad: milisegundos de cada programa, de principio a fin. Menos es mejor; la barra, respecto al más lento de cada prueba.",
+      verCodigo: "Ver el código",
+      codigoC: "C (SAS/C y GCC)",
       porqueTitulo: "Por qué salen así",
       porque: [
         ["Dash y GCC", "Dash no compila mejor que GCC: genera C y lo compila el mismo GCC, y donde hacen lo mismo empatan (bucle y llamadas). Gana donde usa su runtime en lugar de la librería C. Para pasar un número a texto saca dos cifras por división, en vez del sprintf genérico de libnix, que va leyendo el formato. Para el resto (%) usa la división de 16 bits del 68000 cuando los números caben, en vez de la rutina de 32 bits de libgcc. Y escribe con Printf de dos.library, sin los búferes del printf de C: por eso gasta menos memoria. Un programador de C podría hacer lo mismo a mano; la prueba mide lo que sale escribiendo lo normal en cada lenguaje."],
@@ -272,6 +274,8 @@ export const CONTENIDO = {
       division: "Division by zero",
       enlace: "The full comparison: also on an A500, executable sizes, stability and how it was measured",
       velocidad: "Speed: milliseconds for each program, start to finish. Lower is better; each bar is relative to the slowest in its test.",
+      verCodigo: "Show the code",
+      codigoC: "C (SAS/C and GCC)",
       porqueTitulo: "Why the numbers look like this",
       porque: [
         ["Dash and GCC", "Dash doesn't compile better than GCC: it writes C that the same GCC compiles, and where both do the same work they tie (loop and calls). It wins where it uses its own runtime instead of the C library. To turn a number into text it gets two digits per division, instead of libnix's general-purpose sprintf, which parses the format as it goes. For the remainder (%) it uses the 68000's 16-bit division when the numbers fit, instead of libgcc's 32-bit routine. And it prints with dos.library's Printf, without C's printf buffers: that's why it uses less memory. A C programmer could do the same by hand; the test measures what you get writing the usual way in each language."],

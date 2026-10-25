@@ -1,0 +1,38 @@
+{
+ "bucle": {
+  "dash": "Main\n    x = 0\n    for i in (1..300000)\n        x = x + i * 3\n        if x > 1000000\n            x = x - 1000000\n        end\n    end\n    Print x\nend\n",
+  "blitz": "DEFTYPE .l\nx=0\nFor i=1 To 300000\n  x=x+i*3\n  If x>1000000 Then x=x-1000000\nNext\nNPrint x\nEnd\n",
+  "amos": "X=0\nFor I=1 To 300000\n  X=X+I*3\n  If X>1000000 Then X=X-1000000\nNext I\nPrint X\n",
+  "c": "#include <stdio.h>\nint main(void) {\n    long x = 0, i;\n    for (i = 1; i <= 300000; i++) {\n        x = x + i * 3;\n        if (x > 1000000) x = x - 1000000;\n    }\n    printf(\"%ld\\n\", x);\n    return 0;\n}\n"
+ },
+ "llamada": {
+  "dash": "func f(n, i)\n    r = n + i\n    if r > 1000000\n        r = r - 1000000\n    end\n    return r\nend\n\nMain\n    y = 0\n    for i in (1..100000)\n        y = f(y, i)\n    end\n    Print y\nend\n",
+  "blitz": "DEFTYPE .l\nFunction.l f{n.l,i.l}\n  r.l=n+i\n  If r>1000000 Then r=r-1000000\n  Function Return r\nEnd Function\ny=0\nFor i=1 To 100000\n  y=f{y,i}\nNext\nNPrint y\nEnd\n",
+  "amos": "Y=0\nFor I=1 To 100000\n  F[Y,I] : Y=Param\nNext I\nPrint Y\nProcedure F[N,I]\n  R=N+I\n  If R>1000000 Then R=R-1000000\nEnd Proc[R]\n",
+  "c": "#include <stdio.h>\nlong f(long n, long i) {\n    long r = n + i;\n    if (r > 1000000) r = r - 1000000;\n    return r;\n}\nint main(void) {\n    long y = 0, i;\n    for (i = 1; i <= 100000; i++) y = f(y, i);\n    printf(\"%ld\\n\", y);\n    return 0;\n}\n"
+ },
+ "texto": {
+  "dash": "Main\n    s = \"\"\n    for i in (1..20000)\n        s = \"x\" + i\n    end\n    Print s\nend\n",
+  "blitz": "DEFTYPE .l\nFor i=1 To 20000\n  s$=\"x\"+Str$(i)\nNext\nNPrint s$\nEnd\n",
+  "amos": "For I=1 To 20000\n  S$=\"x\"+Str$(I)\nNext I\nPrint S$\n",
+  "c": "#include <stdio.h>\nint main(void) {\n    char s[16];\n    long i;\n    for (i = 1; i <= 20000; i++) sprintf(s, \"x%ld\", i);\n    printf(\"%s\\n\", s);\n    return 0;\n}\n"
+ },
+ "lista": {
+  "dash": "Main\n    a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\n    for i in (1..100000)\n        a[i % 10] = a[(i + 1) % 10] + 1\n    end\n    Print a[0]\nend\n",
+  "blitz": "DEFTYPE .l\nDim a.l(9)\nFor i=1 To 100000\n  a(i MOD 10)=a((i+1) MOD 10)+1\nNext\nNPrint a(0)\nEnd\n",
+  "amos": "Dim A(9)\nFor I=1 To 100000\n  A(I mod 10)=A((I+1) mod 10)+1\nNext I\nPrint A(0)\n",
+  "c": "#include <stdio.h>\nint main(void) {\n    long a[10] = {0}, i;\n    for (i = 1; i <= 100000; i++) a[i % 10] = a[(i + 1) % 10] + 1;\n    printf(\"%ld\\n\", a[0]);\n    return 0;\n}\n"
+ },
+ "flotante": {
+  "dash": "Main\n    f = 0.0\n    g = 1.0001\n    for i in (1..20000)\n        f = f + g * 0.5\n    end\n    Print Int(f)\nend\n",
+  "blitz": "DEFTYPE .l\nf.f=0\ng.f=1.0001\nFor i=1 To 20000\n  f=f+g*0.5\nNext\nNPrint Int(f)\nEnd\n",
+  "amos": "F#=0.0\nG#=1.0001\nFor I=1 To 20000\n  F#=F#+G#*0.5\nNext I\nPrint Int(F#)\n",
+  "c": "#include <stdio.h>\nint main(void) {\n    float f = 0.0f, g = 1.0001f;\n    long i;\n    for (i = 1; i <= 20000; i++) f = f + g * 0.5f;\n    printf(\"%ld\\n\", (long)f);\n    return 0;\n}\n"
+ },
+ "lineas": {
+  "dash": "Window W\n    title \"bench\"\n    width 320\n    height 200\nend\n\nMain\n    screen_open_custom(320, 256, 5, \"bench\")\n    W.open\n    for i in (1..2000)\n        gfx_pen(i % 32)\n        gfx_line(i % 320, 0, 319 - i % 320, 180)\n    end\nend\n",
+  "blitz": "DEFTYPE .l\nScreen 0,0,0,320,256,5,0,\"bench\",1,2\nScreensBitMap 0,0\nFor i=1 To 2000\n  Line i MOD 320,0,319-(i MOD 320),180,i MOD 32\nNext\nEnd\n",
+  "amos": "Screen Open 0,320,256,32,Lowres\nFor I=1 To 2000\n  Ink I mod 32\n  Draw I mod 320,0 To 319-(I mod 320),180\nNext I\n",
+  "c": "#include <exec/types.h>\n#include <intuition/screens.h>\n#include <proto/exec.h>\n#include <proto/intuition.h>\n#include <proto/graphics.h>\nstruct IntuitionBase *IntuitionBase;\nstruct GfxBase *GfxBase;\nint main(void) {\n    struct Screen *s;\n    long i;\n    IntuitionBase = (struct IntuitionBase *)OpenLibrary(\"intuition.library\", 37);\n    GfxBase = (struct GfxBase *)OpenLibrary(\"graphics.library\", 37);\n    s = OpenScreenTags(NULL, SA_Width, 320, SA_Height, 256, SA_Depth, 5, SA_Title, (ULONG)\"bench\", TAG_DONE);\n    if (s) {\n        for (i = 1; i <= 2000; i++) {\n            SetAPen(&s->RastPort, i % 32);\n            Move(&s->RastPort, i % 320, 0);\n            Draw(&s->RastPort, 319 - i % 320, 180);\n        }\n        CloseScreen(s);\n    }\n    CloseLibrary((struct Library *)GfxBase);\n    CloseLibrary((struct Library *)IntuitionBase);\n    return 0;\n}\n"
+ }
+}

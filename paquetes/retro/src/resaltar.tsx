@@ -1,5 +1,6 @@
 /**
- * Resaltado de código sencillo (Dash y C) que se hace al construir la página: sin JavaScript en el navegador.
+ * Resaltado de código sencillo (Dash, C y BASIC de AmiBlitz3 y AMOS) que se hace al construir la página: sin
+ * JavaScript en el navegador.
  * Comentarios, textos, números, palabras clave y llamadas, cada uno con su clase.
  */
 const CLAVES = {
@@ -12,14 +13,19 @@ const CLAVES = {
     "if", "else", "return", "struct", "static", "void", "while", "for", "switch", "case", "break", "BOOL", "ULONG",
     "UWORD", "LONG", "WORD", "TRUE", "FALSE", "NULL", "const", "DashFixed",
   ]),
+  basic: new Set([
+    "For", "To", "Next", "If", "Then", "Else", "End", "Print", "NPrint", "Procedure", "Proc", "Param", "Dim",
+    "Function", "Return", "DEFTYPE", "Screen", "Open", "Lowres", "Ink", "Draw", "Line", "ScreensBitMap", "MOD", "mod",
+  ]),
 };
 
 const PATRON = {
   dash: /(#.*$)|("(?:[^"\\]|\\.)*")|(\b\d+(?:\.\d+)?\b)|([A-Za-z_]\w*)|(\s+|.)/gm,
   c: /(\/\/.*$|\/\*[\s\S]*?\*\/)|("(?:[^"\\]|\\.)*")|(\b(?:0x[\da-fA-F]+|\d+)\b)|([A-Za-z_]\w*)|(\s+|.)/gm,
+  basic: /(\bRem\b.*$|;.*$)|("[^"]*")|(\b\d+(?:\.\d+)?\b)|([A-Za-z_]\w*[$#]?)|(\s+|.)/gm,
 };
 
-export function Codigo({ codigo, lenguaje }: { codigo: string; lenguaje: "dash" | "c" }) {
+export function Codigo({ codigo, lenguaje }: { codigo: string; lenguaje: "dash" | "c" | "basic" }) {
   const partes: React.ReactNode[] = [];
   let m: RegExpExecArray | null;
   const re = new RegExp(PATRON[lenguaje]);

@@ -2,6 +2,7 @@ import type React from "react";
 import { BolaBoing, Cabecera, Codigo, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
+import codigos from "./comparativa_codigo.json";
 import ejemplos from "./ejemplos.json";
 import { Pestanas } from "./Pestanas";
 
@@ -182,7 +183,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           {(["a1200", "a500"] as const).map((maquina) => (
             <div key={maquina} className="velocidad">
               <h3>
-                {maquina === "a1200" ? "A1200" : "A500"} <small>{maquina === "a1200" ? "68020 · 14 MHz" : "68000 · 7 MHz"}</small>
+                {maquina === "a1200" ? "A1200" : "A500"} <small>{maquina === "a1200" ? "68020, 14 MHz" : "68000, 7 MHz"}</small>
               </h3>
               <div className="velocidad-pruebas">
                 {PRUEBAS.map(([id, es, en]) => {
@@ -201,6 +202,24 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
                           <span className="barra-valor">{numero(v, idioma)}</span>
                         </div>
                       ))}
+                      <details className="prueba-codigo">
+                        <summary>{t.comparativa.verCodigo}</summary>
+                        <Pestanas
+                          etiqueta={`${t.comparativa.verCodigo}: ${idioma === "es" ? es : en}`}
+                          paneles={(
+                            [
+                              ["dash", "Dash", "dash"],
+                              ["blitz", "AmiBlitz3", "basic"],
+                              ["amos", "AMOS Pro", "basic"],
+                              ["c", t.comparativa.codigoC, "c"],
+                            ] as const
+                          ).map(([lenguaje, nombre, color]) => ({
+                            id: `${maquina}-${id}-${lenguaje}`,
+                            nombre,
+                            contenido: <Codigo codigo={codigos[id][lenguaje]} lenguaje={color} />,
+                          }))}
+                        />
+                      </details>
                     </figure>
                   );
                 })}

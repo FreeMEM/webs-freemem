@@ -284,6 +284,12 @@ main dd {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
   gap: 1rem;
+  align-items: start;
+}
+
+/* la prueba con el código abierto ocupa toda la fila */
+.prueba:has(.prueba-codigo[open]) {
+  grid-column: 1 / -1;
 }
 
 .prueba {
@@ -292,6 +298,7 @@ main dd {
   border: 2px solid rgba(255, 255, 255, 0.25);
   display: grid;
   gap: 0.3rem;
+  align-content: start;
   min-width: 0;
 }
 
@@ -335,6 +342,23 @@ main dd {
 .barra-mejor .barra-valor {
   color: var(--naranja);
   font-weight: bold;
+}
+
+.prueba-codigo {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.prueba-codigo summary {
+  cursor: pointer;
+  color: var(--naranja);
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.prueba-codigo .codigo {
+  font-size: 0.8rem;
+  max-block-size: 22rem;
+  overflow: auto;
 }
 
 .historia {
