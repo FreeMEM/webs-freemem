@@ -65,6 +65,7 @@ export const CONTENIDO = {
         ["El lenguaje", "Tipos inferidos, structs con métodos, lambdas, listas y diccionarios con tipo, Float y Fixed 16.16, módulos. La memoria se gestiona sola, por contador de referencias: no hay recolector que pare el programa en mitad de una animación."],
         ["En tu idioma", "Tu programa puede hablar el idioma de quien lo usa. Sus textos van con tr, y las traducciones, en catálogos de locale.library, como los de los programas del sistema."],
         ["Si hace falta", "¿Toca bajar al metal? Mete C dentro del código (@native, @c) o enlaza la librería que quieras (@link)."],
+        ["Sin Gurus", "Un campo de un struct que es nil, una división por cero o una instrucción ilegal ya no se llevan el Amiga por delante. El programa dice qué pasó y dónde, cierra sus ventanas, libera su memoria y el sistema sigue. En cualquier Amiga, también en un 68000 sin MMU."],
       ],
     },
     tecnica: {
@@ -154,6 +155,7 @@ export const CONTENIDO = {
         ["The language", "Type inference, structs with methods, lambdas, typed lists and dictionaries, Float and Fixed 16.16, modules. Memory looks after itself, by reference counting: no garbage collector stopping your program mid-animation."],
         ["In your language", "Your program can speak its user's language. Its texts go through tr, and the translations live in locale.library catalogs, like those of the system's own programs."],
         ["When you need it", "Need to get down to the metal? Put C right in your code (@native, @c) or link any library (@link)."],
+        ["No Gurus", "A struct field that is nil, a division by zero or an illegal instruction no longer takes the whole Amiga down. The program says what happened and where, closes its windows, frees its memory and the system goes on. On any Amiga, even a 68000 with no MMU."],
       ],
     },
     tecnica: {
