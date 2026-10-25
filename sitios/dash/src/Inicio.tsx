@@ -1,6 +1,6 @@
 import { BolaBoing, Cabecera, Codigo, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { AREAS, BASE, BUILTINS, CONTENIDO, EXTENSION, REPO, VIDEO } from "./contenido";
+import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, LENGUAJES, REPO, VIDEO } from "./contenido";
 import ejemplos from "./ejemplos.json";
 import { Pestanas } from "./Pestanas";
 
@@ -143,6 +143,52 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               </div>
             ))}
           </dl>
+        </section>
+
+        <section className="seccion" aria-labelledby="comparativa">
+          <h2 id="comparativa">{t.comparativa.titulo}</h2>
+          <p className="medida">{t.comparativa.texto}</p>
+          <div className="comparativa-caja">
+            <table className="comparativa">
+              <thead>
+                <tr>
+                  <th scope="col">{t.comparativa.prueba}</th>
+                  {LENGUAJES.map((l) => (
+                    <th scope="col" key={l}>
+                      {l}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARATIVA.map(([es, en, valores]) => {
+                  const mejor = Math.min(...valores);
+                  return (
+                    <tr key={es}>
+                      <th scope="row">{idioma === "es" ? es : en}</th>
+                      {valores.map((v, i) => (
+                        <td key={LENGUAJES[i]} className={v === mejor ? "mejor" : undefined}>
+                          {v.toLocaleString(idioma === "es" ? "de-DE" : "en-US")}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+                <tr>
+                  <th scope="row">{t.comparativa.division}</th>
+                  {DIVISION_CERO.map(([es, en, bien], i) => (
+                    <td key={LENGUAJES[i]} className={bien ? "texto bien" : "texto mal"}>
+                      {idioma === "es" ? es : en}
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="nota">{t.comparativa.menos}</p>
+          <p>
+            <a href={doc("COMPARATIVA", idioma)}>{t.comparativa.enlace}</a>
+          </p>
         </section>
 
         <section className="seccion seccion-editor" aria-labelledby="editor">

@@ -29,6 +29,29 @@ export const AREAS = [
   ["Menús, búferes, TLS, fuentes y más", "Menus, buffers, TLS, fonts and more", 61],
 ] as const;
 
+/** Dash frente a Blitz, AMOS y C (docs/COMPARATIVA.md de Dash, tools/comparativa): A1200 emulado a velocidad
+ *  real, milisegundos por programa (menos es mejor); memoria en KB al ejecutar. Columnas: Dash, AmiBlitz3, AMOS
+ *  Pro, SAS/C, GCC. */
+export const LENGUAJES = ["Dash", "AmiBlitz3", "AMOS Pro", "SAS/C", "GCC (C)"] as const;
+export const COMPARATIVA = [
+  ["Arranque (programa vacío), ms", "Startup (empty program), ms", [54, 34, 862, 36, 42]],
+  ["300.000 vueltas de un bucle, ms", "300,000 loop iterations, ms", [629, 7399, 9963, 754, 629]],
+  ["100.000 llamadas a una función, ms", "100,000 function calls, ms", [219, 2115, 9080, 522, 224]],
+  ["20.000 veces texto + número, ms", "20,000 times string + number, ms", [2011, 4001, 3049, 3591, 6062]],
+  ["100.000 accesos a una lista, ms", "100,000 list accesses, ms", [1563, 31375, 25837, 3159, 2399]],
+  ["20.000 operaciones de coma flotante, ms", "20,000 floating point operations, ms", [486, 845, 1865, 277, 497]],
+  ["2.000 líneas en pantalla, ms", "2,000 lines on screen, ms", [5009, 5818, 5694, 4652, 4654]],
+  ["Memoria al ejecutar, KB", "Memory while running, KB", [16, 30, 165, 20, 38]],
+] as const;
+/** Qué pasa ante una división por cero (medido igual): es, en y si es bueno */
+export const DIVISION_CERO = [
+  ["Mensaje y salida limpia", "Message and clean exit", true],
+  ["Sigue con un resultado falso", "Goes on with a wrong result", false],
+  ["Para con un error", "Stops with an error", true],
+  ["Cuelga el Amiga", "Hangs the Amiga", false],
+  ["Cuelga el Amiga", "Hangs the Amiga", false],
+] as const;
+
 export const CONTENIDO = {
   es: {
     titulo: "Dash: un lenguaje moderno para el Amiga, a 68k nativo",
@@ -80,6 +103,15 @@ export const CONTENIDO = {
         ["Probado en el Amiga", "Más de 300 programas de prueba se compilan y se ejecutan en FS-UAE: en un A1200, en un A500 y en un A1200 con AmigaOS 3.2, y con MUI, AmiSSL o tarjeta gráfica cuando hacen falta. El compilador son unas 30.000 líneas de Python, y el mismo código hace de servidor de lenguaje para VS Code."],
       ],
     },
+    comparativa: {
+      titulo: "Frente a Blitz y AMOS",
+      texto:
+        "Los mismos programas en Dash, AmiBlitz3, AMOS Professional y C (SAS/C y GCC), compilados con lo que trae Coffin OS y medidos en un A1200 emulado a velocidad real. Dash va a la par que C en cálculo y llamadas, y es el más rápido con textos y listas; AmiBlitz3 y AMOS van de 10 a 40 veces más despacio ahí. En coma flotante y en líneas gana C.",
+      prueba: "Prueba",
+      menos: "Menos es mejor; en naranja, el mejor de cada fila.",
+      division: "División por cero",
+      enlace: "La comparativa completa: también en un A500, el tamaño de los ejecutables, la estabilidad y cómo se midió",
+    },
     documentacion: {
       titulo: "La documentación",
       texto: "Todo está en GitHub, en castellano y en inglés:",
@@ -90,6 +122,7 @@ export const CONTENIDO = {
         ["BUILTINS", `Las ${BUILTINS} funciones`, "la lista, sacada del propio compilador"],
         ["INSTALACION", "Instalación", "Dash, el compilador cruzado y el emulador, paso a paso"],
         ["MUI_EDITOR", "El editor visual de MUI", "el formato .dashui y la extensión de VS Code"],
+        ["COMPARATIVA", "Comparativa", "Dash frente a Blitz, AMOS y C, con números"],
       ],
     },
     editor: {
@@ -170,6 +203,15 @@ export const CONTENIDO = {
         ["Tested on the Amiga", "Over 300 test programs are compiled and run in FS-UAE: on an A1200, an A500 and an A1200 with AmigaOS 3.2, plus MUI, AmiSSL or a graphics card when they need them. The compiler is about 30,000 lines of Python, and the same code is the language server behind VS Code."],
       ],
     },
+    comparativa: {
+      titulo: "Against Blitz and AMOS",
+      texto:
+        "The same programs in Dash, AmiBlitz3, AMOS Professional and C (SAS/C and GCC), built with the compilers that ship with Coffin OS and measured on an emulated A1200 at real speed. Dash is on par with C for arithmetic and calls, and the fastest with strings and lists; AmiBlitz3 and AMOS are 10 to 40 times slower there. C wins floating point and drawing lines.",
+      prueba: "Test",
+      menos: "Lower is better; the best of each row in orange.",
+      division: "Division by zero",
+      enlace: "The full comparison: also on an A500, executable sizes, stability and how it was measured",
+    },
     documentacion: {
       titulo: "The documentation",
       texto: "It's all on GitHub, in English and Spanish:",
@@ -180,6 +222,7 @@ export const CONTENIDO = {
         ["BUILTINS", `The ${BUILTINS} functions`, "the list, taken from the compiler itself"],
         ["INSTALACION", "Installation", "Dash, the cross compiler and the emulator, step by step"],
         ["MUI_EDITOR", "The visual MUI editor", "the .dashui format and the VS Code extension"],
+        ["COMPARATIVA", "Comparison", "Dash against Blitz, AMOS and C, with numbers"],
       ],
     },
     editor: {
