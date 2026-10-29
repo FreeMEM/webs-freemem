@@ -23,7 +23,7 @@ pnpm build                             # todas, a sitios/<web>/out/
 
 ## Publicar
 
-El servidor se mantiene solo: cada 15 minutos trae este repositorio, mira si hay una release nueva de algún
+El servidor se mantiene solo: cada 5 minutos trae este repositorio, mira si hay una release nueva de algún
 programa y reconstruye y publica la web que haya cambiado (`herramientas/actualizar.py`, con el temporizador
 de `herramientas/servidor/`). Para sacar una versión nueva de un programa basta con publicar su release en
 GitHub; para cambiar una web, con subir el cambio aquí.

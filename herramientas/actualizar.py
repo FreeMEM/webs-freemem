@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mantiene las webs al día desde el propio servidor (el CT 108): trae el repositorio de GitHub, pregunta por la
 última release de cada programa y, si algo ha cambiado para una web, la construye y la copia a /var/www/<dominio>.
-Lo lanza un temporizador de systemd cada 15 minutos (herramientas/servidor/).
+Lo lanza un temporizador de systemd cada 5 minutos (herramientas/servidor/).
 
     python3 herramientas/actualizar.py            # lo que haya cambiado
     python3 herramientas/actualizar.py --todas    # todas, haya cambios o no
