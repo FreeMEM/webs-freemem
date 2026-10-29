@@ -83,12 +83,12 @@ export const CONTENIDO = {
         {
           estado: "Funciona",
           titulo: "Y compila en el propio Amiga",
-          texto: "dashc corre en Linux y en el Amiga, desde un 68000 con OS 2.0. Un \"hola\" se compila en menos de un segundo en un A1200 emulado y en unos 2 o 3 en un A500. Y el ejecutable sale igual, byte a byte, en el PC y en el Amiga.",
+          texto: "dashc corre en Linux y en el Amiga, desde un 68000 con OS 2.0. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. Y el ejecutable sale igual, byte a byte, en el PC y en el Amiga.",
         },
         {
           estado: "Medido",
-          titulo: "A la par que GCC",
-          texto: "En nueve pruebas de enteros, el código de dashc tarda de media 0,93 veces lo que el de GCC -O2 en un A500 y 0,96 en un A1200; con funciones recursivas, casi la mitad. Y el ejecutable ocupa menos: 6,7 KB frente a 7,6.",
+          titulo: "Más rápido que GCC",
+          texto: "En nueve pruebas con números enteros, el código de dashc va de media un 7 % más rápido que el de GCC -O2 en un A500, y un 4 % más rápido en un A1200. Con funciones recursivas, casi el doble de rápido. Y el ejecutable ocupa menos: 6,7 KB frente a 7,6 KB.",
         },
         {
           estado: "Hecho",
@@ -159,7 +159,7 @@ export const CONTENIDO = {
     comparativa: {
       titulo: "Frente a Blitz y AMOS",
       texto:
-        "Los mismos programas en Dash, AmiBlitz3, AMOS Professional y C (SAS/C y GCC), compilados con lo que trae Coffin OS y medidos en un A1200 emulado a velocidad real. Dash va a la par que C en cálculo y llamadas, y es el más rápido con textos y listas; AmiBlitz3 y AMOS van de 10 a 40 veces más despacio ahí. En coma flotante y en líneas gana C.",
+        "Los mismos programas en Dash, AmiBlitz3, AMOS Professional y C (SAS/C y GCC), compilados con lo que trae Coffin OS y medidos en un A1200 emulado a velocidad real. En cálculos y llamadas, Dash va igual de rápido que C. Con textos y listas es el más rápido de todos, y ahí AmiBlitz3 y AMOS tardan de 10 a 40 veces más. En coma flotante y en líneas gana C.",
       prueba: "Prueba",
       menos: "Menos es mejor; en naranja, el mejor de cada fila.",
       division: "División por cero",
@@ -170,9 +170,9 @@ export const CONTENIDO = {
       porqueTitulo: "Por qué salen así",
       porque: [
         ["Dash y GCC", "Dash no compila mejor que GCC: genera C y lo compila el mismo GCC, y donde hacen lo mismo empatan (bucle y llamadas). Gana donde usa su runtime en lugar de la librería C. Para pasar un número a texto saca dos cifras por división, en vez del sprintf genérico de libnix, que va leyendo el formato. Para el resto (%) usa la división de 16 bits del 68000 cuando los números caben, en vez de la rutina de 32 bits de libgcc. Y escribe con Printf de dos.library, sin los búferes del printf de C: por eso gasta menos memoria. Un programador de C podría hacer lo mismo a mano; la prueba mide lo que sale escribiendo lo normal en cada lenguaje."],
-        ["SAS/C", "Un compilador de 1995 que optimiza menos que GCC 6. GCC mete la función dentro del bucle y SAS/C la llama de verdad: las llamadas cuestan más del doble (522 ms frente a 224), y el bucle, un 20 % más. Gana en coma flotante porque con MATH=FFP usa el formato rápido de Motorola de la ROM (mathffp.library), con menos precisión que el IEEE de los demás. Su sprintf es más rápido que el de libnix y sus ejecutables son pequeños."],
-        ["AmiBlitz3", "Hace los ejecutables más pequeños (476 bytes uno vacío), porque solo enlaza las rutinas que usas, y es el que antes arranca. Con enteros va de 6 a 13 veces más despacio que C (con GCC). Está compilado con -r, que según su ayuda optimiza el tamaño, y con el resto de opciones por defecto: sin afinar y sin mirar el código que genera. Sin su depurador no comprueba nada: dividir por cero da 2147483647 y un índice fuera de rango escribe en otra memoria."],
-        ["AMOS Pro", "Su compilador copia en cada ejecutable las rutinas de su librería y sus datos de sistema (lo dice al compilar). Por eso un programa vacío ocupa 54 KB, tarda casi un segundo en arrancar mientras monta su propio sistema de pantallas, y usa unos 165 KB. Lo más lento son los procedimientos: de 34 a 41 veces más que C. A cambio, comprueba los errores igual que su intérprete: ante una división por cero o un índice fuera de rango, para con un error."],
+        ["SAS/C", "Un compilador de 1995 que optimiza menos que GCC 6. GCC mete la función dentro del bucle y SAS/C la llama de verdad: las llamadas tardan más del doble que con GCC (522 ms frente a 224 ms), y el bucle, un 20 % más. Gana en coma flotante porque con MATH=FFP usa el formato rápido de Motorola de la ROM (mathffp.library), con menos precisión que el IEEE de los demás. Su sprintf es más rápido que el de libnix y sus ejecutables son pequeños."],
+        ["AmiBlitz3", "Hace los ejecutables más pequeños (476 bytes uno vacío), porque solo enlaza las rutinas que usas, y es el que antes arranca. Con enteros tarda de 6 a 13 veces más que C compilado con GCC. Está compilado con -r, que según su ayuda optimiza el tamaño, y con el resto de opciones por defecto: sin afinar y sin mirar el código que genera. Sin su depurador no comprueba nada: dividir por cero da 2147483647 y un índice fuera de rango escribe en otra memoria."],
+        ["AMOS Pro", "Su compilador copia en cada ejecutable las rutinas de su librería y sus datos de sistema (lo dice al compilar). Por eso un programa vacío ocupa 54 KB, tarda casi un segundo en arrancar mientras monta su propio sistema de pantallas, y usa unos 165 KB. Lo más lento son los procedimientos: tardan de 34 a 41 veces más que en C. A cambio, comprueba los errores igual que su intérprete: ante una división por cero o un índice fuera de rango, para con un error."],
       ],
     },
     historia: {
@@ -180,7 +180,7 @@ export const CONTENIDO = {
       texto: "Dash se mide en un A500 y un A1200 emulados cada vez que cambia algo que importa, y cada medida se guarda. Desde la primera, del 14 de octubre de 2026, esto es lo que ha ganado en un A500:",
       antes: "antes",
       ahora: "ahora",
-      unidad: "µs por vuelta",
+      unidad: "microsegundos por vuelta",
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
@@ -189,8 +189,8 @@ export const CONTENIDO = {
         ["15 oct.", "Una caché de bloques en clases de 8 bytes para structs y listas, funciones static y pila propia de 16 KB."],
         ["15 oct.", "Conteo de referencias completo: las listas son dueñas de lo que guardan y los objetos nuevos ya no se ponen a cero, porque su constructor rellena cada campo."],
         ["15 oct.", "Fixed 16.16: decimales con aritmética entera, 2,6 veces más rápidos que Float en un 68000."],
-        ["25 oct.", "--cpu 68020 a 68060: en un 68040, Fixed divide 34 veces más rápido y los textos van un 13 % más deprisa."],
-        ["25 oct.", "Cabecera de objetos de 16 bytes: 1.000 structs pequeños pasan de 33 KB a 24 KB."],
+        ["25 oct.", "--cpu 68020 a 68060: compilando para un 68040 en vez de para un 68000, Fixed divide 34 veces más rápido y los textos van un 13 % más deprisa."],
+        ["25 oct.", "Cabecera de objetos de 16 bytes: 1.000 structs pequeños ocupan 24 KB en vez de 33 KB."],
       ],
     },
     documentacion: {
@@ -260,8 +260,8 @@ export const CONTENIDO = {
         },
         {
           estado: "Measured",
-          titulo: "On a par with GCC",
-          texto: "In nine integer benchmarks, dashc's code takes on average 0.93 times GCC -O2's time on an A500 and 0.96 on an A1200; with recursive functions, nearly half. And the executable is smaller: 6.7 KB against 7.6.",
+          titulo: "Faster than GCC",
+          texto: "In nine integer benchmarks, dashc's code is on average 7% faster than GCC -O2's on an A500, and 4% faster on an A1200. With recursive functions, nearly twice as fast. And the executable is smaller: 6.7 KB against 7.6 KB.",
         },
         {
           estado: "Done",
@@ -332,7 +332,7 @@ export const CONTENIDO = {
     comparativa: {
       titulo: "Against Blitz and AMOS",
       texto:
-        "The same programs in Dash, AmiBlitz3, AMOS Professional and C (SAS/C and GCC), built with the compilers that ship with Coffin OS and measured on an emulated A1200 at real speed. Dash is on par with C for arithmetic and calls, and the fastest with strings and lists; AmiBlitz3 and AMOS are 10 to 40 times slower there. C wins floating point and drawing lines.",
+        "The same programs in Dash, AmiBlitz3, AMOS Professional and C (SAS/C and GCC), built with the compilers that ship with Coffin OS and measured on an emulated A1200 at real speed. For arithmetic and calls, Dash is as fast as C. With strings and lists it is the fastest of all, and there AmiBlitz3 and AMOS take 10 to 40 times longer. C wins floating point and drawing lines.",
       prueba: "Test",
       menos: "Lower is better; the best of each row in orange.",
       division: "Division by zero",
@@ -343,9 +343,9 @@ export const CONTENIDO = {
       porqueTitulo: "Why the numbers look like this",
       porque: [
         ["Dash and GCC", "Dash doesn't compile better than GCC: it writes C that the same GCC compiles, and where both do the same work they tie (loop and calls). It wins where it uses its own runtime instead of the C library. To turn a number into text it gets two digits per division, instead of libnix's general-purpose sprintf, which parses the format as it goes. For the remainder (%) it uses the 68000's 16-bit division when the numbers fit, instead of libgcc's 32-bit routine. And it prints with dos.library's Printf, without C's printf buffers: that's why it uses less memory. A C programmer could do the same by hand; the test measures what you get writing the usual way in each language."],
-        ["SAS/C", "A 1995 compiler that optimizes less than GCC 6. GCC puts the function inside the loop while SAS/C really calls it: calls cost more than twice as much (522 ms against 224), and the loop 20 % more. It wins floating point because with MATH=FFP it uses Motorola's fast format from the ROM (mathffp.library), less precise than the others' IEEE. Its sprintf is faster than libnix's and its executables are small."],
-        ["AmiBlitz3", "It makes the smallest executables (476 bytes for an empty one), since it only links the routines you use, and it starts first. With integers it is 6 to 13 times slower than C (GCC). It was built with -r, which its help says optimizes for size, and every other option at its default: not tuned, and the code it generates not examined. Without its debugger it checks nothing: dividing by zero gives 2147483647 and an index out of range writes over other memory."],
-        ["AMOS Pro", "Its compiler copies its library routines and system data into every executable (it says so while compiling). That's why an empty program takes 54 KB, needs almost a second to start while it sets up its own screen system, and uses about 165 KB. Procedures are the slowest part: 34 to 41 times slower than C. In return it checks errors like its interpreter does: on a division by zero or an index out of range, it stops with an error."],
+        ["SAS/C", "A 1995 compiler that optimizes less than GCC 6. GCC puts the function inside the loop while SAS/C really calls it: calls take more than twice as long as with GCC (522 ms against 224 ms), and the loop 20% longer. It wins floating point because with MATH=FFP it uses Motorola's fast format from the ROM (mathffp.library), less precise than the others' IEEE. Its sprintf is faster than libnix's and its executables are small."],
+        ["AmiBlitz3", "It makes the smallest executables (476 bytes for an empty one), since it only links the routines you use, and it starts first. With integers it takes 6 to 13 times longer than C built with GCC. It was built with -r, which its help says optimizes for size, and every other option at its default: not tuned, and the code it generates not examined. Without its debugger it checks nothing: dividing by zero gives 2147483647 and an index out of range writes over other memory."],
+        ["AMOS Pro", "Its compiler copies its library routines and system data into every executable (it says so while compiling). That's why an empty program takes 54 KB, needs almost a second to start while it sets up its own screen system, and uses about 165 KB. Procedures are the slowest part: they take 34 to 41 times longer than in C. In return it checks errors like its interpreter does: on a division by zero or an index out of range, it stops with an error."],
       ],
     },
     historia: {
@@ -353,7 +353,7 @@ export const CONTENIDO = {
       texto: "Dash is measured on an emulated A500 and A1200 whenever something that matters changes, and every run is kept. Since the first one, on 14 October 2026, this is what it has gained on an A500:",
       antes: "before",
       ahora: "now",
-      unidad: "µs per iteration",
+      unidad: "microseconds per iteration",
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
@@ -362,8 +362,8 @@ export const CONTENIDO = {
         ["15 Oct", "A block cache in 8-byte classes for structs and lists, static functions and a 16 KB stack of its own."],
         ["15 Oct", "Full reference counting: lists own what they hold and new objects are no longer cleared, since their constructor fills every field."],
         ["15 Oct", "Fixed 16.16: decimals with integer maths, 2.6 times faster than Float on a 68000."],
-        ["25 Oct", "--cpu 68020 to 68060: on a 68040, Fixed divides 34 times faster and strings are 13% quicker."],
-        ["25 Oct", "16-byte object header: 1,000 small structs go from 33 KB to 24 KB."],
+        ["25 Oct", "--cpu 68020 to 68060: compiling for a 68040 instead of a 68000, Fixed divides 34 times faster and strings are 13% quicker."],
+        ["25 Oct", "16-byte object header: 1,000 small structs take 24 KB instead of 33 KB."],
       ],
     },
     documentacion: {

@@ -40,12 +40,12 @@ export const CONTENIDO = {
         {
           estado: "Más rápido",
           titulo: "Scripts gigantes, en la mitad de tiempo",
-          texto: "QuickJS compila el script principal de YouTube, de 10,8 MB, en 66 s en vez de 138. Y su hoja de estilo de 3,8 MB se lee en unos 7 s: antes eran 184.",
+          texto: "QuickJS compila el script principal de YouTube, de 10,8 MB, en 66 segundos; antes tardaba 138. Y su hoja de estilo, de 3,8 MB, se lee en unos 7 segundos; antes tardaba 184.",
         },
         {
           estado: "Menos memoria",
           titulo: "Lo que no se usa, ni se lee",
-          texto: "Las declaraciones de cada regla de CSS se leen solo cuando un elemento las necesita: la hoja de YouTube pasa de 22 a 15,8 MB. Y un cambio con :has() ya casi nunca obliga a rehacer el estilo de toda la página: en YouTube, 4 veces en vez de 18.",
+          texto: "Las declaraciones de cada regla de CSS se leen solo cuando un elemento las necesita: la hoja de YouTube ocupa 15,8 MB de memoria en vez de 22. Y un cambio con :has() ya casi nunca obliga a rehacer el estilo de toda la página: al cargar YouTube pasa 4 veces en vez de 18.",
         },
         {
           estado: "Camino de Dash 2.0",
@@ -71,7 +71,7 @@ export const CONTENIDO = {
         ["Red", "HTTP/1.1 con gzip y HTTPS con AmiSSL 5, que reaprovecha la sesión TLS. Y los rastreadores conocidos ni se descargan: tu Amiga tiene cosas mejores que hacer."],
         ["Imágenes", "JPEG, PNG, GIF, BMP, WebP y SVG, decodificadas en otro proceso para que la ventana no se congele mientras llegan."],
       ],
-      acid: "¿Y las pruebas de estándares? En Acid2, 10 de sus 11 piezas. Y de las pruebas de flujo normal de CSS 2.1 de las Web Platform Tests, 76 de las 100 primeras pasan en el propio Amiga.",
+      acid: "¿Y las pruebas de estándares? Acid2 tiene 11 comprobaciones y Tachyon pasa 10. De las 100 primeras pruebas de CSS 2.1 de las Web Platform Tests (las del flujo normal), pasa 76, en el propio Amiga.",
     },
     navegador: {
       titulo: "Todo lo que esperas de un navegador",
@@ -141,12 +141,12 @@ export const CONTENIDO = {
         {
           estado: "Faster",
           titulo: "Huge scripts, in half the time",
-          texto: "QuickJS compiles YouTube's main script, 10.8 MB of it, in 66 s instead of 138. And its 3.8 MB style sheet is read in about 7 s: it used to take 184.",
+          texto: "QuickJS compiles YouTube's main script, 10.8 MB of it, in 66 seconds; it used to take 138. And its 3.8 MB style sheet is read in about 7 seconds; it used to take 184.",
         },
         {
           estado: "Less memory",
           titulo: "What isn't used isn't even read",
-          texto: "The declarations of each CSS rule are read only when an element needs them: YouTube's sheet goes from 22 to 15.8 MB. And a change involving :has() hardly ever means restyling the whole page now: on YouTube, 4 times instead of 18.",
+          texto: "The declarations of each CSS rule are read only when an element needs them: YouTube's sheet takes 15.8 MB of memory instead of 22. And a change involving :has() hardly ever means restyling the whole page now: loading YouTube, it happens 4 times instead of 18.",
         },
         {
           estado: "On to Dash 2.0",
@@ -172,7 +172,7 @@ export const CONTENIDO = {
         ["Network", "HTTP/1.1 with gzip and HTTPS with AmiSSL 5, reusing the TLS session. And known trackers are never even downloaded: your Amiga has better things to do."],
         ["Images", "JPEG, PNG, GIF, BMP, WebP and SVG, decoded in another process so the window doesn't freeze while they arrive."],
       ],
-      acid: "And the standards tests? Acid2: 10 of its 11 pieces. Of the CSS 2.1 normal-flow Web Platform Tests, 76 of the first 100 pass on the Amiga itself.",
+      acid: "And the standards tests? Acid2 has 11 checks and Tachyon passes 10. Of the first 100 CSS 2.1 tests in the Web Platform Tests (the normal-flow ones), it passes 76, on the Amiga itself.",
     },
     navegador: {
       titulo: "Everything you expect from a browser",

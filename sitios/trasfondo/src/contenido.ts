@@ -31,7 +31,7 @@ export const CONTENIDO = {
       imagen: "Trasfondo 0.11 en Coffin R65 con tarjeta gráfica: fondo fijo granate, la gráfica de la memoria y un List de todo el disco en marcha",
       cosas: [
         { que: "Fecha y hora", como: "Arriba del todo, en tu idioma: «sábado 24-oct-26» y la hora." },
-        { que: "CPU", como: "Cuánto trabaja tu Amiga y su historia: las últimas 60 medidas (dos minutos, midiendo cada 2 s). Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
+        { que: "CPU", como: "Cuánto trabaja tu Amiga y su historia: los dos últimos minutos (60 medidas, una cada 2 segundos). Medido de verdad, tarea a tarea, con los ganchos de cambio de tarea de exec: nada de estimaciones." },
         { que: "Memoria", como: "La Chip y la Fast que te quedan libres y, si quieres, su gráfica: lo que está en uso sobre el total." },
         { que: "Tareas", como: "Quién se está comiendo la CPU: de una a veinte, cada una con su barra." },
         { que: "Discos", como: "Lo lleno que está cada volumen montado y su tamaño. Y nunca te pedirá que metas un disco." },
@@ -43,7 +43,7 @@ export const CONTENIDO = {
       titulo: "No se cuelga. Nunca espera",
       frase: "Ninguna pregunta a un disco o a un driver espera más de un tercio de segundo.",
       texto: "Si un volumen o una tarjeta de red no contestan, el panel pone «sin respuesta» y sigue a lo suyo. Si se cae la red, lo ves al momento; cuando vuelve, los datos vuelven solos, sin reiniciar nada.",
-      ligero: "Y gasta poco: solo repinta lo que cambia. Midiendo cada 2 s, un 8 % de un A1200 y un 11 % de un 68030 con tarjeta gráfica (medido en el emulador).",
+      ligero: "Y gasta poco: solo repinta lo que cambia. Midiendo cada 2 segundos, se lleva un 7 % de la CPU de un A1200 y un 11 % de la de un 68030 con tarjeta gráfica (medido en el emulador).",
     },
     pantallas: {
       titulo: "Luce en cualquier pantalla",
@@ -142,7 +142,7 @@ export const CONTENIDO = {
       imagen: "Trasfondo 0.11 on Coffin R65 with a graphics card: solid wine background, the memory graph and a List of the whole disk running",
       cosas: [
         { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
-        { que: "CPU", como: "How hard your Amiga is working, and its history: the last 60 readings (two minutes, measuring every 2 s). Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
+        { que: "CPU", como: "How hard your Amiga is working, and its history: the last two minutes (60 readings, one every 2 seconds). Truly measured, task by task, with exec's task-switch hooks: no guesswork." },
         { que: "Memory", como: "The Chip and Fast memory you have left and, if you like, its graph: what's in use over the total." },
         { que: "Tasks", como: "Who's eating the CPU: one to twenty of them, each with its bar." },
         { que: "Disks", como: "How full each mounted volume is and its size. And it will never ask you to insert a disk." },
@@ -154,7 +154,7 @@ export const CONTENIDO = {
       titulo: "It never hangs. It never waits",
       frase: "No question to a disk or a driver waits longer than a third of a second.",
       texto: "If a volume or a network card doesn't answer, the panel says “no answer” and carries on. If the network drops, you see it at once; when it comes back, the figures come back on their own, with nothing to restart.",
-      ligero: "And it's light: it only repaints what changed. Measuring every 2 s, about 8% of an A1200 and 11% of a 68030 with a graphics card (measured in the emulator).",
+      ligero: "And it's light: it only repaints what changed. Measuring every 2 seconds, it takes about 7% of an A1200's CPU and 11% of a 68030's with a graphics card (measured in the emulator).",
     },
     pantallas: {
       titulo: "Looks good on any screen",
