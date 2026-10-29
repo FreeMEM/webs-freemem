@@ -50,7 +50,7 @@ export const CONTENIDO = {
         {
           estado: "Camino de Dash 2.0",
           titulo: "Menos C, más Dash",
-          texto: "Tachyon se pasa a Dash 2.0, el compilador nuevo de Dash que no necesita C. La red en segundo plano, el gzip y las imágenes ya van con funciones del propio Dash y pasan sus pruebas. Falta el pegamento de QuickJS, el HTML5 y el vídeo, que seguirán enlazados como librerías.",
+          texto: "Tachyon se pasa a Dash 2.0, el compilador nuevo de Dash que no necesita C. La red en segundo plano, el gzip, las imágenes, las fuentes web, el vídeo y el actualizador ya van con funciones del propio Dash y pasan sus pruebas. Falta el pegamento de QuickJS y del HTML5, que seguirán enlazados como librerías.",
         },
       ],
     },
@@ -151,7 +151,7 @@ export const CONTENIDO = {
         {
           estado: "On to Dash 2.0",
           titulo: "Less C, more Dash",
-          texto: "Tachyon is moving to Dash 2.0, the new Dash compiler that needs no C. Background networking, gzip and images already use Dash's own functions and pass their tests. Still to go: the glue for QuickJS, HTML5 and video, which will stay linked in as libraries.",
+          texto: "Tachyon is moving to Dash 2.0, the new Dash compiler that needs no C. Background networking, gzip, images, web fonts, video and the updater already use Dash's own functions and pass their tests. Still to go: the glue for QuickJS and HTML5, which will stay linked in as libraries.",
         },
       ],
     },
