@@ -1,4 +1,4 @@
-import { Cabecera, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { Cabecera, Novedades, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO, VERSION, VIDEO } from "./contenido";
 import { Estrellas } from "./Estrellas";
@@ -41,6 +41,9 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               <a className="boton boton-suave" href="#video">
                 {t.verVideo}
               </a>
+              <a className="boton boton-suave" href="#novedades">
+                {t.novedades.boton}
+              </a>
             </div>
             <p className="peso">{t.peso}</p>
             <p className="aviso-alfa">{t.alfa}</p>
@@ -48,6 +51,12 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <figure className="portada-captura">
             <img src="/imagenes/tachyon-05.webp" width={1024} height={768} alt={t.portadaAlt} fetchPriority="high" />
           </figure>
+        </section>
+
+        <section className="seccion seccion-novedades" aria-labelledby="novedades">
+          <h2 id="novedades">{t.novedades.titulo}</h2>
+          <p className="medida">{t.novedades.texto}</p>
+          <Novedades lista={t.novedades.lista} />
         </section>
 
         <section className="seccion" id="video" aria-labelledby="titulo-video">

@@ -1,5 +1,5 @@
 import type React from "react";
-import { BolaBoing, Cabecera, Codigo, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import codigos from "./comparativa_codigo.json";
@@ -25,7 +25,7 @@ function numero(n: number, idioma: Idioma) {
 }
 
 /** Las secciones, en orden: su id es el ancla (#comparativa) que se puede enlazar, igual en los dos idiomas */
-const SECCIONES = ["tuberia", "todo", "tecnica", "comparativa", "historia", "editor", "hecho", "documentacion", "requisitos"] as const;
+const SECCIONES = ["novedades", "tuberia", "todo", "tecnica", "comparativa", "historia", "editor", "hecho", "documentacion", "requisitos"] as const;
 
 /** Título de sección con su ancla: el # lleva a la sección y deja su enlace en la barra del navegador */
 function Titulo({ id, etiqueta, children }: { id: string; etiqueta: string; children: React.ReactNode }) {
@@ -125,6 +125,12 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             ))}
           </ul>
         </nav>
+
+        <section className="seccion seccion-novedades" aria-labelledby="novedades">
+          <Titulo id="novedades" etiqueta={t.indice.enlace}>{t.novedades.titulo}</Titulo>
+          <p className="medida">{t.novedades.texto}</p>
+          <Novedades lista={t.novedades.lista} />
+        </section>
 
         <section className="seccion seccion-tuberia" aria-labelledby="tuberia">
           <Titulo id="tuberia" etiqueta={t.indice.enlace}>{t.tuberia.titulo}</Titulo>

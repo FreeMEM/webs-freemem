@@ -71,9 +71,41 @@ export const CONTENIDO = {
     empezar: "Empieza en GitHub",
     vscode: "Extensión para VS Code",
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
+    novedades: {
+      titulo: "Novedades: Dash 2.0 en camino",
+      texto: "Lo que tenemos entre manos, tal como está a 29 de octubre de 2026. Aún no está publicado.",
+      lista: [
+        {
+          estado: "En marcha",
+          titulo: "Sin compilador de C",
+          texto: "Dash 2.0 trae dashc, un compilador que genera él mismo el código 68000 y el ejecutable del Amiga. Ya no hace falta GCC ni ningún otro compilador de C para pasar de un .dash a un programa.",
+        },
+        {
+          estado: "Funciona",
+          titulo: "Y compila en el propio Amiga",
+          texto: "dashc corre en Linux y en el Amiga, desde un 68000 con OS 2.0. Un \"hola\" se compila en menos de un segundo en un A1200 emulado y en unos 2 o 3 en un A500. Y el ejecutable sale igual, byte a byte, en el PC y en el Amiga.",
+        },
+        {
+          estado: "Medido",
+          titulo: "A la par que GCC",
+          texto: "En nueve pruebas de enteros, el código de dashc tarda de media 0,93 veces lo que el de GCC -O2 en un A500 y 0,96 en un A1200; con funciones recursivas, casi la mitad. Y el ejecutable ocupa menos: 6,7 KB frente a 7,6.",
+        },
+        {
+          estado: "Hecho",
+          titulo: "Más de 730 funciones, en dos idiomas",
+          texto: "Todas documentadas en castellano y en inglés. Entre las nuevas: imágenes JPEG, PNG, WebP y SVG decodificadas por el propio programa, fuentes TrueType y WOFF, red en segundo plano y --fpu para el 68020 con FPU. Y @link para enlazar librerías de C: QuickJS ya corre compilado con dashc.",
+        },
+        {
+          estado: "Lo que falta",
+          titulo: "Antes de publicarla",
+          texto: "Repasar la documentación de la 2.0. Los programas que llevan C dentro (@native) seguirán con Dash 1.x, que no desaparece: queda como dash1.",
+        },
+      ],
+    },
     indice: {
       titulo: "En esta página",
       enlace: "Enlace a esta sección",
+      novedades: "Novedades",
       tuberia: "De Dash a 68k",
       todo: "Funciones",
       tecnica: "Bajo el capó",
@@ -212,9 +244,41 @@ export const CONTENIDO = {
     empezar: "Get started on GitHub",
     vscode: "VS Code extension",
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
+    novedades: {
+      titulo: "What's new: Dash 2.0 is coming",
+      texto: "What we are working on, as it stands on 29 October 2026. Not released yet.",
+      lista: [
+        {
+          estado: "In progress",
+          titulo: "No C compiler needed",
+          texto: "Dash 2.0 brings dashc, a compiler that writes the 68000 code and the Amiga executable itself. No more GCC, or any other C compiler, to go from a .dash file to a program.",
+        },
+        {
+          estado: "Working",
+          titulo: "And it compiles on the Amiga itself",
+          texto: "dashc runs on Linux and on the Amiga, from a 68000 with OS 2.0. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable comes out the same, byte for byte, on the PC and on the Amiga.",
+        },
+        {
+          estado: "Measured",
+          titulo: "On a par with GCC",
+          texto: "In nine integer benchmarks, dashc's code takes on average 0.93 times GCC -O2's time on an A500 and 0.96 on an A1200; with recursive functions, nearly half. And the executable is smaller: 6.7 KB against 7.6.",
+        },
+        {
+          estado: "Done",
+          titulo: "Over 730 functions, in two languages",
+          texto: "All documented in English and Spanish. Among the new ones: JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking and --fpu for a 68020 with an FPU. And @link to link C libraries: QuickJS already runs compiled with dashc.",
+        },
+        {
+          estado: "Still to do",
+          titulo: "Before it ships",
+          texto: "Going over the 2.0 documentation. Programs with C inside (@native) will stay on Dash 1.x, which isn't going away: it lives on as dash1.",
+        },
+      ],
+    },
     indice: {
       titulo: "On this page",
       enlace: "Link to this section",
+      novedades: "What's new",
       tuberia: "From Dash to 68k",
       todo: "Functions",
       tecnica: "Under the hood",

@@ -1,4 +1,4 @@
-import { Cabecera, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { Cabecera, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { CONTENIDO, DESCARGA, RELEASE, REPO, VIDEO, VERSION, BASE } from "./contenido";
 import { EscritorioVivo } from "./EscritorioVivo";
@@ -34,12 +34,21 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               <a className="boton boton-suave" href="#video">
                 {t.verVideo}
               </a>
+              <a className="boton boton-suave" href="#novedades">
+                {t.novedades.boton}
+              </a>
             </div>
             <p className="peso">{t.peso}</p>
           </div>
           <div className="portada-escritorio" role="img" aria-label={t.escritorioAlt}>
             <EscritorioVivo nombres={t.iconos} aviso={t.aviso} />
           </div>
+        </section>
+
+        <section className="seccion seccion-novedades" aria-labelledby="novedades">
+          <h2 id="novedades">{t.novedades.titulo}</h2>
+          <p className="medida">{t.novedades.texto}</p>
+          <Novedades lista={t.novedades.lista} />
         </section>
 
         <section className="seccion seccion-panel" aria-labelledby="que-ensena">

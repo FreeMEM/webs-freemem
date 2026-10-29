@@ -27,6 +27,33 @@ export const CONTENIDO = {
     alfa: "Es una alfa: todavía hay páginas que se le resisten o que tardan.",
     portadaAlt: "Tachyon mostrando freemem.space con tarjeta gráfica: el candado del HTTPS, la estrella de marcadores, el historial y el aviso verde de versión nueva",
     coffinAlt: "Tachyon en el Workbench de Coffin, con Trasfondo en la esquina",
+    novedades: {
+      titulo: "Novedades",
+      texto: "Lo que hay en la rama de desarrollo desde la 0.7.4-alfa, camino de la próxima alfa. Tal como está a 29 de octubre de 2026: aún no se puede bajar.",
+      boton: "Novedades",
+      lista: [
+        {
+          estado: "En desarrollo",
+          titulo: "La web de YouTube, la de verdad",
+          texto: "Con todo su JavaScript, carga entera en un 68040 emulado con 128 MB: su portada, su aviso de cookies y el botón \"Reject all\", que funciona. Cero errores de JavaScript en la carga. Aún le faltan detalles por pintar.",
+        },
+        {
+          estado: "Más rápido",
+          titulo: "Scripts gigantes, en la mitad de tiempo",
+          texto: "QuickJS compila el script principal de YouTube, de 10,8 MB, en 66 s en vez de 138. Y su hoja de estilo de 3,8 MB se lee en unos 7 s: antes eran 184.",
+        },
+        {
+          estado: "Menos memoria",
+          titulo: "Lo que no se usa, ni se lee",
+          texto: "Las declaraciones de cada regla de CSS se leen solo cuando un elemento las necesita: la hoja de YouTube pasa de 22 a 15,8 MB. Y un cambio con :has() ya casi nunca obliga a rehacer el estilo de toda la página: en YouTube, 4 veces en vez de 18.",
+        },
+        {
+          estado: "Camino de Dash 2.0",
+          titulo: "Menos C, más Dash",
+          texto: "Tachyon se pasa a Dash 2.0, el compilador nuevo de Dash que no necesita C. La red en segundo plano, el gzip y las imágenes ya van con funciones del propio Dash y pasan sus pruebas. Falta el pegamento de QuickJS, el HTML5 y el vídeo, que seguirán enlazados como librerías.",
+        },
+      ],
+    },
     video: {
       titulo: "Míralo en marcha",
       texto: "Cinco minutos y medio en CoffinOS con tarjeta gráfica (en Amiberry): cómo se instala, cómo se actualiza solo con un clic, la búsqueda desde la barra, webs con JavaScript y canvas, pestañas, menús, descargas y el cambio de idioma. Sin trucos: solo van aceleradas las esperas.",
@@ -101,6 +128,33 @@ export const CONTENIDO = {
     alfa: "It's an alpha: some pages still put up a fight, or take their time.",
     portadaAlt: "Tachyon showing freemem.space with a graphics card: the HTTPS padlock, the bookmark star, history and the green new-version notice",
     coffinAlt: "Tachyon on the Coffin Workbench, with Trasfondo in the corner",
+    novedades: {
+      titulo: "What's new",
+      texto: "What's in the development branch since 0.7.4-alpha, on its way to the next alpha. As it stands on 29 October 2026: not downloadable yet.",
+      boton: "What's new",
+      lista: [
+        {
+          estado: "In development",
+          titulo: "The real YouTube website",
+          texto: "With all its JavaScript, it loads completely on an emulated 68040 with 128 MB: its home page, its cookie notice and the \"Reject all\" button, which works. Zero JavaScript errors while loading. Some details still don't draw.",
+        },
+        {
+          estado: "Faster",
+          titulo: "Huge scripts, in half the time",
+          texto: "QuickJS compiles YouTube's main script, 10.8 MB of it, in 66 s instead of 138. And its 3.8 MB style sheet is read in about 7 s: it used to take 184.",
+        },
+        {
+          estado: "Less memory",
+          titulo: "What isn't used isn't even read",
+          texto: "The declarations of each CSS rule are read only when an element needs them: YouTube's sheet goes from 22 to 15.8 MB. And a change involving :has() hardly ever means restyling the whole page now: on YouTube, 4 times instead of 18.",
+        },
+        {
+          estado: "On to Dash 2.0",
+          titulo: "Less C, more Dash",
+          texto: "Tachyon is moving to Dash 2.0, the new Dash compiler that needs no C. Background networking, gzip and images already use Dash's own functions and pass their tests. Still to go: the glue for QuickJS, HTML5 and video, which will stay linked in as libraries.",
+        },
+      ],
+    },
     video: {
       titulo: "See it in action",
       texto: "Five and a half minutes on CoffinOS with a graphics card (in Amiberry): installing it, updating itself with one click, searching from the address bar, sites with JavaScript and canvas, tabs, menus, downloads and switching languages. No tricks: only the waits are sped up.",

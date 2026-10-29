@@ -66,6 +66,33 @@ export const CONTENIDO = {
         ["CX_POPUP=NO", "arranca oculto"],
       ],
     },
+    novedades: {
+      titulo: "Novedades",
+      texto: "Lo último y lo que viene, tal como está a 29 de octubre de 2026.",
+      boton: "Novedades",
+      lista: [
+        {
+          estado: "Publicada el 25/10",
+          titulo: "Trasfondo 0.11",
+          texto: "La temperatura de la Raspberry Pi en una PiStorm (en naranja desde 70 °C), las gráficas de la memoria y de la red, y menos CPU en el A1200. Si tienes la 0.8 o una posterior, se pone al día solo con un clic.",
+        },
+        {
+          estado: "Hecho",
+          titulo: "En inglés y en castellano, también lo que se lee",
+          texto: "Además del programa, ahora la documentación de GitHub está en los dos idiomas: el README y cada documento, con su selector de idioma.",
+        },
+        {
+          estado: "Camino de Dash 2.0",
+          titulo: "Listo para el compilador nuevo",
+          texto: "Trasfondo está escrito entero en Dash, sin una línea de C, así que podrá compilarse con dashc, el compilador de Dash 2.0 que no necesita C, también en el propio Amiga. TrasfondoPrefs ya compila con él; al panel le falta un arreglo del compilador.",
+        },
+        {
+          estado: "Lo que viene",
+          titulo: "Más paneles y Aminet",
+          texto: "Más paneles, la posición y los colores por tooltypes, y el paquete para Aminet.",
+        },
+      ],
+    },
     video: { titulo: "Míralo en marcha", texto: "Cinco minutos en CoffinOS con tarjeta gráfica (en Amiberry): cómo se instala, todo lo que enseña, cómo se pone al día solo de la 0.9 a la 0.11 con un clic, TrasfondoPrefs y Exchange. Con música de Mantronix & Tip.", boton: "Reproducir", titulo_video: "Trasfondo 0.11: un monitor de recursos en el fondo del Workbench" },
     instalar: {
       titulo: "Listo en un minuto",
@@ -148,6 +175,33 @@ export const CONTENIDO = {
         ["INTERVAL=5", "how many seconds between readings"],
         ["BACKGROUND=SOLID", "solid background, no veil"],
         ["CX_POPUP=NO", "start hidden"],
+      ],
+    },
+    novedades: {
+      titulo: "What's new",
+      texto: "The latest, and what's coming, as it stands on 29 October 2026.",
+      boton: "What's new",
+      lista: [
+        {
+          estado: "Released 25 Oct",
+          titulo: "Trasfondo 0.11",
+          texto: "The Raspberry Pi's temperature on a PiStorm (orange from 70 °C), graphs for memory and network, and less CPU on the A1200. If you have 0.8 or later, it updates itself with one click.",
+        },
+        {
+          estado: "Done",
+          titulo: "English and Spanish, the docs too",
+          texto: "Not just the program: the documentation on GitHub is now in both languages, the README and every document, with a language switch.",
+        },
+        {
+          estado: "On to Dash 2.0",
+          titulo: "Ready for the new compiler",
+          texto: "Trasfondo is written entirely in Dash, without a single line of C, so it will build with dashc, the Dash 2.0 compiler that needs no C, even on the Amiga itself. TrasfondoPrefs already compiles with it; the panel is waiting on a compiler fix.",
+        },
+        {
+          estado: "Coming next",
+          titulo: "More panels, and Aminet",
+          texto: "More panels, position and colours through tooltypes, and the Aminet package.",
+        },
       ],
     },
     video: { titulo: "See it in action", texto: "Five minutes on CoffinOS with a graphics card (in Amiberry): installing it, everything it shows, updating itself from 0.9 to 0.11 with one click, TrasfondoPrefs and Exchange. With music by Mantronix & Tip.", boton: "Play", titulo_video: "Trasfondo 0.11: a resource monitor on your Workbench backdrop" },
