@@ -291,6 +291,128 @@
   height: auto;
 }
 
+/* ---------- Ventana con barra de desplazamiento (VentanaDesplazable) ---------- */
+
+.wb-desplazable {
+  padding: 0;
+}
+
+.wb-desplazable .wb-ventana-barra {
+  margin: 0;
+}
+
+.wb-desplazable-marco {
+  display: flex;
+  padding-left: 4px;
+}
+
+.wb-desplazable-contenido {
+  flex: 1;
+  min-width: 0;
+  max-height: var(--alto-desplazable, 22rem);
+  margin: 2px 0 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: var(--wb-gris);
+  border: 1px solid var(--wb-negro);
+  border-right-color: var(--wb-blanco);
+  border-bottom-color: var(--wb-blanco);
+  color: var(--wb-negro);
+}
+
+.wb-desplazable-contenido::-webkit-scrollbar {
+  display: none;
+}
+
+.wb-desplazable-contenido:focus-visible {
+  outline: 2px dashed var(--wb-negro);
+  outline-offset: -4px;
+}
+
+/* El borde derecho de una ventana activa: azul, con el deslizador, las dos flechas y el gadget de tamaño */
+.wb-borde-derecho {
+  display: flex;
+  flex-direction: column;
+  width: 18px;
+  margin-left: 4px;
+  background: var(--wb-azul);
+  border-left: 1px solid var(--wb-negro);
+  user-select: none;
+  touch-action: none;
+}
+
+.wb-pista {
+  position: relative;
+  flex: 1;
+  margin: 3px 3px 4px;
+  border: 1px solid var(--wb-negro);
+  border-right-color: var(--wb-blanco);
+  border-bottom-color: var(--wb-blanco);
+}
+
+.wb-mando {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 12px;
+  background: var(--wb-gris);
+  border: 1px solid var(--wb-blanco);
+  border-right-color: var(--wb-negro);
+  border-bottom-color: var(--wb-negro);
+  cursor: grab;
+}
+
+.wb-mando:active {
+  cursor: grabbing;
+}
+
+.wb-flecha,
+.wb-tamano {
+  height: 16px;
+  border-top: 1px solid var(--wb-negro);
+  background: var(--wb-gris);
+  box-shadow: inset 1px 1px 0 var(--wb-blanco);
+}
+
+.wb-flecha {
+  position: relative;
+  cursor: pointer;
+}
+
+.wb-flecha::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+.wb-flecha-arriba::after {
+  top: 5px;
+  border-bottom: 5px solid var(--wb-negro);
+}
+
+.wb-flecha-abajo::after {
+  top: 5px;
+  border-top: 5px solid var(--wb-negro);
+}
+
+.wb-flecha:active {
+  box-shadow: inset 1px 1px 0 var(--wb-negro);
+  background: var(--wb-gris-oscuro);
+}
+
+.wb-tamano {
+  background:
+    linear-gradient(var(--wb-negro), var(--wb-negro)) 4px 4px / 8px 1px no-repeat,
+    linear-gradient(var(--wb-negro), var(--wb-negro)) 4px 4px / 1px 7px no-repeat,
+    linear-gradient(var(--wb-blanco), var(--wb-blanco)) 7px 7px / 6px 5px no-repeat,
+    var(--wb-gris);
+}
+
 /* ---------- Novedades: cada una en una ventana del Workbench ---------- */
 
 .novedades {

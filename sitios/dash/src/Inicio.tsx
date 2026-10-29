@@ -1,5 +1,5 @@
 import type React from "react";
-import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import codigos from "./comparativa_codigo.json";
@@ -304,15 +304,16 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               </li>
             ))}
           </ul>
-          <h3 className="comparativa-porque">{t.historia.hitosTitulo}</h3>
-          <dl className="lista-todo">
-            {t.historia.hitos.map(([cuando, que]) => (
-              <div key={que}>
-                <dt>{cuando}</dt>
-                <dd>{que}</dd>
-              </div>
-            ))}
-          </dl>
+          <VentanaDesplazable titulo={t.historia.hitosTitulo} className="ventana-hitos">
+            <dl className="hitos">
+              {t.historia.hitos.map(([cuando, que]) => (
+                <div key={que}>
+                  <dt>{cuando}</dt>
+                  <dd>{que}</dd>
+                </div>
+              ))}
+            </dl>
+          </VentanaDesplazable>
         </section>
 
         <section className="seccion seccion-editor" aria-labelledby="editor">
