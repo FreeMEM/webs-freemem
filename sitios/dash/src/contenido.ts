@@ -118,7 +118,7 @@ export const CONTENIDO = {
     },
     tuberia: {
       titulo: "De tus líneas a un ejecutable de 68k",
-      texto: "Tres programas de verdad, paso a paso: primero lo que escribes, después un trozo del C que Dash genera por ti y, al final, lo que aparece en el Amiga. Y mira lo poco que ocupan.",
+      texto: "Aquí tienes tres ejemplos. En cada uno ves el código en Dash, un trozo del C que sale de él y cómo queda en el Amiga. Fíjate también en lo poco que ocupa el ejecutable.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "Lo que escribes",
       c: "El C que genera Dash",
@@ -291,7 +291,7 @@ export const CONTENIDO = {
     },
     tuberia: {
       titulo: "From your lines to a 68k executable",
-      texto: "Three real programs, step by step: first what you write, then an excerpt of the C that Dash writes for you and, finally, what shows up on the Amiga. And look how little they take.",
+      texto: "Here are three examples. For each one you can see the Dash code, a piece of the C it turns into and how it looks on the Amiga. Notice how small the executable is, too.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "What you write",
       c: "The C that Dash generates",
