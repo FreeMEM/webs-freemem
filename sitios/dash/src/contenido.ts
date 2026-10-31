@@ -8,7 +8,7 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 617;
+export const BUILTINS = 836;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
@@ -27,6 +27,7 @@ export const AREAS = [
   ["GadTools", "GadTools", 19],
   ["Texto", "Text", 18],
   ["Menús, búferes, TLS, fuentes y más", "Menus, buffers, TLS, fonts and more", 61],
+  ["Nuevas en la 2.0: depurador, gestor de ventanas, imágenes y más", "New in 2.0: debugger, window manager, images and more", 219],
 ] as const;
 
 /** Dash frente a Blitz, AMOS y C (docs/COMPARATIVA.md de Dash, tools/comparativa): A1200 emulado a velocidad
@@ -72,18 +73,18 @@ export const CONTENIDO = {
     vscode: "Extensión para VS Code",
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     novedades: {
-      titulo: "Novedades: Dash 2.0 en camino",
-      texto: "En esto estamos trabajando ahora, a 29 de octubre de 2026. Todavía no está publicado.",
+      titulo: "Novedades: Dash 2.0 ya está aquí",
+      texto: "Publicada el 31 de octubre de 2026, como versión previa: todavía no está en la rama principal del repositorio. Se descarga desde la release v2.0.0 de GitHub.",
       lista: [
         {
-          estado: "En marcha",
+          estado: "Nuevo",
           titulo: "Sin compilador de C",
-          texto: "Dash 2.0 trae dashc, un compilador que genera directamente el código 68000 y el ejecutable del Amiga. Para compilar un programa en Dash ya no hace falta GCC ni ningún otro compilador de C.",
+          texto: "Dash 2.0 trae dashc, un compilador que genera directamente el código 68000 y el ejecutable del Amiga. Para compilar un programa en Dash ya no hace falta el GCC de Amiga: en Linux o en un Mac, dashc se construye en unos segundos con el compilador de C del sistema.",
         },
         {
-          estado: "Funciona",
+          estado: "Para el Amiga",
           titulo: "Y compila en el propio Amiga",
-          texto: "dashc funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
+          texto: "dashc funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.0.0-amiga.lha y su instalador. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
         },
         {
           estado: "Medido",
@@ -92,13 +93,13 @@ export const CONTENIDO = {
         },
         {
           estado: "Hecho",
-          titulo: "Más de 730 funciones, en dos idiomas",
-          texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano y la opción --fpu para el 68020 con FPU. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado con dashc.",
+          titulo: "836 funciones, en dos idiomas",
+          texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas y un depurador que también usa VS Code. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado con dashc.",
         },
         {
-          estado: "Lo que falta",
-          titulo: "Antes de publicarla",
-          texto: "Falta repasar la documentación de la 2.0. Los programas que llevan C dentro (@native) seguirán usando Dash 1.x, que se mantiene con el nombre dash1.",
+          estado: "Se mantiene",
+          titulo: "Dash 1.x sigue, como dash1",
+          texto: "Los programas que llevan C dentro (@native) siguen con dash1, que pasa por el GCC de Amiga de bebbo. Y se mantiene pensando en el futuro: GCC sabe generar código PowerPC, el camino para compilar para MorphOS y AmigaOS 4.",
         },
       ],
     },
@@ -118,7 +119,7 @@ export const CONTENIDO = {
     },
     tuberia: {
       titulo: "De tus líneas a un ejecutable de 68k",
-      texto: "Aquí tienes tres ejemplos. En cada uno puedes ver el código en Dash, su resultado en C sintetizado y cómo queda en el Amiga.",
+      texto: "Aquí tienes tres ejemplos. En cada uno puedes ver el código en Dash, el C que sintetiza dash1 (el compilador de la 1.x) y cómo queda en el Amiga. dashc, el de la 2.0, se salta el C y genera el código 68000 directamente.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "Lo que escribes",
       c: "El C que genera Dash",
@@ -146,9 +147,9 @@ export const CONTENIDO = {
     },
     tecnica: {
       titulo: "Bajo el capó",
-      texto: "Dash no es un intérprete. Traduce tu código a C, y GCC compila ese C a código de 68k. Así funciona por dentro:",
+      texto: "Dash no es un intérprete. Desde la 2.0, su compilador, dashc, genera él mismo el código de 68k; el de la 1.x traduce a C y lo compila GCC, y sigue disponible. Así funciona por dentro:",
       lista: [
-        ["La cadena", "Tu .dash pasa por un analizador hecho con Lark, se convierte en un árbol, se comprueba (tipos, nombres, structs) y se escribe en C. Ese C lo compila m68k-amigaos-gcc con -O2 y el resultado es un ejecutable normal de AmigaOS."],
+        ["La cadena", "dashc, escrito en C, lee tu .dash, lo comprueba (tipos, nombres, structs), genera el código 68000 y lo enlaza con su runtime en un ejecutable normal de AmigaOS, en el PC o en el propio Amiga. dash1, el de la 1.x, lo pasa por un analizador hecho con Lark, lo escribe en C y lo compila m68k-amigaos-gcc con -O2."],
         ["Los tipos", "Int de 32 bits, Float, Fixed 16.16, String y Bool; listas [T] y diccionarios {String: T} con tipo; structs con métodos y campos weak, enums, constantes y funciones como valor. Los tipos se deducen solos y casi nunca hace falta escribirlos."],
         ["Los números", "Float se calcula por software, con la suma y la multiplicación en ensamblador de 68000, o con la FPU 68881/68882 si compilas con --fpu. Fixed 16.16 hace decimales con aritmética entera; en un 68000, multiplicar así es 2,6 veces más rápido que con Float."],
         ["La memoria", "Textos, listas y structs llevan un contador de referencias y se liberan solos, igual que los temporales de cada vuelta de un bucle. No hay recolector de basura ni pausas. Para buscar fallos, --memcheck avisa de las dobles liberaciones y de lo que queda sin liberar al salir, y --profile cuenta las llamadas y el tiempo de cada función."],
@@ -226,7 +227,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "Lo que necesitas",
       amiga: ["En el Amiga", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
-      pc: ["En tu PC", "Linux, macOS o WSL2, con Python 3.10, la librería Lark y el compilador cruzado m68k-amigaos-gcc. Compilas en el PC y pasas al Amiga un ejecutable listo para usar."],
+      pc: ["En tu PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir dashc (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para dash1 (programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
     },
     pie: [
@@ -245,18 +246,18 @@ export const CONTENIDO = {
     vscode: "VS Code extension",
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     novedades: {
-      titulo: "What's new: Dash 2.0 is coming",
-      texto: "This is what we're working on right now, as of 29 October 2026. It isn't released yet.",
+      titulo: "What's new: Dash 2.0 is here",
+      texto: "Released on 31 October 2026 as a pre-release: it is not in the repository's main branch yet. Download it from the v2.0.0 release on GitHub.",
       lista: [
         {
-          estado: "In progress",
+          estado: "New",
           titulo: "No C compiler needed",
-          texto: "Dash 2.0 brings dashc, a compiler that produces the 68000 code and the Amiga executable directly. You no longer need GCC or any other C compiler to build a Dash program.",
+          texto: "Dash 2.0 brings dashc, a compiler that produces the 68000 code and the Amiga executable directly. You no longer need the Amiga GCC to build a Dash program: on Linux or a Mac, dashc builds in a few seconds with the system's C compiler.",
         },
         {
-          estado: "Working",
+          estado: "For the Amiga",
           titulo: "And it compiles on the Amiga itself",
-          texto: "dashc runs on Linux and on the Amiga, from a 68000 with OS 2.0. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
+          texto: "dashc runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.0.0-amiga.lha and its installer. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
         },
         {
           estado: "Measured",
@@ -265,13 +266,13 @@ export const CONTENIDO = {
         },
         {
           estado: "Done",
-          titulo: "Over 730 functions, in two languages",
-          texto: "All of them are documented in English and Spanish. The new ones include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking and the --fpu option for a 68020 with an FPU. With @link you can link C libraries; QuickJS already works compiled with dashc.",
+          titulo: "836 functions, in two languages",
+          texto: "All of them are documented in English and Spanish. The new ones include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager and a debugger that VS Code uses too. With @link you can link C libraries; QuickJS already works compiled with dashc.",
         },
         {
-          estado: "Still to do",
-          titulo: "Before it ships",
-          texto: "The 2.0 documentation still needs going over. Programs with C inside (@native) will keep using Dash 1.x, which stays available as dash1.",
+          estado: "Still there",
+          titulo: "Dash 1.x stays, as dash1",
+          texto: "Programs with C inside (@native) keep using dash1, which goes through bebbo's Amiga GCC. It is also kept with the future in mind: GCC can generate PowerPC code, the way to compiling for MorphOS and AmigaOS 4.",
         },
       ],
     },
@@ -291,7 +292,7 @@ export const CONTENIDO = {
     },
     tuberia: {
       titulo: "From your lines to a 68k executable",
-      texto: "Here are three examples. For each one you can see the Dash code, the C it synthesizes and how it looks on the Amiga.",
+      texto: "Here are three examples. For each one you can see the Dash code, the C that dash1 (the 1.x compiler) synthesizes and how it looks on the Amiga. dashc, the 2.0 one, skips the C and generates the 68000 code directly.",
       pasos: ["Dash", "C", "m68k-amigaos-gcc", "Amiga"],
       dash: "What you write",
       c: "The C that Dash generates",
@@ -319,9 +320,9 @@ export const CONTENIDO = {
     },
     tecnica: {
       titulo: "Under the hood",
-      texto: "Dash is not an interpreter. It translates your code into C, and GCC compiles that C into 68k code. This is how it works inside:",
+      texto: "Dash is not an interpreter. Since 2.0, its compiler, dashc, generates the 68k code itself; the 1.x one translates to C for GCC to compile, and it is still available. This is how it works inside:",
       lista: [
-        ["The pipeline", "Your .dash goes through a parser built with Lark, becomes a tree, gets checked (types, names, structs) and is written out as C. m68k-amigaos-gcc compiles that C with -O2 and the result is a normal AmigaOS executable."],
+        ["The pipeline", "dashc, written in C, reads your .dash, checks it (types, names, structs), generates the 68000 code and links it with its runtime into a normal AmigaOS executable, on the PC or on the Amiga itself. dash1, the 1.x one, runs it through a parser built with Lark, writes it out as C and m68k-amigaos-gcc compiles it with -O2."],
         ["The types", "32-bit Int, Float, Fixed 16.16, String and Bool; typed lists [T] and dictionaries {String: T}; structs with methods and weak fields, enums, constants and functions as values. Types are inferred, so you hardly ever need to write them."],
         ["The numbers", "Float is calculated in software, with addition and multiplication in 68000 assembly, or with the 68881/68882 FPU if you compile with --fpu. Fixed 16.16 does decimals with integer maths; on a 68000, multiplying this way is 2.6 times faster than with Float."],
         ["Memory", "Strings, lists and structs have a reference count and are freed automatically, and so are the temporaries of each loop iteration. There's no garbage collector and no pauses. To find bugs, --memcheck reports double frees and anything left unfreed at exit, and --profile counts the calls and time of each function."],
@@ -399,7 +400,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "What you need",
       amiga: ["On the Amiga", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
-      pc: ["On your PC", "Linux, macOS or WSL2, with Python 3.10, the Lark library and the m68k-amigaos-gcc cross compiler. You compile on the PC and copy a ready-to-run executable to the Amiga."],
+      pc: ["On your PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build dashc (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For dash1 (programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
     },
     pie: [
