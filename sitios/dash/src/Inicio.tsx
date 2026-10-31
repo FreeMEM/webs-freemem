@@ -4,6 +4,7 @@ import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, Ventan
 import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import codigos from "./comparativa_codigo.json";
 import ejemplos from "./ejemplos.json";
+import { LogoDash } from "./LogoDash";
 import { Pestanas } from "./Pestanas";
 
 /** Las capturas de cada ejemplo en el Amiga (sacadas de Coffin con el ejecutable que mide ejemplos.json). */
@@ -99,6 +100,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
       <main>
         <section className="portada">
           <div className="portada-texto">
+            <LogoDash tamano={96} />
             <h1>Dash</h1>
             <p className="lema">{t.lema}</p>
             <p>{t.texto}</p>

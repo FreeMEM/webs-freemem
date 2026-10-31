@@ -86,6 +86,26 @@ main dd {
   padding: 3rem 1.25rem 4rem;
 }
 
+/* El logo, con el cursor del Shell parpadeando como en el Amiga */
+.logo-dash {
+  display: block;
+  margin-bottom: 1.5rem;
+  box-sizing: content-box; /* el dibujo, a su tamaño exacto: nítido */
+  border: 2px solid var(--negro);
+  box-shadow: 6px 6px 0 var(--negro);
+  background: #0055aa;
+}
+
+.logo-dash-cursor {
+  animation: cursor-dash 1s steps(1) infinite;
+}
+
+@keyframes cursor-dash {
+  50% {
+    opacity: 0;
+  }
+}
+
 .portada h1 {
   margin: 0 0 1rem;
   font-size: clamp(4.5rem, 11vw, 8.5rem);
@@ -813,5 +833,8 @@ main dd {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .logo-dash-cursor {
+    animation: none;
   }
 }
