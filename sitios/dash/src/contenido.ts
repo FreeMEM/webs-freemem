@@ -32,12 +32,12 @@ export const AREAS = [
 
 /** Dash frente a Blitz, AMOS y C (docs/COMPARATIVA.md de Dash, tools/comparativa): A1200 emulado a velocidad
  *  real, milisegundos por programa (menos es mejor); memoria en KB al ejecutar. Columnas: Dash, AmiBlitz3, AMOS
- *  Pro, SAS/C, GCC. Dash por sus dos caminos, medido de nuevo el 2026-11-02 con la 2.0.1; los demás, de la primera medida. */
+ *  Pro, SAS/C, GCC. Dash por sus dos caminos, medido de nuevo el 2026-11-03 con la 2.0.2; los demás, de la primera medida. */
 export const LENGUAJES = ["Dash (directo)", "Dash (por C)", "AmiBlitz3", "AMOS Pro", "SAS/C", "GCC (C)"] as const;
 /** Las dos primeras columnas son Dash: el compilador directo (./dash) y el camino por C con gcc (./dash --gcc) */
 export const COLUMNAS_DASH = 2;
 export const COMPARATIVA = [
-  ["Arranque (programa vacío), ms", "Startup (empty program), ms", [42, 46, 34, 862, 36, 42]],
+  ["Arranque (programa vacío), ms", "Startup (empty program), ms", [37, 46, 34, 862, 36, 42]],
   ["Memoria al ejecutar, KB", "Memory while running, KB", [18, 17, 30, 165, 20, 38]],
 ] as const;
 /** Las seis pruebas de velocidad: id, qué hace en castellano y en inglés */
@@ -50,7 +50,7 @@ export const PRUEBAS = [
   ["lineas", "2.000 líneas en pantalla", "2,000 lines on screen"],
 ] as const;
 /** Milisegundos de cada programa (tools/comparativa/res_*.txt de Dash), en el orden de LENGUAJES */
-export const VELOCIDAD = {"a1200": {"bucle": [623, 632, 7399, 9963, 754, 629], "llamada": [272, 225, 2115, 9080, 522, 224], "texto": [2758, 1516, 4001, 3049, 3591, 6062], "lista": [2601, 1553, 31375, 25837, 3159, 2399], "flotante": [999, 491, 845, 1865, 277, 497], "lineas": [4934, 4989, 5818, 5694, 4652, 4654]}, "a500": {"bucle": [2831, 3237, 30298, 36385, 3879, 2861], "llamada": [1213, 1069, 9803, 33674, 2698, 987], "texto": [11817, 6411, 13862, 10306, 15421, 29780], "lista": [12596, 7524, 106401, 78128, 13437, 16586], "flotante": [4880, 2378, 3375, 5355, 1243, 2027], "lineas": [6685, 6733, 9549, 9222, 5826, 5744]}} as const;
+export const VELOCIDAD = {"a1200": {"bucle": [632, 645, 7399, 9963, 754, 629], "llamada": [249, 224, 2115, 9080, 522, 224], "texto": [1381, 1522, 4001, 3049, 3591, 6062], "lista": [1790, 1555, 31375, 25837, 3159, 2399], "flotante": [491, 493, 845, 1865, 277, 497], "lineas": [4935, 5009, 5818, 5694, 4652, 4654]}, "a500": {"bucle": [2833, 3233, 30298, 36385, 3879, 2861], "llamada": [1086, 1068, 9803, 33674, 2698, 987], "texto": [5951, 6413, 13862, 10306, 15421, 29780], "lista": [8468, 7539, 106401, 78128, 13437, 16586], "flotante": [2421, 2388, 3375, 5355, 1243, 2027], "lineas": [6684, 6729, 9549, 9222, 5826, 5744]}} as const;
 /** Lo que ha ganado Dash desde la primera medida (tests/bench/results.json): en un A500, microsegundos por vuelta
  *  de la primera medida de la prueba y de la última */
 export const HISTORIA = [["Recorrer una lista con for", "Going through a list with for", 696, 80], ["Crear un struct y cambiar un campo", "Creating a struct and changing a field", 531, 121], ["Crear una lista de tres", "Creating a three-item list", 886, 248], ["Interpolar dos números en un texto", "Interpolating two numbers into a string", 2238, 669], ["Leer y escribir en una lista", "Reading and writing a list", 197, 68], ["Crear un struct dentro de otro", "Creating a struct inside another", 2106, 791], ["Texto + número", "String + number", 1141, 468], ["Multiplicar Float", "Multiplying Floats", 175, 118], ["Escribir texto en una ventana", "Drawing text in a window", 5389, 3889]] as const;
@@ -77,7 +77,7 @@ export const CONTENIDO = {
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     novedades: {
       titulo: "Novedades: Dash 2.0 ya está aquí",
-      texto: "Dash 2.0.1 se publicó el 2 de noviembre de 2026 y ya está en la rama principal del repositorio. Con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
+      texto: "Dash 2.0 está en la rama principal del repositorio desde el 2 de noviembre de 2026; la última versión es la 2.0.2. Con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
       lista: [
         {
           estado: "Nuevo",
@@ -87,12 +87,12 @@ export const CONTENIDO = {
         {
           estado: "Para el Amiga",
           titulo: "Y compila en el propio Amiga",
-          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.0.1-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
+          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.0.2-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
         },
         {
           estado: "Medido",
           titulo: "Los dos caminos, medidos",
-          texto: "En la comparativa de abajo salen los dos. El directo empata con el de C en bucles y dibujando líneas, y arranca antes. En textos, listas y coma flotante el camino por C sigue siendo más rápido: de 1,7 a 2 veces en un A1200. Para un programa que necesite cada ciclo, --gcc.",
+          texto: "En la comparativa de abajo salen los dos. El directo es más rápido que el de C en textos y bucles, y arranca antes; en coma flotante y dibujando líneas empatan. El de C sigue por delante con listas (un 15 %) y en llamadas a funciones en un A1200 (un 11 %).",
         },
         {
           estado: "Hecho",
@@ -163,7 +163,7 @@ export const CONTENIDO = {
     comparativa: {
       titulo: "Frente a Blitz y AMOS",
       texto:
-        "Los mismos programas escritos en Dash, AmiBlitz3, AMOS Professional y C (SAS/C y GCC), compilados con lo que trae Coffin OS y medidos en un A1200 emulado a velocidad real. Dash sale dos veces: compilado directo a hunk y por C con GCC. Por C, en cálculos y llamadas va igual de rápido que C, y con textos y listas es el más rápido de todos; ahí AmiBlitz3 y AMOS tardan de 10 a 40 veces más. El directo empata en bucles y líneas, y en textos, listas y coma flotante tarda de 1,7 a 2 veces lo que el de C. En coma flotante y dibujando líneas gana C.",
+        "Los mismos programas escritos en Dash, AmiBlitz3, AMOS Professional y C (SAS/C y GCC), compilados con lo que trae Coffin OS y medidos en un A1200 emulado a velocidad real. Dash sale dos veces: compilado directo a hunk y por C con GCC. Por C, en cálculos y llamadas va igual de rápido que C, y con textos y listas es el más rápido de todos; ahí AmiBlitz3 y AMOS tardan de 10 a 40 veces más. El directo va más rápido que el de C en textos y bucles, empata en coma flotante y líneas, y va algo más lento con listas. En coma flotante y dibujando líneas gana C.",
       prueba: "Prueba",
       menos: "Menos es mejor. En naranja, el mejor de cada fila.",
       division: "División por cero",
@@ -173,7 +173,7 @@ export const CONTENIDO = {
       codigoC: "C (SAS/C y GCC)",
       porqueTitulo: "Por qué salen así",
       porque: [
-        ["Dash directo", "El compilador directo genera el código él mismo, sin las optimizaciones de GCC: guarda más valores en memoria y llama al runtime donde GCC mete el código en línea. Por eso, con textos, listas y coma flotante, va más lento que Dash por C. En cambio, arranca antes, no necesita GCC y compila en el propio Amiga."],
+        ["Dash directo", "El compilador directo genera el código él mismo. Hace en línea el acceso a las listas, saca del bucle los cálculos que no cambian y une texto y número en una sola llamada, escrita para eso. Con listas aún va algo más lento que Dash por C, porque GCC comprueba una sola vez, fuera del bucle, que la lista existe. Arranca antes y compila también en el propio Amiga."],
         ["Dash por C y GCC", "Dash no compila mejor que GCC. Por C, genera C y lo compila el mismo GCC, así que donde hacen lo mismo empatan (bucle y llamadas). Gana donde usa su propio runtime en vez de la librería de C. Para pasar un número a texto saca dos cifras en cada división, en vez de usar el sprintf de libnix, que tiene que ir leyendo el formato. Para el resto (%) usa la división de 16 bits del 68000 cuando los números caben, en vez de la rutina de 32 bits de libgcc. Y escribe con Printf de dos.library, sin los búferes del printf de C, por eso gasta menos memoria. Un programador de C podría hacer lo mismo a mano. La prueba mide lo que sale escribiendo cada lenguaje de la forma normal."],
         ["SAS/C", "Es un compilador de 1995 que optimiza menos que GCC 6. GCC mete la función dentro del bucle y SAS/C la llama de verdad, así que las llamadas tardan más del doble que con GCC (522 ms frente a 224 ms) y el bucle un 20 % más. Gana en coma flotante porque con MATH=FFP usa el formato rápido de Motorola de la ROM (mathffp.library), que tiene menos precisión que el IEEE de los demás. Su sprintf es más rápido que el de libnix y sus ejecutables son pequeños."],
         ["AmiBlitz3", "Hace los ejecutables más pequeños (476 bytes uno vacío), porque solo enlaza las rutinas que usas, y es el que antes arranca. Con enteros tarda de 6 a 13 veces más que C compilado con GCC. Se compiló con -r, que según su ayuda optimiza el tamaño, y con el resto de opciones por defecto, sin afinarlo ni revisar el código que genera. Sin su depurador no comprueba nada: dividir por cero da 2147483647 y un índice fuera de rango escribe en otra zona de memoria."],
@@ -189,6 +189,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["3 nov.", "Dash 2.0.2: el compilador directo une textos en la mitad de tiempo y ya es más rápido que el camino por C en textos y bucles."],
         ["2 nov.", "Dash 2.0.1: una sola orden, dash, directo a hunk o por C con --gcc. Varios programas que miden la CPU a la vez ven todas las tareas."],
         ["31 oct.", "Dash 2.0: un compilador propio genera el código 68000 sin GCC, en el PC o en el propio Amiga. Un \"hola\" se compila en menos de un segundo en un A1200."],
         ["30 oct.", "Los bloques pequeños vuelven al sistema: tras soltar 3.000 structs con texto, el programa devuelve 149 KB que antes se quedaba."],
@@ -235,7 +236,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "Lo que necesitas",
       amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
-      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.0.1-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI)."],
+      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.0.2-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI)."],
       pc: ["Para compilar en el PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
     },
@@ -256,7 +257,7 @@ export const CONTENIDO = {
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     novedades: {
       titulo: "What's new: Dash 2.0 is here",
-      texto: "Dash 2.0.1 was released on 2 November 2026 and is now in the repository's main branch. With the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
+      texto: "Dash 2.0 has been in the repository's main branch since 2 November 2026; the latest version is 2.0.2. With the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
       lista: [
         {
           estado: "New",
@@ -266,12 +267,12 @@ export const CONTENIDO = {
         {
           estado: "For the Amiga",
           titulo: "And it compiles on the Amiga itself",
-          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.0.1-amiga.lha and its own installer, which also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
+          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.0.2-amiga.lha and its own installer, which also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
         },
         {
           estado: "Measured",
           titulo: "Both paths, measured",
-          texto: "The comparison below shows both. The straight one ties with the C one in loops and drawing lines, and starts faster. With strings, lists and floating point the C path is still faster: 1.7 to 2 times on an A1200. For a program that needs every cycle, --gcc.",
+          texto: "The comparison below shows both. The straight one is faster than the C one with strings and loops, and starts faster; at floating point and drawing lines they tie. The C one is still ahead with lists (15%) and with function calls on an A1200 (11%).",
         },
         {
           estado: "Done",
@@ -342,7 +343,7 @@ export const CONTENIDO = {
     comparativa: {
       titulo: "Against Blitz and AMOS",
       texto:
-        "The same programs written in Dash, AmiBlitz3, AMOS Professional and C (SAS/C and GCC), built with the compilers that come with Coffin OS and measured on an emulated A1200 at real speed. Dash shows up twice: compiled straight to hunk and through C with GCC. Through C, it is as fast as C for arithmetic and calls, and the fastest of all with strings and lists; there AmiBlitz3 and AMOS take 10 to 40 times longer. The straight one ties in loops and lines, and with strings, lists and floating point it takes 1.7 to 2 times as long as the C one. C wins at floating point and drawing lines.",
+        "The same programs written in Dash, AmiBlitz3, AMOS Professional and C (SAS/C and GCC), built with the compilers that come with Coffin OS and measured on an emulated A1200 at real speed. Dash shows up twice: compiled straight to hunk and through C with GCC. Through C, it is as fast as C for arithmetic and calls, and the fastest of all with strings and lists; there AmiBlitz3 and AMOS take 10 to 40 times longer. The straight one is faster than the C one with strings and loops, ties at floating point and lines, and is a little slower with lists. C wins at floating point and drawing lines.",
       prueba: "Test",
       menos: "Lower is better. The best of each row is in orange.",
       division: "Division by zero",
@@ -352,7 +353,7 @@ export const CONTENIDO = {
       codigoC: "C (SAS/C and GCC)",
       porqueTitulo: "Why the numbers look like this",
       porque: [
-        ["Dash straight", "The straight compiler generates the code itself, without GCC's optimizations: it keeps more values in memory and calls the runtime where GCC puts the code inline. That is why, with strings, lists and floating point, it is slower than Dash through C. On the other hand, it starts faster, needs no GCC and compiles on the Amiga itself."],
+        ["Dash straight", "The straight compiler generates the code itself. It does list access inline, moves calculations that don't change out of the loop and joins string and number in a single call written for it. With lists it is still a little slower than Dash through C, because GCC checks only once, outside the loop, that the list exists. It starts faster and also compiles on the Amiga itself."],
         ["Dash through C and GCC", "Dash doesn't compile better than GCC. Through C, it writes C that the same GCC compiles, so where both do the same work they tie (loop and calls). It wins where it uses its own runtime instead of the C library. To turn a number into text it gets two digits per division, instead of using libnix's sprintf, which has to parse the format as it goes. For the remainder (%) it uses the 68000's 16-bit division when the numbers fit, instead of libgcc's 32-bit routine. And it prints with dos.library's Printf, without C's printf buffers, which is why it uses less memory. A C programmer could do the same by hand. The test measures what you get writing each language the normal way."],
         ["SAS/C", "It's a 1995 compiler that optimizes less than GCC 6. GCC puts the function inside the loop while SAS/C really calls it, so calls take more than twice as long as with GCC (522 ms against 224 ms) and the loop 20% longer. It wins at floating point because with MATH=FFP it uses Motorola's fast format from the ROM (mathffp.library), which is less precise than the others' IEEE. Its sprintf is faster than libnix's and its executables are small."],
         ["AmiBlitz3", "It makes the smallest executables (476 bytes for an empty one), because it only links the routines you use, and it starts the fastest. With integers it takes 6 to 13 times longer than C built with GCC. It was built with -r, which its help says optimizes for size, and every other option at its default, without tuning it or checking the code it generates. Without its debugger it checks nothing: dividing by zero gives 2147483647 and an index out of range writes over other memory."],
@@ -368,6 +369,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["3 Nov", "Dash 2.0.2: the straight compiler joins strings in half the time and is now faster than the C path with strings and loops."],
         ["2 Nov", "Dash 2.0.1: one command, dash, straight to hunk or through C with --gcc. Several programs measuring the CPU at once see every task."],
         ["31 Oct", "Dash 2.0: its own compiler generates the 68000 code without GCC, on the PC or on the Amiga itself. A \"hello\" compiles in under a second on an A1200."],
         ["30 Oct", "Small blocks go back to the system: after freeing 3,000 structs with text, the program returns 149 KB it used to keep."],
@@ -414,7 +416,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "What you need",
       amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
-      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.0.1-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI)."],
+      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.0.2-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI)."],
       pc: ["To compile on the PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
     },
