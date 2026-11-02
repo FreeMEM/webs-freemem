@@ -77,12 +77,12 @@ export const CONTENIDO = {
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     novedades: {
       titulo: "Novedades: Dash 2.0 ya está aquí",
-      texto: "Dash 2.0.1 se publicó el 2 de noviembre de 2026 y ya está en la rama principal del repositorio. Hay una sola orden, dash, que compila de dos formas: directo a hunk, por defecto, o por C con el GCC de Amiga, con --gcc.",
+      texto: "Dash 2.0.1 se publicó el 2 de noviembre de 2026 y ya está en la rama principal del repositorio. Con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
       lista: [
         {
           estado: "Nuevo",
-          titulo: "Sin compilador de C",
-          texto: "El compilador de Dash genera él mismo el código 68000 y el ejecutable del Amiga. Para compilar un programa en Dash ya no hace falta el GCC de Amiga: en Linux o en un Mac, el compilador se construye en unos segundos con el compilador de C del sistema.",
+          titulo: "Dos formas de compilar",
+          texto: "Por defecto, dash genera directamente el ejecutable hunk nativo del Amiga, con su código 68000. Con --gcc genera C intermedio y lo compila el GCC de Amiga. El lenguaje, las funciones y lo que hace el programa son los mismos por los dos caminos.",
         },
         {
           estado: "Para el Amiga",
@@ -100,9 +100,9 @@ export const CONTENIDO = {
           texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas y un depurador que también usa VS Code. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
         },
         {
-          estado: "Se mantiene",
-          titulo: "Por C con GCC, con --gcc",
-          texto: "Los programas que llevan C dentro (@native) pasan por el GCC de Amiga de bebbo, como en la 1.x: dash lo hace solo, o con --gcc. Y se mantiene pensando en el futuro: GCC sabe generar código PowerPC, el camino para compilar para MorphOS y AmigaOS 4.",
+          estado: "Futuro",
+          titulo: "C intermedio, camino a PowerPC",
+          texto: "El modo --gcc genera C y lo compila el GCC de Amiga de bebbo. Hoy da ejecutables de 68000 y sirve para los programas que llevan C dentro (@native). Como GCC también genera código PowerPC, por ahí llegará Dash a MorphOS y a AmigaOS 4.",
         },
       ],
     },
@@ -256,12 +256,12 @@ export const CONTENIDO = {
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     novedades: {
       titulo: "What's new: Dash 2.0 is here",
-      texto: "Dash 2.0.1 was released on 2 November 2026 and is now in the repository's main branch. There is one command, dash, which compiles in two ways: straight to hunk, the default, or through C with the Amiga GCC, with --gcc.",
+      texto: "Dash 2.0.1 was released on 2 November 2026 and is now in the repository's main branch. With the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
       lista: [
         {
           estado: "New",
-          titulo: "No C compiler needed",
-          texto: "Dash's compiler produces the 68000 code and the Amiga executable itself. You no longer need the Amiga GCC to build a Dash program: on Linux or a Mac, the compiler builds in a few seconds with the system's C compiler.",
+          titulo: "Two ways to compile",
+          texto: "By default, dash generates the native Amiga hunk executable directly, with its 68000 code. With --gcc it generates intermediate C and the Amiga GCC compiles it. The language, the functions and what the program does are the same on both paths.",
         },
         {
           estado: "For the Amiga",
@@ -279,9 +279,9 @@ export const CONTENIDO = {
           texto: "All of them are documented in English and Spanish. The new ones include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager and a debugger that VS Code uses too. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
         },
         {
-          estado: "Still there",
-          titulo: "Through C with GCC, with --gcc",
-          texto: "Programs with C inside (@native) go through bebbo's Amiga GCC, as in 1.x: dash does it by itself, or with --gcc. It is also kept with the future in mind: GCC can generate PowerPC code, the way to compiling for MorphOS and AmigaOS 4.",
+          estado: "Future",
+          titulo: "Intermediate C, the way to PowerPC",
+          texto: "The --gcc mode generates C and bebbo's Amiga GCC compiles it. Today it makes 68000 executables and handles programs with C inside (@native). Since GCC also generates PowerPC code, that is how Dash will reach MorphOS and AmigaOS 4.",
         },
       ],
     },
