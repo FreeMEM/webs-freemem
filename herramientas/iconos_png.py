@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Los iconos de Workbench de verdad (los mismos que van en los .info de los paquetes) en PNG para las webs: el gris
 del Workbench (color 0) es transparente, como en el escritorio, y cada píxel del Amiga se dobla (nítido, sin
-suavizar).
+suavizar). Los de Forja e Inferencia salen del `icono()` de su tools/paquete.py.
 
     python3 herramientas/iconos_png.py DIR
 """
+import importlib.util
 import sys
 from pathlib import Path
 
@@ -42,6 +43,15 @@ def ram():
     return l
 
 
+def icono_de(repo):
+    """El icono del programa, tal cual lo pone su tools/paquete.py en el .info."""
+    ruta = Path.home() / "Projects" / repo / "tools" / "paquete.py"
+    spec = importlib.util.spec_from_file_location(f"paquete_{repo}", ruta)
+    modulo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modulo)
+    return modulo.icono()
+
+
 def a_png(lienzo, ruta, escala=2):
     img = Image.new("RGBA", (lienzo.ancho, lienzo.alto))
     img.putdata([PALETA[c] for fila in lienzo.p for c in fila])
@@ -53,7 +63,8 @@ def main():
     dest.mkdir(parents=True, exist_ok=True)
     for nombre, lienzo in {"trasfondo": icono(), "trasfondoprefs": icono_prefs(), "cajon": cajon(),
                            "instalar": instalador(), "leeme": documento(), "tachyon": navegador(),
-                           "disco": disco(), "sistema": disco(False), "ram": ram()}.items():
+                           "disco": disco(), "sistema": disco(False), "ram": ram(),
+                           "forja": icono_de("forja"), "inferencia": icono_de("inferencia")}.items():
         a_png(lienzo, dest / f"{nombre}.png")
         print(dest / f"{nombre}.png", lienzo.ancho, lienzo.alto)
 

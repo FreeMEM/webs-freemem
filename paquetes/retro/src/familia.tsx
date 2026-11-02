@@ -23,6 +23,20 @@ export const SITIOS = [
     icono: "/familia/trasfondo.png",
     lema: { es: "El monitor", en: "The monitor" },
   },
+  {
+    id: "forja",
+    nombre: "Forja",
+    url: "https://forja.freemem.space",
+    icono: "/familia/forja.png",
+    lema: { es: "El IDE", en: "The IDE" },
+  },
+  {
+    id: "inferencia",
+    nombre: "Inferencia",
+    url: "https://inferencia.freemem.space",
+    icono: "/familia/inferencia.png",
+    lema: { es: "La IA", en: "The AI" },
+  },
 ] as const;
 
 export type IdSitio = (typeof SITIOS)[number]["id"];
@@ -42,7 +56,7 @@ const TEXTOS = {
   },
 };
 
-/** La barra de arriba: el programa en el que estás, los otros dos y el cambio de idioma. */
+/** La barra de arriba: el programa en el que estás, los demás y el cambio de idioma. */
 export function Cabecera({ actual, idioma, rutaOtroIdioma }: { actual: IdSitio; idioma: Idioma; rutaOtroIdioma: string }) {
   const t = TEXTOS[idioma];
   return (
