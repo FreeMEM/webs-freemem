@@ -1,0 +1,620 @@
+@import "retro/src/retro.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Forja: el fondo negro de su editor (src/tema.dash) y el naranja de la fragua. Topaz para los títulos (la familia
+   de las webs); Atkinson Hyperlegible para leer. */
+:root {
+  --negro: #0e0e12;
+  --negro-hondo: #08080a;
+  --panel: #1a1a20;
+  --borde: #32323c;
+  --brasa: #ff8a1f;
+  --brasa-clara: #ffc850;
+  --luz: #dcdcd2;
+  --tenue: #9a9aa8;
+  --medida: 38rem;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--negro-hondo);
+  color: var(--luz);
+  font-family: var(--fuente-texto), system-ui, sans-serif;
+  font-size: 112.5%;
+  line-height: 1.55;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--negro);
+}
+
+a {
+  color: var(--brasa-clara);
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brasa-clara);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+main p,
+main li,
+main dd {
+  max-width: var(--medida);
+  overflow-wrap: break-word;
+}
+
+/* ---------- Portada: la fragua ---------- */
+
+.portada {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 4rem 1.25rem 4.5rem;
+  /* el resplandor de la fragua, abajo */
+  background: radial-gradient(70rem 30rem at 30% 100%, rgba(255, 110, 20, 0.16), transparent 70%);
+  border-bottom: 1px solid var(--borde);
+}
+
+.portada-rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  align-items: center;
+  max-width: 69.5rem;
+  margin: 0 auto;
+}
+
+.chispas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.portada h1 {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 0 1.25rem;
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
+  letter-spacing: 0.02em;
+}
+
+.yunque {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.yunque img {
+  width: 6.5rem;
+  height: auto;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 2px #000, 0 0 40px rgba(255, 138, 31, 0.35);
+  transition: transform 0.08s;
+}
+
+.yunque:active img {
+  transform: translateY(3px);
+}
+
+.lema {
+  margin: 0 0 1rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--brasa-clara);
+}
+
+.portada-entrada {
+  color: var(--luz);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #1a0d00;
+  background: var(--brasa);
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000, 0 0 30px rgba(255, 138, 31, 0.35);
+}
+
+.boton:hover {
+  background: var(--brasa-clara);
+}
+
+.boton:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.boton-suave {
+  color: var(--luz);
+  background: transparent;
+  border-color: var(--borde);
+  box-shadow: none;
+}
+
+.boton-suave:hover {
+  background: rgba(255, 200, 80, 0.08);
+}
+
+.peso,
+.aviso {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+  color: var(--tenue);
+}
+
+/* ---------- La ventana de Forja (esquema) ---------- */
+
+.ventana-forja {
+  margin: 0;
+}
+
+.vf-marco {
+  border: 2px solid #000;
+  background: rgb(26, 26, 32);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 60px rgba(255, 110, 20, 0.12);
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(220, 220, 210);
+  user-select: none;
+}
+
+.vf-barra {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  background: var(--wb-azul);
+  color: var(--wb-negro);
+  border-bottom: 1px solid #000;
+}
+
+.vf-cierre {
+  width: 22px;
+  height: 100%;
+  border-right: 1px solid #000;
+  background: linear-gradient(#000, #000) center / 8px 8px no-repeat, linear-gradient(#fff, #fff) center / 10px 10px no-repeat, var(--wb-gris);
+}
+
+.vf-titulo {
+  flex: 1;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vf-profundidad {
+  width: 22px;
+  height: 100%;
+  border-left: 1px solid #000;
+  background:
+    linear-gradient(#000, #000) 5px 5px / 9px 7px no-repeat,
+    linear-gradient(#fff, #fff) 9px 9px / 8px 6px no-repeat,
+    var(--wb-gris);
+}
+
+.vf-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  border-bottom: 1px solid rgb(50, 50, 60);
+}
+
+.vf-boton {
+  padding: 2px 10px;
+  border: 1px solid;
+  border-color: rgb(80, 80, 92) rgb(8, 8, 10) rgb(8, 8, 10) rgb(80, 80, 92);
+  background: rgb(30, 30, 38);
+}
+
+.vf-inferencia {
+  margin-left: auto;
+}
+
+.vf-cuerpo {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  min-height: 13rem;
+}
+
+.vf-panel {
+  padding: 6px 8px;
+  border-right: 1px solid rgb(50, 50, 60);
+}
+
+.vf-panel p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vf-panel-titulo {
+  margin-top: 6px !important;
+  color: rgb(110, 110, 124);
+}
+
+.vf-panel-titulo:first-child {
+  margin-top: 0 !important;
+}
+
+.vf-activo {
+  color: rgb(90, 150, 230);
+}
+
+.vf-var {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4px;
+}
+
+.vf-var span:last-child {
+  color: rgb(240, 170, 90);
+}
+
+.vf-editor {
+  min-width: 0;
+  background: rgb(14, 14, 18);
+}
+
+.vf-pestanas {
+  display: flex;
+  overflow: hidden;
+  background: rgb(26, 26, 32);
+  border-bottom: 1px solid rgb(50, 50, 60);
+}
+
+.vf-pestanas span {
+  padding: 2px 10px;
+  border-right: 1px solid rgb(50, 50, 60);
+  color: rgb(110, 110, 124);
+  white-space: nowrap;
+}
+
+.vf-pestanas .vf-activa {
+  color: rgb(220, 220, 210);
+  background: rgb(14, 14, 18);
+  box-shadow: inset 0 2px 0 rgb(90, 150, 230);
+}
+
+.vf-codigo {
+  margin: 0;
+  padding: 8px 0;
+  font: inherit;
+  overflow: hidden;
+}
+
+.vf-linea {
+  display: block;
+  padding-right: 8px;
+  white-space: pre;
+}
+
+.vf-aqui {
+  background: rgb(80, 70, 20);
+}
+
+.vf-num {
+  display: inline-block;
+  width: 3.2em;
+  padding-right: 0.6em;
+  text-align: right;
+  color: rgb(110, 110, 124);
+}
+
+.vf-marca,
+.vf-parada {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.vf-aqui .vf-marca {
+  color: rgb(255, 200, 80);
+}
+
+.vf-parada {
+  color: rgb(230, 80, 70);
+}
+
+.vf-k {
+  color: rgb(200, 130, 230);
+}
+
+.vf-n {
+  color: rgb(240, 170, 90);
+}
+
+.vf-ll {
+  color: rgb(240, 220, 140);
+}
+
+.vf-salida {
+  margin: 0;
+  padding: 5px 8px;
+  max-width: none;
+  background: rgb(8, 8, 10);
+  border-top: 1px solid rgb(50, 50, 60);
+  color: rgb(110, 200, 120);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ventana-forja figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--tenue);
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem;
+}
+
+.seccion + .seccion {
+  border-top: 1px solid var(--borde);
+}
+
+.medida {
+  max-width: var(--medida);
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 2.5rem;
+  margin: 2.5rem 0 0;
+}
+
+.rejilla div {
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--brasa);
+}
+
+.rejilla dt {
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.rejilla dd {
+  margin: 0;
+  color: var(--tenue);
+}
+
+.teclas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.7rem 1.5rem;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teclas li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+kbd {
+  flex: none;
+  min-width: 5.6rem;
+  padding: 0.25rem 0.55rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #111;
+  background: #d8d6cc;
+  border: 1px solid #000;
+  border-radius: 3px;
+  box-shadow: inset -2px -3px 0 #9b998f, 2px 2px 0 #000;
+}
+
+.teclas-depurador {
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+}
+
+.teclas-depurador kbd {
+  min-width: 3.2rem;
+}
+
+.seccion-doble {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.nota-tecnica {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--brasa);
+  background: var(--panel);
+  color: var(--tenue);
+}
+
+.nota-tecnica p:first-child {
+  margin-top: 0;
+}
+
+.nota-tecnica p:last-child {
+  margin-bottom: 0;
+}
+
+.columnas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.columnas p {
+  margin: 0;
+}
+
+.seccion-inferencia {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.seccion-inferencia img {
+  width: 80px;
+  image-rendering: pixelated;
+  margin-top: 0.4rem;
+}
+
+.ordenes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 2rem 0 0;
+  border-top: 1px solid var(--borde);
+}
+
+.ordenes div {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.ordenes dt code {
+  font-family: var(--fuente-topaz), monospace;
+  color: var(--brasa-clara);
+  overflow-wrap: anywhere;
+}
+
+.ordenes dd {
+  margin: 0;
+  color: var(--tenue);
+}
+
+.lista {
+  padding-left: 1.2rem;
+}
+
+.lista li {
+  margin: 0.5rem 0;
+}
+
+.lista li::marker {
+  color: var(--brasa);
+}
+
+.enlace-topaz {
+  font-family: var(--fuente-topaz), monospace;
+}
+
+.familia {
+  border-bottom: 1px solid var(--borde);
+}
+
+.pie {
+  color: var(--tenue);
+  border-top: 1px solid var(--borde);
+}
+
+@media (max-width: 62rem) {
+  .portada {
+    padding-top: 3rem;
+  }
+  .portada-rejilla {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rejilla,
+  .columnas {
+    grid-template-columns: 1fr 1fr;
+  }
+  .seccion-doble,
+  .ordenes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  .rejilla,
+  .columnas {
+    grid-template-columns: 1fr;
+  }
+  .portada h1 {
+    gap: 0.9rem;
+  }
+  .yunque img {
+    width: 4.5rem;
+  }
+  .vf-marco {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .vf-cuerpo {
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+  .ordenes div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+  .seccion-inferencia {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
