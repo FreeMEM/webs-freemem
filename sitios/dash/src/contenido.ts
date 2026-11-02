@@ -189,6 +189,10 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["2 nov.", "Dash 2.0.1: una sola orden, dash, directo a hunk o por C con --gcc. Varios programas que miden la CPU a la vez ven todas las tareas."],
+        ["31 oct.", "Dash 2.0: un compilador propio genera el código 68000 sin GCC, en el PC o en el propio Amiga. Un \"hola\" se compila en menos de un segundo en un A1200."],
+        ["30 oct.", "Los bloques pequeños vuelven al sistema: tras soltar 3.000 structs con texto, el programa devuelve 149 KB que antes se quedaba."],
+        ["28 oct.", "Dash 1.0.1: cada texto guarda su longitud. Texto + número va un 17 % más rápido, buscar en un diccionario con una clave literal un 34-41 %, y cada programa usa 8 KB menos de memoria."],
         ["25 oct.", "Cabecera de objetos de 16 bytes: 1.000 structs pequeños ocupan 24 KB en vez de 33 KB."],
         ["25 oct.", "--cpu 68020 a 68060: compilando para un 68040 en vez de para un 68000, Fixed divide 34 veces más rápido y los textos van un 13 % más deprisa."],
         ["15 oct.", "Fixed 16.16: decimales con aritmética entera, 2,6 veces más rápidos que Float en un 68000."],
@@ -363,6 +367,10 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["2 Nov", "Dash 2.0.1: one command, dash, straight to hunk or through C with --gcc. Several programs measuring the CPU at once see every task."],
+        ["31 Oct", "Dash 2.0: its own compiler generates the 68000 code without GCC, on the PC or on the Amiga itself. A \"hello\" compiles in under a second on an A1200."],
+        ["30 Oct", "Small blocks go back to the system: after freeing 3,000 structs with text, the program returns 149 KB it used to keep."],
+        ["28 Oct", "Dash 1.0.1: every string keeps its length. String + number is 17% faster, looking up a dictionary with a literal key 34-41% faster, and every program uses 8 KB less memory."],
         ["25 Oct", "16-byte object header: 1,000 small structs take 24 KB instead of 33 KB."],
         ["25 Oct", "--cpu 68020 to 68060: compiling for a 68040 instead of a 68000, Fixed divides 34 times faster and strings are 13% quicker."],
         ["15 Oct", "Fixed 16.16: decimals with integer maths, 2.6 times faster than Float on a 68000."],
