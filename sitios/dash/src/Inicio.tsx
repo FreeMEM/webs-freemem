@@ -1,7 +1,7 @@
 import type React from "react";
 import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { AREAS, BASE, BUILTINS, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
+import { AREAS, BASE, BUILTINS, COLUMNAS_DASH, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import codigos from "./comparativa_codigo.json";
 import ejemplos from "./ejemplos.json";
 import { LogoDash } from "./LogoDash";
@@ -202,7 +202,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
                     <figure key={id} className="prueba">
                       <figcaption>{idioma === "es" ? es : en}</figcaption>
                       {valores.map((v, i) => (
-                        <div key={LENGUAJES[i]} className={`barra${i === 0 ? " barra-dash" : ""}${v === mejor ? " barra-mejor" : ""}`}>
+                        <div key={LENGUAJES[i]} className={`barra${i < COLUMNAS_DASH ? " barra-dash" : ""}${v === mejor ? " barra-mejor" : ""}`}>
                           <span className="barra-nombre">{LENGUAJES[i]}</span>
                           <span className="barra-pista">
                             <span style={{ inlineSize: `${Math.max(1.5, (v / peor) * 100)}%` }} />
