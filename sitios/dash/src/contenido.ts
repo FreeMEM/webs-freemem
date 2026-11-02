@@ -210,7 +210,7 @@ export const CONTENIDO = {
         ["MANUAL_REFERENCIA", "Manual de referencia", "cada parte del lenguaje y de la API del Amiga, con ejemplos"],
         ["QUICK_REFERENCE", "Referencia rápida", "la sintaxis entera en una chuleta"],
         ["BUILTINS", `Las ${BUILTINS} funciones`, "la lista, sacada del propio compilador"],
-        ["INSTALACION", "Instalación", "Dash, el compilador cruzado y el emulador, paso a paso"],
+        ["INSTALACION", "Instalación", "Dash en el Amiga o en el PC (directo o por C con gcc) y el emulador, paso a paso"],
         ["MUI_EDITOR", "El editor visual de MUI", "el formato .dashui y la extensión de VS Code"],
         ["COMPARATIVA", "Comparativa", "Dash frente a Blitz, AMOS y C, con números"],
       ],
@@ -234,8 +234,9 @@ export const CONTENIDO = {
     },
     requisitos: {
       titulo: "Lo que necesitas",
-      amiga: ["En el Amiga", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
-      pc: ["En tu PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
+      amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
+      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.0.1-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI)."],
+      pc: ["Para compilar en el PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
     },
     pie: [
@@ -388,7 +389,7 @@ export const CONTENIDO = {
         ["MANUAL_REFERENCIA", "Reference manual", "every part of the language and of the Amiga API, with examples"],
         ["QUICK_REFERENCE", "Quick reference", "the whole syntax on one cheat sheet"],
         ["BUILTINS", `The ${BUILTINS} functions`, "the list, taken from the compiler itself"],
-        ["INSTALACION", "Installation", "Dash, the cross compiler and the emulator, step by step"],
+        ["INSTALACION", "Installation", "Dash on the Amiga or on the PC (straight or through C with gcc) and the emulator, step by step"],
         ["MUI_EDITOR", "The visual MUI editor", "the .dashui format and the VS Code extension"],
         ["COMPARATIVA", "Comparison", "Dash against Blitz, AMOS and C, with numbers"],
       ],
@@ -412,8 +413,9 @@ export const CONTENIDO = {
     },
     requisitos: {
       titulo: "What you need",
-      amiga: ["On the Amiga", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
-      pc: ["On your PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
+      amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
+      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.0.1-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI)."],
+      pc: ["To compile on the PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
     },
     pie: [

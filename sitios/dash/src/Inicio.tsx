@@ -51,7 +51,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
     nombre: "Dash",
     descripcion: t.descripcion,
     url: `${BASE}${raiz}`,
-    requisitos: "Linux, macOS o WSL2; Python 3.10+; m68k-amigaos-gcc. Ejecutables para AmigaOS 3.0+",
+    requisitos: "Linux, macOS o WSL2 (compilador de C, make, Python 3), o el propio Amiga (68000, AmigaOS 2.0+). Ejecutables para AmigaOS 3.0+",
     imagen: `${BASE}/og.png`,
     idioma,
     codigo: REPO,
@@ -373,7 +373,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
         <section className="seccion seccion-requisitos" aria-labelledby="requisitos">
           <Titulo id="requisitos" etiqueta={t.indice.enlace}>{t.requisitos.titulo}</Titulo>
           <dl className="lista-todo">
-            {[t.requisitos.amiga, t.requisitos.pc].map(([que, como]) => (
+            {[t.requisitos.amiga, t.requisitos.instalarAmiga, t.requisitos.pc].map(([que, como]) => (
               <div key={que}>
                 <dt>{que}</dt>
                 <dd>{como}</dd>
