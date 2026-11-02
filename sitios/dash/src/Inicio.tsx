@@ -57,7 +57,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
     codigo: REPO,
     categoria: "DeveloperApplication",
   });
-  const maximo = AREAS[0][2];
+  const maximo = Math.max(...AREAS.map((a) => a[2]));
 
   const paneles = (Object.keys(CAPTURAS) as IdEjemplo[]).map((id) => {
     const ej = ejemplos[id];
