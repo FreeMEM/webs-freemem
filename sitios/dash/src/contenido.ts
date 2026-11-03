@@ -163,7 +163,7 @@ export const CONTENIDO = {
         ["Los números", "Float se calcula por software, con la suma y la multiplicación en ensamblador de 68000, o con la FPU 68881/68882 si compilas con --fpu. Fixed 16.16 hace decimales con aritmética entera; en un 68000, multiplicar así es 2,6 veces más rápido que con Float."],
         ["La memoria", "Textos, listas y structs llevan un contador de referencias y se liberan solos, igual que los temporales de cada vuelta de un bucle. No hay recolector de basura ni pausas. Para buscar fallos, --memcheck avisa de las dobles liberaciones y de lo que queda sin liberar al salir, y --profile cuenta las llamadas y el tiempo de cada función."],
         ["Lo que sale", "Un ejecutable para Kickstart 3.0 o posterior (usa los pools de memoria de exec V39) que funciona en un 68000. Una ventana con su bucle de eventos ocupa 5 KB. Con --small ocupa un 7 % menos, y con --debug sale preparado para el depurador, con los números de línea de tu .dash."],
-        ["Probado en el Amiga", "Más de 300 programas de prueba se compilan y se ejecutan en FS-UAE, en un A1200, un A500 y un A1200 con AmigaOS 3.2, y con MUI, AmiSSL o tarjeta gráfica cuando los necesitan. El compilador tiene unas 30.000 líneas de Python, y VS Code usa ese mismo código para entender el lenguaje."],
+        ["Probado en el Amiga", "Más de 400 programas de prueba se compilan y se ejecutan en FS-UAE, en un A1200, un A500 y un A1200 con AmigaOS 3.2, y con MUI, AmiSSL o tarjeta gráfica cuando los necesitan. El compilador directo está escrito en C (unas 13.000 líneas). El camino por C es de Python (unas 42.000 líneas), y VS Code usa ese mismo código para entender el lenguaje."],
       ],
     },
     comparativa: {
@@ -350,7 +350,7 @@ export const CONTENIDO = {
         ["The numbers", "Float is calculated in software, with addition and multiplication in 68000 assembly, or with the 68881/68882 FPU if you compile with --fpu. Fixed 16.16 does decimals with integer maths; on a 68000, multiplying this way is 2.6 times faster than with Float."],
         ["Memory", "Strings, lists and structs have a reference count and are freed automatically, and so are the temporaries of each loop iteration. There's no garbage collector and no pauses. To find bugs, --memcheck reports double frees and anything left unfreed at exit, and --profile counts the calls and time of each function."],
         ["What comes out", "An executable for Kickstart 3.0 or later (it uses exec V39 memory pools) that runs on a 68000. A window with its event loop takes 5 KB. With --small it is 7% smaller, and with --debug it comes out ready for the debugger, with the line numbers of your .dash."],
-        ["Tested on the Amiga", "Over 300 test programs are compiled and run in FS-UAE, on an A1200, an A500 and an A1200 with AmigaOS 3.2, plus MUI, AmiSSL or a graphics card when they need them. The compiler is about 30,000 lines of Python, and VS Code uses that same code to understand the language."],
+        ["Tested on the Amiga", "Over 400 test programs are compiled and run in FS-UAE, on an A1200, an A500 and an A1200 with AmigaOS 3.2, plus MUI, AmiSSL or a graphics card when they need them. The direct compiler is written in C (about 13,000 lines). The path through C is Python (about 42,000 lines), and VS Code uses that same code to understand the language."],
       ],
     },
     comparativa: {
