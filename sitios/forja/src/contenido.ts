@@ -26,7 +26,7 @@ export const CAPTURAS = {
   mapas: { es: "/imagenes/mapas.png", en: "/imagenes/mapas.png" },
 } satisfies Record<string, Record<Idioma, string>>;
 /** El vídeo de cada idioma: Forja 0.1 con Dash 2.2, grabado en Coffin R65 con tarjeta gráfica. */
-export const VIDEO = { es: "AQxEOf0xLU8", en: "PENDIENTE" } satisfies Record<Idioma, string>;
+export const VIDEO = { es: "AQxEOf0xLU8", en: "XDW4WjthAAA" } satisfies Record<Idioma, string>;
 
 export const CONTENIDO = {
   es: {
