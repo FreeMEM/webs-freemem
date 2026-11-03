@@ -1,18 +1,20 @@
-import { Cabecera, Pie, datosPrograma, type Idioma } from "retro";
+import { Cabecera, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO } from "./contenido";
+import { BASE, CAPTURAS, CONTENIDO, DESCARGA, FORJA_RELEASE, FORJA_VERSION, FRAGUA, RELEASE, REPO, VIDEO } from "./contenido";
 import { Fragua } from "./Fragua";
 import { VentanaForja } from "./VentanaForja";
 
 export function Inicio({ idioma }: { idioma: Idioma }) {
   const t = CONTENIDO[idioma];
   const raiz = idioma === "es" ? "/" : "/en/";
-  // sin versión propia todavía: ni versión ni descarga en los datos estructurados
+  // la versión de Forja; la descarga, el paquete de Dash que la trae
   const datos = datosPrograma({
     nombre: "Forja",
     descripcion: t.descripcion,
     url: `${BASE}${raiz}`,
-    requisitos: "AmigaOS 3.0+, 68020+, MUI 5, Dash 2.0.1",
+    version: FORJA_VERSION,
+    descarga: DESCARGA,
+    requisitos: "AmigaOS 3.0+, 68020+, MUI 3.8 o 5, Dash 2.2+",
     imagen: `${BASE}/og.png`,
     idioma,
     codigo: REPO,
@@ -42,10 +44,19 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               </a>
             </div>
             <p className="peso">{t.peso}</p>
+            <p className="peso">
+              {t.sola[0]} <a href={FORJA_RELEASE}>{t.sola[1]}</a> {t.sola[2]}
+            </p>
             <p className="aviso">{t.prueba}</p>
           </div>
           <VentanaForja idioma={idioma} pie={t.esquema} />
         </Fragua>
+
+        <section className="seccion" id="video" aria-labelledby="titulo-video">
+          <h2 id="titulo-video">{t.video.titulo}</h2>
+          <p className="medida">{t.video.texto}</p>
+          <VideoYouTube id={VIDEO[idioma]} titulo={t.video.titulo_video} portada={`/imagenes/video-${idioma}.jpg`} textoBoton={t.video.boton} />
+        </section>
 
         <section className="seccion" aria-labelledby="ventana">
           <h2 id="ventana">{t.ventana.titulo}</h2>
@@ -102,6 +113,70 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               {t.disenador.formato} <a href={`https://dash.freemem.space${raiz}`}>{t.disenador.enlace}</a>
             </p>
           </div>
+        </section>
+
+        <section className="seccion" aria-labelledby="sprites">
+          <h2 id="sprites">{t.sprites.titulo}</h2>
+          <p className="medida">{t.sprites.texto}</p>
+          <figure className="captura">
+            <img src={CAPTURAS.sprites[idioma]} width={1024} height={768} alt={t.sprites.alt} loading="lazy" />
+            <figcaption>{t.sprites.pie}</figcaption>
+          </figure>
+          <dl className="rejilla">
+            {t.sprites.lista.map(([que, como]) => (
+              <div key={que}>
+                <dt>{que}</dt>
+                <dd>{como}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section className="seccion" aria-labelledby="mapas">
+          <h2 id="mapas">{t.mapas.titulo}</h2>
+          <p className="medida">{t.mapas.texto}</p>
+          <figure className="captura">
+            <img src={CAPTURAS.mapas[idioma]} width={1024} height={768} alt={t.mapas.alt} loading="lazy" />
+            <figcaption>{t.mapas.pie}</figcaption>
+          </figure>
+          <dl className="rejilla">
+            {t.mapas.lista.map(([que, como]) => (
+              <div key={que}>
+                <dt>{que}</dt>
+                <dd>{como}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="medida nota-fichero">{t.mapas.fichero}</p>
+        </section>
+
+        <section className="seccion" aria-labelledby="fragua">
+          <h2 id="fragua">{t.fragua.titulo}</h2>
+          <p className="medida">{t.fragua.texto}</p>
+          <div className="seccion-doble fragua-estado">
+            <div>
+              <h3>{t.fragua.hechoTitulo}</h3>
+              <ul className="lista">
+                {t.fragua.hecho.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="nota-tecnica">
+              <h3>{t.fragua.planTitulo}</h3>
+              <ul className="lista">
+                {t.fragua.plan.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="enlaces-fragua">
+            <a className="enlace-topaz" href={FRAGUA}>
+              {t.fragua.enlace}
+            </a>
+            <a href={`${REPO}/blob/main/docs/JUEGOS_DISENO.md`}>{t.fragua.diseno}</a>
+          </p>
         </section>
 
         <section className="seccion seccion-inferencia" aria-labelledby="inferencia">

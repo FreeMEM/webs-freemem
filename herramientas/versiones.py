@@ -18,8 +18,9 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 
 # web: (repositorio, fichero que se baja, si valen las prerreleases, prefijo de la etiqueta)
-# Forja e Inferencia aún no tienen release propia: van dentro del paquete de Dash para el Amiga. Cuando la tengan,
-# cambiar aquí el repositorio y el patrón (y los textos de su web, que dicen que vienen con Dash).
+# Inferencia aún no tiene release propia: va dentro del paquete de Dash para el Amiga. Forja tiene la suya (v0.1,
+# prerrelease, solo Forja), pero lo normal es bajarla con Dash, que la instala lista: sus botones siguen con Dash
+# (su versión propia está en FORJA_VERSION de sitios/forja/src/contenido.ts).
 FUENTES = {
     "trasfondo": ("FreeMEM/trasfondo", "*.lha", False, "v"),
     "tachyon": ("FreeMEM/tachyon", "*.lha", True, "v"),

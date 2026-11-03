@@ -4,7 +4,7 @@ import version from "./version.json";
 
 /**
  * Los textos de la web de Inferencia. Salen del README, del PLAN y de docs/PUBLICAR.md del repositorio de
- * Inferencia, de su catálogo (los textos de la ventana) y de las notas de Dash 2.0.1, que es donde viene.
+ * Inferencia, de su catálogo (los textos de la ventana) y de las notas de Dash, que es donde viene.
  */
 /** Inferencia aún no tiene release propia: va dentro del paquete de Dash para el Amiga (herramientas/versiones.py). */
 export const DASH_VERSION = version.version;

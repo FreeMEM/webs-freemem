@@ -8,7 +8,7 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 836;
+export const BUILTINS = 893;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
@@ -28,6 +28,7 @@ export const AREAS = [
   ["Texto", "Text", 18],
   ["Menús, búferes, TLS, fuentes y más", "Menus, buffers, TLS, fonts and more", 61],
   ["Nuevas en la 2.0: depurador, gestor de ventanas, imágenes y más", "New in 2.0: debugger, window manager, images and more", 219],
+  ["Nuevas en la 2.2: mapas de tiles, pantallas, sprites y BOBs", "New in 2.2: tile maps, screens, sprites and BOBs", 57],
 ] as const;
 
 /** Dash frente a Blitz, AMOS y C (docs/COMPARATIVA.md de Dash, tools/comparativa): A1200 emulado a velocidad
@@ -76,18 +77,23 @@ export const CONTENIDO = {
     vscode: "Extensión para VS Code",
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     novedades: {
-      titulo: "Novedades: Dash 2.0 ya está aquí",
-      texto: "Dash 2.0 está en la rama principal del repositorio desde el 2 de noviembre de 2026; la última versión es la 2.1.0. Con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
+      titulo: "Novedades: Dash 2.2",
+      texto: "La última versión es la 2.2.0, del 3 de noviembre de 2026. Trae lo que piden los editores de sprites y de mapas de Forja y Fragua, la biblioteca de juegos. Desde la 2.0, con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
       lista: [
         {
-          estado: "Nuevo",
+          estado: "Nuevo en la 2.2",
+          titulo: "Para hacer juegos",
+          texto: "Mapas de tiles con capas, celdas en espejo y objetos (tilemap_*), en el formato del editor de mapas de Forja; tilemap_draw pinta un trozo del mapa de una vez. Sprites acoplados de 15 colores, bob_paste para pintar un fotograma con máscara, doble búfer de pantalla (screen_double_buffer y screen_flip) y key_down, que dice si una tecla está pulsada ahora. Lo que ya compilaba sigue igual; solo cambia que una ventana sin pantalla propia se abre en la pantalla pública por defecto, que casi siempre es el Workbench.",
+        },
+        {
+          estado: "Desde la 2.0",
           titulo: "Dos formas de compilar",
           texto: "Por defecto, dash genera directamente el ejecutable hunk nativo del Amiga, con su código 68000. Con --gcc genera C intermedio y lo compila el GCC de Amiga. El lenguaje, las funciones y lo que hace el programa son los mismos por los dos caminos.",
         },
         {
           estado: "Para el Amiga",
           titulo: "Y compila en el propio Amiga",
-          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.1.0-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
+          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.2.0-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, con sus editores de sprites y de mapas, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
         },
         {
           estado: "Medido",
@@ -96,8 +102,8 @@ export const CONTENIDO = {
         },
         {
           estado: "Hecho",
-          titulo: "836 funciones, en dos idiomas",
-          texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas y un depurador que también usa VS Code. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
+          titulo: "893 funciones, en dos idiomas",
+          texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas de la 2.x hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas, un depurador que también usa VS Code y, en la 2.2, mapas de tiles. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
         },
         {
           estado: "Futuro",
@@ -140,7 +146,7 @@ export const CONTENIDO = {
       texto: "Ventanas, gráficos, sonido, red y el resto del sistema, sin escribir C y sin tener que buscar en qué librería está cada cosa:",
       lista: [
         ["Interfaz", "Intuition, GadTools, ReAction y MUI 3.8 o 5, con zona de dibujo y doble búfer. Puedes usar la que prefieras."],
-        ["Gráficos", "Copper, Blitter y BOBs, sprites de hardware y por software, doble búfer, tarjetas gráficas (CyberGraphX y Picasso96) e imágenes IFF, PNG, JPEG o GIF."],
+        ["Gráficos", "Copper, Blitter y BOBs, sprites de hardware (también acoplados) y por software, mapas de tiles con capas y objetos, doble búfer, tarjetas gráficas (CyberGraphX y Picasso96) e imágenes IFF, PNG, JPEG o GIF."],
         ["Red", "TCP, UDP y HTTPS con AmiSSL 5.1, que reaprovecha la sesión TLS entre conexiones."],
         ["El lenguaje", "Tipos inferidos, structs con métodos, lambdas, listas y diccionarios con tipo, Float y Fixed 16.16 y módulos. La memoria se libera sola con contadores de referencias, así que no hay un recolector de basura que pare el programa en mitad de una animación."],
         ["En tu idioma", "Los programas pueden salir en el idioma de quien los usa. Los textos se marcan con tr y las traducciones van en catálogos de locale.library, como en los programas del sistema."],
@@ -189,6 +195,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["3 nov.", "Dash 2.2.0: mapas de tiles con capas y objetos, sprites acoplados, doble búfer de pantalla y key_down, lo que piden los editores de Forja y Fragua, la biblioteca de juegos."],
         ["3 nov.", "Dash 2.1.0: el mismo C enlazado vale por los dos caminos, el directo y por C con GCC, el paso para llevar programas a PowerPC."],
         ["3 nov.", "Dash 2.0.2: el compilador directo une textos en la mitad de tiempo y ya es más rápido que el camino por C en textos y bucles."],
         ["2 nov.", "Dash 2.0.1: una sola orden, dash, directo a hunk o por C con --gcc. Varios programas que miden la CPU a la vez ven todas las tareas."],
@@ -228,7 +235,7 @@ export const CONTENIDO = {
     },
     hecho: {
       titulo: "Hecho con Dash",
-      texto: "Tachyon y Trasfondo están escritos en Dash. Lo que necesitaban y el lenguaje no tenía se añadió a Dash, así que ahora cualquier programa puede usarlo.",
+      texto: "Tachyon y Trasfondo están escritos en Dash, y también Forja, el IDE de Dash, e Inferencia, la IA para el Amiga. Lo que necesitaban y el lenguaje no tenía se añadió a Dash, así que ahora cualquier programa puede usarlo.",
       tachyon: ["Tachyon", "Un navegador web para AmigaOS 3.x con HTML5, CSS actual, JavaScript ES2023 y HTTPS. Tiene más de 30.000 líneas de Dash y está en alfa."],
       trasfondo: ["Trasfondo", "Un monitor de recursos que se dibuja en el fondo del Workbench, sin tapar nada. Son unas 2.200 líneas de Dash, sin nada de C escrito a mano."],
       tachyonAlt: "Tachyon mostrando un artículo de freemem.space en AmigaOS",
@@ -237,7 +244,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "Lo que necesitas",
       amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
-      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.1.0-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI)."],
+      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.2.0-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI: Forja, la 3.8 o la 5; Inferencia, la 5)."],
       pc: ["Para compilar en el PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
     },
@@ -257,18 +264,23 @@ export const CONTENIDO = {
     vscode: "VS Code extension",
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     novedades: {
-      titulo: "What's new: Dash 2.0 is here",
-      texto: "Dash 2.0 has been in the repository's main branch since 2 November 2026; the latest version is 2.1.0. With the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
+      titulo: "What's new: Dash 2.2",
+      texto: "The latest version is 2.2.0, from 3 November 2026. It brings what Forja's sprite and map editors and Fragua, the games library, need. Since 2.0, with the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
       lista: [
         {
-          estado: "New",
+          estado: "New in 2.2",
+          titulo: "For making games",
+          texto: "Tile maps with layers, mirrored cells and objects (tilemap_*), in the format of Forja's map editor; tilemap_draw draws a piece of the map in one go. Attached 15-colour sprites, bob_paste to draw a frame with its mask, screen double buffering (screen_double_buffer and screen_flip) and key_down, which tells whether a key is held down right now. What compiled before still does; the only change is that a window without its own screen opens on the default public screen, which is nearly always the Workbench.",
+        },
+        {
+          estado: "Since 2.0",
           titulo: "Two ways to compile",
           texto: "By default, dash generates the native Amiga hunk executable directly, with its 68000 code. With --gcc it generates intermediate C and the Amiga GCC compiles it. The language, the functions and what the program does are the same on both paths.",
         },
         {
           estado: "For the Amiga",
           titulo: "And it compiles on the Amiga itself",
-          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.1.0-amiga.lha and its own installer, which also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
+          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.2.0-amiga.lha and its own installer, which also brings Forja, Dash's IDE, with its sprite and map editors, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
         },
         {
           estado: "Measured",
@@ -277,8 +289,8 @@ export const CONTENIDO = {
         },
         {
           estado: "Done",
-          titulo: "836 functions, in two languages",
-          texto: "All of them are documented in English and Spanish. The new ones include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager and a debugger that VS Code uses too. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
+          titulo: "893 functions, in two languages",
+          texto: "All of them are documented in English and Spanish. The new ones in 2.x include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager, a debugger that VS Code uses too and, in 2.2, tile maps. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
         },
         {
           estado: "Future",
@@ -321,7 +333,7 @@ export const CONTENIDO = {
       texto: "Windows, graphics, sound, networking and the rest of the system, without writing C or looking up which library each thing is in:",
       lista: [
         ["Interface", "Intuition, GadTools, ReAction and MUI 3.8 or 5, with a double-buffered drawing area. Use whichever you prefer."],
-        ["Graphics", "Copper, Blitter and BOBs, hardware and software sprites, double buffering, graphics cards (CyberGraphX and Picasso96) and IFF, PNG, JPEG or GIF images."],
+        ["Graphics", "Copper, Blitter and BOBs, hardware (also attached) and software sprites, tile maps with layers and objects, double buffering, graphics cards (CyberGraphX and Picasso96) and IFF, PNG, JPEG or GIF images."],
         ["Network", "TCP, UDP and HTTPS with AmiSSL 5.1, which reuses the TLS session between connections."],
         ["The language", "Type inference, structs with methods, lambdas, typed lists and dictionaries, Float and Fixed 16.16, and modules. Memory is freed automatically with reference counting, so there's no garbage collector stopping your program in the middle of an animation."],
         ["In your language", "Programs can show up in their user's language. Texts are marked with tr and translations go in locale.library catalogs, like the system's own programs."],
@@ -370,6 +382,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["3 Nov", "Dash 2.2.0: tile maps with layers and objects, attached sprites, screen double buffering and key_down, what Forja's editors and Fragua, the games library, need."],
         ["3 Nov", "Dash 2.1.0: the same linked C works on both paths, straight and through C with GCC, the step to take programs to PowerPC."],
         ["3 Nov", "Dash 2.0.2: the straight compiler joins strings in half the time and is now faster than the C path with strings and loops."],
         ["2 Nov", "Dash 2.0.1: one command, dash, straight to hunk or through C with --gcc. Several programs measuring the CPU at once see every task."],
@@ -409,7 +422,7 @@ export const CONTENIDO = {
     },
     hecho: {
       titulo: "Made with Dash",
-      texto: "Tachyon and Trasfondo are written in Dash. Whatever they needed that the language didn't have was added to Dash, so now any program can use it.",
+      texto: "Tachyon and Trasfondo are written in Dash, and so are Forja, Dash's IDE, and Inferencia, the AI for the Amiga. Whatever they needed that the language didn't have was added to Dash, so now any program can use it.",
       tachyon: ["Tachyon", "A web browser for AmigaOS 3.x with HTML5, current CSS, JavaScript ES2023 and HTTPS. It has over 30,000 lines of Dash and is in alpha."],
       trasfondo: ["Trasfondo", "A resource monitor drawn on the Workbench backdrop, without covering anything. About 2,200 lines of Dash, with no hand-written C."],
       tachyonAlt: "Tachyon showing a freemem.space article on AmigaOS",
@@ -418,7 +431,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "What you need",
       amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
-      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.1.0-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI)."],
+      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.2.0-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI: Forja 3.8 or 5, Inferencia 5)."],
       pc: ["To compile on the PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
     },

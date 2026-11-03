@@ -504,6 +504,53 @@ kbd {
   margin: 0;
 }
 
+/* Capturas de los editores de sprites y de mapas (1024x768) */
+.captura {
+  max-width: 46rem;
+  margin: 2.5rem 0 0;
+}
+
+.captura img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--borde);
+  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.45);
+}
+
+.captura figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--tenue);
+}
+
+.nota-fichero {
+  margin: 2.5rem 0 0;
+  color: var(--tenue);
+}
+
+.fragua-estado {
+  margin-top: 2.5rem;
+}
+
+.fragua-estado h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--luz);
+}
+
+.fragua-estado .nota-tecnica li {
+  color: var(--tenue);
+}
+
+.enlaces-fragua {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin: 2rem 0 0;
+}
+
 .seccion-inferencia {
   display: grid;
   grid-template-columns: auto 1fr;
