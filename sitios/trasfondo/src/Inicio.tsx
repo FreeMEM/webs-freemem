@@ -51,6 +51,57 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <Novedades lista={t.novedades.lista} />
         </section>
 
+        <section className="seccion" aria-labelledby="escritorio">
+          <h2 id="escritorio">{t.escritorio.titulo}</h2>
+          <p className="medida">{t.escritorio.texto}</p>
+          <VentanaWB titulo="Workbench Screen">
+            <img src="/imagenes/escritorio-2.webp" width={1024} height={768} alt={t.escritorio.imagen} loading="lazy" />
+          </VentanaWB>
+          <dl className="lista-panel">
+            {t.escritorio.piezas.map((c) => (
+              <div key={c.que}>
+                <dt>{c.que}</dt>
+                <dd>{c.como}</dd>
+              </div>
+            ))}
+          </dl>
+          <figure>
+            <img src="/imagenes/panel-avisos.webp" width={1024} height={384} alt={t.escritorio.panel} loading="lazy" />
+            <figcaption>{t.escritorio.panel}</figcaption>
+          </figure>
+          <figure>
+            <img src="/imagenes/dock-nombre.webp" width={524} height={118} alt={t.escritorio.dock} loading="lazy" />
+            <figcaption>{t.escritorio.dock}</figcaption>
+          </figure>
+          <div className="pareja">
+            <figure>
+              <img src="/imagenes/prefs-colores.webp" width={642} height={240} alt={t.escritorio.colores} loading="lazy" />
+              <figcaption>{t.escritorio.colores}</figcaption>
+            </figure>
+            <figure>
+              <img src="/imagenes/prefs-arranque.webp" width={642} height={240} alt={t.escritorio.arranque} loading="lazy" />
+              <figcaption>{t.escritorio.arranque}</figcaption>
+            </figure>
+          </div>
+          <p className="nota">{t.escritorio.rtg}</p>
+        </section>
+
+        <section className="seccion" aria-labelledby="avisos">
+          <h2 id="avisos">{t.avisos.titulo}</h2>
+          <p className="medida">{t.avisos.texto}</p>
+          <dl className="tooltypes">
+            {t.avisos.formas.map(([codigo, que]) => (
+              <div key={codigo}>
+                <dt>
+                  <code>{codigo}</code>
+                </dt>
+                <dd>{que}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="nota">{t.avisos.nota}</p>
+        </section>
+
         <section className="seccion seccion-panel" aria-labelledby="que-ensena">
           <div>
             <h2 id="que-ensena">{t.panel.titulo}</h2>
