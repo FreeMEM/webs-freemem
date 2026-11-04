@@ -7,7 +7,7 @@ import version from "./version.json";
  * JUEGOS_DISENO), de su catálogo (los menús), de las notas de Dash 2.2.0, que trae Forja, y del README de Fragua.
  */
 /**
- * Forja tiene release propia (prerrelease, forja-0.2.lha; el paquete de Dash 2.2.0 trae la 0.1), pero lo normal es bajarla con Dash para el Amiga: su
+ * Forja tiene release propia (prerrelease, forja-0.3.lha; el paquete de Dash 2.3.1 trae la misma 0.3, con dashgit), pero lo normal es bajarla con Dash para el Amiga: su
  * instalador la deja en Dash/Forja y escribe ENV:Forja/dashc. Los botones toman esa release de Dash
  * (herramientas/versiones.py).
  */
@@ -17,8 +17,8 @@ export const RELEASE = version.notas;
 export const DESCARGA = version.descarga;
 export const BASE = "https://forja.freemem.space";
 /** La release propia de Forja: solo Forja, para quien ya tiene Dash. Con una versión nueva, cambiar las dos. */
-export const FORJA_VERSION = "0.2";
-export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.2";
+export const FORJA_VERSION = "0.3";
+export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.3";
 export const FRAGUA = "https://github.com/FreeMEM/fragua";
 /** Capturas del editor de sprites y del de mapas (docs/img de Forja, 1024x768). */
 export const CAPTURAS = {
@@ -38,9 +38,9 @@ export const CONTENIDO = {
       "Forja es un entorno de desarrollo para Dash que corre en el propio Amiga. Escribes con colores, compilas y ejecutas con una tecla, depuras paso a paso y dibujas ventanas con MUI de verdad. Para juegos, dibujas y animas sprites y BOBs y montas mapas de tiles con capas, choques y objetos. Todo en una ventana MUI con fondo negro.",
     descargar: `Bajar Dash ${DASH_VERSION} (trae Forja)`,
     codigo: "El código en GitHub",
-    peso: `${version.fichero} · ${tamano(version.bytes, "es")} · Forja 0.1 va dentro, en el cajón Dash/Forja`,
-    sola: ["¿Ya tienes Dash 2.2? Forja 0.2, más nueva que la del paquete, va sola en", "su release de GitHub", "(forja-0.2.lha)."],
-    prueba: "Es una versión de prueba: funciona en el emulador, pero aún no se ha probado en un Amiga de verdad.",
+    peso: `${version.fichero} · ${tamano(version.bytes, "es")} · Forja 0.3 va dentro, en el cajón Dash/Forja, con dashgit`,
+    sola: ["¿Ya tienes Dash y solo quieres Forja? Forja 0.3 va también sola en", "su release de GitHub", "(forja-0.3.lha)."],
+    prueba: "Es una versión de prueba: funciona en el emulador, y la 0.1 ya se probó en un Amiga de verdad.",
     esquema: "Así se reparte la ventana. Es el esquema del plan de Forja, no una captura.",
     golpe: "Pulsa en la fragua.",
     ventana: {
@@ -54,6 +54,7 @@ export const CONTENIDO = {
         ["Los botones", "Compilar, Ejecutar y Depurar. Al depurar, en su sitio salen Seguir, Paso, Entrar, Salir y Parar: todos a la vez no caben en una pantalla de 640 píxeles."],
         ["Inferencia", "Un botón manda el fichero, o las líneas elegidas, a Inferencia, la IA para el Amiga. Si no está abierta, la arranca."],
         ["Lo de la última vez", "Sin fichero, Forja abre lo que tenías abierto. Se puede quitar en Preferencias."],
+        ["Git (alfa)", "El menú Git usa dashgit, el cliente de git escrito en Dash que viene en el paquete: estado, diferencias, historial, añadir, confirmar los cambios, traer del servidor y subir, por https con AmiSSL. Lo que contesta sale en la salida. dashgit está en alfa: aún hay mucho que probar, así que ten copia de lo importante."],
       ],
     },
     teclas: {
@@ -168,6 +169,8 @@ export const CONTENIDO = {
         ["BUSCAR texto", "Lo elige y dice en qué línea está."],
         ["CAMBIARTODO buscar cambiar", "Cambia todos y dice cuántos."],
         ["IRA línea", "Va a esa línea."],
+        ["GIT orden", "Una orden de dashgit en el cajón del proyecto (status, commit -a -m ..., pull, push...), sin esperar."],
+        ["SALIDA", "El texto de la salida."],
       ],
     },
     video: {
@@ -181,18 +184,19 @@ export const CONTENIDO = {
       lista: [
         "AmigaOS 3.0 o mejor, con un 68020 o mejor.",
         "MUI 3.8 o MUI 5.",
-        "El compilador de Dash: la orden dash, que pone el instalador de Dash 2.2 o posterior. Si la tienes en otro sitio, dile dónde en las Preferencias de Forja (se guarda en ENV:Forja/dashc).",
-        "El botón Inferencia necesita Inferencia, que viene en el mismo paquete.",
+        "El compilador de Dash: la orden dash, que pone el instalador de Dash 2.3.1 o posterior. Si la tienes en otro sitio, dile dónde en las Preferencias de Forja (se guarda en ENV:Forja/dashc).",
+        "El botón Inferencia necesita Inferencia, y el menú Git, dashgit: los dos vienen en el mismo paquete. Para traer y subir por https, AmiSSL y una pila TCP/IP.",
         "Los colores del código se ven mejor con más de 4 colores en la pantalla.",
       ],
-      instalar: `Lo normal es bajarla con Dash para el Amiga. Descomprime ${version.fichero} y haz doble clic en Instalar. Deja el cajón Dash donde elijas, añade el Assign DASH: y el Path a S:User-Startup, y le dice a Forja dónde está el compilador (ENV:Forja/dashc). Forja está en Dash/Forja: doble clic en su icono, o Forja fichero en un Shell.`,
+      instalar: `Lo normal es bajarla con Dash para el Amiga. Descomprime ${version.fichero} y haz doble clic en Instalar. Deja el cajón Dash donde elijas, añade el Assign DASH: y el Path a S:User-Startup, y le dice a Forja dónde está el compilador (ENV:Forja/dashc). Forja está en Dash/Forja: doble clic en su icono, o Forja fichero en un Shell (el instalador pone DASH:Forja en el Path).`,
       notas: `Qué trae Dash ${DASH_VERSION}`,
     },
     prueba2: {
       titulo: "Versión de prueba",
-      texto: "Forja 0.2 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa todas sus pruebas. La 0.1 ya se probó en un Amiga de verdad, y la 0.2 arregla lo que salió. Antes de una versión estable falta:",
+      texto: "Forja 0.3 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa sus pruebas. La 0.1 ya se probó en un Amiga de verdad, y la 0.2 arregló lo que salió. La 0.3 trae el menú Git, con dashgit en alfa. Antes de una versión estable falta:",
       lista: [
         "Probarla en más Amigas, con un 68020 a 14 MHz y con algo más rápido (68030, 68060 o una PiStorm con Emu68).",
+        "Probar dashgit en Amigas de verdad y con repositorios grandes.",
         "Que alguien de habla inglesa repase el catálogo en inglés.",
         "Su propio paquete en Aminet, con capturas.",
       ],
@@ -219,9 +223,9 @@ export const CONTENIDO = {
       "Forja is a development environment for Dash that runs on the Amiga itself. You write with colours, build and run with one key, debug step by step and draw windows with real MUI. For games, you draw and animate sprites and BOBs and build tile maps with layers, collisions and objects. All in one MUI window with a black background.",
     descargar: `Download Dash ${DASH_VERSION} (includes Forja)`,
     codigo: "Source on GitHub",
-    peso: `${version.fichero} · ${tamano(version.bytes, "en")} · Forja 0.1 is inside, in the Dash/Forja drawer`,
-    sola: ["Already have Dash 2.2? Forja 0.2, newer than the one in the package, comes on its own in", "its GitHub release", "(forja-0.2.lha)."],
-    prueba: "This is a test version: it works in the emulator, but it hasn't been tried on a real Amiga yet.",
+    peso: `${version.fichero} · ${tamano(version.bytes, "en")} · Forja 0.3 is inside, in the Dash/Forja drawer, with dashgit`,
+    sola: ["Already have Dash and only want Forja? Forja 0.3 also comes on its own in", "its GitHub release", "(forja-0.3.lha)."],
+    prueba: "This is a test version: it works in the emulator, and 0.1 has already been tried on a real Amiga.",
     esquema: "How the window is laid out. It's the sketch from Forja's plan, not a screenshot.",
     golpe: "Click on the forge.",
     ventana: {
@@ -235,6 +239,7 @@ export const CONTENIDO = {
         ["The buttons", "Build, Run and Debug. While debugging, Continue, Step, Step into, Step out and Stop take their place: they don't all fit on a 640-pixel screen at once."],
         ["Inferencia", "One button sends the file, or the selected lines, to Inferencia, the AI for the Amiga. If it isn't running, Forja starts it."],
         ["Where you left off", "Without a file, Forja opens what you had open last time. You can turn that off in the preferences."],
+        ["Git (alpha)", "The Git menu uses dashgit, the git client written in Dash that comes in the package: status, differences, history, add, commit the changes, pull and push, over https with AmiSSL. What it says goes to the output. dashgit is in alpha: there is still a lot to test, so keep a copy of what matters."],
       ],
     },
     teclas: {
@@ -349,6 +354,8 @@ export const CONTENIDO = {
         ["BUSCAR text", "Selects it and says which line it's on."],
         ["CAMBIARTODO find replace", "Replaces them all and says how many."],
         ["IRA line", "Goes to that line."],
+        ["GIT command", "A dashgit command in the project drawer (status, commit -a -m ..., pull, push...), without waiting."],
+        ["SALIDA", "The output text."],
       ],
     },
     video: {
@@ -362,18 +369,19 @@ export const CONTENIDO = {
       lista: [
         "AmigaOS 3.0 or later, with a 68020 or better.",
         "MUI 3.8 or MUI 5.",
-        "The Dash compiler: the dash command, which the Dash 2.2 (or later) installer sets up. If you keep it somewhere else, tell Forja where in its preferences (it's stored in ENV:Forja/dashc).",
-        "The Inferencia button needs Inferencia, which comes in the same package.",
+        "The Dash compiler: the dash command, which the Dash 2.3.1 (or later) installer sets up. If you keep it somewhere else, tell Forja where in its preferences (it's stored in ENV:Forja/dashc).",
+        "The Inferencia button needs Inferencia, and the Git menu, dashgit: both come in the same package. To pull and push over https, AmiSSL and a TCP/IP stack.",
         "Code colours look better with more than 4 colours on the screen.",
       ],
-      instalar: `The usual way is to get it with Dash for the Amiga. Unpack ${version.fichero} and double-click Instalar (the installer). It puts the Dash drawer wherever you choose, adds the DASH: assign and the Path to S:User-Startup, and tells Forja where the compiler is (ENV:Forja/dashc). Forja is in Dash/Forja: double-click its icon, or type Forja file in a Shell.`,
+      instalar: `The usual way is to get it with Dash for the Amiga. Unpack ${version.fichero} and double-click Instalar (the installer). It puts the Dash drawer wherever you choose, adds the DASH: assign and the Path to S:User-Startup, and tells Forja where the compiler is (ENV:Forja/dashc). Forja is in Dash/Forja: double-click its icon, or type Forja file in a Shell (the installer puts DASH:Forja in the Path).`,
       notas: `What's in Dash ${DASH_VERSION}`,
     },
     prueba2: {
       titulo: "Test version",
-      texto: "Forja 0.2 is a test version: it works in the emulator, CoffinOS included, and passes all its tests. 0.1 has already been tried on a real Amiga, and 0.2 fixes what came up. Before a stable release, it still needs:",
+      texto: "Forja 0.3 is a test version: it works in the emulator, CoffinOS included, and passes its tests. 0.1 has already been tried on a real Amiga, and 0.2 fixed what came up. 0.3 brings the Git menu, with dashgit in alpha. Before a stable release, it still needs:",
       lista: [
         "Testing on more Amigas, with a 14 MHz 68020 and with something faster (68030, 68060 or a PiStorm with Emu68).",
+        "Testing dashgit on real Amigas and with big repositories.",
         "A native English speaker to check the English catalog.",
         "Its own package on Aminet, with screenshots.",
       ],
