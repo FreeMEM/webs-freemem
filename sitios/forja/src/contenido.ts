@@ -7,7 +7,7 @@ import version from "./version.json";
  * JUEGOS_DISENO), de su catálogo (los menús), de las notas de Dash 2.2.0, que trae Forja, y del README de Fragua.
  */
 /**
- * Forja 0.1 tiene release propia (prerrelease, forja-0.1.lha), pero lo normal es bajarla con Dash para el Amiga: su
+ * Forja tiene release propia (prerrelease, forja-0.2.lha; el paquete de Dash 2.2.0 trae la 0.1), pero lo normal es bajarla con Dash para el Amiga: su
  * instalador la deja en Dash/Forja y escribe ENV:Forja/dashc. Los botones toman esa release de Dash
  * (herramientas/versiones.py).
  */
@@ -17,8 +17,8 @@ export const RELEASE = version.notas;
 export const DESCARGA = version.descarga;
 export const BASE = "https://forja.freemem.space";
 /** La release propia de Forja: solo Forja, para quien ya tiene Dash. Con una versión nueva, cambiar las dos. */
-export const FORJA_VERSION = "0.1";
-export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.1";
+export const FORJA_VERSION = "0.2";
+export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.2";
 export const FRAGUA = "https://github.com/FreeMEM/fragua";
 /** Capturas del editor de sprites y del de mapas (docs/img de Forja, 1024x768). */
 export const CAPTURAS = {
@@ -39,7 +39,7 @@ export const CONTENIDO = {
     descargar: `Bajar Dash ${DASH_VERSION} (trae Forja)`,
     codigo: "El código en GitHub",
     peso: `${version.fichero} · ${tamano(version.bytes, "es")} · Forja 0.1 va dentro, en el cajón Dash/Forja`,
-    sola: ["¿Ya tienes Dash 2.2? Forja 0.1 también va sola, en", "su release de GitHub", "(forja-0.1.lha)."],
+    sola: ["¿Ya tienes Dash 2.2? Forja 0.2, más nueva que la del paquete, va sola en", "su release de GitHub", "(forja-0.2.lha)."],
     prueba: "Es una versión de prueba: funciona en el emulador, pero aún no se ha probado en un Amiga de verdad.",
     esquema: "Así se reparte la ventana. Es el esquema del plan de Forja, no una captura.",
     golpe: "Pulsa en la fragua.",
@@ -190,9 +190,9 @@ export const CONTENIDO = {
     },
     prueba2: {
       titulo: "Versión de prueba",
-      texto: "Forja 0.1 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa todas sus pruebas. Antes de una versión estable falta:",
+      texto: "Forja 0.2 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa todas sus pruebas. La 0.1 ya se probó en un Amiga de verdad, y la 0.2 arregla lo que salió. Antes de una versión estable falta:",
       lista: [
-        "Probarla en un Amiga de verdad, con un 68020 a 14 MHz y con algo más rápido (68030, 68060 o una PiStorm con Emu68).",
+        "Probarla en más Amigas, con un 68020 a 14 MHz y con algo más rápido (68030, 68060 o una PiStorm con Emu68).",
         "Que alguien de habla inglesa repase el catálogo en inglés.",
         "Su propio paquete en Aminet, con capturas.",
       ],
@@ -220,7 +220,7 @@ export const CONTENIDO = {
     descargar: `Download Dash ${DASH_VERSION} (includes Forja)`,
     codigo: "Source on GitHub",
     peso: `${version.fichero} · ${tamano(version.bytes, "en")} · Forja 0.1 is inside, in the Dash/Forja drawer`,
-    sola: ["Already have Dash 2.2? Forja 0.1 also comes on its own, in", "its GitHub release", "(forja-0.1.lha)."],
+    sola: ["Already have Dash 2.2? Forja 0.2, newer than the one in the package, comes on its own in", "its GitHub release", "(forja-0.2.lha)."],
     prueba: "This is a test version: it works in the emulator, but it hasn't been tried on a real Amiga yet.",
     esquema: "How the window is laid out. It's the sketch from Forja's plan, not a screenshot.",
     golpe: "Click on the forge.",
@@ -371,9 +371,9 @@ export const CONTENIDO = {
     },
     prueba2: {
       titulo: "Test version",
-      texto: "Forja 0.1 is a test version: it works in the emulator, CoffinOS included, and passes all its tests. Before a stable release, it still needs:",
+      texto: "Forja 0.2 is a test version: it works in the emulator, CoffinOS included, and passes all its tests. 0.1 has already been tried on a real Amiga, and 0.2 fixes what came up. Before a stable release, it still needs:",
       lista: [
-        "Testing on a real Amiga, with a 14 MHz 68020 and with something faster (68030, 68060 or a PiStorm with Emu68).",
+        "Testing on more Amigas, with a 14 MHz 68020 and with something faster (68030, 68060 or a PiStorm with Emu68).",
         "A native English speaker to check the English catalog.",
         "Its own package on Aminet, with screenshots.",
       ],
