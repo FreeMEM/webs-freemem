@@ -108,7 +108,7 @@ export const CONTENIDO = {
         {
           estado: "Futuro",
           titulo: "C intermedio, camino a PowerPC",
-          texto: "El modo --gcc genera C y lo compila el GCC de Amiga de bebbo. Hoy da ejecutables de 68000 y sirve para los programas que llevan C dentro (@native). Como GCC también genera código PowerPC, por ahí llegará Dash a MorphOS y a AmigaOS 4.",
+          texto: "El modo --gcc genera C y lo compila el GCC de Amiga de bebbo. Hoy da ejecutables de 68000 y sirve para los programas que llevan C dentro (@native). Esos ejecutables ya funcionan en MorphOS con su emulación de 68k. Como GCC también genera código PowerPC, por ahí llegará la versión nativa para MorphOS y AmigaOS 4.",
         },
       ],
     },
@@ -243,7 +243,7 @@ export const CONTENIDO = {
     },
     requisitos: {
       titulo: "Lo que necesitas",
-      amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020."],
+      amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020. También funcionan en MorphOS, con su emulación de 68k."],
       instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.2.0-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup. Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI: Forja, la 3.8 o la 5; Inferencia, la 5)."],
       pc: ["Para compilar en el PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
@@ -295,7 +295,7 @@ export const CONTENIDO = {
         {
           estado: "Future",
           titulo: "Intermediate C, the way to PowerPC",
-          texto: "The --gcc mode generates C and bebbo's Amiga GCC compiles it. Today it makes 68000 executables and handles programs with C inside (@native). Since GCC also generates PowerPC code, that is how Dash will reach MorphOS and AmigaOS 4.",
+          texto: "The --gcc mode generates C and bebbo's Amiga GCC compiles it. Today it makes 68000 executables and handles programs with C inside (@native). Those executables already run on MorphOS through its 68k emulation. Since GCC also generates PowerPC code, that is how the native version for MorphOS and AmigaOS 4 will come.",
         },
       ],
     },
@@ -430,7 +430,7 @@ export const CONTENIDO = {
     },
     requisitos: {
       titulo: "What you need",
-      amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020."],
+      amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020. They also run on MorphOS, through its 68k emulation."],
       instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.2.0-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup. Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI: Forja 3.8 or 5, Inferencia 5)."],
       pc: ["To compile on the PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
