@@ -56,7 +56,7 @@ export const CONTENIDO = {
       texto: "Desde la 2.0, Trasfondo trae más piezas para la pantalla del Workbench. Cada una es un programa aparte: en TrasfondoPrefs, sección Arranque, marcas las que quieres y se ponen en marcha; quitas la marca y se paran.",
       imagen: "Trasfondo 2.3 en AmigaOS 3.2.3 con tarjeta gráfica: la barra arriba, el panel del fondo a la derecha, tres ventanas y el dock abajo",
       piezas: [
-        { que: "La barra", como: "Arriba, con la hora, la fecha, el tiempo de tu ciudad, la CPU y la memoria. Al pulsar la hora sale un panel con reloj, calendario, tiempo y avisos; a la derecha, los ajustes rápidos: red, discos, memoria, preferencias y reiniciar." },
+        { que: "La barra", como: "Arriba, con la hora, la fecha, el tiempo de tu ciudad, la CPU y la memoria. Al pulsar la hora sale un panel con reloj, calendario, tiempo y avisos; a la derecha, los ajustes rápidos: red, discos, memoria, preferencias y reiniciar. Puede ser una barra entera o ir dentro de la barra de título de la pantalla, sin taparla." },
         { que: "Los avisos", como: "Salen un momento arriba a la derecha y quedan en la lista del panel hasta que los descartas. Los deja la orden Avisa, cualquier guion ARexx o cualquier programa escrito en Dash." },
         { que: "El dock", como: "Los programas abiertos y los que fijes, en casillas iguales. Fijas uno soltando su icono encima, lo cambias de sitio arrastrándolo y, al pasar el ratón, sale su nombre. Puede ir en cualquier borde y esconderse solo hasta que acercas el ratón." },
         { que: "Las ventanas", como: "Teclas para maximizar, mandar a una mitad, restaurar o poner en mosaico cualquier ventana, a mano o según se abren. Con Alt y el ratón, se mueven y cambian de tamaño desde cualquier punto." },
@@ -98,6 +98,11 @@ export const CONTENIDO = {
       texto: "Lo último que ha salido y lo que viene, a 5 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 5/11",
+          titulo: "Trasfondo 2.4",
+          texto: "La barra puede ir dentro de la barra de título de la pantalla, sin taparla (idea de Ferrán García). Ya no se para todo al cerrar los paneles pulsando en el escritorio, y busca versiones nuevas cada hora.",
+        },
         {
           estado: "Publicada el 5/11",
           titulo: "Trasfondo 2.3",
@@ -195,7 +200,7 @@ export const CONTENIDO = {
       texto: "Since 2.0, Trasfondo brings more pieces for the Workbench screen. Each one is a separate program: in TrasfondoPrefs, Startup section, you tick the ones you want and they start; untick one and it stops.",
       imagen: "Trasfondo 2.3 on AmigaOS 3.2.3 with a graphics card: the bar at the top, the backdrop panel on the right, three windows and the dock at the bottom",
       piezas: [
-        { que: "The bar", como: "At the top, with the time, the date, your city's weather, the CPU and the memory. Click the time for a panel with a clock, a calendar, the weather and notifications; on the right, the quick settings: network, disks, memory, preferences and reboot." },
+        { que: "The bar", como: "At the top, with the time, the date, your city's weather, the CPU and the memory. Click the time for a panel with a clock, a calendar, the weather and notifications; on the right, the quick settings: network, disks, memory, preferences and reboot. It can be a whole bar or sit inside the screen's title bar, without covering it." },
         { que: "Notifications", como: "They show for a moment at the top right and stay in the panel's list until you dismiss them. The Avisa command, any ARexx script or any program written in Dash can leave one." },
         { que: "The dock", como: "The open programs and the ones you pin, in equal boxes. Pin one by dropping its icon on it, move it by dragging it, and hover over it to see its name. It can sit on any edge and hide by itself until the mouse gets close." },
         { que: "Windows", como: "Keys to maximize any window, send it to one half, restore it or tile them, by hand or as they open. With Alt and the mouse, they move and resize from anywhere inside." },
@@ -237,6 +242,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 5 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 5 Nov",
+          titulo: "Trasfondo 2.4",
+          texto: "The bar can sit inside the screen's title bar, without covering it (Ferrán García's idea). Closing the panels by clicking on the desktop no longer freezes everything, and it checks for new versions every hour.",
+        },
         {
           estado: "Released 5 Nov",
           titulo: "Trasfondo 2.3",
