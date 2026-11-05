@@ -100,6 +100,11 @@ export const CONTENIDO = {
       lista: [
         {
           estado: "Publicada el 5/11",
+          titulo: "Trasfondo 2.5",
+          texto: "El panel del fondo, en cualquier esquina. El Shell del dock con el path del Workbench, pegar con Amiga + V en TrasfondoPrefs y la barra de la de título sin hueco. Las Prefs se reabren solas tras actualizar.",
+        },
+        {
+          estado: "Publicada el 5/11",
           titulo: "Trasfondo 2.4",
           texto: "La barra puede ir dentro de la barra de título de la pantalla, sin taparla (idea de Ferrán García). Ya no se para todo al cerrar los paneles pulsando en el escritorio, y busca versiones nuevas cada hora.",
         },
@@ -242,6 +247,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 5 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 5 Nov",
+          titulo: "Trasfondo 2.5",
+          texto: "The backdrop panel, in any corner. The dock's Shell with the Workbench's path, pasting with Amiga + V in TrasfondoPrefs and the title-bar bar without a gap. The Prefs reopen by themselves after an update.",
+        },
         {
           estado: "Released 5 Nov",
           titulo: "Trasfondo 2.4",
