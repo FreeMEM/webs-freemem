@@ -99,6 +99,11 @@ export const CONTENIDO = {
       boton: "Novedades",
       lista: [
         {
+          estado: "Publicada el 6/11",
+          titulo: "Trasfondo 2.6",
+          texto: "La barra solo usa la red con la pila TCP/IP en marcha (MiamiDx) y queda pegada al botón de profundidad en todas las pantallas.",
+        },
+        {
           estado: "Publicada el 5/11",
           titulo: "Trasfondo 2.5",
           texto: "El panel del fondo, en cualquier esquina. El Shell del dock con el path del Workbench, pegar con Amiga + V en TrasfondoPrefs y la barra de la de título sin hueco. Las Prefs se reabren solas tras actualizar.",
@@ -247,6 +252,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 5 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 6 Nov",
+          titulo: "Trasfondo 2.6",
+          texto: "The bar only uses the network with a running TCP/IP stack (MiamiDx) and sits right next to the depth gadget on every screen.",
+        },
         {
           estado: "Released 5 Nov",
           titulo: "Trasfondo 2.5",
