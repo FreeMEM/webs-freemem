@@ -195,6 +195,8 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["7 nov.", "Dash 2.5.0: arreglos del compilador que encontró Forja, la fuga de memoria del fondo de Trasfondo e imágenes a otro tamaño con bordes suaves; el paquete del Amiga trae Forja 0.4, con autocompletado e ir a la definición, y dashgit 0.2 alfa."],
+        ["6 nov.", "Dash 2.4.0: un puerto ARexx propio, avisos en el escritorio, iconos a otro tamaño y pegar con Amiga + V en los campos de GadTools y ReAction."],
         ["4 nov.", "Dash 2.3.1: el paquete del Amiga trae dashgit (en alfa, con mucho por probar) y Forja 0.3 con su menú Git; y la red ya se cierra al salir con el compilador directo."],
         ["4 nov.", "Dash 2.3.0: compila para DashOS (AArch64), SHA-1 y lo demás para dashgit, iconos .info y ventanas de otros programas para el dock de Trasfondo, y un instalador que pone al día la instalación anterior sin cortar el arranque."],
         ["3 nov.", "Dash 2.2.0: mapas de tiles con capas y objetos, sprites acoplados, doble búfer de pantalla y key_down, lo que piden los editores de Forja y Fragua, la biblioteca de juegos."],
@@ -384,6 +386,8 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["7 Nov", "Dash 2.5.0: compiler fixes found by Forja, the memory leak in Trasfondo's backdrop and pictures at another size with smooth edges; the Amiga package brings Forja 0.4, with completion and go to definition, and dashgit 0.2 alpha."],
+        ["6 Nov", "Dash 2.4.0: an ARexx port of its own, desktop notifications, icons at another size and pasting with Amiga + V in GadTools and ReAction fields."],
         ["4 Nov", "Dash 2.3.1: the Amiga package brings dashgit (in alpha, with much still to test) and Forja 0.3 with its Git menu; and the network now closes at exit with the direct compiler."],
         ["4 Nov", "Dash 2.3.0: compiles for DashOS (AArch64), SHA-1 and the rest for dashgit, .info icons and other programs' windows for Trasfondo's dock, and an installer that updates the earlier installation without stopping the boot."],
         ["3 Nov", "Dash 2.2.0: tile maps with layers and objects, attached sprites, screen double buffering and key_down, what Forja's editors and Fragua, the games library, need."],

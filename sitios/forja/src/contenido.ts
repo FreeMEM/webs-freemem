@@ -7,7 +7,7 @@ import version from "./version.json";
  * JUEGOS_DISENO), de su catálogo (los menús), de las notas de Dash 2.2.0, que trae Forja, y del README de Fragua.
  */
 /**
- * Forja tiene release propia (prerrelease, forja-0.3.lha; el paquete de Dash 2.3.1 trae la misma 0.3, con dashgit), pero lo normal es bajarla con Dash para el Amiga: su
+ * Forja tiene release propia (prerrelease, forja-0.4.lha; el paquete de Dash 2.5.0 trae la misma 0.4, con dashgit), pero lo normal es bajarla con Dash para el Amiga: su
  * instalador la deja en Dash/Forja y escribe ENV:Forja/dashc. Los botones toman esa release de Dash
  * (herramientas/versiones.py).
  */
@@ -17,8 +17,8 @@ export const RELEASE = version.notas;
 export const DESCARGA = version.descarga;
 export const BASE = "https://forja.freemem.space";
 /** La release propia de Forja: solo Forja, para quien ya tiene Dash. Con una versión nueva, cambiar las dos. */
-export const FORJA_VERSION = "0.3";
-export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.3";
+export const FORJA_VERSION = "0.4";
+export const FORJA_RELEASE = "https://github.com/FreeMEM/forja/releases/tag/v0.4";
 export const FRAGUA = "https://github.com/FreeMEM/fragua";
 /** Capturas del editor de sprites y del de mapas (docs/img de Forja, 1024x768). */
 export const CAPTURAS = {
@@ -38,8 +38,8 @@ export const CONTENIDO = {
       "Forja es un entorno de desarrollo para Dash que corre en el propio Amiga. Escribes con colores, compilas y ejecutas con una tecla, depuras paso a paso y dibujas ventanas con MUI de verdad. Para juegos, dibujas y animas sprites y BOBs y montas mapas de tiles con capas, choques y objetos. Todo en una ventana MUI con fondo negro.",
     descargar: `Bajar Dash ${DASH_VERSION} (trae Forja)`,
     codigo: "El código en GitHub",
-    peso: `${version.fichero} · ${tamano(version.bytes, "es")} · Forja 0.3 va dentro, en el cajón Dash/Forja, con dashgit`,
-    sola: ["¿Ya tienes Dash y solo quieres Forja? Forja 0.3 va también sola en", "su release de GitHub", "(forja-0.3.lha)."],
+    peso: `${version.fichero} · ${tamano(version.bytes, "es")} · Forja 0.4 va dentro, en el cajón Dash/Forja, con dashgit`,
+    sola: ["¿Ya tienes Dash y solo quieres Forja? Forja 0.4 va también sola en", "su release de GitHub", "(forja-0.4.lha)."],
     prueba: "Es una versión de prueba: funciona en el emulador, y la 0.1 ya se probó en un Amiga de verdad.",
     esquema: "Así se reparte la ventana. Es el esquema del plan de Forja, no una captura.",
     golpe: "Pulsa en la fragua.",
@@ -193,7 +193,7 @@ export const CONTENIDO = {
     },
     prueba2: {
       titulo: "Versión de prueba",
-      texto: "Forja 0.3 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa sus pruebas. La 0.1 ya se probó en un Amiga de verdad, y la 0.2 arregló lo que salió. La 0.3 trae el menú Git, con dashgit en alfa. Antes de una versión estable falta:",
+      texto: "Forja 0.4 es una versión de prueba: funciona en el emulador, también en CoffinOS, y pasa sus pruebas. La 0.1 ya se probó en un Amiga de verdad, y la 0.2 arregló lo que salió. La 0.3 trajo el menú Git, con dashgit en alfa, y la 0.4 el autocompletado, ir a la definición y dónde se usa cada cosa. Antes de una versión estable falta:",
       lista: [
         "Probarla en más Amigas, con un 68020 a 14 MHz y con algo más rápido (68030, 68060 o una PiStorm con Emu68).",
         "Probar dashgit en Amigas de verdad y con repositorios grandes.",
@@ -223,8 +223,8 @@ export const CONTENIDO = {
       "Forja is a development environment for Dash that runs on the Amiga itself. You write with colours, build and run with one key, debug step by step and draw windows with real MUI. For games, you draw and animate sprites and BOBs and build tile maps with layers, collisions and objects. All in one MUI window with a black background.",
     descargar: `Download Dash ${DASH_VERSION} (includes Forja)`,
     codigo: "Source on GitHub",
-    peso: `${version.fichero} · ${tamano(version.bytes, "en")} · Forja 0.3 is inside, in the Dash/Forja drawer, with dashgit`,
-    sola: ["Already have Dash and only want Forja? Forja 0.3 also comes on its own in", "its GitHub release", "(forja-0.3.lha)."],
+    peso: `${version.fichero} · ${tamano(version.bytes, "en")} · Forja 0.4 is inside, in the Dash/Forja drawer, with dashgit`,
+    sola: ["Already have Dash and only want Forja? Forja 0.4 also comes on its own in", "its GitHub release", "(forja-0.4.lha)."],
     prueba: "This is a test version: it works in the emulator, and 0.1 has already been tried on a real Amiga.",
     esquema: "How the window is laid out. It's the sketch from Forja's plan, not a screenshot.",
     golpe: "Click on the forge.",
@@ -378,7 +378,7 @@ export const CONTENIDO = {
     },
     prueba2: {
       titulo: "Test version",
-      texto: "Forja 0.3 is a test version: it works in the emulator, CoffinOS included, and passes its tests. 0.1 has already been tried on a real Amiga, and 0.2 fixed what came up. 0.3 brings the Git menu, with dashgit in alpha. Before a stable release, it still needs:",
+      texto: "Forja 0.4 is a test version: it works in the emulator, CoffinOS included, and passes its tests. 0.1 has already been tried on a real Amiga, and 0.2 fixed what came up. 0.3 brought the Git menu, with dashgit in alpha, and 0.4 completion, go to definition and where each thing is used. Before a stable release, it still needs:",
       lista: [
         "Testing on more Amigas, with a 14 MHz 68020 and with something faster (68030, 68060 or a PiStorm with Emu68).",
         "Testing dashgit on real Amigas and with big repositories.",
