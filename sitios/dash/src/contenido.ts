@@ -195,6 +195,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["7 nov.", "Dash 2.6.1: dos programas con lienzo en el escritorio a la vez (Trasfondo y otro) ya no cuelgan la pantalla, y los sprites en una pantalla PAL normal ya no avisan de RTG."],
         ["7 nov.", "Dash 2.6.0: soltar iconos del Workbench sobre las ventanas MUI (Tachyon abre así una página guardada), los builtins propios de DashOS y return en Main por los dos caminos."],
         ["7 nov.", "Dash 2.5.0: arreglos del compilador que encontró Forja, la fuga de memoria del fondo de Trasfondo e imágenes a otro tamaño con bordes suaves; el paquete del Amiga trae Forja 0.4, con autocompletado e ir a la definición, y dashgit 0.2 alfa."],
         ["6 nov.", "Dash 2.4.0: un puerto ARexx propio, avisos en el escritorio, iconos a otro tamaño y pegar con Amiga + V en los campos de GadTools y ReAction."],
@@ -387,6 +388,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["7 Nov", "Dash 2.6.1: two programs with a desktop canvas at once (Trasfondo and another) no longer hang the display, and sprites on a plain PAL screen no longer warn about RTG."],
         ["7 Nov", "Dash 2.6.0: dropping Workbench icons on MUI windows (Tachyon opens a saved page that way), DashOS's own builtins and return in Main both ways."],
         ["7 Nov", "Dash 2.5.0: compiler fixes found by Forja, the memory leak in Trasfondo's backdrop and pictures at another size with smooth edges; the Amiga package brings Forja 0.4, with completion and go to definition, and dashgit 0.2 alpha."],
         ["6 Nov", "Dash 2.4.0: an ARexx port of its own, desktop notifications, icons at another size and pasting with Amiga + V in GadTools and ReAction fields."],
