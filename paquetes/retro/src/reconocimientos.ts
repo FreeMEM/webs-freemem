@@ -31,6 +31,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
         { version: "2.8", es: "Avisó de que el fondo perdía memoria poco a poco.", en: "Reported that the backdrop slowly lost memory." },
       ],
     },
+    {
+      persona: "David Martínez",
+      aportes: [
+        { version: "2.5", es: "Arreglo: lo que se abría desde el dock no tenía el path del Workbench.", en: "Fix: what opened from the dock lacked the Workbench path." },
+      ],
+    },
   ],
   forja: [
     {
