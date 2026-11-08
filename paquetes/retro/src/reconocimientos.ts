@@ -79,7 +79,14 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       ],
     },
   ],
-  tachyon: [],
+  tachyon: [
+    {
+      persona: "Ferrán García",
+      aportes: [
+        { version: "0.9.3", es: "Abrir ficheros del disco desde el menú (Amiga-O) y soltando su icono en la ventana.", en: "Opening files from disk from the menu (Amiga-O) and by dropping their icon on the window." },
+      ],
+    },
+  ],
   inferencia: [],
 };
 
