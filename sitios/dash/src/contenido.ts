@@ -199,7 +199,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
-        ["8 nov.", "La documentación de las 961 funciones: cada una explicada, con un ejemplo probado por grupo. Al probarlas se arreglaron ocho fallos, entre ellos el joystick y el relleno de gfx_flood."],
+        ["8 nov.", "Dash 2.6.4: la documentación de las 961 funciones, cada una explicada, con un ejemplo probado por grupo. Al probarlas se arreglaron ocho fallos, entre ellos el joystick y el relleno de gfx_flood."],
         ["8 nov.", "Dash 2.6.3: el paquete del Amiga trae Forja 0.5.1, donde al depurar el código ya no salta ni se repinta entero (lo contó David Martínez)."],
         ["8 nov.", "Dash 2.6.2: las interpolaciones con más de 16 números ya salen bien en ./dash, y Forja 0.5 elige dónde dejar los ejecutables (idea de Ferrán García)."],
         ["7 nov.", "Dash 2.6.1: dos programas con lienzo en el escritorio a la vez (Trasfondo y otro) ya no cuelgan la pantalla, y los sprites en una pantalla PAL normal ya no avisan de RTG."],
@@ -395,7 +395,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
-        ["8 Nov", "Documentation for all 961 functions: each one explained, with a tested example per group. Testing them fixed eight bugs, the joystick and gfx_flood's fill among them."],
+        ["8 Nov", "Dash 2.6.4: documentation for all 961 functions, each one explained, with a tested example per group. Testing them fixed eight bugs, the joystick and gfx_flood's fill among them."],
         ["8 Nov", "Dash 2.6.3: the Amiga package brings Forja 0.5.1, where the code no longer jumps or repaints as a whole while debugging (reported by David Martínez)."],
         ["8 Nov", "Dash 2.6.2: interpolations with more than 16 numbers now come out right in ./dash, and Forja 0.5 picks where the executables go (an idea of Ferrán García)."],
         ["7 Nov", "Dash 2.6.1: two programs with a desktop canvas at once (Trasfondo and another) no longer hang the display, and sprites on a plain PAL screen no longer warn about RTG."],
