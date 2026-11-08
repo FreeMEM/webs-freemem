@@ -453,6 +453,27 @@
   line-height: 1.5;
 }
 
+/* ---------- Gracias: quién pidió o contó cada cosa ---------- */
+
+.gracias-aportes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.gracias-aportes li + li {
+  margin-top: 0.4rem;
+}
+
+.gracias-version {
+  font-family: var(--fuente-topaz), monospace;
+  padding: 0 0.3rem;
+  border: 1px solid var(--wb-negro);
+  background: var(--wb-blanco);
+}
+
 /* ---------- Vídeo ---------- */
 
 .video {

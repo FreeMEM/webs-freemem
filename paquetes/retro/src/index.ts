@@ -2,6 +2,8 @@ export { Escritorio, type IconoEscritorio } from "./Escritorio";
 export { PanelTrasfondo, type Seccion } from "./PanelTrasfondo";
 export { VentanaDesplazable, VentanaWB, VideoYouTube } from "./piezas";
 export { Novedades, type Novedad } from "./Novedades";
+export { Gracias } from "./Gracias";
+export { RECONOCIMIENTOS, type Reconocido, type Aporte } from "./reconocimientos";
 export { Cabecera, Pie, SITIOS, type Idioma, type IdSitio } from "./familia";
 export { metadatos, datosPrograma } from "./seo";
 export { BolaBoing } from "./BolaBoing";

@@ -1,4 +1,4 @@
-import { Cabecera, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { Gracias, Cabecera, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { CONTENIDO, DESCARGA, RELEASE, REPO, VIDEO, VERSION, BASE } from "./contenido";
 import { EscritorioVivo } from "./EscritorioVivo";
@@ -204,6 +204,8 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             <p className="nota">{t.requisitos.probado}</p>
           </div>
         </section>
+
+        <Gracias programa="trasfondo" idioma={idioma} />
 
         <section className="seccion seccion-dash" aria-labelledby="dash">
           <h2 id="dash">{t.dash.titulo}</h2>

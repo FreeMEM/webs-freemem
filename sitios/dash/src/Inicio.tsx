@@ -1,5 +1,5 @@
 import type React from "react";
-import { BolaBoing, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { BolaBoing, Gracias, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { AREAS, BASE, BUILTINS, COLUMNAS_DASH, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
 import codigos from "./comparativa_codigo.json";
@@ -386,6 +386,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </a>
           </div>
         </section>
+        <Gracias programa="dash" idioma={idioma} />
       </main>
       <Pie idioma={idioma} enlaces={t.pie} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }} />

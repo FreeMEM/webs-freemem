@@ -1,4 +1,4 @@
-import { Cabecera, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { Gracias, Cabecera, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { BASE, CAPTURAS, CONTENIDO, DESCARGA, FORJA_RELEASE, FORJA_VERSION, FRAGUA, RELEASE, REPO, VIDEO } from "./contenido";
 import { Fragua } from "./Fragua";
@@ -235,6 +235,8 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             <a href={`${REPO}/issues`}>{t.prueba2.avisos}</a>
           </div>
         </section>
+
+        <Gracias programa="forja" idioma={idioma} />
 
         <section className="seccion seccion-dash" aria-labelledby="dash">
           <h2 id="dash">{t.dash.titulo}</h2>
