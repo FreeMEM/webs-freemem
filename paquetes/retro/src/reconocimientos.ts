@@ -54,6 +54,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "0.5", es: "Elegir la carpeta donde se dejan los ejecutables, por ejemplo RAM:.", en: "Choosing the folder for the executables, RAM: for example." },
         { version: "0.2", es: "Preferencias más anchas, con botón Elegir... y DASH:dash por defecto.", en: "Wider preferences, with a Choose... button and DASH:dash by default." },
         { version: "0.2", es: "Elegir, copiar y guardar las líneas de la salida, con barras para moverse.", en: "Selecting, copying and saving output lines, with scroll bars." },
         { version: "0.2", es: "$VER: para C:Version.", en: "$VER: for C:Version." },
