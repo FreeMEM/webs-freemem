@@ -8,27 +8,31 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 893;
+export const BUILTINS = 961;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
-  ["MUI", "MUI", 82],
-  ["Procesos, escritorio y medidores", "Tasks, desktop and meters", 84],
+  ["MUI", "MUI", 108],
+  ["Tareas, reloj y escritorio", "Tasks, clock and desktop", 89],
+  ["Gráficos avanzados: sprites, BOBs, mapas", "Advanced graphics: sprites, BOBs, maps", 85],
   ["ReAction", "ReAction", 79],
-  ["Intuition", "Intuition", 52],
-  ["Gráficos avanzados", "Advanced graphics", 43],
-  ["Entrada", "Input", 30],
-  ["Gráficos", "Graphics", 29],
-  ["Sistema", "System", 28],
-  ["Red (TCP)", "Network (TCP)", 26],
-  ["DOS", "DOS", 24],
+  ["Intuition: ventanas y gadgets", "Intuition: windows and gadgets", 59],
+  ["Red: TCP, UDP, TLS y en segundo plano", "Network: TCP, UDP, TLS and in the background", 47],
+  ["Sistema y programa", "System and program", 42],
+  ["Texto, UTF-8 y búferes", "Text, UTF-8 and buffers", 39],
+  ["Imágenes y fuentes", "Pictures and fonts", 38],
+  ["Entrada y pantallas", "Input and screens", 37],
+  ["Sistema y memoria", "System and memory", 32],
+  ["DashOS", "DashOS", 32],
+  ["Depurador", "Debugger", 31],
+  ["Gráficos", "Graphics", 30],
+  ["Gestor de ventanas", "Window manager", 29],
+  ["Ficheros", "Files", 29],
+  ["GadTools y menús", "GadTools and menus", 29],
+  ["Matemáticas", "Maths", 22],
   ["RTG", "RTG", 21],
   ["Audio", "Audio", 21],
-  ["GadTools", "GadTools", 19],
-  ["Texto", "Text", 18],
-  ["Menús, búferes, TLS, fuentes y más", "Menus, buffers, TLS, fonts and more", 61],
-  ["Nuevas en la 2.0: depurador, gestor de ventanas, imágenes y más", "New in 2.0: debugger, window manager, images and more", 219],
-  ["Nuevas en la 2.2: mapas de tiles, pantallas, sprites y BOBs", "New in 2.2: tile maps, screens, sprites and BOBs", 57],
+  ["Compresión, portapapeles, JSON y más", "Compression, clipboard, JSON and more", 62],
 ] as const;
 
 /** Dash frente a Blitz, AMOS y C (docs/COMPARATIVA.md de Dash, tools/comparativa): A1200 emulado a velocidad
@@ -102,8 +106,8 @@ export const CONTENIDO = {
         },
         {
           estado: "Hecho",
-          titulo: "893 funciones, en dos idiomas",
-          texto: "Todas están documentadas en castellano y en inglés. Entre las nuevas de la 2.x hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas, un depurador que también usa VS Code y, en la 2.2, mapas de tiles. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
+          titulo: "961 funciones, cada una explicada",
+          texto: "Todas están explicadas en castellano y en inglés: qué es cada parámetro, qué devuelven y qué pasa si fallan, con una introducción y un ejemplo probado por grupo. Entre las nuevas de la 2.x hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas, un depurador que también usa VS Code y, en la 2.2, mapas de tiles. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
         },
         {
           estado: "Futuro",
@@ -195,6 +199,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["8 nov.", "La documentación de las 961 funciones: cada una explicada, con un ejemplo probado por grupo. Al probarlas se arreglaron ocho fallos, entre ellos el joystick y el relleno de gfx_flood."],
         ["8 nov.", "Dash 2.6.3: el paquete del Amiga trae Forja 0.5.1, donde al depurar el código ya no salta ni se repinta entero (lo contó David Martínez)."],
         ["8 nov.", "Dash 2.6.2: las interpolaciones con más de 16 números ya salen bien en ./dash, y Forja 0.5 elige dónde dejar los ejecutables (idea de Ferrán García)."],
         ["7 nov.", "Dash 2.6.1: dos programas con lienzo en el escritorio a la vez (Trasfondo y otro) ya no cuelgan la pantalla, y los sprites en una pantalla PAL normal ya no avisan de RTG."],
@@ -226,7 +231,7 @@ export const CONTENIDO = {
         ["DOCUMENTACION_LENGUAJE", "Guía del lenguaje", "de cero a tu primer programa completo"],
         ["MANUAL_REFERENCIA", "Manual de referencia", "cada parte del lenguaje y de la API del Amiga, con ejemplos"],
         ["QUICK_REFERENCE", "Referencia rápida", "la sintaxis entera en una chuleta"],
-        ["BUILTINS", `Las ${BUILTINS} funciones`, "la lista, sacada del propio compilador"],
+        ["BUILTINS", `Las ${BUILTINS} funciones`, "cada una explicada, con un ejemplo probado por grupo"],
         ["INSTALACION", "Instalación", "Dash en el Amiga o en el PC (directo o por C con gcc) y el emulador, paso a paso"],
         ["MUI_EDITOR", "El editor visual de MUI", "el formato .dashui y la extensión de VS Code"],
         ["COMPARATIVA", "Comparativa", "Dash frente a Blitz, AMOS y C, con números"],
@@ -297,8 +302,8 @@ export const CONTENIDO = {
         },
         {
           estado: "Done",
-          titulo: "893 functions, in two languages",
-          texto: "All of them are documented in English and Spanish. The new ones in 2.x include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager, a debugger that VS Code uses too and, in 2.2, tile maps. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
+          titulo: "961 functions, each one explained",
+          texto: "All of them are explained in English and Spanish: what each parameter is, what they return and what happens when they fail, with an introduction and a tested example per group. The new ones in 2.x include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager, a debugger that VS Code uses too and, in 2.2, tile maps. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
         },
         {
           estado: "Future",
@@ -390,6 +395,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["8 Nov", "Documentation for all 961 functions: each one explained, with a tested example per group. Testing them fixed eight bugs, the joystick and gfx_flood's fill among them."],
         ["8 Nov", "Dash 2.6.3: the Amiga package brings Forja 0.5.1, where the code no longer jumps or repaints as a whole while debugging (reported by David Martínez)."],
         ["8 Nov", "Dash 2.6.2: interpolations with more than 16 numbers now come out right in ./dash, and Forja 0.5 picks where the executables go (an idea of Ferrán García)."],
         ["7 Nov", "Dash 2.6.1: two programs with a desktop canvas at once (Trasfondo and another) no longer hang the display, and sprites on a plain PAL screen no longer warn about RTG."],
@@ -421,7 +427,7 @@ export const CONTENIDO = {
         ["DOCUMENTACION_LENGUAJE", "Language guide", "from zero to your first complete program"],
         ["MANUAL_REFERENCIA", "Reference manual", "every part of the language and of the Amiga API, with examples"],
         ["QUICK_REFERENCE", "Quick reference", "the whole syntax on one cheat sheet"],
-        ["BUILTINS", `The ${BUILTINS} functions`, "the list, taken from the compiler itself"],
+        ["BUILTINS", `The ${BUILTINS} functions`, "each one explained, with a tested example per group"],
         ["INSTALACION", "Installation", "Dash on the Amiga or on the PC (straight or through C with gcc) and the emulator, step by step"],
         ["MUI_EDITOR", "The visual MUI editor", "the .dashui format and the VS Code extension"],
         ["COMPARATIVA", "Comparison", "Dash against Blitz, AMOS and C, with numbers"],
