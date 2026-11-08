@@ -474,6 +474,33 @@
   background: var(--wb-blanco);
 }
 
+.gracias-subtitulo {
+  margin: 2.5rem 0 0.5rem;
+}
+
+.gracias-terceros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 0.9rem 1.5rem;
+  margin: 1.25rem 0 0;
+}
+
+.gracias-terceros dt {
+  font-family: var(--fuente-topaz), monospace;
+  font-size: 1.05rem;
+}
+
+.gracias-terceros dt span {
+  font-family: inherit;
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+.gracias-terceros dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+}
+
 /* ---------- Vídeo ---------- */
 
 .video {

@@ -1,26 +1,31 @@
 import type { Idioma } from "./familia";
-import { RECONOCIMIENTOS, type ProgramaReconocido } from "./reconocimientos";
+import { RECONOCIMIENTOS, TERCEROS, type ProgramaReconocido } from "./reconocimientos";
 
 const TEXTOS = {
   es: {
     titulo: "Gracias",
     texto: "Lo que sigue salió de quien lo pidió, lo propuso o avisó de un fallo. Gracias por vuestro interés.",
+    terceros: "Sobre hombros de gigantes",
+    tercerosTexto: "Y el trabajo de otros sin el que esto no existiría. Se lo debemos.",
   },
   en: {
     titulo: "Thanks",
     texto: "The following came from the people who asked for it, suggested it or reported a bug. Thanks for your interest.",
+    terceros: "On the shoulders of giants",
+    tercerosTexto: "And the work of others without which this would not exist. We owe it to them.",
   },
 } as const;
 
 /** La sección "Gracias": quién pidió, propuso o contó cada cosa publicada. Sin nadie, no sale. */
 export function Gracias({ programa, idioma }: { programa: ProgramaReconocido; idioma: Idioma }) {
   const lista = RECONOCIMIENTOS[programa];
-  if (!lista.length) return null;
+  const terceros = TERCEROS[programa];
+  if (!lista.length && !terceros.length) return null;
   const t = TEXTOS[idioma];
   return (
     <section className="seccion seccion-gracias" aria-labelledby="gracias">
       <h2 id="gracias">{t.titulo}</h2>
-      <p className="medida">{t.texto}</p>
+      {lista.length > 0 && <p className="medida">{t.texto}</p>}
       <ul className="novedades">
         {lista.map((r) => (
           <li key={r.persona} className="wb-ventana novedad">
@@ -41,6 +46,22 @@ export function Gracias({ programa, idioma }: { programa: ProgramaReconocido; id
           </li>
         ))}
       </ul>
+      {terceros.length > 0 && (
+        <>
+          <h3 className="gracias-subtitulo">{t.terceros}</h3>
+          <p className="medida">{t.tercerosTexto}</p>
+          <dl className="gracias-terceros">
+            {terceros.map((x) => (
+              <div key={x.proyecto}>
+                <dt>
+                  {x.proyecto} <span>{idioma === "en" && x.autoresEn ? x.autoresEn : x.autores}</span>
+                </dt>
+                <dd>{x[idioma]}</dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      )}
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { Cabecera, Novedades, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
+import { Gracias, Cabecera, Novedades, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO, VERSION, VIDEO } from "./contenido";
 import { Estrellas } from "./Estrellas";
@@ -125,6 +125,8 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </div>
           </div>
         </section>
+
+        <Gracias programa="tachyon" idioma={idioma} />
 
         <section className="seccion seccion-dash" aria-labelledby="dash">
           <h2 id="dash">{t.dash.titulo}</h2>

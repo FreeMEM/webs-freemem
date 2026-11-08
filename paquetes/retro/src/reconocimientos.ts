@@ -76,3 +76,53 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   tachyon: [],
   inferencia: [],
 };
+
+/**
+ * El trabajo de otros sobre el que se construye cada programa: código incluido, firmware y herramientas sin las
+ * que no existiría. Contrastado con third_party/, runtime/ y los README de cada proyecto (08/11/2026).
+ */
+export type Tercero = {
+  readonly proyecto: string;
+  readonly autores: string;
+  /** Los autores en inglés, si cambian. */
+  readonly autoresEn?: string;
+  readonly es: string;
+  readonly en: string;
+};
+
+const EMU68: Tercero = { proyecto: "Emu68", autores: "Michal Schulz", es: "El emulador de 68k en la Raspberry Pi con el que Dash corre en una PiStorm.", en: "The 68k emulator on the Raspberry Pi that runs Dash on a PiStorm." };
+const MUI: Tercero = { proyecto: "MUI", autores: "Stefan Stuntz y el equipo de MUI", autoresEn: "Stefan Stuntz and the MUI team", es: "Las ventanas.", en: "The windows." };
+const AMISSL: Tercero = { proyecto: "AmiSSL", autores: "el equipo de AmiSSL", autoresEn: "the AmiSSL team", es: "HTTPS en el Amiga.", en: "HTTPS on the Amiga." };
+const FSUAE: Tercero = { proyecto: "FS-UAE", autores: "Frode Solheim", es: "El emulador donde pasan todas las pruebas.", en: "The emulator every test runs in." };
+const ZLIB: Tercero = { proyecto: "zlib", autores: "Jean-loup Gailly y Mark Adler", autoresEn: "Jean-loup Gailly and Mark Adler", es: "Comprimir y descomprimir.", en: "Compression." };
+const STB: Tercero = { proyecto: "stb", autores: "Sean Barrett", es: "Imágenes y fuentes TrueType.", en: "Images and TrueType fonts." };
+const NANOSVG: Tercero = { proyecto: "NanoSVG", autores: "Mikko Mononen", es: "Dibujos SVG.", en: "SVG drawings." };
+const TJPGD: Tercero = { proyecto: "TJpgDec", autores: "ChaN", es: "Fotos JPEG.", en: "JPEG photos." };
+const LIBWEBP: Tercero = { proyecto: "libwebp", autores: "Google", es: "Imágenes WebP.", en: "WebP images." };
+const BROTLI: Tercero = { proyecto: "Brotli", autores: "los autores de Brotli (Google)", autoresEn: "the Brotli authors (Google)", es: "Fuentes WOFF2 y páginas comprimidas.", en: "WOFF2 fonts and compressed pages." };
+const FDLIBM: Tercero = { proyecto: "fdlibm", autores: "Sun Microsystems", es: "Las funciones matemáticas.", en: "The maths functions." };
+const RYU: Tercero = { proyecto: "Ryu", autores: "Ulf Adams", es: "Escribir números decimales exactos.", en: "Printing exact decimal numbers." };
+
+export const TERCEROS: Readonly<Record<ProgramaReconocido, readonly Tercero[]>> = {
+  dash: [
+    { proyecto: "amiga-gcc", autores: "Stefan \"bebbo\" Franke", es: "El gcc de Amiga del camino por C (--gcc).", en: "The Amiga gcc behind the C path (--gcc)." },
+    { proyecto: "Lark", autores: "Erez Shinan", es: "El analizador del camino por C.", en: "The parser of the C path." },
+    EMU68, MUI, AMISSL, ZLIB, STB, NANOSVG, TJPGD, LIBWEBP, BROTLI, FDLIBM, RYU, FSUAE,
+  ],
+  forja: [MUI, AMISSL, FSUAE],
+  trasfondo: [
+    { ...EMU68, es: "Da la temperatura de la Raspberry Pi de una PiStorm.", en: "Gives the temperature of a PiStorm's Raspberry Pi." },
+    { proyecto: "PiStorm", autores: "Claude Schwarz", es: "La placa que pone una Raspberry Pi como CPU del Amiga.", en: "The board that turns a Raspberry Pi into the Amiga's CPU." },
+    FSUAE,
+    { proyecto: "Amiberry", autores: "Dimitris Panokostas", es: "El emulador de las pruebas con Coffin.", en: "The emulator for the Coffin tests." },
+  ],
+  tachyon: [
+    { proyecto: "QuickJS", autores: "Fabrice Bellard y Charlie Gordon", autoresEn: "Fabrice Bellard and Charlie Gordon", es: "El JavaScript.", en: "The JavaScript." },
+    { proyecto: "Hubbub", autores: "el proyecto NetSurf", autoresEn: "the NetSurf project", es: "El analizador de HTML5.", en: "The HTML5 parser." },
+    { proyecto: "MintVID", autores: "Darren \"boingball\" Banfi", es: "El vídeo, con libavc de Android.", en: "Video, with Android's libavc." },
+    STB, NANOSVG, TJPGD, LIBWEBP, BROTLI, FDLIBM, RYU,
+    { proyecto: "Lucide", autores: "los autores de Lucide y Feather (Cole Bemis)", autoresEn: "the Lucide and Feather authors (Cole Bemis)", es: "Los iconos de la barra.", en: "The toolbar icons." },
+    MUI, AMISSL, FSUAE,
+  ],
+  inferencia: [],
+};
