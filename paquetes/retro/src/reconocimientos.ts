@@ -42,6 +42,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.5.1", es: "Arreglo: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix: while debugging, the code jumped and was fully redrawn at every step." },
         { version: "0.4", es: "Arreglo: al depurar, F5 y F10 dejaban de responder.", en: "Fix: F5 and F10 stopped working while debugging." },
         { version: "0.5.1", es: "Arreglo: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix: while debugging, the code jumped and repainted as a whole on every step." },
       ],
