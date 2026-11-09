@@ -37,6 +37,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
         { version: "2.5", es: "Arreglo: lo que se abría desde el dock no tenía el path del Workbench.", en: "Fix: what opened from the dock lacked the Workbench path." },
       ],
     },
+    {
+      persona: "JaviTecH",
+      aportes: [
+        { version: "2.8.6", es: "Avisó de que el dock parpadeaba al pasar el ratón.", en: "Reported that the dock flickered when the mouse moved over it." },
+      ],
+    },
   ],
   forja: [
     {
