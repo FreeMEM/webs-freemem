@@ -86,6 +86,14 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       persona: "Ferrán García",
       aportes: [
         { version: "0.9.3", es: "Abrir ficheros del disco desde el menú (Amiga-O) y soltando su icono en la ventana.", en: "Opening files from disk from the menu (Amiga-O) and by dropping their icon on the window." },
+        { version: "0.9.1", es: "Guardar un enlace o la página como fichero, para bajarse también los .readme de Aminet.", en: "Saving a link or the page as a file, to download Aminet's .readme files too." },
+        { version: "0.9.1", es: "Pegar, copiar y cortar en los campos de las páginas.", en: "Pasting, copying and cutting in the page's fields." },
+      ],
+    },
+    {
+      persona: "Israel Ortuño Gogeta",
+      aportes: [
+        { version: "0.7.5", es: "Avisó de que el .lha daba error al descomprimirlo. Desde entonces el paquete va comprimido, en un tercio de lo que ocupaba.", en: "Reported that the .lha failed to unpack. Since then the package is compressed, a third of its old size." },
       ],
     },
   ],
