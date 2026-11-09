@@ -1,6 +1,7 @@
 import { Gracias, Cabecera, Novedades, Pie, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
 import { BASE, CONTENIDO, DESCARGA, RELEASE, REPO, VERSION, VIDEO } from "./contenido";
+import { Comparativa } from "./Comparativa";
 import { Estrellas } from "./Estrellas";
 
 export function Inicio({ idioma }: { idioma: Idioma }) {
@@ -94,6 +95,8 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </figure>
           </div>
         </section>
+
+        <Comparativa idioma={idioma} />
 
         <section className="seccion seccion-doble" aria-labelledby="alfa">
           <div>

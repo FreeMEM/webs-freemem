@@ -273,6 +273,151 @@ main dd {
   color: var(--azul-claro);
 }
 
+/* ---------- Tres navegadores: la tabla, con un color por navegador ---------- */
+
+.seccion-comparativa {
+  --c-tachyon: var(--azul-claro);
+  --c-amelinium: #6fd3a8;
+  --c-amifire: #ffa45c;
+}
+
+.comparativa-gracias {
+  color: var(--luz-suave);
+}
+
+.comparativa-marco {
+  margin-top: 2.5rem;
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(46, 91, 255, 0.12), rgba(7, 15, 36, 0.6) 45%);
+  box-shadow:
+    0 0 0 1px rgba(127, 157, 255, 0.25),
+    0 20px 60px -20px rgba(46, 91, 255, 0.35);
+  overflow: hidden;
+}
+
+.comparativa {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.comparativa th,
+.comparativa td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.comparativa thead th {
+  padding-top: 1.4rem;
+  border-bottom: 3px solid var(--color-nav);
+}
+
+.comparativa .nav-0 {
+  --color-nav: var(--c-tachyon);
+}
+
+.comparativa .nav-1 {
+  --color-nav: var(--c-amelinium);
+}
+
+.comparativa .nav-2 {
+  --color-nav: var(--c-amifire);
+}
+
+.comparativa-nombre {
+  display: block;
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--color-nav);
+}
+
+.comparativa-autor {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--luz-suave);
+}
+
+.comparativa-enlaces {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.35rem;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.comparativa thead td,
+.comparativa tbody th {
+  width: 11rem;
+  font-family: var(--fuente-topaz), monospace;
+  font-weight: 400;
+  color: var(--luz);
+}
+
+.comparativa tbody td {
+  color: var(--luz-suave);
+}
+
+.comparativa tbody tr {
+  border-top: 1px solid rgba(127, 157, 255, 0.12);
+}
+
+.comparativa tbody tr:hover {
+  background: rgba(127, 157, 255, 0.06);
+}
+
+.comparativa tbody td.nav-0 {
+  color: var(--luz);
+  background: rgba(127, 157, 255, 0.07);
+}
+
+.comparativa-nota {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--luz-suave);
+}
+
+/* En el móvil, cada fila es una tarjeta: el aspecto arriba y debajo los tres, con su nombre a la izquierda. */
+@media (max-width: 52rem) {
+  .comparativa thead {
+    display: none;
+  }
+  .comparativa,
+  .comparativa tbody,
+  .comparativa tr,
+  .comparativa th,
+  .comparativa td {
+    display: block;
+    width: auto;
+  }
+  .comparativa tbody th {
+    padding-bottom: 0.3rem;
+    font-size: 1.1rem;
+  }
+  .comparativa tbody td {
+    padding: 0.35rem 1rem 0.35rem 6.8rem;
+    position: relative;
+    background: none;
+  }
+  .comparativa tbody td.nav-0 {
+    background: none;
+  }
+  .comparativa tbody td::before {
+    content: attr(data-nav);
+    position: absolute;
+    left: 1rem;
+    font-family: var(--fuente-topaz), monospace;
+    color: var(--color-nav);
+  }
+  .comparativa tbody tr {
+    padding-bottom: 0.7rem;
+  }
+}
+
 .seccion-dash a {
   font-family: var(--fuente-topaz), monospace;
 }
