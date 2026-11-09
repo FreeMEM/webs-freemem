@@ -49,6 +49,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       persona: "JaviTecH",
       aportes: [
         { version: "2.8.6", es: "Avisó de que el dock parpadeaba al pasar el ratón.", en: "Reported that the dock flickered when the mouse moved over it." },
+        { version: "2.8.7", es: "Pidió las capturas de pantalla: con una tecla, desde los ajustes rápidos o por ARexx.", en: "Asked for screenshots: with a key, from the quick settings or through ARexx." },
       ],
     },
   ],
