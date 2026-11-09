@@ -4,13 +4,13 @@ import { RECONOCIMIENTOS, TERCEROS, type ProgramaReconocido } from "./reconocimi
 const TEXTOS = {
   es: {
     titulo: "Gracias",
-    texto: "Lo que sigue salió de quien lo pidió, lo propuso o avisó de un fallo. Gracias por vuestro interés.",
+    texto: "Esto no lo he hecho solo. Cada cosa de esta lista la pidió, la propuso o la encontró rota alguien que usa el programa.",
     terceros: "Sobre hombros de gigantes",
     tercerosTexto: "Y el trabajo de otros sin el que esto no existiría. Se lo debemos.",
   },
   en: {
     titulo: "Thanks",
-    texto: "The following came from the people who asked for it, suggested it or reported a bug. Thanks for your interest.",
+    texto: "I didn't do this alone. Everything on this list was asked for, suggested or found broken by someone who uses the program.",
     terceros: "On the shoulders of giants",
     tercerosTexto: "And the work of others without which this would not exist. We owe it to them.",
   },
