@@ -21,8 +21,16 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
         { version: "2.8", es: "Elegir qué enseña la barra.", en: "Choosing what the bar shows." },
         { version: "2.8", es: "La barra y el dock en Exchange.", en: "The bar and the dock in Exchange." },
         { version: "2.7", es: "Arreglo: la raya que aparecía junto al botón de profundidad.", en: "Fix: the line that showed up next to the depth gadget." },
+        { version: "2.6", es: "Arreglo: la barra cargaba la red sin la pila TCP/IP en marcha, y con MiamiDx estorbaba al conectar.", en: "Fix: the bar loaded the network without the TCP/IP stack running, which got in MiamiDx's way when connecting." },
+        { version: "2.6", es: "La barra, pegada al botón de profundidad en todas las pantallas.", en: "The bar, flush against the depth gadget on every screen." },
         { version: "2.5", es: "El LEEME del paquete a 80 columnas.", en: "The package readme at 80 columns." },
+        { version: "2.5", es: "TrasfondoPrefs se cierra y se abre sola tras actualizar, ya con las opciones nuevas.", en: "TrasfondoPrefs closes and reopens by itself after an update, with the new options." },
+        { version: "2.5", es: "Arreglo: la barra nacía a la izquierda y se movía a su sitio.", en: "Fix: the bar was born on the left and then moved into place." },
         { version: "2.4", es: "La barra dentro de la barra de título de la pantalla.", en: "The bar inside the screen title bar." },
+        { version: "2.2", es: "Pulsar la hora o la barra con su panel abierto lo cierra.", en: "Clicking the clock or the bar with its panel open closes it." },
+        { version: "2.2", es: "El botón de reiniciar avisa de que hay que pulsarlo otra vez.", en: "The reboot button says it needs a second click." },
+        { version: "2.2", es: "En TrasfondoPrefs, Arranque enciende y apaga cada pieza en el momento.", en: "In TrasfondoPrefs, Startup turns each piece on and off right away." },
+        { version: "2.2", es: "Arreglo: la red de los ajustes rápidos ponía \"no Roadshow\" con MiamiDx.", en: "Fix: the quick settings' network said \"no Roadshow\" with MiamiDx." },
       ],
     },
     {
@@ -48,6 +56,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.5.2", es: "Las teclas del editor, como F5 y F10, llegan con el puntero en cualquier sitio de la ventana.", en: "The editor keys, such as F5 and F10, arrive with the pointer anywhere in the window." },
         { version: "0.4", es: "Arreglo: al depurar, F5 y F10 dejaban de responder.", en: "Fix: F5 and F10 stopped working while debugging." },
         { version: "0.5.1", es: "Arreglo: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix: while debugging, the code jumped and repainted as a whole on every step." },
       ],
@@ -55,7 +64,9 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Tolkien",
       aportes: [
+        { version: "0.5.2", es: "Help o F1 para ver la ayuda del nombre que hay en el cursor.", en: "Help or F1 to see the help for the name under the cursor." },
         { version: "0.4", es: "Encontrar dash aunque no esté la asignación DASH:.", en: "Finding dash even without the DASH: assign." },
+        { version: "0.4", es: "Pidió autocompletado en el editor.", en: "Asked for code completion in the editor." },
       ],
     },
     {
@@ -72,6 +83,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.6.2", es: "Elegir dónde van los ejecutables, en Forja 0.5 y en la extensión de VS Code (dash.outputFolder).", en: "Choosing where the executables go, in Forja 0.5 and in the VS Code extension (dash.outputFolder)." },
         { version: "2.6.0", es: "Soltar iconos del Workbench sobre las ventanas MUI.", en: "Dropping Workbench icons on MUI windows." },
         { version: "2.4.0", es: "La referencia rápida en castellano.", en: "The quick reference in Spanish." },
         { version: "2.4.0", es: "El LEEME y el README del paquete a 80 columnas.", en: "The package LEEME and README at 80 columns." },
@@ -81,9 +93,29 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       ],
     },
     {
+      persona: "David Martínez",
+      aportes: [
+        { version: "2.7.0", es: "mui_canvas_take_keys: una zona de dibujo de MUI recibe las teclas sin el puntero encima (F5 y F10 en Forja 0.5.2).", en: "mui_canvas_take_keys: a MUI drawing area gets the keys without the pointer over it (F5 and F10 in Forja 0.5.2)." },
+        { version: "2.6.3", es: "Arreglo en Forja 0.5.1: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix in Forja 0.5.1: while debugging, the code jumped and repainted as a whole on every step." },
+      ],
+    },
+    {
+      persona: "JaviTecH",
+      aportes: [
+        { version: "2.7.0", es: "bitmap_create con profundidad 0: un bitmap como la pantalla, para dibujar sin parpadeo (el dock de Trasfondo).", en: "bitmap_create with depth 0: a bitmap like the screen, to draw without flicker (Trasfondo's dock)." },
+      ],
+    },
+    {
       persona: "Oskis R.P",
       aportes: [
         { version: "2.5.0", es: "Avisó de la fuga de memoria que tenía el fondo de Trasfondo.", en: "Reported the memory leak in Trasfondo's backdrop." },
+      ],
+    },
+    {
+      persona: "Tolkien",
+      aportes: [
+        { version: "2.7.0", es: "En Forja 0.5.2, Help o F1 para ver la ayuda del nombre que hay en el cursor.", en: "In Forja 0.5.2, Help or F1 to see the help for the name under the cursor." },
+        { version: "2.3.0", es: "Probó los ejecutables de Dash en MorphOS.", en: "Tried Dash's executables on MorphOS." },
       ],
     },
   ],

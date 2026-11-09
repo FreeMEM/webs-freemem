@@ -8,7 +8,7 @@ export const REPO = "https://github.com/FreeMEM/dash";
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
 export const BASE = "https://dash.freemem.space";
-export const BUILTINS = 961;
+export const BUILTINS = 962;
 
 /** Las funciones de Dash por área (docs/BUILTINS.md): nombre en castellano, en inglés y cuántas. */
 export const AREAS = [
@@ -82,7 +82,7 @@ export const CONTENIDO = {
     bola: "La bola Boing, la demo del Amiga de 1984, botando",
     novedades: {
       titulo: "Novedades: Dash 2.2",
-      texto: "La última versión es la 2.3.1, del 4 de noviembre de 2026. Trae en el paquete del Amiga dashgit, un git escrito en Dash, todavía en alfa. Compila también para DashOS (AArch64), trae lo que piden el dock y los colores de Trasfondo y lo que necesita dashgit, un git escrito en Dash, y un instalador que pone al día una instalación anterior. Desde la 2.0, con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
+      texto: "La última versión es la 2.7.0, del 9 de noviembre de 2026. Compila también para DashOS (AArch64), trae lo que piden el dock y los colores de Trasfondo y lo que necesita dashgit, un git escrito en Dash, y un instalador que pone al día una instalación anterior. Desde la 2.0, con la misma orden, dash, un programa se compila de dos formas: a un ejecutable hunk nativo del Amiga, o a C intermedio que compila GCC.",
       lista: [
         {
           estado: "Nuevo en la 2.2",
@@ -97,7 +97,7 @@ export const CONTENIDO = {
         {
           estado: "Para el Amiga",
           titulo: "Y compila en el propio Amiga",
-          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.3.1-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, con sus editores de sprites y de mapas, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
+          texto: "La orden dash funciona en Linux y en el Amiga, desde un 68000 con OS 2.0. Se instala con dash-2.7.0-amiga.lha y su propio instalador, que trae también Forja, el IDE de Dash, con sus editores de sprites y de mapas, e Inferencia, la IA que programa en el Amiga. Un \"hola\" se compila en menos de un segundo en un A1200 emulado, y en 2 o 3 segundos en un A500. El ejecutable que sale es idéntico en el PC y en el Amiga.",
         },
         {
           estado: "Medido",
@@ -106,7 +106,7 @@ export const CONTENIDO = {
         },
         {
           estado: "Hecho",
-          titulo: "961 funciones, cada una explicada",
+          titulo: "962 funciones, cada una explicada",
           texto: "Todas están explicadas en castellano y en inglés: qué es cada parámetro, qué devuelven y qué pasa si fallan, con una introducción y un ejemplo probado por grupo. Entre las nuevas de la 2.x hay imágenes JPEG, PNG, WebP y SVG que decodifica el propio programa, fuentes TrueType y WOFF, red en segundo plano, un gestor de ventanas, un depurador que también usa VS Code y, en la 2.2, mapas de tiles. Con @link se pueden enlazar librerías de C; QuickJS ya funciona compilado directo a hunk.",
         },
         {
@@ -199,6 +199,7 @@ export const CONTENIDO = {
       veces: "veces más rápido",
       hitosTitulo: "Lo que se hizo",
       hitos: [
+        ["9 nov.", "Dash 2.7.0: en Forja 0.5.2, Help o F1 enseñan la ayuda de lo que hay en el cursor (idea de Javier R. Santurde \"Tolkien\"), y F5 y F10 funcionan con el puntero en cualquier sitio (lo contó David Martínez). Y bitmap_create prepara dibujos sin parpadeo (lo contó JaviTecH)."],
         ["8 nov.", "Dash 2.6.4: la documentación de las 961 funciones, cada una explicada, con un ejemplo probado por grupo. Al probarlas se arreglaron ocho fallos, entre ellos el joystick y el relleno de gfx_flood."],
         ["8 nov.", "Dash 2.6.3: el paquete del Amiga trae Forja 0.5.1, donde al depurar el código ya no salta ni se repinta entero (lo contó David Martínez)."],
         ["8 nov.", "Dash 2.6.2: las interpolaciones con más de 16 números ya salen bien en ./dash, y Forja 0.5 elige dónde dejar los ejecutables (idea de Ferrán García)."],
@@ -257,7 +258,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "Lo que necesitas",
       amiga: ["Para los programas", "AmigaOS 3.0 o posterior; con un 68000 basta. Para MUI y HTTPS, un 68020. También funcionan en MorphOS, con su emulación de 68k."],
-      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.3.1-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup (si ya tienes Dash, lo pone al día en su sitio). Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI: Forja, la 3.8 o la 5; Inferencia, la 5)."],
+      instalarAmiga: ["Para compilar en el Amiga", "Un 68000 y AmigaOS 2.0 o posterior. Descarga dash-2.7.0-amiga.lha de las releases de GitHub, descomprímelo y haz doble clic en Instalar: deja el cajón Dash donde elijas y añade el Assign DASH: y el Path a S:User-Startup (si ya tienes Dash, lo pone al día en su sitio). Luego, en un Shell: dash DASH:examples/hola.dash -o RAM:hola. Trae también Forja, el IDE de Dash, e Inferencia, la IA que programa en el Amiga (las dos usan MUI: Forja, la 3.8 o la 5; Inferencia, la 5)."],
       pc: ["Para compilar en el PC", "Linux, macOS o WSL2, con un compilador de C, make y Python 3 para construir el compilador de Dash (en un Mac todavía sin probar). Compilas en el PC y pasas al Amiga un ejecutable listo para usar, o compilas en el propio Amiga. Para --gcc (y los programas con C dentro), además Lark y el compilador cruzado m68k-amigaos-gcc."],
       guia: "Guía para empezar",
     },
@@ -278,7 +279,7 @@ export const CONTENIDO = {
     bola: "The Boing ball, the 1984 Amiga demo, bouncing",
     novedades: {
       titulo: "What's new: Dash 2.2",
-      texto: "The latest version is 2.3.1, from 4 November 2026. Its Amiga package brings dashgit, a git written in Dash, still in alpha. It also compiles for DashOS (AArch64), brings what Trasfondo's dock and colours ask for and what dashgit, a git written in Dash, needs, and an installer that updates an earlier installation. Since 2.0, with the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
+      texto: "The latest version is 2.7.0, from 9 November 2026. It also compiles for DashOS (AArch64), brings what Trasfondo's dock and colours ask for and what dashgit, a git written in Dash, needs, and an installer that updates an earlier installation. Since 2.0, with the same command, dash, a program compiles in two ways: to a native Amiga hunk executable, or to intermediate C that GCC compiles.",
       lista: [
         {
           estado: "New in 2.2",
@@ -293,7 +294,7 @@ export const CONTENIDO = {
         {
           estado: "For the Amiga",
           titulo: "And it compiles on the Amiga itself",
-          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.3.1-amiga.lha and its own installer, which also brings Forja, Dash's IDE, with its sprite and map editors, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
+          texto: "The dash command runs on Linux and on the Amiga, from a 68000 with OS 2.0. It installs with dash-2.7.0-amiga.lha and its own installer, which also brings Forja, Dash's IDE, with its sprite and map editors, and Inferencia, the AI that programs on the Amiga. A \"hello\" compiles in under a second on an emulated A1200, and in 2 to 3 seconds on an A500. The executable it produces is identical on the PC and on the Amiga.",
         },
         {
           estado: "Measured",
@@ -302,7 +303,7 @@ export const CONTENIDO = {
         },
         {
           estado: "Done",
-          titulo: "961 functions, each one explained",
+          titulo: "962 functions, each one explained",
           texto: "All of them are explained in English and Spanish: what each parameter is, what they return and what happens when they fail, with an introduction and a tested example per group. The new ones in 2.x include JPEG, PNG, WebP and SVG images decoded by the program itself, TrueType and WOFF fonts, background networking, a window manager, a debugger that VS Code uses too and, in 2.2, tile maps. With @link you can link C libraries; QuickJS already works compiled straight to hunk.",
         },
         {
@@ -395,6 +396,7 @@ export const CONTENIDO = {
       veces: "times faster",
       hitosTitulo: "What was done",
       hitos: [
+        ["9 Nov", "Dash 2.7.0: in Forja 0.5.2, Help or F1 show the help for what is under the cursor (idea by Javier R. Santurde \"Tolkien\"), and F5 and F10 work with the pointer anywhere (reported by David Martínez). And bitmap_create prepares drawings without flicker (reported by JaviTecH)."],
         ["8 Nov", "Dash 2.6.4: documentation for all 961 functions, each one explained, with a tested example per group. Testing them fixed eight bugs, the joystick and gfx_flood's fill among them."],
         ["8 Nov", "Dash 2.6.3: the Amiga package brings Forja 0.5.1, where the code no longer jumps or repaints as a whole while debugging (reported by David Martínez)."],
         ["8 Nov", "Dash 2.6.2: interpolations with more than 16 numbers now come out right in ./dash, and Forja 0.5 picks where the executables go (an idea of Ferrán García)."],
@@ -453,7 +455,7 @@ export const CONTENIDO = {
     requisitos: {
       titulo: "What you need",
       amiga: ["For the programs", "AmigaOS 3.0 or later; a 68000 is enough. For MUI and HTTPS, a 68020. They also run on MorphOS, through its 68k emulation."],
-      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.3.1-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup (if you already have Dash, it updates it where it is). Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI: Forja 3.8 or 5, Inferencia 5)."],
+      instalarAmiga: ["To compile on the Amiga", "A 68000 and AmigaOS 2.0 or later. Download dash-2.7.0-amiga.lha from the GitHub releases, unpack it and double-click Instalar: it puts the Dash drawer wherever you choose and adds the DASH: assign and the Path to S:User-Startup (if you already have Dash, it updates it where it is). Then, in a Shell: dash DASH:examples/hola.dash -o RAM:hola. It also brings Forja, Dash's IDE, and Inferencia, the AI that programs on the Amiga (both use MUI: Forja 3.8 or 5, Inferencia 5)."],
       pc: ["To compile on the PC", "Linux, macOS or WSL2, with a C compiler, make and Python 3 to build Dash's compiler (not tried on a Mac yet). You compile on the PC and copy a ready-to-run executable to the Amiga, or you compile on the Amiga itself. For --gcc (and programs with C inside), also Lark and the m68k-amigaos-gcc cross compiler."],
       guia: "Getting started guide",
     },
