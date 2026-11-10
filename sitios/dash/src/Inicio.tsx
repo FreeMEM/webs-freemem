@@ -298,7 +298,7 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
                   <span className="historia-ahora" style={{ inlineSize: `${(ahora / antes) * 100}%` }} />
                 </span>
                 <span className="historia-cifras">
-                  {numero(antes, idioma)} → <strong>{numero(ahora, idioma)}</strong> {t.historia.unidad}
+                  {numero(antes, idioma)} <span className="historia-flecha" /> <strong>{numero(ahora, idioma)}</strong> {t.historia.unidad}
                 </span>
                 <span className="historia-veces">
                   ×{(antes / ahora).toFixed(1).replace(".", idioma === "es" ? "," : ".")}

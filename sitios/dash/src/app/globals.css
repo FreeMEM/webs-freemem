@@ -96,8 +96,16 @@ main dd {
   background: #0055aa;
 }
 
+/* El cursor parpadea unos segundos y se queda encendido: un parpadeo sin fin hace repintar sin parar, y en un Amiga
+   con un navegador (Tachyon en un 68030) eso se nota (lo contaron David Martínez, JaviTecH y Oskis R.P) */
 .logo-dash-cursor {
-  animation: cursor-dash 1s steps(1) infinite;
+  animation: cursor-dash 1s steps(1) 6;
+}
+
+/* La flecha de "antes -> ahora" (Historia), en CSS y no en el texto: el DOM de Tachyon guarda el texto en Latin-1, donde
+   no cabe, y React veía un texto distinto del suyo (error #418) y rehacía la página entera */
+.historia-flecha::before {
+  content: "\2192";
 }
 
 @keyframes cursor-dash {
