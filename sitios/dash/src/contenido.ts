@@ -200,7 +200,7 @@ export const CONTENIDO = {
       hitosTitulo: "Lo que se hizo",
       hitos: [
         ["10 nov.", "Dash 2.9.1: Forja 0.6.0 pone Dash al día desde el propio Amiga, sin lha: mira en GitHub, lo comprueba todo antes de cambiar nada y no toca tus ficheros. Y estrena una barra de botones con iconos de color."],
-        ["10 nov.", "Dash 2.9.0: if a in (1..10), también con step, en listas, textos y diccionarios, not in, y 1 <= a <= 10 como en Python (lo pidió David Martínez). Y lib/requisitos.dash comprueba en el Amiga lo que necesita un programa, de la línea Requires: de su .readme, para Hangar."],
+        ["10 nov.", "Dash 2.9.0: if a in (1..10), también con step, en listas, textos y diccionarios, not in, y 1 <= a <= 10 como en Python (lo pidió David Martínez). Y lib/requisitos.dash comprueba en el Amiga lo que necesita un programa, de la línea Requires: de su .readme, la de Aminet."],
         ["9 nov.", "Dash 2.8.0: screen_save_png guarda la pantalla como PNG, también la de una tarjeta gráfica. Con ella, Trasfondo 2.8.7 hace capturas de pantalla (lo pidió JaviTecH)."],
         ["9 nov.", "Dash 2.7.0: en Forja 0.5.2, Help o F1 enseñan la ayuda de lo que hay en el cursor (idea de Javier R. Santurde \"Tolkien\"), y F5 y F10 funcionan con el puntero en cualquier sitio (lo contó David Martínez). Y bitmap_create prepara dibujos sin parpadeo (lo contó JaviTecH)."],
         ["8 nov.", "Dash 2.6.4: la documentación de las 961 funciones, cada una explicada, con un ejemplo probado por grupo. Al probarlas se arreglaron ocho fallos, entre ellos el joystick y el relleno de gfx_flood."],
@@ -400,7 +400,7 @@ export const CONTENIDO = {
       hitosTitulo: "What was done",
       hitos: [
         ["10 Nov", "Dash 2.9.1: Forja 0.6.0 updates Dash from the Amiga itself, without lha: it asks GitHub, checks everything before changing anything and leaves your files alone. And it has a new button bar with coloured icons."],
-        ["10 Nov", "Dash 2.9.0: if a in (1..10), with step too, in lists, strings and dictionaries, not in, and 1 <= a <= 10 as in Python (asked for by David Martínez). And lib/requisitos.dash checks on the Amiga what a program needs, from the Requires: line of its .readme, for Hangar."],
+        ["10 Nov", "Dash 2.9.0: if a in (1..10), with step too, in lists, strings and dictionaries, not in, and 1 <= a <= 10 as in Python (asked for by David Martínez). And lib/requisitos.dash checks on the Amiga what a program needs, from the Requires: line of its .readme, the Aminet one."],
         ["9 Nov", "Dash 2.8.0: screen_save_png saves the screen as a PNG, a graphics card's too. With it, Trasfondo 2.8.7 takes screenshots (asked for by JaviTecH)."],
         ["9 Nov", "Dash 2.7.0: in Forja 0.5.2, Help or F1 show the help for what is under the cursor (idea by Javier R. Santurde \"Tolkien\"), and F5 and F10 work with the pointer anywhere (reported by David Martínez). And bitmap_create prepares drawings without flicker (reported by JaviTecH)."],
         ["8 Nov", "Dash 2.6.4: documentation for all 961 functions, each one explained, with a tested example per group. Testing them fixed eight bugs, the joystick and gfx_flood's fill among them."],
