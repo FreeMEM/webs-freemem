@@ -96,6 +96,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.9.0", es: "x in (1..10), x in lista, not in y 1 <= a <= 10 como en Python.", en: "x in (1..10), x in list, not in and 1 <= a <= 10 as in Python." },
         { version: "2.7.0", es: "mui_canvas_take_keys: una zona de dibujo de MUI recibe las teclas sin el puntero encima (F5 y F10 en Forja 0.5.2).", en: "mui_canvas_take_keys: a MUI drawing area gets the keys without the pointer over it (F5 and F10 in Forja 0.5.2)." },
         { version: "2.6.3", es: "Arreglo en Forja 0.5.1: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix in Forja 0.5.1: while debugging, the code jumped and repainted as a whole on every step." },
       ],
