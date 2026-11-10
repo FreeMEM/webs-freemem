@@ -125,6 +125,24 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   tachyon: [
     {
+      persona: "David Martínez",
+      aportes: [
+        { version: "0.9.4", es: "Avisó de que dash.freemem.space se quedaba colgada. Arreglado: el JavaScript ve el texto original, las hojas y scripts atascados tienen tope y reintento, las animaciones que no cambian no se repintan y requestAnimationFrame va a 15 por segundo.", en: "Reported that dash.freemem.space hung. Fixed: JavaScript sees the original text, stuck style sheets and scripts get a limit and a retry, animations that don't change aren't repainted and requestAnimationFrame runs at 15 per second." },
+      ],
+    },
+    {
+      persona: "Oskis R.P",
+      aportes: [
+        { version: "0.9.4", es: "Pidió el registro de depuración de red (Herramientas > Network debug log), y confirmó el cuelgue de dash.freemem.space en su PiStorm.", en: "Asked for the network debug log (Tools > Network debug log), and confirmed the dash.freemem.space hang on a PiStorm." },
+      ],
+    },
+    {
+      persona: "JaviTecH",
+      aportes: [
+        { version: "0.9.4", es: "Confirmó el cuelgue de dash.freemem.space en su MiSTer y vio que la bola animada se comía la CPU.", en: "Confirmed the dash.freemem.space hang on a MiSTer and spotted that the animated ball ate the CPU." },
+      ],
+    },
+    {
       persona: "Ferrán García",
       aportes: [
         { version: "0.9.3", es: "Abrir ficheros del disco desde el menú (Amiga-O) y soltando su icono en la ventana.", en: "Opening files from disk from the menu (Amiga-O) and by dropping their icon on the window." },
