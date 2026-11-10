@@ -37,6 +37,13 @@ export const SITIOS = [
     icono: "/familia/inferencia.png",
     lema: { es: "La IA", en: "The AI" },
   },
+  {
+    id: "dashos",
+    nombre: "DashOS",
+    url: "https://dashos.freemem.space",
+    icono: "/familia/dashos.svg",
+    lema: { es: "El sistema", en: "The system" },
+  },
 ] as const;
 
 export type IdSitio = (typeof SITIOS)[number]["id"];
@@ -45,13 +52,13 @@ const TEXTOS = {
   es: {
     familia: "Programas para Amiga de FreeMEM",
     otroIdioma: "English",
-    hechoPor: "Hecho por Francisco Antonio Tapias Bravo (FreeMEM). Software libre, con licencia MIT.",
+    hechoPor: (licencia: string) => `Hecho por Francisco Antonio Tapias Bravo (FreeMEM). Software libre, con licencia ${licencia}.`,
     blog: "Blog",
   },
   en: {
     familia: "Amiga software by FreeMEM",
     otroIdioma: "Español",
-    hechoPor: "Made by Francisco Antonio Tapias Bravo (FreeMEM). Free software, MIT licence.",
+    hechoPor: (licencia: string) => `Made by Francisco Antonio Tapias Bravo (FreeMEM). Free software, ${licencia} licence.`,
     blog: "Blog",
   },
 };
@@ -81,7 +88,8 @@ export function Cabecera({ actual, idioma, rutaOtroIdioma }: { actual: IdSitio; 
   );
 }
 
-export function Pie({ idioma, enlaces }: { idioma: Idioma; enlaces: { texto: string; url: string }[] }) {
+/** El pie: los enlaces de la web, GitHub, el blog y el autor. `licencia`, la del programa (MIT si no se dice). */
+export function Pie({ idioma, enlaces, licencia = "MIT" }: { idioma: Idioma; enlaces: { texto: string; url: string }[]; licencia?: string }) {
   const t = TEXTOS[idioma];
   return (
     <footer className="pie">
@@ -98,7 +106,7 @@ export function Pie({ idioma, enlaces }: { idioma: Idioma; enlaces: { texto: str
           <a href="https://freemem.space">{t.blog}</a>
         </li>
       </ul>
-      <p>{t.hechoPor}</p>
+      <p>{t.hechoPor(licencia)}</p>
     </footer>
   );
 }

@@ -25,6 +25,7 @@ SITIOS = {
     "trasfondo": "trasfondo.freemem.space",
     "forja": "forja.freemem.space",
     "inferencia": "inferencia.freemem.space",
+    "dashos": "dashos.freemem.space",
 }
 
 # Lo común a HTTP y HTTPS: el export de Next.js (con barra final), caché larga para lo que lleva huella y su 404.

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="128" height="128" shape-rendering="crispEdges">
+  <!-- Icono provisional de DashOS: la D de cuadros del logo de Dash y, al lado, tres capas (programas, servicios,
+       kernel). Rejilla de 16x16, como el de Dash. -->
+  <title>DashOS</title>
+  <rect width="16" height="16" rx="2.5" fill="#18202E" shape-rendering="auto"/>
+  <g fill="#FF8800">
+    <rect x="2" y="4" width="5" height="1"/>
+    <rect x="2" y="5" width="2" height="6"/>
+    <rect x="6" y="5" width="2" height="6"/>
+    <rect x="2" y="11" width="5" height="1"/>
+  </g>
+  <rect x="10" y="4" width="4" height="2" fill="#FFFFFF"/>
+  <rect x="10" y="7" width="4" height="2" fill="#5AA2FF"/>
+  <rect x="10" y="10" width="4" height="2" fill="#0055AA"/>
+</svg>

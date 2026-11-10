@@ -7,7 +7,8 @@
     "dev:tachyon": "pnpm --filter tachyon dev",
     "dev:trasfondo": "pnpm --filter trasfondo dev",
     "dev:forja": "pnpm --filter forja dev",
-    "dev:inferencia": "pnpm --filter inferencia dev"
+    "dev:inferencia": "pnpm --filter inferencia dev",
+    "dev:dashos": "pnpm --filter dashos dev"
   },
   "packageManager": "pnpm@11.9.0"
 }

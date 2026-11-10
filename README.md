@@ -7,6 +7,8 @@ Las webs de los programas para Amiga de FreeMEM:
 - [trasfondo.freemem.space](https://trasfondo.freemem.space): Trasfondo, el monitor.
 - [forja.freemem.space](https://forja.freemem.space): Forja, el IDE de Dash.
 - [inferencia.freemem.space](https://inferencia.freemem.space): Inferencia, la IA para el Amiga.
+- [dashos.freemem.space](https://dashos.freemem.space): DashOS, el sistema operativo con la API de AmigaOS para la
+  Raspberry Pi (en desarrollo).
 
 Cada una es una app de Next.js exportada a HTML estático, en castellano (`/`) y en inglés (`/en/`). Las piezas
 que comparten (las ventanas del Workbench, la bola Boing, la cabecera de la familia, el SEO) están en
