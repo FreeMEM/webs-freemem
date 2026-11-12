@@ -57,6 +57,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.6.1", es: "Parar acaba un programa que da vueltas, y al depurar el código ya no salta con un clic.", en: "Stop ends a program stuck in a loop, and while debugging the code no longer jumps on a click." },
         { version: "0.5.2", es: "Las teclas del editor, como F5 y F10, llegan con el puntero en cualquier sitio de la ventana.", en: "The editor keys, such as F5 and F10, arrive with the pointer anywhere in the window." },
         { version: "0.4", es: "Arreglo: al depurar, F5 y F10 dejaban de responder.", en: "Fix: F5 and F10 stopped working while debugging." },
         { version: "0.5.1", es: "Arreglo: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix: while debugging, the code jumped and repainted as a whole on every step." },
@@ -84,6 +85,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.11.0", es: "Ventanas de fondo (window_next_backdrop, screen_show_title), para que la barra de Trasfondo quede detrás de todo.", en: "Backdrop windows (window_next_backdrop, screen_show_title), so Trasfondo's bar stays behind everything." },
+        { version: "2.11.0", es: "Pegar, copiar y cortar en los campos de MUI 3.8, y mui_active_object y mui_string_pos para pegar donde está el cursor.", en: "Paste, copy and cut in MUI 3.8 fields, and mui_active_object and mui_string_pos to paste where the cursor is." },
         { version: "2.6.2", es: "Elegir dónde van los ejecutables, en Forja 0.5 y en la extensión de VS Code (dash.outputFolder).", en: "Choosing where the executables go, in Forja 0.5 and in the VS Code extension (dash.outputFolder)." },
         { version: "2.6.0", es: "Soltar iconos del Workbench sobre las ventanas MUI.", en: "Dropping Workbench icons on MUI windows." },
         { version: "2.4.0", es: "La referencia rápida en castellano.", en: "The quick reference in Spanish." },
@@ -96,10 +99,17 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.11.0", es: "Ctrl-C para un programa que da vueltas: un bucle sin fin ya no obliga a reiniciar el Amiga.", en: "Ctrl-C for a program stuck in a loop: an endless loop no longer means rebooting the Amiga." },
         { version: "2.10.0", es: "Los grupos de las expresiones regulares: regex_group y regex_groups.", en: "Regular expression groups: regex_group and regex_groups." },
         { version: "2.9.0", es: "x in (1..10), x in lista, not in y 1 <= a <= 10 como en Python.", en: "x in (1..10), x in list, not in and 1 <= a <= 10 as in Python." },
         { version: "2.7.0", es: "mui_canvas_take_keys: una zona de dibujo de MUI recibe las teclas sin el puntero encima (F5 y F10 en Forja 0.5.2).", en: "mui_canvas_take_keys: a MUI drawing area gets the keys without the pointer over it (F5 and F10 in Forja 0.5.2)." },
         { version: "2.6.3", es: "Arreglo en Forja 0.5.1: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix in Forja 0.5.1: while debugging, the code jumped and repainted as a whole on every step." },
+      ],
+    },
+    {
+      persona: "Alex Agauser",
+      aportes: [
+        { version: "2.11.0", es: "Avisó de que en MUI 3.8 no se podía pegar con Amiga+V en los campos de texto (la barra de direcciones de Tachyon).", en: "Reported that in MUI 3.8 Amiga+V did not paste in text fields (Tachyon's address bar)." },
       ],
     },
     {
