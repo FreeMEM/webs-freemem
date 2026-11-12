@@ -104,6 +104,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.13.0", es: "Ventanas modales en MUI: mientras una está abierta, las demás del programa esperan.", en: "Modal windows in MUI: while one is open, the program's other windows wait." },
         { version: "2.11.0", es: "Ctrl-C para un programa que da vueltas: un bucle sin fin ya no obliga a reiniciar el Amiga.", en: "Ctrl-C for a program stuck in a loop: an endless loop no longer means rebooting the Amiga." },
         { version: "2.10.0", es: "Los grupos de las expresiones regulares: regex_group y regex_groups.", en: "Regular expression groups: regex_group and regex_groups." },
         { version: "2.9.0", es: "x in (1..10), x in lista, not in y 1 <= a <= 10 como en Python.", en: "x in (1..10), x in list, not in and 1 <= a <= 10 as in Python." },
