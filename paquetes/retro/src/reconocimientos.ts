@@ -14,6 +14,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.1", es: "Los botones con su tecla de TrasfondoArchivos, para usar el ratón o el teclado.", en: "TrasfondoArchivos's buttons with their key, to use the mouse or the keyboard." },
+        { version: "2.9.1", es: "Arreglo: tras actualizar, la barra seguía con el programa viejo hasta reiniciar.", en: "Fix: after updating, the bar kept the old program until rebooting." },
         { version: "2.9", es: "La barra completa, siempre detrás de las demás ventanas, y la opción Profundidad.", en: "The full bar, always behind the other windows, and the Depth option." },
         { version: "2.9", es: "Elegir qué discos salen y en qué orden, aunque sean más de ocho.", en: "Choosing which disks show and in what order, even more than eight." },
         { version: "2.8.1", es: "La temperatura de la Pi en la línea de arriba del fondo, junto a la CPU.", en: "The Pi temperature on the top line of the backdrop, next to the CPU." },

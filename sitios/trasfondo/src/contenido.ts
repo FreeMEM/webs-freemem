@@ -100,6 +100,11 @@ export const CONTENIDO = {
       lista: [
         {
           estado: "Publicada el 12/11",
+          titulo: "Trasfondo 2.9.1",
+          texto: "Botones con su tecla en TrasfondoArchivos, para usar el ratón o el teclado (Ferrán García), y Actualizar pone en marcha la barra, el dock y las ventanas nuevos sin reiniciar.",
+        },
+        {
+          estado: "Publicada el 12/11",
           titulo: "Trasfondo 2.9",
           texto: "Ventanas modernas: encajar al soltar contra un borde, doble clic para maximizar, menú de ventana y Alt+Tab. Y TrasfondoArchivos, un explorador de ficheros como Nautilus, con dos paneles origen y destino como Directory Opus, papelera, deshacer y miniaturas. La barra completa va de fondo, con opción Profundidad (Ferrán García).",
         },
@@ -257,6 +262,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 12 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 12 Nov",
+          titulo: "Trasfondo 2.9.1",
+          texto: "Buttons with their key in TrasfondoArchivos, to use the mouse or the keyboard (Ferrán García), and Update starts the new bar, dock and windows without rebooting.",
+        },
         {
           estado: "Released 12 Nov",
           titulo: "Trasfondo 2.9",
