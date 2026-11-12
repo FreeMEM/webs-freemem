@@ -100,6 +100,11 @@ export const CONTENIDO = {
       lista: [
         {
           estado: "Publicada el 12/11",
+          titulo: "Trasfondo 2.9.3",
+          texto: "Espacios virtuales y ventanas en tira como Niri, en AmigaOS 3.2: Ctrl Alt y un número cambia de escritorio. El explorador sale con su icono también a quien actualizó con el botón, y TrasfondoPrefs se abre más rápido.",
+        },
+        {
+          estado: "Publicada el 12/11",
           titulo: "Trasfondo 2.9.2",
           texto: "TrasfondoVentanas encaja las ventanas y responde al doble clic también con MCP o PowerWindows, como en CoffinOS, y encaja contra el borde izquierdo (David Martínez y Ferrán García).",
         },
@@ -267,6 +272,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 12 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 12 Nov",
+          titulo: "Trasfondo 2.9.3",
+          texto: "Virtual workspaces and windows in a strip like Niri, on AmigaOS 3.2: Ctrl Alt and a number switches desktop. The file manager gets its icon for those who updated with the button too, and TrasfondoPrefs opens faster.",
+        },
         {
           estado: "Released 12 Nov",
           titulo: "Trasfondo 2.9.2",
