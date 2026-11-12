@@ -59,7 +59,9 @@ export const CONTENIDO = {
         { que: "La barra", como: "Arriba, con la hora, la fecha, el tiempo de tu ciudad, la CPU y la memoria. Al pulsar la hora sale un panel con reloj, calendario, tiempo y avisos; a la derecha, los ajustes rápidos: red, discos, memoria, preferencias y reiniciar. Puede ser una barra entera o ir dentro de la barra de título de la pantalla, sin taparla." },
         { que: "Los avisos", como: "Salen un momento arriba a la derecha y quedan en la lista del panel hasta que los descartas. Los deja la orden Avisa, cualquier guion ARexx o cualquier programa escrito en Dash." },
         { que: "El dock", como: "Los programas abiertos y los que fijes, en casillas iguales. Fijas uno soltando su icono encima, lo cambias de sitio arrastrándolo y, al pasar el ratón, sale su nombre. Puede ir en cualquier borde y esconderse solo hasta que acercas el ratón." },
-        { que: "Las ventanas", como: "Teclas para maximizar, mandar a una mitad, restaurar o poner en mosaico cualquier ventana, a mano o según se abren. Con Alt y el ratón, se mueven y cambian de tamaño desde cualquier punto." },
+        { que: "Las ventanas", como: "Como en un escritorio moderno: suelta una ventana contra un borde y encaja en una mitad o una esquina, con vista previa; doble clic en su título la maximiza; tiene menú de ventana y Alt+Tab. También teclas para maximizar, restaurar o poner en mosaico, y con Alt y el ratón se mueven y cambian de tamaño desde cualquier punto." },
+        { que: "Los espacios", como: "En AmigaOS 3.2, varios escritorios uno encima de otro, como en Linux: Ctrl Alt y un número cambia de espacio y Ctrl Alt Mayús y el número lleva allí la ventana activa. Y, si quieres, las ventanas en tira como Niri: cada una es una columna y la vista sigue a la activa." },
+        { que: "El explorador", como: "TrasfondoArchivos, un explorador de ficheros como Nautilus, en el dock: sitios y discos a la izquierda, lista con columnas o iconos con miniaturas, y con F3 dos paneles origen y destino como Directory Opus. Copia y mueve con barra de progreso, borra a la papelera y deshace, con botones y su tecla abajo." },
         { que: "Los colores", como: "La barra, los paneles y el dock toman sus colores del fondo de escritorio, en oscuro o claro, con seis esquemas. Uno imita los colores del Workbench. TrasfondoPrefs enseña una vista previa." },
       ],
       panel: "El panel de la barra: reloj, tiempo, calendario y dos avisos",
@@ -98,6 +100,11 @@ export const CONTENIDO = {
       texto: "Lo último que ha salido y lo que viene, a 12 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 12/11",
+          titulo: "Trasfondo 2.9.4",
+          texto: "El explorador TrasfondoArchivos viene fijado en el dock, también si ya tenías tu lista, y el Instalar del paquete ya lo copia. Si lo quitas del dock, no vuelve.",
+        },
         {
           estado: "Publicada el 12/11",
           titulo: "Trasfondo 2.9.3",
@@ -233,7 +240,9 @@ export const CONTENIDO = {
         { que: "The bar", como: "At the top, with the time, the date, your city's weather, the CPU and the memory. Click the time for a panel with a clock, a calendar, the weather and notifications; on the right, the quick settings: network, disks, memory, preferences and reboot. It can be a whole bar or sit inside the screen's title bar, without covering it." },
         { que: "Notifications", como: "They show for a moment at the top right and stay in the panel's list until you dismiss them. The Avisa command, any ARexx script or any program written in Dash can leave one." },
         { que: "The dock", como: "The open programs and the ones you pin, in equal boxes. Pin one by dropping its icon on it, move it by dragging it, and hover over it to see its name. It can sit on any edge and hide by itself until the mouse gets close." },
-        { que: "Windows", como: "Keys to maximize any window, send it to one half, restore it or tile them, by hand or as they open. With Alt and the mouse, they move and resize from anywhere inside." },
+        { que: "Windows", como: "Like a modern desktop: drop a window against an edge and it snaps to a half or a corner, with a preview; double-click its title to maximize it; there is a window menu and Alt+Tab. Also keys to maximize, restore or tile, and with Alt and the mouse they move and resize from anywhere inside." },
+        { que: "Workspaces", como: "On AmigaOS 3.2, several desktops stacked, as on Linux: Ctrl Alt and a number switches workspace and Ctrl Alt Shift and the number takes the active window there. And, if you like, windows in a strip like Niri: each one is a column and the view follows the active one." },
+        { que: "The file manager", como: "TrasfondoArchivos, a file manager like Nautilus, in the dock: places and disks on the left, a list with columns or icons with thumbnails, and with F3 two source and destination panes like Directory Opus. It copies and moves with a progress bar, deletes to the trash and undoes, with buttons and their keys at the bottom." },
         { que: "Colours", como: "The bar, the panels and the dock take their colours from the desktop backdrop, dark or light, with six schemes. One copies the Workbench colours. TrasfondoPrefs shows a preview." },
       ],
       panel: "The bar's panel: clock, weather, calendar and two notifications",
@@ -272,6 +281,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 12 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 12 Nov",
+          titulo: "Trasfondo 2.9.4",
+          texto: "The TrasfondoArchivos file manager comes pinned to the dock, also if you already had your own list, and the package's Instalar now copies it. If you remove it from the dock, it does not come back.",
+        },
         {
           estado: "Released 12 Nov",
           titulo: "Trasfondo 2.9.3",
