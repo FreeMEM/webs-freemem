@@ -57,6 +57,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.6.2", es: "Las variables del depurador en árbol: listas y structs que se despliegan, con desplazamiento a lo ancho.", en: "The debugger's variables as a tree: lists and structs that unfold, with sideways scrolling." },
         { version: "0.6.1", es: "Parar acaba un programa que da vueltas, y al depurar el código ya no salta con un clic.", en: "Stop ends a program stuck in a loop, and while debugging the code no longer jumps on a click." },
         { version: "0.5.2", es: "Las teclas del editor, como F5 y F10, llegan con el puntero en cualquier sitio de la ventana.", en: "The editor keys, such as F5 and F10, arrive with the pointer anywhere in the window." },
         { version: "0.4", es: "Arreglo: al depurar, F5 y F10 dejaban de responder.", en: "Fix: F5 and F10 stopped working while debugging." },
