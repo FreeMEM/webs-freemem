@@ -14,6 +14,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9", es: "La barra completa, siempre detrás de las demás ventanas, y la opción Profundidad.", en: "The full bar, always behind the other windows, and the Depth option." },
+        { version: "2.9", es: "Elegir qué discos salen y en qué orden, aunque sean más de ocho.", en: "Choosing which disks show and in what order, even more than eight." },
         { version: "2.8.1", es: "La temperatura de la Pi en la línea de arriba del fondo, junto a la CPU.", en: "The Pi temperature on the top line of the backdrop, next to the CPU." },
         { version: "2.8.1", es: "Arreglo: \"Ver los segundos\" se montaba encima de otra casilla en TrasfondoPrefs.", en: "Fix: \"Show the seconds\" sat on top of another checkbox in TrasfondoPrefs." },
         { version: "2.8", es: "Editor del dock en TrasfondoPrefs.", en: "Dock editor in TrasfondoPrefs." },

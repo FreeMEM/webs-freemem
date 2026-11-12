@@ -95,9 +95,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "Novedades",
-      texto: "Lo último que ha salido y lo que viene, a 5 de noviembre de 2026.",
+      texto: "Lo último que ha salido y lo que viene, a 12 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 12/11",
+          titulo: "Trasfondo 2.9",
+          texto: "Ventanas modernas: encajar al soltar contra un borde, doble clic para maximizar, menú de ventana y Alt+Tab. Y TrasfondoArchivos, un explorador de ficheros como Nautilus, con dos paneles origen y destino como Directory Opus, papelera, deshacer y miniaturas. La barra completa va de fondo, con opción Profundidad (Ferrán García).",
+        },
         {
           estado: "Publicada el 6/11",
           titulo: "Trasfondo 2.6",
@@ -249,9 +254,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "What's new",
-      texto: "The latest releases and what's coming, as of 5 November 2026.",
+      texto: "The latest releases and what's coming, as of 12 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 12 Nov",
+          titulo: "Trasfondo 2.9",
+          texto: "Modern windows: snap on drop against an edge, double click to maximize, a window menu and Alt+Tab. And TrasfondoArchivos, a file manager like Nautilus, with Directory Opus style source and destination panes, trash, undo and thumbnails. The full bar is a backdrop, with a Depth option (Ferrán García).",
+        },
         {
           estado: "Released 6 Nov",
           titulo: "Trasfondo 2.6",
