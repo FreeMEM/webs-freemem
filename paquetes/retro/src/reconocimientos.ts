@@ -14,6 +14,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba ni hacía caso al doble clic con MCP o PowerWindows.", en: "Fix: TrasfondoVentanas did not snap or answer double clicks with MCP or PowerWindows." },
         { version: "2.9.1", es: "Los botones con su tecla de TrasfondoArchivos, para usar el ratón o el teclado.", en: "TrasfondoArchivos's buttons with their key, to use the mouse or the keyboard." },
         { version: "2.9.1", es: "Arreglo: tras actualizar, la barra seguía con el programa viejo hasta reiniciar.", en: "Fix: after updating, the bar kept the old program until rebooting." },
         { version: "2.9", es: "La barra completa, siempre detrás de las demás ventanas, y la opción Profundidad.", en: "The full bar, always behind the other windows, and the Depth option." },
@@ -46,6 +47,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba las ventanas, sobre todo contra el borde izquierdo.", en: "Fix: TrasfondoVentanas did not snap windows, above all against the left edge." },
         { version: "2.5", es: "Arreglo: lo que se abría desde el dock no tenía el path del Workbench.", en: "Fix: what opened from the dock lacked the Workbench path." },
       ],
     },

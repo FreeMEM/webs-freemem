@@ -100,6 +100,11 @@ export const CONTENIDO = {
       lista: [
         {
           estado: "Publicada el 12/11",
+          titulo: "Trasfondo 2.9.2",
+          texto: "TrasfondoVentanas encaja las ventanas y responde al doble clic también con MCP o PowerWindows, como en CoffinOS, y encaja contra el borde izquierdo (David Martínez y Ferrán García).",
+        },
+        {
+          estado: "Publicada el 12/11",
           titulo: "Trasfondo 2.9.1",
           texto: "Botones con su tecla en TrasfondoArchivos, para usar el ratón o el teclado (Ferrán García), y Actualizar pone en marcha la barra, el dock y las ventanas nuevos sin reiniciar.",
         },
@@ -262,6 +267,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 12 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 12 Nov",
+          titulo: "Trasfondo 2.9.2",
+          texto: "TrasfondoVentanas snaps windows and answers double clicks with MCP or PowerWindows too, as on CoffinOS, and snaps against the left edge (David Martínez and Ferrán García).",
+        },
         {
           estado: "Released 12 Nov",
           titulo: "Trasfondo 2.9.1",
