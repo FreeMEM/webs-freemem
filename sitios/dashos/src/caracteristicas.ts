@@ -20,11 +20,11 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         titulo: "Caja Amiga",
         items: [
           ["hecho", "Programas 68k de AmigaOS 3.x con el JIT de Emu68 y bibliotecas nativas en Rust, sin emular un Amiga entero"],
-          ["hecho", "exec, dos, utility, timer, intuition, gadtools, layers y keymap nativas; graphics, a medias"],
+          ["hecho", "exec, dos, utility, timer, intuition, gadtools y keymap nativas; graphics y layers, a medias"],
           ["hecho", "GadTools, BOOPSI y ReAction, con dos aspectos: el clásico de 3.x o como DashOS"],
           ["hecho", "Bibliotecas de disco y el AmigaOS del usuario como capa de solo lectura (DashOS no trae ROM ni Workbench)"],
           ["hecho", "Sin discos Amiga falsos: dos.library usa el sistema de archivos de DashOS, con sus volúmenes y asignaciones"],
-          ["hecho", "Guardia contra virus: avisa del bloque de arranque, papelera y pregunta por cada fichero"],
+          ["hecho", "Guardia contra virus: SYS: de solo lectura, papelera, avisos del bloque de arranque y preguntas antes de tocar ficheros vigilados"],
           ["hecho", "La caja corre aislada en su propio proceso, a la vez que el escritorio, la caja Linux y el resto del sistema"],
           ["hecho", "Dentro, las tareas 68k se turnan como en un Amiga: Forbid() solo detiene la caja, no el sistema"],
           ["curso", "MUI 5 dentro de la caja"],
@@ -66,7 +66,8 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
       {
         titulo: "Usuarios",
         items: [
-          ["hecho", "Entrada y bloqueo con frase propia, y cambio rápido de usuario"],
+          ["hecho", "Entrada y bloqueo con frase propia"],
+          ["curso", "Cambio rápido de usuario"],
           ["hecho", "Un volumen cifrado para cada usuario"],
           ["hecho", "Permisos por programa, preguntados la primera vez, y registro de seguridad"],
           ["hecho", "Administrador sin superusuario, y cupos de memoria"],
@@ -95,8 +96,9 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         titulo: "Programar y abierto",
         items: [
           ["hecho", "Los programas de Dash compilados para 68k corren en la caja Amiga"],
-          ["curso", "Dash para AArch64: ya compila programas nativos de DashOS; faltan pruebas e interfaz gráfica"],
-          ["hecho", "Kit de interfaz propio para programas nativos, con el modelo de MUI y dibujado en Material 3"],
+          ["hecho", "Dash para AArch64 compila programas nativos de DashOS; aún sin interfaz gráfica"],
+          ["hecho", "Motor de interfaz propio para programas nativos, con el modelo de MUI y dibujado en Material 3"],
+          ["plan", "Sus caras MUI, ReAction y GadTools, para escribir programas nativos con esas API"],
           ["hecho", "Código abierto con licencia MPL-2.0, con su diseño y sus auditorías publicados"],
         ],
       },
@@ -112,11 +114,11 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         titulo: "Amiga box",
         items: [
           ["hecho", "AmigaOS 3.x 68k programs with the Emu68 JIT and native libraries in Rust, without emulating a whole Amiga"],
-          ["hecho", "Native exec, dos, utility, timer, intuition, gadtools, layers and keymap; graphics, partly"],
+          ["hecho", "Native exec, dos, utility, timer, intuition, gadtools and keymap; graphics and layers, partly"],
           ["hecho", "GadTools, BOOPSI and ReAction, with two looks: classic 3.x or DashOS style"],
           ["hecho", "Disk libraries and the user's own AmigaOS as a read-only layer (DashOS ships no ROM or Workbench)"],
           ["hecho", "No fake Amiga disks: dos.library uses the DashOS file system, with its volumes and assigns"],
-          ["hecho", "Virus guard: boot block warnings, a trash can and a question for each file"],
+          ["hecho", "Virus guard: read-only SYS:, a trash can, boot block warnings and questions before touching watched files"],
           ["hecho", "The box runs isolated in its own process, alongside the desktop, the Linux box and the rest of the system"],
           ["hecho", "Inside, 68k tasks take turns as on an Amiga: Forbid() only stops the box, not the system"],
           ["curso", "MUI 5 inside the box"],
@@ -158,7 +160,8 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
       {
         titulo: "Users",
         items: [
-          ["hecho", "Login and lock screen with a passphrase, and fast user switching"],
+          ["hecho", "Login and lock screen with a passphrase"],
+          ["curso", "Fast user switching"],
           ["hecho", "An encrypted volume for each user"],
           ["hecho", "Per-program permissions, asked the first time, and a security log"],
           ["hecho", "Administrator with no superuser, and memory quotas"],
@@ -187,8 +190,9 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         titulo: "Programming and open",
         items: [
           ["hecho", "Dash programs compiled for 68k run in the Amiga box"],
-          ["curso", "Dash for AArch64: it already builds native DashOS programs; tests and a GUI are missing"],
-          ["hecho", "Its own UI kit for native programs, with MUI's model and drawn in Material 3"],
+          ["hecho", "Dash for AArch64 builds native DashOS programs; no GUI yet"],
+          ["hecho", "Its own UI engine for native programs, with MUI's model and drawn in Material 3"],
+          ["plan", "Its MUI, ReAction and GadTools faces, to write native programs with those APIs"],
           ["hecho", "Open source under the MPL-2.0 licence, with its design and audits published"],
         ],
       },
