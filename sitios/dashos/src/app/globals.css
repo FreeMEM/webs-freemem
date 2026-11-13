@@ -909,3 +909,82 @@ td.regla {
     scroll-behavior: auto;
   }
 }
+
+/* ---------- Características clave ---------- */
+
+.claves {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 42rem) {
+  .claves {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 72rem) {
+  .claves {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.clave {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--azul);
+  padding: 1rem 1.1rem 1.1rem;
+  min-width: 0;
+}
+
+.clave h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+}
+
+.clave ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clave li {
+  line-height: 1.4;
+}
+
+.clave li > span:last-child {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.clave li + li {
+  margin-top: 0.8rem;
+}
+
+.clave-estado {
+  display: inline-block;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 3px;
+}
+
+.clave-hecho {
+  color: var(--hecho);
+  background: var(--hecho-bg);
+}
+
+.clave-curso {
+  color: var(--curso);
+  background: var(--curso-bg);
+}
+
+.clave-plan {
+  color: var(--plan);
+  background: var(--plan-bg);
+}

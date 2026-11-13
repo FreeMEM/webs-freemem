@@ -1,6 +1,8 @@
 import { Cabecera, Pie, type Idioma } from "retro";
 
 import { Capas } from "./Capas";
+import { Claves } from "./Claves";
+import { CLAVES } from "./caracteristicas";
 import { BASE, CONTENIDO, REPO } from "./contenido";
 import { FECHA, NOTAS } from "./datos";
 import { EnMarcha } from "./EnMarcha";
@@ -52,6 +54,12 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               ))}
             </ul>
           </Marco>
+        </section>
+
+        <section className="seccion" aria-labelledby="claves">
+          <h2 id="claves">{CLAVES[idioma].titulo}</h2>
+          <p className="medida suave">{CLAVES[idioma].texto}</p>
+          <Claves idioma={idioma} />
         </section>
 
         <section className="seccion" aria-labelledby="en-marcha">
