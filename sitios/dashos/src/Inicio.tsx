@@ -63,6 +63,15 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <Claves idioma={idioma} />
         </section>
 
+        <section className="seccion" aria-labelledby="nucleos">
+          <h2 id="nucleos">{t.nucleos.titulo}</h2>
+          {t.nucleos.parrafos.map((p) => (
+            <p key={p} className="medida">
+              {p}
+            </p>
+          ))}
+        </section>
+
         <section className="seccion" aria-labelledby="capturas">
           <h2 id="capturas">{t.capturas.titulo}</h2>
           <p className="medida suave">{t.capturas.texto}</p>

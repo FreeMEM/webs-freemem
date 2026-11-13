@@ -30,6 +30,15 @@ export const CONTENIDO = {
       ],
     },
     verMarcha: "Ver capturas",
+    nucleos: {
+      titulo: "Los programas del Amiga y los núcleos",
+      parrafos: [
+        "Los programas del Amiga se escribieron para un ordenador con una sola CPU. Comparten la memoria sin cerrojos y dan por hecho que, mientras tienen el turno o han llamado a Forbid(), nadie más toca nada. Si dos corrieran a la vez en dos núcleos, se pisarían los datos.",
+        "Por eso, dentro de la caja Amiga, las tareas 68k se turnan como en un Amiga de verdad. Pero la caja es un proceso más de DashOS: corre aislada y a la vez que el escritorio, la caja Linux, el sistema de archivos, el sonido y la red, que van en los otros núcleos. Su Forbid() solo detiene la caja, no el sistema.",
+        "El siguiente paso, ya diseñado, es una caja por programa: cada una en su núcleo, de modo que, por ejemplo, LightWave y Tachyon corran de verdad a la vez y, si uno se cuelga, el otro siga. No comparten memoria, pero sí los ficheros: la caja no tiene discos Amiga falsos, su dos.library usa el sistema de archivos de DashOS, con los mismos volúmenes y asignaciones para todos. Un servicio puente les pasará ARexx, el portapapeles y los puertos con nombre.",
+        "Hoy hay una sola caja Amiga. Las varias cajas y su puente están diseñados, aún no hechos.",
+      ],
+    },
     capturas: { titulo: "Capturas", texto: "En el emulador QEMU, el 13 de noviembre de 2026. Pulsa una para verla entera." },
     verCodigo: "El código, en GitHub",
     enMarcha: {
@@ -105,6 +114,15 @@ export const CONTENIDO = {
       ],
     },
     verMarcha: "See screenshots",
+    nucleos: {
+      titulo: "Amiga programs and CPU cores",
+      parrafos: [
+        "Amiga programs were written for a computer with a single CPU. They share memory without locks and assume that, while they have their turn or have called Forbid(), nobody else touches anything. If two ran at once on two cores, they would trample each other's data.",
+        "So inside the Amiga box, 68k tasks take turns as on a real Amiga. But the box is just another DashOS process: it runs isolated and at the same time as the desktop, the Linux box, the file system, sound and networking, which run on the other cores. Its Forbid() only stops the box, not the system.",
+        "The next step, already designed, is one box per program, each on its own core, so that, for example, LightWave and Tachyon really run at the same time and, if one hangs, the other carries on. They do not share memory, but they do share files: the box has no fake Amiga disks, its dos.library uses the DashOS file system, with the same volumes and assigns for everyone. A bridge service will carry ARexx, the clipboard and named ports between them.",
+        "Today there is a single Amiga box. Several boxes and their bridge are designed, not built yet.",
+      ],
+    },
     capturas: { titulo: "Screenshots", texto: "In the QEMU emulator, on 13 November 2026. Click one to see it full size." },
     verCodigo: "The code, on GitHub",
     enMarcha: {
