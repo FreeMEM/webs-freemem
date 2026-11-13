@@ -30,6 +30,15 @@ export const CONTENIDO = {
       ],
     },
     verMarcha: "Ver capturas",
+    cajas: {
+      titulo: "Qué son las cajas",
+      parrafos: [
+        "DashOS tiene sus propios programas, nativos para ARM. Los de otros sistemas viven en cajas. Una caja es un proceso aislado de DashOS que hace de casa para esos programas: les da lo que esperan encontrar en su sistema y, por debajo, lo traduce a los servicios de DashOS.",
+        "La caja Amiga ejecuta programas 68k de AmigaOS 3.x. El JIT de Emu68 traduce su código a ARM mientras corre, y sus llamadas al sistema (exec, dos, intuition, gadtools...) van a bibliotecas nativas de DashOS escritas en Rust. No se emula un Amiga entero: sus ventanas son ventanas del escritorio.",
+        "La caja Linux es una máquina virtual con Arch Linux ARM. Sus programas, como Firefox o los de GTK, salen en el escritorio de DashOS como uno más, con portapapeles, y su red pasa por un cortafuegos.",
+        "Estar en una caja tiene dos ventajas. Si un programa de otro sistema falla, cae su caja, no DashOS. Y la caja solo puede hacer lo que le dejan sus llaves: ver los ficheros de su usuario, abrir ventanas, usar la red. Cada ventana lleva una marca con su caja, 68K o LINUX, para que se sepa de dónde viene. Más adelante habrá también una caja PowerPC para programas de WarpOS, MorphOS y AmigaOS 4.",
+      ],
+    },
     nucleos: {
       titulo: "Los programas del Amiga y los núcleos",
       parrafos: [
@@ -114,6 +123,15 @@ export const CONTENIDO = {
       ],
     },
     verMarcha: "See screenshots",
+    cajas: {
+      titulo: "What the boxes are",
+      parrafos: [
+        "DashOS has its own programs, native to ARM. Programs from other systems live in boxes. A box is an isolated DashOS process that acts as a home for those programs: it gives them what they expect to find on their own system and, underneath, translates it into DashOS services.",
+        "The Amiga box runs AmigaOS 3.x 68k programs. The Emu68 JIT translates their code to ARM as it runs, and their system calls (exec, dos, intuition, gadtools...) go to native DashOS libraries written in Rust. No whole Amiga is emulated: their windows are desktop windows.",
+        "The Linux box is a virtual machine with Arch Linux ARM. Its programs, such as Firefox or GTK apps, appear on the DashOS desktop like any other, with clipboard, and its network goes through a firewall.",
+        "Living in a box has two advantages. If a program from another system crashes, its box goes down, not DashOS. And the box can only do what its keys allow: see its user's files, open windows, use the network. Every window carries a badge with its box, 68K or LINUX, so you know where it comes from. Later there will also be a PowerPC box for WarpOS, MorphOS and AmigaOS 4 programs.",
+      ],
+    },
     nucleos: {
       titulo: "Amiga programs and CPU cores",
       parrafos: [
