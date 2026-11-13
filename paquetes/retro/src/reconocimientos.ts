@@ -14,6 +14,11 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba ni hacía caso al doble clic con MCP o PowerWindows.", en: "Fix: TrasfondoVentanas did not snap or answer double clicks with MCP or PowerWindows." },
+        { version: "2.9.1", es: "Los botones con su tecla de TrasfondoArchivos, para usar el ratón o el teclado.", en: "TrasfondoArchivos's buttons with their key, to use the mouse or the keyboard." },
+        { version: "2.9.1", es: "Arreglo: tras actualizar, la barra seguía con el programa viejo hasta reiniciar.", en: "Fix: after updating, the bar kept the old program until rebooting." },
+        { version: "2.9", es: "La barra completa, siempre detrás de las demás ventanas, y la opción Profundidad.", en: "The full bar, always behind the other windows, and the Depth option." },
+        { version: "2.9", es: "Elegir qué discos salen y en qué orden, aunque sean más de ocho.", en: "Choosing which disks show and in what order, even more than eight." },
         { version: "2.8.1", es: "La temperatura de la Pi en la línea de arriba del fondo, junto a la CPU.", en: "The Pi temperature on the top line of the backdrop, next to the CPU." },
         { version: "2.8.1", es: "Arreglo: \"Ver los segundos\" se montaba encima de otra casilla en TrasfondoPrefs.", en: "Fix: \"Show the seconds\" sat on top of another checkbox in TrasfondoPrefs." },
         { version: "2.8", es: "Editor del dock en TrasfondoPrefs.", en: "Dock editor in TrasfondoPrefs." },
@@ -42,6 +47,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba las ventanas, sobre todo contra el borde izquierdo.", en: "Fix: TrasfondoVentanas did not snap windows, above all against the left edge." },
         { version: "2.5", es: "Arreglo: lo que se abría desde el dock no tenía el path del Workbench.", en: "Fix: what opened from the dock lacked the Workbench path." },
       ],
     },
@@ -57,6 +63,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.6.2", es: "Las variables del depurador en árbol: listas y structs que se despliegan, con desplazamiento a lo ancho.", en: "The debugger's variables as a tree: lists and structs that unfold, with sideways scrolling." },
+        { version: "0.6.1", es: "Parar acaba un programa que da vueltas, y al depurar el código ya no salta con un clic.", en: "Stop ends a program stuck in a loop, and while debugging the code no longer jumps on a click." },
         { version: "0.5.2", es: "Las teclas del editor, como F5 y F10, llegan con el puntero en cualquier sitio de la ventana.", en: "The editor keys, such as F5 and F10, arrive with the pointer anywhere in the window." },
         { version: "0.4", es: "Arreglo: al depurar, F5 y F10 dejaban de responder.", en: "Fix: F5 and F10 stopped working while debugging." },
         { version: "0.5.1", es: "Arreglo: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix: while debugging, the code jumped and repainted as a whole on every step." },
@@ -84,6 +92,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.11.0", es: "Ventanas de fondo (window_next_backdrop, screen_show_title), para que la barra de Trasfondo quede detrás de todo.", en: "Backdrop windows (window_next_backdrop, screen_show_title), so Trasfondo's bar stays behind everything." },
+        { version: "2.11.0", es: "Pegar, copiar y cortar en los campos de MUI 3.8, y mui_active_object y mui_string_pos para pegar donde está el cursor.", en: "Paste, copy and cut in MUI 3.8 fields, and mui_active_object and mui_string_pos to paste where the cursor is." },
         { version: "2.6.2", es: "Elegir dónde van los ejecutables, en Forja 0.5 y en la extensión de VS Code (dash.outputFolder).", en: "Choosing where the executables go, in Forja 0.5 and in the VS Code extension (dash.outputFolder)." },
         { version: "2.6.0", es: "Soltar iconos del Workbench sobre las ventanas MUI.", en: "Dropping Workbench icons on MUI windows." },
         { version: "2.4.0", es: "La referencia rápida en castellano.", en: "The quick reference in Spanish." },
@@ -96,10 +106,18 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.13.0", es: "Ventanas modales en MUI: mientras una está abierta, las demás del programa esperan.", en: "Modal windows in MUI: while one is open, the program's other windows wait." },
+        { version: "2.11.0", es: "Ctrl-C para un programa que da vueltas: un bucle sin fin ya no obliga a reiniciar el Amiga.", en: "Ctrl-C for a program stuck in a loop: an endless loop no longer means rebooting the Amiga." },
         { version: "2.10.0", es: "Los grupos de las expresiones regulares: regex_group y regex_groups.", en: "Regular expression groups: regex_group and regex_groups." },
         { version: "2.9.0", es: "x in (1..10), x in lista, not in y 1 <= a <= 10 como en Python.", en: "x in (1..10), x in list, not in and 1 <= a <= 10 as in Python." },
         { version: "2.7.0", es: "mui_canvas_take_keys: una zona de dibujo de MUI recibe las teclas sin el puntero encima (F5 y F10 en Forja 0.5.2).", en: "mui_canvas_take_keys: a MUI drawing area gets the keys without the pointer over it (F5 and F10 in Forja 0.5.2)." },
         { version: "2.6.3", es: "Arreglo en Forja 0.5.1: al depurar, el código saltaba y se repintaba entero en cada paso.", en: "Fix in Forja 0.5.1: while debugging, the code jumped and repainted as a whole on every step." },
+      ],
+    },
+    {
+      persona: "Alex Agauser",
+      aportes: [
+        { version: "2.11.0", es: "Avisó de que en MUI 3.8 no se podía pegar con Amiga+V en los campos de texto (la barra de direcciones de Tachyon).", en: "Reported that in MUI 3.8 Amiga+V did not paste in text fields (Tachyon's address bar)." },
       ],
     },
     {
@@ -125,11 +143,36 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   tachyon: [
     {
+      persona: "David Martínez",
+      aportes: [
+        { version: "0.9.4", es: "Avisó de que dash.freemem.space se quedaba colgada. Arreglado: el JavaScript ve el texto original, las hojas y scripts atascados tienen tope y reintento, las animaciones que no cambian no se repintan y requestAnimationFrame va a 15 por segundo.", en: "Reported that dash.freemem.space hung. Fixed: JavaScript sees the original text, stuck style sheets and scripts get a limit and a retry, animations that don't change aren't repainted and requestAnimationFrame runs at 15 per second." },
+      ],
+    },
+    {
+      persona: "Oskis R.P",
+      aportes: [
+        { version: "0.9.4", es: "Pidió el registro de depuración de red (Herramientas > Network debug log), y confirmó el cuelgue de dash.freemem.space en su PiStorm.", en: "Asked for the network debug log (Tools > Network debug log), and confirmed the dash.freemem.space hang on a PiStorm." },
+      ],
+    },
+    {
+      persona: "JaviTecH",
+      aportes: [
+        { version: "0.9.4", es: "Confirmó el cuelgue de dash.freemem.space en su MiSTer y vio que la bola animada se comía la CPU.", en: "Confirmed the dash.freemem.space hang on a MiSTer and spotted that the animated ball ate the CPU." },
+      ],
+    },
+    {
       persona: "Ferrán García",
       aportes: [
+        { version: "0.9.6", es: "Avisó de que no se podía pegar en la barra de direcciones. Arreglado: Amiga-V o el menú Proyecto pegan donde está el cursor, también con MUI 3.8.", en: "Reported that pasting in the address bar did not work. Fixed: Amiga-V or the Project menu paste at the cursor, also with MUI 3.8." },
         { version: "0.9.3", es: "Abrir ficheros del disco desde el menú (Amiga-O) y soltando su icono en la ventana.", en: "Opening files from disk from the menu (Amiga-O) and by dropping their icon on the window." },
         { version: "0.9.1", es: "Guardar un enlace o la página como fichero, para bajarse también los .readme de Aminet.", en: "Saving a link or the page as a file, to download Aminet's .readme files too." },
         { version: "0.9.1", es: "Pegar, copiar y cortar en los campos de las páginas.", en: "Pasting, copying and cutting in the page's fields." },
+      ],
+    },
+    {
+      persona: "Alex Agauser",
+      aportes: [
+        { version: "0.9.6", es: "Avisó de que con MUI 3.8 no se podía pegar con Amiga-V en la barra de direcciones. Arreglado en esta versión.", en: "Reported that with MUI 3.8 Amiga-V did not paste in the address bar. Fixed in this version." },
       ],
     },
     {
