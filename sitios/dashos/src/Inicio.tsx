@@ -1,11 +1,14 @@
 import { Cabecera, Pie, type Idioma } from "retro";
 
+import { Capas } from "./Capas";
 import { Capturas } from "./Capturas";
 import { Claves } from "./Claves";
 import { CLAVES } from "./caracteristicas";
 import { BASE, CONTENIDO, REPO } from "./contenido";
+import { FECHA, NOTAS } from "./datos";
 import { EnMarcha } from "./EnMarcha";
 import { Marco } from "./Marco";
+import { Tabla } from "./Tabla";
 
 export function Inicio({ idioma }: { idioma: Idioma }) {
   const t = CONTENIDO[idioma];
@@ -72,7 +75,26 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <EnMarcha idioma={idioma} />
         </section>
 
-        {/* Las capas y la tabla de avance se quitan hasta rehacer el recuento: sus cifras son del 10/11/2026. */}
+        <section className="seccion" aria-labelledby="capas">
+          <h2 id="capas">{t.capas.titulo}</h2>
+          <p className="medida suave">
+            {FECHA[idioma]}. {t.capas.texto}
+          </p>
+          <Capas idioma={idioma} />
+        </section>
+
+        <section className="seccion" aria-labelledby="avance">
+          <h2 id="avance">{t.avance.titulo}</h2>
+          <p className="medida suave">{t.avance.texto}</p>
+          <Tabla idioma={idioma} />
+          <h3 className="notas-titulo">{t.avance.notas}</h3>
+          <ul className="notas">
+            {NOTAS[idioma].map((n) => (
+              <li key={n}>{n}</li>
+            ))}
+          </ul>
+        </section>
+
         <section className="seccion seccion-dash" aria-labelledby="dash">
           <h2 id="dash">{t.dash.titulo}</h2>
           <p className="medida">{t.dash.texto}</p>
