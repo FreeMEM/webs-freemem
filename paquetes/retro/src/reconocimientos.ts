@@ -163,9 +163,16 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "0.9.6", es: "Avisó de que no se podía pegar en la barra de direcciones. Arreglado: Amiga-V o el menú Proyecto pegan donde está el cursor, también con MUI 3.8.", en: "Reported that pasting in the address bar did not work. Fixed: Amiga-V or the Project menu paste at the cursor, also with MUI 3.8." },
         { version: "0.9.3", es: "Abrir ficheros del disco desde el menú (Amiga-O) y soltando su icono en la ventana.", en: "Opening files from disk from the menu (Amiga-O) and by dropping their icon on the window." },
         { version: "0.9.1", es: "Guardar un enlace o la página como fichero, para bajarse también los .readme de Aminet.", en: "Saving a link or the page as a file, to download Aminet's .readme files too." },
         { version: "0.9.1", es: "Pegar, copiar y cortar en los campos de las páginas.", en: "Pasting, copying and cutting in the page's fields." },
+      ],
+    },
+    {
+      persona: "Alex Agauser",
+      aportes: [
+        { version: "0.9.6", es: "Avisó de que con MUI 3.8 no se podía pegar con Amiga-V en la barra de direcciones. Arreglado en esta versión.", en: "Reported that with MUI 3.8 Amiga-V did not paste in the address bar. Fixed in this version." },
       ],
     },
     {
