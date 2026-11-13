@@ -988,3 +988,44 @@ td.regla {
   color: var(--plan);
   background: var(--plan-bg);
 }
+
+/* ---------- Capturas ---------- */
+
+.capturas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 42rem) {
+  .capturas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 42rem) {
+  .captura-ancha {
+    grid-column: span 2;
+  }
+}
+
+.captura {
+  margin: 0;
+  min-width: 0;
+}
+
+.captura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  background: var(--papel);
+}
+
+.captura figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--suave);
+  line-height: 1.4;
+}

@@ -2,7 +2,7 @@ import type { Idioma } from "retro";
 
 /**
  * Los textos de la web en sus dos idiomas. Cada afirmación, contrastada con el README.md, el PLAN.md y
- * docs/diseño/RESUMEN.md del repositorio de DashOS (10/11/2026). No prometer fechas ni nada que no esté ahí.
+ * docs/diseño/RESUMEN.md del repositorio de DashOS (10/11/2026) y puesta al día el 13/11/2026 con el estado que dio su sesión. No prometer fechas ni nada que no esté ahí.
  * Los datos de la arquitectura y del avance están en datos.ts.
  */
 export const BASE = "https://dashos.freemem.space";
@@ -19,17 +19,18 @@ export const CONTENIDO = {
     entradilla: "Moderno por dentro, Amiga por fuera.",
     intro: [
       "DashOS es un sistema operativo propio para la Raspberry Pi: primero la Pi 4, también la Pi 3, y la Pi 5 después. El kernel es un micronúcleo en Rust que solo reparte la CPU, la memoria, los mensajes y las interrupciones. Todo lo demás son procesos que se hablan por canales y solo pueden hacer lo que les permiten sus llaves.",
-      "Implementa la API de AmigaOS 3.1 de forma nativa en ARM. Los programas 68k del Amiga corren en una caja: un proceso con el JIT de Emu68, que traduce su código a ARM mientras se ejecuta, y sus llamadas al sistema van a bibliotecas nativas, sin emular un Amiga entero. Para el resto de programas habrá una caja Linux: Arch Linux ARM en una máquina virtual, con sus ventanas en el escritorio.",
+      "Implementa la API de AmigaOS 3.1 de forma nativa en ARM. Los programas 68k del Amiga corren en una caja: un proceso con el JIT de Emu68, que traduce su código a ARM mientras se ejecuta, y sus llamadas al sistema van a bibliotecas nativas, sin emular un Amiga entero. Para el resto de programas hay una caja Linux: Arch Linux ARM en una máquina virtual, con sus ventanas en el escritorio.",
     ],
     estado: {
       titulo: "Estado",
       lineas: [
         "En desarrollo. Todo lo hecho se ha probado en el emulador QEMU; nada todavía en una placa real.",
-        "Aún no hay escritorio ni caja Amiga, ni ninguna versión que se pueda descargar o instalar.",
-        "Los porcentajes de esta página son del 10 de noviembre de 2026 y salen de las bitácoras del proyecto.",
+        "Ya hay escritorio, caja Amiga y caja Linux, pero aún no hay ninguna versión que se pueda descargar o instalar.",
+        "Estado al 13 de noviembre de 2026.",
       ],
     },
-    verMarcha: "Ver el sistema en marcha",
+    verMarcha: "Ver capturas",
+    capturas: { titulo: "Capturas", texto: "En el emulador QEMU, el 13 de noviembre de 2026. Pulsa una para verla entera." },
     verCodigo: "El código, en GitHub",
     enMarcha: {
       titulo: "El sistema en marcha",
@@ -81,7 +82,7 @@ export const CONTENIDO = {
     dash: {
       titulo: "Dash, también para DashOS",
       texto:
-        "Dash, el lenguaje de FreeMEM para el Amiga, ya compila programas nativos para DashOS. La idea es que el mismo programa en Dash sirva para AmigaOS 3.x (68k) y para DashOS (ARM).",
+        "Los programas de Dash, el lenguaje de FreeMEM para el Amiga, ya corren en la caja Amiga de DashOS, y Dash está aprendiendo a sacar programas nativos para ARM. La idea es que el mismo programa en Dash sirva para AmigaOS 3.x (68k) y para DashOS.",
       enlace: "Conoce Dash",
     },
     pie: [{ texto: "Código", url: REPO }],
@@ -93,17 +94,18 @@ export const CONTENIDO = {
     entradilla: "Modern inside, Amiga outside.",
     intro: [
       "DashOS is a new operating system for the Raspberry Pi: the Pi 4 first, the Pi 3 too, and the Pi 5 later. The kernel is a microkernel in Rust that only shares out the CPU, memory, messages and interrupts. Everything else is a process that talks to the others through channels and can only do what its keys allow.",
-      "It implements the AmigaOS 3.1 API natively on ARM. Amiga 68k programs run in a box: a process with the Emu68 JIT, which translates their code to ARM as it runs, while their system calls go to native libraries, without emulating a whole Amiga. Other programs will have a Linux box: Arch Linux ARM in a virtual machine, with its windows on the desktop.",
+      "It implements the AmigaOS 3.1 API natively on ARM. Amiga 68k programs run in a box: a process with the Emu68 JIT, which translates their code to ARM as it runs, while their system calls go to native libraries, without emulating a whole Amiga. Other programs have a Linux box: Arch Linux ARM in a virtual machine, with its windows on the desktop.",
     ],
     estado: {
       titulo: "Status",
       lineas: [
         "In development. Everything done so far has been tested in the QEMU emulator; nothing on a real board yet.",
-        "There is no desktop or Amiga box yet, and no release you can download or install.",
-        "The percentages on this page are from 10 November 2026 and come from the project's work logs.",
+        "There is a desktop, an Amiga box and a Linux box, but no release you can download or install yet.",
+        "Status as of 13 November 2026.",
       ],
     },
-    verMarcha: "See the system at work",
+    verMarcha: "See screenshots",
+    capturas: { titulo: "Screenshots", texto: "In the QEMU emulator, on 13 November 2026. Click one to see it full size." },
     verCodigo: "The code, on GitHub",
     enMarcha: {
       titulo: "The system at work",
@@ -155,7 +157,7 @@ export const CONTENIDO = {
     dash: {
       titulo: "Dash, for DashOS too",
       texto:
-        "Dash, FreeMEM's language for the Amiga, already compiles native programs for DashOS. The idea is that the same Dash program works on AmigaOS 3.x (68k) and on DashOS (ARM).",
+        "Programs written in Dash, FreeMEM's language for the Amiga, already run in the DashOS Amiga box, and Dash is learning to build native ARM programs. The idea is that the same Dash program works on AmigaOS 3.x (68k) and on DashOS.",
       enlace: "Meet Dash",
     },
     pie: [{ texto: "Code", url: REPO }],

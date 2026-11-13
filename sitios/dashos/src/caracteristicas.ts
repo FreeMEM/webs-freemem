@@ -1,9 +1,10 @@
 import type { Idioma } from "retro";
 
 /**
- * Las características clave, en grupos (como la portada de redox-os.org), cada una con su estado. Contrastadas con el
- * README.md de DashOS (rama revision, 13/11/2026): "hecho" es lo que su sección Estado da por hecho (probado en QEMU),
- * "curso" lo que da en curso y "plan" lo que está en "Lo que tendrá" o en los diseños, sin hacer.
+ * Las características clave, en grupos (como la portada de redox-os.org), cada una con su estado. Al día del
+ * 13/11/2026: el estado que dio la sesión de DashOS sobre la rama revision (y lo hecho en ramas aún sin unir), con
+ * docs/REVISION_LOOP.md y docs/diseño/RESUMEN.md. Todo lo "hecho" está probado en QEMU, no en una placa real.
+ * No publicar: que la Pi 4 o la Pi 5 funcionen en hardware real, cifras que no estén medidas, ni la tienda.
  */
 export type EstadoClave = "hecho" | "curso" | "plan";
 type Grupo = { titulo: string; items: [EstadoClave, string][] };
@@ -16,14 +17,36 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
     estados: { hecho: "Hecho", curso: "En curso", plan: "Diseñado" },
     grupos: [
       {
-        titulo: "Programas Amiga",
+        titulo: "Caja Amiga",
         items: [
-          ["hecho", "JIT 68k de Emu68 que llama a funciones nativas desde el código 68k"],
-          ["hecho", "El JIT también corre en CPU sin big-endian, dando la vuelta a los bytes"],
-          ["plan", "Caja Amiga: los programas 68k de AmigaOS 3.x sin emular un Amiga entero; si uno falla, cae la caja, no el sistema"],
-          ["plan", "Cualquier tarea 68k se puede matar y Enforcer va siempre activo"],
-          ["plan", "Chips propios (Paula, Blitter, Copper, Denise, Agnus, CIA) para juegos y demos"],
-          ["curso", "Caja PowerPC para WarpOS y PowerUP: el JIT PowerPC tiene hecha su primera fase"],
+          ["hecho", "Programas 68k de AmigaOS 3.x con el JIT de Emu68 y bibliotecas nativas en Rust, sin emular un Amiga entero"],
+          ["hecho", "exec, dos, utility, timer, intuition, gadtools, layers y keymap nativas; graphics, a medias"],
+          ["hecho", "GadTools, BOOPSI y ReAction, con dos aspectos: el clásico de 3.x o como DashOS"],
+          ["hecho", "Bibliotecas de disco y el AmigaOS del usuario como capa de solo lectura (DashOS no trae ROM ni Workbench)"],
+          ["hecho", "Guardia contra virus: avisa del bloque de arranque, papelera y pregunta por cada fichero"],
+          ["curso", "MUI 5 dentro de la caja"],
+          ["plan", "Red para los programas del Amiga (bsdsocket.library) y chips imitados para juegos y demos"],
+        ],
+      },
+      {
+        titulo: "Caja Linux",
+        items: [
+          ["hecho", "Arch Linux ARM en una máquina virtual propia, con varios núcleos"],
+          ["hecho", "Sus programas Wayland en el escritorio de DashOS: terminal, GTK 4 y Firefox, con portapapeles"],
+          ["hecho", "Gráficos 2D por virtio-gpu"],
+          ["hecho", "Red con cortafuegos: Internet sí, la red de casa no, y el puerto del correo cerrado"],
+          ["plan", "Gráficos 3D y Vulkan"],
+        ],
+      },
+      {
+        titulo: "Escritorio",
+        items: [
+          ["hecho", "Compositor Wayland propio, con varias pantallas"],
+          ["hecho", "Barra con espacios, lanzador y avisos en pantalla"],
+          ["hecho", "Panel rápido y centro de control: ajustes, permisos, seguridad, discos y apariencia"],
+          ["hecho", "Explorador de archivos con barra lateral, pestañas, papelera y arrastrar"],
+          ["hecho", "Material 3 con los colores sacados del fondo de pantalla"],
+          ["plan", "Monitor de recursos integrado"],
         ],
       },
       {
@@ -31,68 +54,46 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         items: [
           ["hecho", "Micronúcleo en Rust: solo reparte la CPU, la memoria, los mensajes y las interrupciones"],
           ["hecho", "Capacidades (llaves): un programa nuevo no puede hacer nada salvo lo que le dan"],
-          ["hecho", "Controladores fuera del kernel, como procesos aislados"],
+          ["hecho", "Controladores y servicios fuera del kernel, como procesos aislados"],
           ["hecho", "Cuatro fases de endurecimiento, cada una con una auditoría independiente y pruebas hostiles"],
-          ["plan", "Usuarios y permisos sin superusuario, y permisos por aplicación preguntados en el primer uso"],
-          ["plan", "Sistema base como imagen firmada, con actualizaciones A/B que vuelven solas atrás si fallan"],
+          ["hecho", "Si un programa del Amiga falla, cae su caja, no el sistema"],
         ],
       },
       {
-        titulo: "Rendimiento",
+        titulo: "Usuarios",
         items: [
-          ["hecho", "Todos los núcleos de la CPU, con planificador justo y clase de plazos"],
-          ["plan", "Plazos para el escritorio, la entrada y el sonido: que responda siempre"],
-          ["plan", "Sin intercambio a disco: memoria comprimida"],
-          ["plan", "Metas, aún sin medir: escritorio en menos de 5 s en una Pi 4 y menos de 128 MB en reposo"],
-          ["plan", "60 cuadros por segundo moviendo ventanas con los cuatro núcleos al 100 %"],
+          ["hecho", "Entrada y bloqueo con frase propia, y cambio rápido de usuario"],
+          ["hecho", "Un volumen cifrado para cada usuario"],
+          ["hecho", "Permisos por programa, preguntados la primera vez, y registro de seguridad"],
+          ["hecho", "Administrador sin superusuario, y cupos de memoria"],
         ],
       },
       {
-        titulo: "Archivos y organización a lo Amiga",
+        titulo: "Archivos, red y sonido",
         items: [
-          ["curso", "DashFS, a partir de RedoxFS: lee y escribe en NVMe, con pruebas de cortes de luz"],
-          ["hecho", "Nombres que no distinguen mayúsculas, comentario y bits de protección del Amiga"],
-          ["hecho", "Instantáneas: tomar, borrar y volver a una; herramienta que comprueba y repara el disco"],
-          ["plan", "Volúmenes, cajones y asignaciones (C:, S:, LIBS:, ENV:...), Prefs, catálogos e iconos"],
-          ["plan", "El cajón de cada usuario, cifrado con su contraseña"],
+          ["hecho", "DashFS, a partir de RedoxFS: nombres sin distinguir mayúsculas, comentario y bits del Amiga"],
+          ["hecho", "Instantáneas del disco y una herramienta que lo comprueba y lo repara"],
+          ["hecho", "Pila TCP/IP propia: DHCP y conexiones TCP salientes"],
+          ["curso", "DNS para los programas, UDP, servidores e IPv6"],
+          ["hecho", "Servicio de sonido con mezcla; audio.device nativo para la caja Amiga"],
         ],
       },
       {
         titulo: "Hardware y arranque",
         items: [
-          ["hecho", "Arranque por UEFI con árbol de dispositivos o ACPI, GICv2 o GICv3"],
-          ["hecho", "Teclado y ratón por xHCI, disco NVMe e interrupciones MSI-X"],
-          ["hecho", "Kernel en QEMU raspi4b con tarjeta SD, USB y la pantalla del firmware"],
-          ["plan", "Raspberry Pi 4 real primero, la Pi 3 también y la Pi 5 después"],
-          ["plan", "Otros ordenadores ARM que arrancan por UEFI: placas, portátiles y, a la larga, Macs"],
+          ["hecho", "Arranque por UEFI con árbol de dispositivos o ACPI, en QEMU"],
+          ["hecho", "Teclado, ratón y tableta USB, disco NVMe e interrupciones MSI-X"],
+          ["curso", "Imágenes para Raspberry Pi 4 y Pi 5, aún sin probar en una placa real"],
+          ["plan", "Otros ordenadores ARM que arrancan por UEFI: placas y portátiles"],
         ],
       },
       {
-        titulo: "Escritorio",
+        titulo: "Programar y abierto",
         items: [
-          ["plan", "Compositor oficial de confianza, con escritorios de terceros encima sin privilegios"],
-          ["plan", "Ventanas en mosaico y flotantes a la vez, y escritorios que se arrastran como las pantallas del Amiga"],
-          ["plan", "Las ventanas de los programas Amiga son ventanas del escritorio"],
-          ["plan", "Material 3 con los colores del fondo de pantalla, y un tema Amiga clásico"],
-          ["plan", "Programas de Linux en una caja con Arch Linux ARM, con sus ventanas en el escritorio"],
-        ],
-      },
-      {
-        titulo: "Programar",
-        items: [
-          ["hecho", "Dash compila programas nativos para DashOS, con procesos, canales, llaves y memoria"],
-          ["plan", "El mismo programa en Dash para AmigaOS 3.x (68k) y para DashOS (ARM)"],
-          ["plan", "API nativa de 64 bits con los conceptos del Amiga, y POSIX al lado"],
-          ["plan", "Motor de interfaz con el modelo de MUI, y las caras de ReAction y GadTools encima"],
-        ],
-      },
-      {
-        titulo: "Abierto",
-        items: [
-          ["hecho", "Código abierto con licencia MPL-2.0, en GitHub"],
-          ["hecho", "El diseño de todo el sistema, publicado con sus decisiones (S0 a S18)"],
-          ["hecho", "Las auditorías de seguridad del kernel, publicadas"],
-          ["hecho", "Los arreglos del JIT PowerPC se han mandado a Emu68"],
+          ["hecho", "Los programas de Dash compilados para 68k corren en la caja Amiga"],
+          ["curso", "Dash para AArch64: programas nativos de DashOS"],
+          ["hecho", "Kit de interfaz propio para programas nativos, con el modelo de MUI y dibujado en Material 3"],
+          ["hecho", "Código abierto con licencia MPL-2.0, con su diseño y sus auditorías publicados"],
         ],
       },
     ],
@@ -104,14 +105,36 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
     estados: { hecho: "Done", curso: "In progress", plan: "Designed" },
     grupos: [
       {
-        titulo: "Amiga programs",
+        titulo: "Amiga box",
         items: [
-          ["hecho", "Emu68's 68k JIT, calling native functions from 68k code"],
-          ["hecho", "The JIT also runs on CPUs without big-endian, swapping the bytes"],
-          ["plan", "Amiga box: AmigaOS 3.x 68k programs without emulating a whole Amiga; if one crashes, the box goes down, not the system"],
-          ["plan", "Any 68k task can be killed, and Enforcer is always on"],
-          ["plan", "Its own chips (Paula, Blitter, Copper, Denise, Agnus, CIA) for games and demos"],
-          ["curso", "PowerPC box for WarpOS and PowerUP: the PowerPC JIT has its first phase done"],
+          ["hecho", "AmigaOS 3.x 68k programs with the Emu68 JIT and native libraries in Rust, without emulating a whole Amiga"],
+          ["hecho", "Native exec, dos, utility, timer, intuition, gadtools, layers and keymap; graphics, partly"],
+          ["hecho", "GadTools, BOOPSI and ReAction, with two looks: classic 3.x or DashOS style"],
+          ["hecho", "Disk libraries and the user's own AmigaOS as a read-only layer (DashOS ships no ROM or Workbench)"],
+          ["hecho", "Virus guard: boot block warnings, a trash can and a question for each file"],
+          ["curso", "MUI 5 inside the box"],
+          ["plan", "Networking for Amiga programs (bsdsocket.library) and imitated chips for games and demos"],
+        ],
+      },
+      {
+        titulo: "Linux box",
+        items: [
+          ["hecho", "Arch Linux ARM in its own virtual machine, with several cores"],
+          ["hecho", "Its Wayland programs on the DashOS desktop: terminal, GTK 4 and Firefox, with clipboard"],
+          ["hecho", "2D graphics through virtio-gpu"],
+          ["hecho", "Networking with a firewall: Internet yes, the home network no, and the mail port closed"],
+          ["plan", "3D graphics and Vulkan"],
+        ],
+      },
+      {
+        titulo: "Desktop",
+        items: [
+          ["hecho", "Its own Wayland compositor, with several monitors"],
+          ["hecho", "Bar with workspaces, launcher and on-screen notices"],
+          ["hecho", "Quick panel and control centre: settings, permissions, security, disks and appearance"],
+          ["hecho", "File manager with a sidebar, tabs, trash and drag and drop"],
+          ["hecho", "Material 3 with colours taken from the wallpaper"],
+          ["plan", "Built-in resource monitor"],
         ],
       },
       {
@@ -119,68 +142,46 @@ export const CLAVES: Record<Idioma, { titulo: string; texto: string; estados: Re
         items: [
           ["hecho", "Microkernel in Rust: it only shares out the CPU, memory, messages and interrupts"],
           ["hecho", "Capabilities (keys): a new program can do nothing except what it is given"],
-          ["hecho", "Drivers outside the kernel, as isolated processes"],
+          ["hecho", "Drivers and services outside the kernel, as isolated processes"],
           ["hecho", "Four hardening phases, each with an independent audit and hostile tests"],
-          ["plan", "Users and permissions with no superuser, and per-app permissions asked on first use"],
-          ["plan", "Base system as a signed image, with A/B updates that roll back by themselves if they fail"],
+          ["hecho", "If an Amiga program crashes, its box goes down, not the system"],
         ],
       },
       {
-        titulo: "Performance",
+        titulo: "Users",
         items: [
-          ["hecho", "Every CPU core, with a fair scheduler and a deadline class"],
-          ["plan", "Deadlines for the desktop, input and sound: always responsive"],
-          ["plan", "No swapping to disk: compressed memory"],
-          ["plan", "Goals, not yet measured: desktop in under 5 s on a Pi 4 and under 128 MB at idle"],
-          ["plan", "60 frames per second moving windows with all four cores at 100%"],
+          ["hecho", "Login and lock screen with a passphrase, and fast user switching"],
+          ["hecho", "An encrypted volume for each user"],
+          ["hecho", "Per-program permissions, asked the first time, and a security log"],
+          ["hecho", "Administrator with no superuser, and memory quotas"],
         ],
       },
       {
-        titulo: "Files and Amiga-style organisation",
+        titulo: "Files, network and sound",
         items: [
-          ["curso", "DashFS, based on RedoxFS: reads and writes NVMe, with power-cut tests"],
-          ["hecho", "Case-insensitive names, Amiga comment and protection bits"],
-          ["hecho", "Snapshots: take, delete and roll back to one; a tool that checks and repairs the disk"],
-          ["plan", "Volumes, drawers and assigns (C:, S:, LIBS:, ENV:...), Prefs, catalogs and icons"],
-          ["plan", "Each user's drawer, encrypted with their password"],
+          ["hecho", "DashFS, based on RedoxFS: case-insensitive names, Amiga comment and protection bits"],
+          ["hecho", "Disk snapshots and a tool that checks and repairs the disk"],
+          ["hecho", "Its own TCP/IP stack: DHCP and outgoing TCP connections"],
+          ["curso", "DNS for programs, UDP, servers and IPv6"],
+          ["hecho", "Sound service with mixing; native audio.device for the Amiga box"],
         ],
       },
       {
         titulo: "Hardware and boot",
         items: [
-          ["hecho", "UEFI boot with a device tree or ACPI, GICv2 or GICv3"],
-          ["hecho", "Keyboard and mouse over xHCI, NVMe disk and MSI-X interrupts"],
-          ["hecho", "Kernel on QEMU raspi4b with SD card, USB and the firmware's screen"],
-          ["plan", "A real Raspberry Pi 4 first, the Pi 3 too and the Pi 5 later"],
-          ["plan", "Other ARM computers that boot via UEFI: boards, laptops and, in the long run, Macs"],
+          ["hecho", "UEFI boot with a device tree or ACPI, on QEMU"],
+          ["hecho", "USB keyboard, mouse and tablet, NVMe disk and MSI-X interrupts"],
+          ["curso", "Images for the Raspberry Pi 4 and Pi 5, not yet tested on a real board"],
+          ["plan", "Other ARM computers that boot via UEFI: boards and laptops"],
         ],
       },
       {
-        titulo: "Desktop",
+        titulo: "Programming and open",
         items: [
-          ["plan", "A trusted official compositor, with third-party desktops on top and no privileges"],
-          ["plan", "Tiling and floating windows at once, and desktops you drag like Amiga screens"],
-          ["plan", "Amiga programs' windows are desktop windows"],
-          ["plan", "Material 3 with colours from the wallpaper, and a classic Amiga theme"],
-          ["plan", "Linux programs in a box with Arch Linux ARM, with their windows on the desktop"],
-        ],
-      },
-      {
-        titulo: "Programming",
-        items: [
-          ["hecho", "Dash compiles native programs for DashOS, with processes, channels, keys and memory"],
-          ["plan", "The same Dash program for AmigaOS 3.x (68k) and DashOS (ARM)"],
-          ["plan", "A 64-bit native API with Amiga concepts, and POSIX alongside"],
-          ["plan", "A UI engine with MUI's model, and ReAction and GadTools faces on top"],
-        ],
-      },
-      {
-        titulo: "Open",
-        items: [
-          ["hecho", "Open source under the MPL-2.0 licence, on GitHub"],
-          ["hecho", "The design of the whole system, published with its decisions (S0 to S18)"],
-          ["hecho", "The kernel's security audits, published"],
-          ["hecho", "The PowerPC JIT fixes have been sent to Emu68"],
+          ["hecho", "Dash programs compiled for 68k run in the Amiga box"],
+          ["curso", "Dash for AArch64: native DashOS programs"],
+          ["hecho", "Its own UI kit for native programs, with MUI's model and drawn in Material 3"],
+          ["hecho", "Open source under the MPL-2.0 licence, with its design and audits published"],
         ],
       },
     ],
