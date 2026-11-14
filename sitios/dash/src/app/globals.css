@@ -745,6 +745,21 @@ main dd {
   box-shadow: 8px 8px 0 var(--negro);
 }
 
+/* ---------- LightStorm 3D de SantiDarkG: lo primero tras la portada, enmarcado para que destaque ---------- */
+
+.seccion-lightstorm {
+  align-items: center;
+  margin-block: 1rem 2rem;
+  padding: 2.5rem;
+  background: var(--azul-hondo);
+  border: 3px solid var(--naranja);
+  box-shadow: 10px 10px 0 var(--negro);
+}
+
+.seccion-lightstorm h2 {
+  color: var(--naranja);
+}
+
 /* ---------- Hecho con Dash ---------- */
 
 .hechos {
@@ -844,5 +859,13 @@ main dd {
   }
   .logo-dash-cursor {
     animation: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .seccion-lightstorm {
+    margin-inline: 0.75rem 1.25rem;
+    padding: 1.25rem;
+    box-shadow: 6px 6px 0 var(--negro);
   }
 }

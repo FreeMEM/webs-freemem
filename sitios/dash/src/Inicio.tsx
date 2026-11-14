@@ -1,7 +1,7 @@
 import type React from "react";
 import { BolaBoing, Gracias, Cabecera, Codigo, Novedades, Pie, VentanaDesplazable, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { AREAS, BASE, BUILTINS, COLUMNAS_DASH, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO } from "./contenido";
+import { AREAS, BASE, BUILTINS, COLUMNAS_DASH, COMPARATIVA, CONTENIDO, DIVISION_CERO, EXTENSION, HISTORIA, LENGUAJES, PRUEBAS, REPO, VELOCIDAD, VIDEO, VIDEO_LIGHTSTORM } from "./contenido";
 import codigos from "./comparativa_codigo.json";
 import ejemplos from "./ejemplos.json";
 import { LogoDash } from "./LogoDash";
@@ -26,7 +26,7 @@ function numero(n: number, idioma: Idioma) {
 }
 
 /** Las secciones, en orden: su id es el ancla (#comparativa) que se puede enlazar, igual en los dos idiomas */
-const SECCIONES = ["novedades", "tuberia", "todo", "tecnica", "comparativa", "historia", "editor", "hecho", "documentacion", "requisitos"] as const;
+const SECCIONES = ["lightstorm", "novedades", "tuberia", "todo", "tecnica", "comparativa", "historia", "editor", "hecho", "documentacion", "requisitos"] as const;
 
 /** Título de sección con su ancla: el # lleva a la sección y deja su enlace en la barra del navegador */
 function Titulo({ id, etiqueta, children }: { id: string; etiqueta: string; children: React.ReactNode }) {
@@ -127,6 +127,17 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             ))}
           </ul>
         </nav>
+
+        <section className="seccion seccion-editor seccion-lightstorm" aria-labelledby="lightstorm">
+          <div className="editor-texto">
+            <Titulo id="lightstorm" etiqueta={t.indice.enlace}>{t.lightstorm.titulo}</Titulo>
+            <p>{t.lightstorm.texto}</p>
+            <p>{t.lightstorm.rust}</p>
+          </div>
+          <div className="editor-video">
+            <VideoYouTube id={VIDEO_LIGHTSTORM[idioma]} titulo={t.lightstorm.tituloVideo} portada="/imagenes/lightstorm.jpg" textoBoton={t.lightstorm.verVideo} />
+          </div>
+        </section>
 
         <section className="seccion seccion-novedades" aria-labelledby="novedades">
           <Titulo id="novedades" etiqueta={t.indice.enlace}>{t.novedades.titulo}</Titulo>

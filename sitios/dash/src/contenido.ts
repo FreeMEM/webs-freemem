@@ -7,6 +7,8 @@ export const REPO = "https://github.com/FreeMEM/dash";
 /** La última versión de la extensión de VS Code: la pone herramientas/versiones.py antes de construir. */
 export const EXTENSION = extension.notas;
 export const VIDEO = "_UTJ_0s3xLc";
+/** El vídeo sobre LightStorm 3D de SantiDarkG (hecho con Dash), uno por idioma; publicado con su permiso. */
+export const VIDEO_LIGHTSTORM = { es: "EX7Y2g-nRDk", en: "ZPfov4_nNpo" };
 export const BASE = "https://dash.freemem.space";
 export const BUILTINS = 1008;
 
@@ -119,6 +121,7 @@ export const CONTENIDO = {
     indice: {
       titulo: "En esta página",
       enlace: "Enlace a esta sección",
+      lightstorm: "LightStorm 3D",
       novedades: "Novedades",
       tuberia: "De Dash a 68k",
       todo: "Funciones",
@@ -246,6 +249,13 @@ export const CONTENIDO = {
         ["COMPARATIVA", "Comparativa", "Dash frente a Blitz, AMOS y C, con números"],
       ],
     },
+    lightstorm: {
+      titulo: "Hecho con Dash: LightStorm 3D, de SantiDarkG",
+      texto: "Santi (SantiDarkG) empezó dándole al LightWave del Amiga coordenadas UV, texturas y formatos de hoy, y ha acabado escribiendo un programa de 3D nuevo: LightStorm 3D, con módulo de animación, editor NLA y editor de UVs. Su interfaz está hecha con Dash. También pasó a Dash su CloudSync: en un A1200 a 14 MHz, la ventana se abre en 0,7 s en vez de los 50,1 s que tardaba con Hollywood.",
+      rust: "Ahora usa Dash para llevar al 68k programas escritos en Rust: compila para el 68k el motor del programa original, lo envuelve en C y monta encima el programa de Amiga con Dash. La primera prueba es WordCraft, un procesador de textos.",
+      verVideo: "Reproducir",
+      tituloVideo: "SantiDarkG: de LightWave a LightStorm 3D, con Dash (5 min)",
+    },
     editor: {
       titulo: "Programa en VS Code, prueba en el Amiga",
       texto: "La extensión \"Dash for Amiga\" colorea el código, marca los errores mientras escribes, autocompleta, salta a la definición y da formato. Compila el programa y lo lanza en FS-UAE o Amiberry, depura con F5 (también en un Amiga real, por la red) e incluye un diseñador visual de ventanas MUI: colocas los objetos y la extensión escribe el código.",
@@ -324,6 +334,7 @@ export const CONTENIDO = {
     indice: {
       titulo: "On this page",
       enlace: "Link to this section",
+      lightstorm: "LightStorm 3D",
       novedades: "What's new",
       tuberia: "From Dash to 68k",
       todo: "Functions",
@@ -450,6 +461,13 @@ export const CONTENIDO = {
         ["MUI_EDITOR", "The visual MUI editor", "the .dashui format and the VS Code extension"],
         ["COMPARATIVA", "Comparison", "Dash against Blitz, AMOS and C, with numbers"],
       ],
+    },
+    lightstorm: {
+      titulo: "Made with Dash: LightStorm 3D, by SantiDarkG",
+      texto: "Santi (SantiDarkG) started by giving Amiga LightWave UV coordinates, textures and today's formats, and he has ended up writing a brand-new 3D program: LightStorm 3D, with an animation module, an NLA editor and a UV editor. Its interface is built with Dash. He also moved his CloudSync to Dash: on a 14 MHz A1200 the window opens in 0.7 s instead of the 50.1 s it took with Hollywood.",
+      rust: "Now he uses Dash to bring programs written in Rust to the 68k: he compiles the original program's engine for the 68k, wraps it in C and builds the Amiga program on top with Dash. The first test is WordCraft, a word processor.",
+      verVideo: "Play",
+      tituloVideo: "SantiDarkG: from LightWave to LightStorm 3D, with Dash (5 min)",
     },
     editor: {
       titulo: "Write in VS Code, run on the Amiga",
