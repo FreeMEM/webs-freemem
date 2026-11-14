@@ -157,6 +157,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "JaviTecH",
       aportes: [
+        { version: "0.9.8", es: "Avisó del \"Recoverable Alert 0100000F\" con AmigaOS 3.9 en su PiStorm con CaffeineOS. Arreglado: Tachyon escribía un cero en la memoria que usa el exec del 3.9.", en: "Reported the \"Recoverable Alert 0100000F\" on AmigaOS 3.9 on a PiStorm with CaffeineOS. Fixed: Tachyon wrote a zero into memory that 3.9's exec uses." },
         { version: "0.9.4", es: "Confirmó el cuelgue de dash.freemem.space en su MiSTer y vio que la bola animada se comía la CPU.", en: "Confirmed the dash.freemem.space hang on a MiSTer and spotted that the animated ball ate the CPU." },
       ],
     },
