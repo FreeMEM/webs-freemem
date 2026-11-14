@@ -26,9 +26,9 @@ export const COMPARATIVA = {
     aspecto: "",
     web: "Web",
     nota:
-      "Comparados el 14 de noviembre de 2026 con Tachyon 0.9.8 alfa, Amelinium 1.7.1 y AmiFire 0.9.303 beta, según lo que publica cada autor. Los tres avanzan cada semana, así que esta tabla envejece rápido. Si ves algo mal, avísame.",
+      "Comparados el 14 de noviembre de 2026 con Tachyon 0.9.9 alfa, Amelinium 1.7.1 y AmiFire 0.9.303 beta, según lo que publica cada autor. Los tres avanzan cada semana, así que esta tabla envejece rápido. Si ves algo mal, avísame.",
     filas: [
-      ["Versión", "0.9.8 alfa", "1.7.1", "0.9.303 beta"],
+      ["Versión", "0.9.9 alfa", "1.7.1", "0.9.303 beta"],
       [
         "Máquinas",
         "68020 con FPU o mejor y AmigaOS 3.x. También AmigaOS 4, con su emulación de 68k.",
@@ -92,9 +92,9 @@ export const COMPARATIVA = {
     aspecto: "",
     web: "Website",
     nota:
-      "Compared on 14 November 2026 with Tachyon 0.9.8 alpha, Amelinium 1.7.1 and AmiFire 0.9.303 beta, going by what each author publishes. All three move forward every week, so this table ages fast. If you spot a mistake, let me know.",
+      "Compared on 14 November 2026 with Tachyon 0.9.9 alpha, Amelinium 1.7.1 and AmiFire 0.9.303 beta, going by what each author publishes. All three move forward every week, so this table ages fast. If you spot a mistake, let me know.",
     filas: [
-      ["Version", "0.9.8 alpha", "1.7.1", "0.9.303 beta"],
+      ["Version", "0.9.9 alpha", "1.7.1", "0.9.303 beta"],
       [
         "Machines",
         "68020 with FPU or better and AmigaOS 3.x. Also AmigaOS 4, through its 68k emulation.",
