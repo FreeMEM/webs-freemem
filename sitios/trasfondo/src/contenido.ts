@@ -9,7 +9,7 @@ export const DESCARGA = version.descarga;
 export const RELEASE = version.notas;
 export const REPO = "https://github.com/FreeMEM/trasfondo";
 /** El vídeo de cada idioma (el de la 0.11, grabado en Coffin R65 con tarjeta gráfica). */
-export const VIDEO = { es: "QyzxsXAyeg4", en: "asdHx5MZsJA" } satisfies Record<Idioma, string>;
+export const VIDEO = { es: "8QoDB70rUyU", en: "D6iDQhWC1JI" } satisfies Record<Idioma, string>;
 export const BASE = "https://trasfondo.freemem.space";
 
 export const CONTENIDO = {
