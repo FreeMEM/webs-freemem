@@ -162,7 +162,7 @@ export const CONTENIDO = {
         },
       ],
     },
-    video: { titulo: "Míralo en marcha", texto: "Cinco minutos de la 0.11, el monitor del fondo, en CoffinOS con tarjeta gráfica, en Amiberry. Se ve cómo se instala, todo lo que muestra, cómo se actualiza de la 0.9 a la 0.11 con un clic, TrasfondoPrefs y Exchange. La música es de Mantronix & Tip.", boton: "Reproducir", titulo_video: "Trasfondo 0.11: un monitor de recursos en el fondo del Workbench" },
+    video: { titulo: "Míralo en marcha", texto: "Cinco minutos de la 2.9 en CoffinOS (AmigaOS 3.2) con tarjeta gráfica, en Amiberry: las ventanas que encajan en los bordes, Alt+Tab, los escritorios virtuales, el explorador TrasfondoArchivos y las ventanas en tira como Niri. La música es \"Psilocybin\", de Legend & Yolk.", boton: "Reproducir", titulo_video: "Trasfondo 2.9: ventanas modernas, un explorador y escritorios virtuales para el Workbench" },
     instalar: {
       titulo: "Listo en un minuto",
       pasos: [
@@ -343,7 +343,7 @@ export const CONTENIDO = {
         },
       ],
     },
-    video: { titulo: "See it in action", texto: "Five minutes of 0.11, the backdrop monitor, on CoffinOS with a graphics card, in Amiberry. It shows how to install it, everything it displays, updating from 0.9 to 0.11 with one click, TrasfondoPrefs and Exchange. The music is by Mantronix & Tip.", boton: "Play", titulo_video: "Trasfondo 0.11: a resource monitor on your Workbench backdrop" },
+    video: { titulo: "See it in action", texto: "Five minutes of 2.9 on CoffinOS (AmigaOS 3.2) with a graphics card, in Amiberry: windows that snap to the edges, Alt+Tab, virtual desktops, the TrasfondoArchivos file manager and windows in a strip like Niri. The music is \"Psilocybin\" by Legend & Yolk.", boton: "Play", titulo_video: "Trasfondo 2.9: modern windows, a file manager and virtual desktops for the Workbench" },
     instalar: {
       titulo: "Ready in a minute",
       pasos: [
