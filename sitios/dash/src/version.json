@@ -1,9 +1,9 @@
 {
- "version": "0.5.0",
- "etiqueta": "vscode-0.5.0",
- "fecha": "2026-11-07",
- "notas": "https://github.com/FreeMEM/dash/releases/tag/vscode-0.5.0",
- "descarga": "https://github.com/FreeMEM/dash/releases/download/vscode-0.5.0/dash-mui-editor-0.5.0.vsix",
- "fichero": "dash-mui-editor-0.5.0.vsix",
- "bytes": 309355
+ "version": "0.5.1",
+ "etiqueta": "vscode-0.5.1",
+ "fecha": "2026-11-08",
+ "notas": "https://github.com/FreeMEM/dash/releases/tag/vscode-0.5.1",
+ "descarga": "https://github.com/FreeMEM/dash/releases/download/vscode-0.5.1/dash-mui-editor-0.5.1.vsix",
+ "fichero": "dash-mui-editor-0.5.1.vsix",
+ "bytes": 309975
 }
