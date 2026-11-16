@@ -13,6 +13,9 @@ export const NAVEGADORES: readonly Navegador[] = [
   { nombre: "AmiFire", autor: "Rafał \"Terror\" Fajfrowski", web: "http://eterror.pl/amifire", aminet: "https://aminet.net/package/comm/www/AmiFire" },
 ];
 
+/** La comparativa en vídeo, Tachyon 0.9.8 contra Amelinium 1.7.1 (YouTube, 14/11/2026). */
+export const VIDEO_COMPARATIVA = { es: "8iEK_bQSIrU", en: "4AuwATK5EoI" } satisfies Record<Idioma, string>;
+
 /** Una fila: qué se compara y lo de cada navegador, en el orden de NAVEGADORES. */
 export type Fila = readonly [string, string, string, string];
 
@@ -25,6 +28,11 @@ export const COMPARATIVA = {
       "Gracias a los dos. Poner Tachyon al lado de Amelinium nos enseñó qué iconos de Wikipedia y Xataka se quedaban sin dibujar. Mirando a Amelinium llegaron también la búsqueda en el historial, el puerto ARexx, el modo lectura y abrir comprimidos. Y \"Guardar enlace como...\" llegó porque Ferrán García quería bajarse los .readme de Aminet, como hace AmiFire.",
     aspecto: "",
     web: "Web",
+    video_titulo: "Cara a cara, en vídeo",
+    video_texto:
+      "Tachyon 0.9.8 y Amelinium 1.7.1 en el mismo CoffinOS, cada uno grabado por separado: arranque, JavaScript, Acid2 y Acid3, Wikipedia, GitHub, YouTube y otras webs, con los tiempos medidos sobre la grabación. Amelinium gana en Wikipedia y en YouTube; Tachyon, en Acid3, en GitHub y en memoria. Lo que Tachyon perdió ya está en su lista de tareas.",
+    video_boton: "Reproducir",
+    video_nombre: "Tachyon 0.9.8 contra Amelinium 1.7.1",
     nota:
       "Comparados el 14 de noviembre de 2026 con Tachyon 0.9.9 alfa, Amelinium 1.7.1 y AmiFire 0.9.303 beta, según lo que publica cada autor. Los tres avanzan cada semana, así que esta tabla envejece rápido. Si ves algo mal, avísame.",
     filas: [
@@ -91,6 +99,11 @@ export const COMPARATIVA = {
       "Thanks to both. Putting Tachyon next to Amelinium showed us which icons on Wikipedia and Xataka were left undrawn. Looking at Amelinium also brought history search, the ARexx port, reader mode and opening archives. And \"Save link as...\" came about because Ferrán García wanted to download the Aminet .readme files, as AmiFire does.",
     aspecto: "",
     web: "Website",
+    video_titulo: "Head to head, on video",
+    video_texto:
+      "Tachyon 0.9.8 and Amelinium 1.7.1 on the same CoffinOS, each one recorded on its own: start-up, JavaScript, Acid2 and Acid3, Wikipedia, GitHub, YouTube and other sites, with the times measured on the recording. Amelinium wins on Wikipedia and YouTube; Tachyon, on Acid3, GitHub and memory. What Tachyon lost is already on its to-do list.",
+    video_boton: "Play",
+    video_nombre: "Tachyon 0.9.8 vs Amelinium 1.7.1",
     nota:
       "Compared on 14 November 2026 with Tachyon 0.9.9 alpha, Amelinium 1.7.1 and AmiFire 0.9.303 beta, going by what each author publishes. All three move forward every week, so this table ages fast. If you spot a mistake, let me know.",
     filas: [

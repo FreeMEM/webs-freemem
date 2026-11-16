@@ -1,6 +1,6 @@
-import type { Idioma } from "retro";
+import { VideoYouTube, type Idioma } from "retro";
 
-import { COMPARATIVA, NAVEGADORES } from "./comparativa";
+import { COMPARATIVA, NAVEGADORES, VIDEO_COMPARATIVA } from "./comparativa";
 
 /** Tachyon, Amelinium y AmiFire lado a lado. En el móvil, cada fila es una tarjeta con los tres. */
 export function Comparativa({ idioma }: { idioma: Idioma }) {
@@ -42,6 +42,9 @@ export function Comparativa({ idioma }: { idioma: Idioma }) {
         </table>
       </div>
       <p className="medida comparativa-nota">{t.nota}</p>
+      <h3 id="comparativa-video">{t.video_titulo}</h3>
+      <p className="medida">{t.video_texto}</p>
+      <VideoYouTube id={VIDEO_COMPARATIVA[idioma]} titulo={t.video_nombre} portada={`/imagenes/comparativa-${idioma}.jpg`} textoBoton={t.video_boton} />
     </section>
   );
 }
