@@ -9,7 +9,7 @@
     "react": "*"
   },
   "devDependencies": {
-    "next": "16.4.2",
+    "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "@types/react": "^19",
