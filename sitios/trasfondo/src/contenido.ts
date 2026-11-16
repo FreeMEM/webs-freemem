@@ -97,9 +97,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "Novedades",
-      texto: "Lo último que ha salido y lo que viene, a 12 de noviembre de 2026.",
+      texto: "Lo último que ha salido y lo que viene, a 16 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 16/11",
+          titulo: "Trasfondo 2.9.5",
+          texto: "El panel rápido abre el explorador y lleva los botones que elijas (Ferrán García). El explorador, con botonera grande en dos filas como Directory Opus 4 (David Martínez), y al renombrar el nombre sale elegido. El dock y las ventanas reconocen los programas arrancados desde WBStartup.",
+        },
         {
           estado: "Publicada el 12/11",
           titulo: "Trasfondo 2.9.4",
@@ -278,9 +283,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "What's new",
-      texto: "The latest releases and what's coming, as of 12 November 2026.",
+      texto: "The latest releases and what's coming, as of 16 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 16 Nov",
+          titulo: "Trasfondo 2.9.5",
+          texto: "The quick panel opens the file manager and carries the buttons you choose (Ferrán García). The file manager gets a big two-row button bar like Directory Opus 4 (David Martínez), and rename selects the name. The dock and windows recognise programs started from WBStartup.",
+        },
         {
           estado: "Released 12 Nov",
           titulo: "Trasfondo 2.9.4",
