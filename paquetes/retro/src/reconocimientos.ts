@@ -127,6 +127,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       aportes: [
         { version: "2.7.0", es: "bitmap_create con profundidad 0: un bitmap como la pantalla, para dibujar sin parpadeo (el dock de Trasfondo).", en: "bitmap_create with depth 0: a bitmap like the screen, to draw without flicker (Trasfondo's dock)." },
         { version: "2.8.0", es: "screen_save_png: la pantalla a un PNG, para las capturas de Trasfondo.", en: "screen_save_png: the screen to a PNG, for Trasfondo's screenshots." },
+        { version: "2.15.0", es: "Avisó de que los programas de ./dash caían en AmigaOS 3.9 con su ROM Update (su PiStorm con CaffeineOS).", en: "Reported that ./dash programs crashed on AmigaOS 3.9 with its ROM Update (their PiStorm with CaffeineOS)." },
       ],
     },
     {
