@@ -80,6 +80,7 @@ server {{
     listen 80;
     listen [::]:80;
     server_name {dominio};
+    access_log /var/log/nginx/{dominio}.access.log;
     set_real_ip_from 10.0.0.1;
     real_ip_header X-Forwarded-For;
     location /.well-known/acme-challenge/ {{
@@ -105,6 +106,8 @@ server {{
 server {{
     listen 443 ssl http2 proxy_protocol;
     server_name {dominio};
+    # un registro por web: herramientas/visitas.py cuenta las visitas de cada una
+    access_log /var/log/nginx/{dominio}.access.log;
     set_real_ip_from 10.0.0.1;
     real_ip_header proxy_protocol;
 

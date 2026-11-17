@@ -19,6 +19,9 @@
     --serie-1: #2a78d6;
     --serie-2: #eb6834;
     --serie-3: #1baf7a;
+    --serie-4: #8a5cd1;
+    --serie-5: #c9a227;
+    --serie-6: #d6427a;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -33,6 +36,9 @@
       --serie-1: #3987e5;
       --serie-2: #d95926;
       --serie-3: #199e70;
+      --serie-4: #9b72e0;
+      --serie-5: #d1ad3a;
+      --serie-6: #e05a8c;
     }
   }
   :root[data-theme="dark"] {
@@ -47,6 +53,9 @@
     --serie-1: #3987e5;
     --serie-2: #d95926;
     --serie-3: #199e70;
+    --serie-4: #9b72e0;
+    --serie-5: #d1ad3a;
+    --serie-6: #e05a8c;
   }
   * { box-sizing: border-box; }
   body {
@@ -117,6 +126,14 @@
   <h2>Por versión</h2>
   <div class="por-programa" id="por-version"></div>
   <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Solo las de GitHub (no Aminet ni otras webs). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
+  <h2>Visitas a las webs</h2>
+  <p class="sub" id="visitas-sub">Cargando…</p>
+  <section class="totales" id="visitas-totales" aria-label="Visitas por web"></section>
+  <details open>
+    <summary>Día a día</summary>
+    <table id="visitas-dias"></table>
+  </details>
+  <p class="nota">Personas (IPs distintas) que abren alguna página de cada web con un navegador, sin robots ni las pruebas propias. Desde el 17 de noviembre de 2026: antes, las webs compartían registro y no se pueden separar. Las de hangar.freemem.space, abajo.</p>
   <h2>Hangar</h2>
   <p class="sub" id="hangar-sub">Cargando…</p>
   <section class="totales" id="hangar-totales" aria-label="Hangar: totales"></section>
@@ -127,7 +144,7 @@
   <p class="nota">Del registro del servidor de Hangar (hangar.freemem.space), sin las pruebas propias ni los robots. Web: personas (IPs) que abren la web. Cliente: veces que se baja Hangar.lha. Amigas: IPs distintas con un Amiga que usan Hangar. Instalar: programas distintos que un Amiga mira para instalar (no todos acaban instalados). Buscar: búsquedas. Disco: veces que un Amiga mira su disco. Las cifras de varios días no suman personas: una misma IP cuenta cada día.</p>
 </main>
 <script>
-const SERIES = ["--serie-1", "--serie-2", "--serie-3"];
+const SERIES = ["--serie-1", "--serie-2", "--serie-3", "--serie-4", "--serie-5", "--serie-6"];
 const fmt = new Intl.NumberFormat("es-ES");
 const fecha = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "short" });
 const esPaquete = (fichero) => /\.(lha|vsix)$/i.test(fichero);
@@ -245,6 +262,31 @@ function pintar(tomas) {
     porVersion.append(el("div", {}, [el("h3", {}, [el("span", { class: "marca", style: `width:10px;height:10px;border-radius:50%;background:${color(i)}` }), p]), t]));
   });
 }
+
+// Visitas de cada web: visitas.json lo deja herramientas/visitas.py (lo lanza descargas.py cada hora)
+function pintarVisitas(dias) {
+  const fechas = Object.keys(dias).sort();
+  const webs = [...new Set(fechas.flatMap((f) => Object.keys(dias[f])))];
+  document.getElementById("visitas-sub").textContent = fechas.length
+    ? `Desde el ${fecha(fechas[0])} hasta el ${fecha(fechas[fechas.length - 1])}.` : "Aún no hay datos.";
+  const caja = document.getElementById("visitas-totales");
+  webs.forEach((w, i) => {
+    const hoy = (dias[fechas[fechas.length - 1]] || {})[w] || 0;
+    const sem = fechas.slice(-7).reduce((s, f) => s + (dias[f][w] || 0), 0);
+    caja.append(el("div", { class: "total" }, [
+      el("div", { class: "nombre" }, [el("span", { class: "marca", style: `background:${color(i % 6)}` }), w]),
+      el("div", { class: "cifra", text: fmt.format(hoy) }),
+      el("div", { class: "cambio", text: `hoy; ${fmt.format(sem)} en los últimos 7 días (sumando cada día)` }),
+    ]));
+  });
+  const t = document.getElementById("visitas-dias");
+  t.append(el("tr", {}, [el("th", { text: "Día" }), ...webs.map((w) => el("th", { class: "n", text: w }))]));
+  [...fechas].reverse().forEach((f) => t.append(el("tr", {}, [el("td", { text: fecha(f) }), ...webs.map((w) => el("td", { class: "n", text: fmt.format(dias[f][w] || 0) }))])));
+}
+fetch("visitas.json", { cache: "no-store" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(pintarVisitas)
+  .catch((e) => { document.getElementById("visitas-sub").textContent = `No se pudieron leer las visitas (visitas.json: ${e.message}).`; });
 
 // Hangar: hangar.json lo deja cada hora el temporizador hangar-estadisticas de cosmos (repo hangar-servicio)
 function pintarHangar(dias) {

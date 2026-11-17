@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from versiones import api  # noqa: E402
 
-PROGRAMAS = {"Trasfondo": "FreeMEM/trasfondo", "Tachyon": "FreeMEM/tachyon", "Dash": "FreeMEM/dash"}
+PROGRAMAS = {"Trasfondo": "FreeMEM/trasfondo", "Tachyon": "FreeMEM/tachyon", "Dash": "FreeMEM/dash", "Forja": "FreeMEM/forja"}
 
 
 def toma():
@@ -43,6 +43,13 @@ def main():
     shutil.copy(historico, pagina / "datos.json")
     shutil.copy(Path(__file__).resolve().parent / "estadisticas" / "index.html", pagina / "index.html")
     print(f"{hoy}: " + ", ".join(f"{p} {sum(d.values())}" for p, d in tomas[-1]["datos"].items()))
+    # las visitas de cada web (herramientas/visitas.py): si fallan, las descargas ya están guardadas
+    try:
+        import visitas
+        sys.argv = sys.argv[:1]
+        visitas.main()
+    except Exception as e:  # noqa: BLE001
+        print(f"visitas: {e}")
 
 
 if __name__ == "__main__":
