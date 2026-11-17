@@ -97,9 +97,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "Novedades",
-      texto: "Lo último que ha salido y lo que viene, a 16 de noviembre de 2026.",
+      texto: "Lo último que ha salido y lo que viene, a 17 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 17/11",
+          titulo: "Trasfondo 2.9.6",
+          texto: "Exchange obedece al momento aunque la WiFi tarde en contestar: ocultar, mostrar y eliminar ya no esperan a que acabe la medida de la red (lo contó Ferrán García).",
+        },
         {
           estado: "Publicada el 16/11",
           titulo: "Trasfondo 2.9.5",
@@ -283,9 +288,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "What's new",
-      texto: "The latest releases and what's coming, as of 16 November 2026.",
+      texto: "The latest releases and what's coming, as of 17 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 17 Nov",
+          titulo: "Trasfondo 2.9.6",
+          texto: "Exchange obeys at once even when the WiFi is slow to answer: hide, show and remove no longer wait for the network measurement to finish (reported by Ferrán García).",
+        },
         {
           estado: "Released 16 Nov",
           titulo: "Trasfondo 2.9.5",

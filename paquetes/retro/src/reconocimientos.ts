@@ -14,6 +14,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.6", es: "Arreglo: con una WiFi lenta, Exchange tardaba segundos en ocultar o mostrar el monitor.", en: "Fix: with a slow WiFi, Exchange took seconds to hide or show the monitor." },
         { version: "2.9.5", es: "El panel rápido abre el explorador y lleva los botones que elijas.", en: "The quick panel opens the file manager and carries the buttons you choose." },
         { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba ni hacía caso al doble clic con MCP o PowerWindows.", en: "Fix: TrasfondoVentanas did not snap or answer double clicks with MCP or PowerWindows." },
         { version: "2.9.1", es: "Los botones con su tecla de TrasfondoArchivos, para usar el ratón o el teclado.", en: "TrasfondoArchivos's buttons with their key, to use the mouse or the keyboard." },
