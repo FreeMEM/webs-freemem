@@ -117,6 +117,14 @@
   <h2>Por versión</h2>
   <div class="por-programa" id="por-version"></div>
   <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Solo las de GitHub (no Aminet ni otras webs). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
+  <h2>Hangar</h2>
+  <p class="sub" id="hangar-sub">Cargando…</p>
+  <section class="totales" id="hangar-totales" aria-label="Hangar: totales"></section>
+  <details open>
+    <summary>Día a día</summary>
+    <table id="hangar-dias"></table>
+  </details>
+  <p class="nota">Del registro del servidor de Hangar (hangar.freemem.space), sin las pruebas propias ni los robots. Web: personas (IPs) que abren la web. Cliente: veces que se baja Hangar.lha. Amigas: IPs distintas con un Amiga que usan Hangar. Instalar: programas distintos que un Amiga mira para instalar (no todos acaban instalados). Buscar: búsquedas. Disco: veces que un Amiga mira su disco. Las cifras de varios días no suman personas: una misma IP cuenta cada día.</p>
 </main>
 <script>
 const SERIES = ["--serie-1", "--serie-2", "--serie-3"];
@@ -237,6 +245,32 @@ function pintar(tomas) {
     porVersion.append(el("div", {}, [el("h3", {}, [el("span", { class: "marca", style: `width:10px;height:10px;border-radius:50%;background:${color(i)}` }), p]), t]));
   });
 }
+
+// Hangar: hangar.json lo deja cada hora el temporizador hangar-estadisticas de cosmos (repo hangar-servicio)
+function pintarHangar(dias) {
+  const fechas = Object.keys(dias).sort();
+  const suma = (k) => fechas.reduce((s, f) => s + (dias[f][k] || 0), 0);
+  const ult = (k, n) => fechas.slice(-n).reduce((s, f) => s + (dias[f][k] || 0), 0);
+  document.getElementById("hangar-sub").textContent = fechas.length
+    ? `Desde el ${fecha(fechas[0])} hasta el ${fecha(fechas[fechas.length - 1])} (se rehace cada hora).` : "Aún no hay datos.";
+  const caja = document.getElementById("hangar-totales");
+  [["Cliente bajado", "cliente"], ["Amigas al día (hoy)", "amigas"], ["Programas mirados para instalar", "instalar"]].forEach(([nombre, k], i) => {
+    const hoy = k === "amigas";
+    caja.append(el("div", { class: "total" }, [
+      el("div", { class: "nombre" }, [el("span", { class: "marca", style: `background:${color(i)}` }), nombre]),
+      el("div", { class: "cifra", text: fmt.format(hoy ? (dias[fechas[fechas.length - 1]] || {})[k] || 0 : suma(k)) }),
+      el("div", { class: "cambio", text: hoy ? `${fmt.format(ult(k, 7))} en los últimos 7 días (sumando cada día)` : `+${fmt.format(ult(k, 7))} en los últimos 7 días` }),
+    ]));
+  });
+  const cols = [["web", "Web"], ["cliente", "Cliente"], ["amigas", "Amigas"], ["instalar", "Instalar"], ["buscar", "Buscar"], ["disco", "Disco"]];
+  const t = document.getElementById("hangar-dias");
+  t.append(el("tr", {}, [el("th", { text: "Día" }), ...cols.map(([, n]) => el("th", { class: "n", text: n }))]));
+  [...fechas].reverse().forEach((f) => t.append(el("tr", {}, [el("td", { text: fecha(f) }), ...cols.map(([k]) => el("td", { class: "n", text: fmt.format(dias[f][k] || 0) }))])));
+}
+fetch("hangar.json", { cache: "no-store" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(pintarHangar)
+  .catch((e) => { document.getElementById("hangar-sub").textContent = `No se pudieron leer los datos de Hangar (hangar.json: ${e.message}).`; });
 
 fetch("datos.json", { cache: "no-store" })
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
