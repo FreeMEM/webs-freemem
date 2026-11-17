@@ -125,7 +125,7 @@
 
   <h2>Por versión</h2>
   <div class="por-programa" id="por-version"></div>
-  <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Solo las de GitHub (no Aminet ni otras webs). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
+  <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Las de GitHub (no Aminet ni otras webs), y las del cliente de Hangar en hangar.freemem.space (estas sin las pruebas propias). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
   <h2>Visitas a las webs</h2>
   <p class="sub" id="visitas-sub">Cargando…</p>
   <section class="totales" id="visitas-totales" aria-label="Visitas por web"></section>
@@ -314,9 +314,21 @@ fetch("hangar.json", { cache: "no-store" })
   .then(pintarHangar)
   .catch((e) => { document.getElementById("hangar-sub").textContent = `No se pudieron leer los datos de Hangar (hangar.json: ${e.message}).`; });
 
-fetch("datos.json", { cache: "no-store" })
-  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(pintar)
+// Hangar no está en GitHub: su cliente se baja de hangar.freemem.space. Entra en los totales y la gráfica con las
+// descargas del cliente acumuladas hasta cada día (de hangar.json)
+function conHangar(tomas, hangar) {
+  if (!hangar) return tomas;
+  const dias = Object.keys(hangar).sort();
+  return tomas.map((t) => {
+    const n = dias.filter((d) => d <= t.fecha).reduce((s, d) => s + (hangar[d].cliente || 0), 0);
+    return { ...t, datos: { ...t.datos, Hangar: { "cliente/Hangar.lha": n } } };
+  });
+}
+Promise.all([
+  fetch("datos.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+  fetch("hangar.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+])
+  .then(([tomas, hangar]) => pintar(conHangar(tomas, hangar)))
   .catch((e) => {
     document.getElementById("sub").replaceWith(el("p", { class: "error", text: `No se pudieron leer los datos (datos.json: ${e.message}). Los guarda cada día herramientas/descargas.py en el servidor.` }));
   });
