@@ -1,9 +1,9 @@
 {
- "version": "2.15.0",
- "etiqueta": "v2.15.0",
- "fecha": "2026-11-16",
- "notas": "https://github.com/FreeMEM/dash/releases/tag/v2.15.0",
- "descarga": "https://github.com/FreeMEM/dash/releases/download/v2.15.0/dash-2.15.0-amiga.lha",
- "fichero": "dash-2.15.0-amiga.lha",
- "bytes": 3581140
+ "version": "2.16.0",
+ "etiqueta": "v2.16.0",
+ "fecha": "2026-11-17",
+ "notas": "https://github.com/FreeMEM/dash/releases/tag/v2.16.0",
+ "descarga": "https://github.com/FreeMEM/dash/releases/download/v2.16.0/dash-2.16.0-amiga.lha",
+ "fichero": "dash-2.16.0-amiga.lha",
+ "bytes": 5718241
 }
