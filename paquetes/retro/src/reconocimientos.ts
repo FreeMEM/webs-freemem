@@ -14,6 +14,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden." },
         { version: "2.9.6", es: "Arreglo: con una WiFi lenta, Exchange tardaba segundos en ocultar o mostrar el monitor.", en: "Fix: with a slow WiFi, Exchange took seconds to hide or show the monitor." },
         { version: "2.9.5", es: "El panel rápido abre el explorador y lleva los botones que elijas.", en: "The quick panel opens the file manager and carries the buttons you choose." },
         { version: "2.9.2", es: "Arreglo: TrasfondoVentanas no encajaba ni hacía caso al doble clic con MCP o PowerWindows.", en: "Fix: TrasfondoVentanas did not snap or answer double clicks with MCP or PowerWindows." },
@@ -60,6 +61,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
         { version: "2.8.6", es: "Avisó de que el dock parpadeaba al pasar el ratón.", en: "Reported that the dock flickered when the mouse moved over it." },
         { version: "2.8.7", es: "Pidió las capturas de pantalla: con una tecla, desde los ajustes rápidos o por ARexx.", en: "Asked for screenshots: with a key, from the quick settings or through ARexx." },
         { version: "2.9.7", es: "Arreglo: Version enseñaba un $VER vacío en vez de la versión de Trasfondo.", en: "Fix: Version showed an empty $VER instead of Trasfondo's version." },
+        { version: "2.9.8", es: "Arreglo: con AmiNetXDuo la red marcaba 0 B/s; lo encontró con la sonda.", en: "Fix: with AmiNetXDuo the network showed 0 B/s; he found it with the probe." },
       ],
     },
     {
@@ -114,6 +116,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.18.1", es: "Arreglo: con DOpus de escritorio, lo pintado con desktop_canvas se quedaba en pantalla.", en: "Fix: with DOpus as the desktop, what desktop_canvas drew stayed on screen." },
         { version: "2.11.0", es: "Ventanas de fondo (window_next_backdrop, screen_show_title), para que la barra de Trasfondo quede detrás de todo.", en: "Backdrop windows (window_next_backdrop, screen_show_title), so Trasfondo's bar stays behind everything." },
         { version: "2.11.0", es: "Pegar, copiar y cortar en los campos de MUI 3.8, y mui_active_object y mui_string_pos para pegar donde está el cursor.", en: "Paste, copy and cut in MUI 3.8 fields, and mui_active_object and mui_string_pos to paste where the cursor is." },
         { version: "2.6.2", es: "Elegir dónde van los ejecutables, en Forja 0.5 y en la extensión de VS Code (dash.outputFolder).", en: "Choosing where the executables go, in Forja 0.5 and in the VS Code extension (dash.outputFolder)." },

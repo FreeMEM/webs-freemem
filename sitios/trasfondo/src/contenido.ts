@@ -102,6 +102,11 @@ export const CONTENIDO = {
       lista: [
         {
           estado: "Publicada el 18/11",
+          titulo: "Trasfondo 2.9.8",
+          texto: "La velocidad de la red con AmiNetXDuo, que marcaba 0 B/s: ahora sale en paquetes por segundo (lo encontró JaviTecH; a Ferrán García le pasaba igual). Y el panel ya no se queda pintado con DOpus de escritorio (lo contó Ferrán García).",
+        },
+        {
+          estado: "Publicada el 18/11",
           titulo: "Trasfondo 2.9.7",
           texto: "El dock ya no sale con otra pantalla delante, como la de DOpus (lo contó Ernesto Laura de la Fuente). La temperatura de la barra se pone al día cada 10 segundos, como en el panel (lo contó Ingloriond). Version enseña la versión (lo vio JaviTecH).",
         },
@@ -296,6 +301,11 @@ export const CONTENIDO = {
       texto: "The latest releases and what's coming, as of 18 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 18 Nov",
+          titulo: "Trasfondo 2.9.8",
+          texto: "The network speed with AmiNetXDuo, which showed 0 B/s: it now shows in packets per second (found by JaviTecH; Ferrán García had the same). And the panel no longer stays on screen with DOpus as the desktop (reported by Ferrán García).",
+        },
         {
           estado: "Released 18 Nov",
           titulo: "Trasfondo 2.9.7",
