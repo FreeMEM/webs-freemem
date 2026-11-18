@@ -59,6 +59,19 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
       aportes: [
         { version: "2.8.6", es: "Avisó de que el dock parpadeaba al pasar el ratón.", en: "Reported that the dock flickered when the mouse moved over it." },
         { version: "2.8.7", es: "Pidió las capturas de pantalla: con una tecla, desde los ajustes rápidos o por ARexx.", en: "Asked for screenshots: with a key, from the quick settings or through ARexx." },
+        { version: "2.9.7", es: "Arreglo: Version enseñaba un $VER vacío en vez de la versión de Trasfondo.", en: "Fix: Version showed an empty $VER instead of Trasfondo's version." },
+      ],
+    },
+    {
+      persona: "Ernesto Laura de la Fuente",
+      aportes: [
+        { version: "2.9.7", es: "Arreglo: con DOpus en su pantalla, el dock salía y ponía el Workbench delante.", en: "Fix: with DOpus on its own screen, the dock came out and put the Workbench in front." },
+      ],
+    },
+    {
+      persona: "Ingloriond",
+      aportes: [
+        { version: "2.9.7", es: "Arreglo: la barra y el panel daban temperaturas distintas; la barra la leía solo al arrancar.", en: "Fix: the bar and the panel showed different temperatures; the bar read it only at startup." },
       ],
     },
   ],

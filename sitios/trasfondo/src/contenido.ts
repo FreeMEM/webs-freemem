@@ -97,9 +97,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "Novedades",
-      texto: "Lo último que ha salido y lo que viene, a 17 de noviembre de 2026.",
+      texto: "Lo último que ha salido y lo que viene, a 18 de noviembre de 2026.",
       boton: "Novedades",
       lista: [
+        {
+          estado: "Publicada el 18/11",
+          titulo: "Trasfondo 2.9.7",
+          texto: "El dock ya no sale con otra pantalla delante, como la de DOpus (lo contó Ernesto Laura de la Fuente). La temperatura de la barra se pone al día cada 10 segundos, como en el panel (lo contó Ingloriond). Version enseña la versión (lo vio JaviTecH).",
+        },
         {
           estado: "Publicada el 17/11",
           titulo: "Trasfondo 2.9.6",
@@ -288,9 +293,14 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "What's new",
-      texto: "The latest releases and what's coming, as of 17 November 2026.",
+      texto: "The latest releases and what's coming, as of 18 November 2026.",
       boton: "What's new",
       lista: [
+        {
+          estado: "Released 18 Nov",
+          titulo: "Trasfondo 2.9.7",
+          texto: "The dock no longer pops up with another screen in front, like DOpus's (reported by Ernesto Laura de la Fuente). The bar's temperature keeps up to date every 10 seconds, like the panel (reported by Ingloriond). Version shows the version (spotted by JaviTecH).",
+        },
         {
           estado: "Released 17 Nov",
           titulo: "Trasfondo 2.9.6",
