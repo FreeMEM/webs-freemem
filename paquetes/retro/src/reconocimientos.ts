@@ -93,6 +93,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   dash: [
     {
+      persona: "Ernesto Laura de la Fuente",
+      aportes: [
+        { version: "2.18.0", es: "wm_screen_front, para que el dock de Trasfondo no salga con otra pantalla delante, como la de DOpus.", en: "wm_screen_front, so Trasfondo's dock does not pop up with another screen in front, like DOpus's." },
+      ],
+    },
+    {
       persona: "Ferrán García",
       aportes: [
         { version: "2.11.0", es: "Ventanas de fondo (window_next_backdrop, screen_show_title), para que la barra de Trasfondo quede detrás de todo.", en: "Backdrop windows (window_next_backdrop, screen_show_title), so Trasfondo's bar stays behind everything." },
