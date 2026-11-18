@@ -166,6 +166,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   tachyon: [
     {
+      persona: "Ingloriond",
+      aportes: [
+        { version: "0.11.0-alfa", es: "Arreglo: el instalador avisaba de que faltaba bsdsocket.library con la red en marcha si la pila la tiene en su cajón.", en: "Fix: the installer said bsdsocket.library was missing with the network running when the stack keeps it in its own drawer." },
+      ],
+    },
+    {
       persona: "David Martínez",
       aportes: [
         { version: "0.9.4", es: "Avisó de que dash.freemem.space se quedaba colgada. Arreglado: el JavaScript ve el texto original, las hojas y scripts atascados tienen tope y reintento, las animaciones que no cambian no se repintan y requestAnimationFrame va a 15 por segundo.", en: "Reported that dash.freemem.space hung. Fixed: JavaScript sees the original text, stuck style sheets and scripts get a limit and a retry, animations that don't change aren't repainted and requestAnimationFrame runs at 15 per second." },
