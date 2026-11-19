@@ -12,6 +12,12 @@ export type ProgramaReconocido = "dash" | "forja" | "trasfondo" | "tachyon" | "i
 export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Reconocido[]>> = {
   trasfondo: [
     {
+      persona: "pcotter72",
+      aportes: [
+        { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo. Lo contó en GitHub con la causa y dos programas de prueba.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden. Reported on GitHub with the cause and two test programs." },
+      ],
+    },
+    {
       persona: "Ferrán García",
       aportes: [
         { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden." },
@@ -107,6 +113,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     },
   ],
   dash: [
+    {
+      persona: "pcotter72",
+      aportes: [
+        { version: "2.18.1", es: "Arreglo: con DOpus de escritorio, lo pintado con desktop_canvas se quedaba en pantalla.", en: "Fix: with DOpus as the desktop, what desktop_canvas drew stayed on screen." },
+      ],
+    },
     {
       persona: "Ernesto Laura de la Fuente",
       aportes: [
