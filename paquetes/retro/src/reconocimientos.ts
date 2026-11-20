@@ -12,6 +12,12 @@ export type ProgramaReconocido = "dash" | "forja" | "trasfondo" | "tachyon" | "i
 export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Reconocido[]>> = {
   trasfondo: [
     {
+      persona: "Rodrigo Sáez",
+      aportes: [
+        { version: "2.9.9", es: "Actualizar solo instala versiones firmadas, por su aviso de seguridad privado.", en: "Update only installs signed versions, from his private security report." },
+      ],
+    },
+    {
       persona: "pcotter72",
       aportes: [
         { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo. Lo contó en GitHub con la causa y dos programas de prueba.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden. Reported on GitHub with the cause and two test programs." },
@@ -180,6 +186,12 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     },
   ],
   tachyon: [
+    {
+      persona: "Rodrigo Sáez",
+      aportes: [
+        { version: "0.11.1-alfa", es: "Aviso de seguridad privado, con los ficheros y las líneas: cada web solo ve sus cookies y su localStorage, fetch respeta el mismo origen, nada a la red de casa ni ficheros del Amiga como script, y actualizaciones firmadas.", en: "Private security report, with the files and lines: each site only sees its own cookies and localStorage, fetch follows the same-origin policy, nothing to the home network nor Amiga files as scripts, and signed updates." },
+      ],
+    },
     {
       persona: "Ingloriond",
       aportes: [
