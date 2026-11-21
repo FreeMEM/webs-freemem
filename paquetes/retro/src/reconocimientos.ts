@@ -26,6 +26,8 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.9.11", es: "Valen los tooltypes del icono de proyecto con el que arranca una pieza, como un icono en WBStartup.", en: "The tooltypes of the project icon a piece starts from, like an icon in WBStartup, now count." },
+        { version: "2.9.10", es: "El icono de Archivos ya no se crea en WBStartup, y TrasfondoPrefs ofrece pasar Trasfondo a su propio cajón.", en: "The Files icon is no longer created in WBStartup, and TrasfondoPrefs offers to move Trasfondo to its own drawer." },
         { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden." },
         { version: "2.9.6", es: "Arreglo: con una WiFi lenta, Exchange tardaba segundos en ocultar o mostrar el monitor.", en: "Fix: with a slow WiFi, Exchange took seconds to hide or show the monitor." },
         { version: "2.9.5", es: "El panel rápido abre el explorador y lleva los botones que elijas.", en: "The quick panel opens the file manager and carries the buttons you choose." },
@@ -134,6 +136,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.18.2", es: "Arreglo: tooltype() lee primero el icono de proyecto con el que se abrió el programa.", en: "Fix: tooltype() reads the project icon the program was opened with first." },
         { version: "2.18.1", es: "Arreglo: con DOpus de escritorio, lo pintado con desktop_canvas se quedaba en pantalla.", en: "Fix: with DOpus as the desktop, what desktop_canvas drew stayed on screen." },
         { version: "2.11.0", es: "Ventanas de fondo (window_next_backdrop, screen_show_title), para que la barra de Trasfondo quede detrás de todo.", en: "Backdrop windows (window_next_backdrop, screen_show_title), so Trasfondo's bar stays behind everything." },
         { version: "2.11.0", es: "Pegar, copiar y cortar en los campos de MUI 3.8, y mui_active_object y mui_string_pos para pegar donde está el cursor.", en: "Paste, copy and cut in MUI 3.8 fields, and mui_active_object and mui_string_pos to paste where the cursor is." },
