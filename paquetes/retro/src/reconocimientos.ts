@@ -122,6 +122,18 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   dash: [
     {
+      persona: "Rodrigo Sáez",
+      aportes: [
+        { version: "2.19.0", es: "net_bg_peer, la dirección real de una conexión, para que Tachyon se proteja del DNS rebinding.", en: "net_bg_peer, the real address of a connection, so Tachyon can guard against DNS rebinding." },
+      ],
+    },
+    {
+      persona: "nihirash",
+      aportes: [
+        { version: "2.19.0", es: "flake.nix para preparar Dash con Nix, también en sistemas como SteamOS.", en: "flake.nix to set Dash up with Nix, also on systems like SteamOS." },
+      ],
+    },
+    {
       persona: "pcotter72",
       aportes: [
         { version: "2.18.1", es: "Arreglo: con DOpus de escritorio, lo pintado con desktop_canvas se quedaba en pantalla.", en: "Fix: with DOpus as the desktop, what desktop_canvas drew stayed on screen." },
@@ -192,6 +204,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Rodrigo Sáez",
       aportes: [
+        { version: "0.11.2-alfa", es: "Revisó la 0.11.1: la red de casa también se protege en las redirecciones, con direcciones escritas de otra forma y contra el DNS rebinding.", en: "Reviewed 0.11.1: the home network is also protected through redirects, with addresses written in other forms and against DNS rebinding." },
         { version: "0.11.1-alfa", es: "Aviso de seguridad privado, con los ficheros y las líneas: cada web solo ve sus cookies y su localStorage, fetch respeta el mismo origen, nada a la red de casa ni ficheros del Amiga como script, y actualizaciones firmadas.", en: "Private security report, with the files and lines: each site only sees its own cookies and localStorage, fetch follows the same-origin policy, nothing to the home network nor Amiga files as scripts, and signed updates." },
       ],
     },
