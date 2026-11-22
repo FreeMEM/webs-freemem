@@ -8,84 +8,375 @@ export const VERSION = version.version;
 export const DESCARGA = version.descarga;
 export const RELEASE = version.notas;
 export const REPO = "https://github.com/FreeMEM/trasfondo";
-/** El vídeo de cada idioma (el de la 0.11, grabado en Coffin R65 con tarjeta gráfica). */
+export const VERSIONES = `${REPO}/releases`;
+/** El vídeo de cada idioma (el de la 2.9, grabado en CoffinOS con tarjeta gráfica). */
 export const VIDEO = { es: "8QoDB70rUyU", en: "D6iDQhWC1JI" } satisfies Record<Idioma, string>;
 export const BASE = "https://trasfondo.freemem.space";
 
+/** Las funciones, en el orden de la franja de la portada y de sus secciones. El icono, en IconoFuncion.tsx. */
+export type IdFuncion = "monitor" | "encajar" | "alttab" | "espacios" | "archivos" | "barra" | "dock" | "colores";
+
+/** Una imagen de una función: la ruta lleva {idioma} si hay una captura por idioma. */
+type Imagen = {
+  readonly src: string;
+  /** El ancho de la imagen, o uno por idioma si no miden igual (TrasfondoPrefs es más ancha en castellano). */
+  readonly ancho: number | Record<Idioma, number>;
+  readonly alto: number;
+  readonly marco?: string;
+};
+
+/** TrasfondoPrefs 2.9.13 en CoffinOS: 475 de ancho en castellano y 402 en inglés. */
+export const ANCHO_PREFS = { es: 475, en: 402 } satisfies Record<Idioma, number>;
+
+/**
+ * Las capturas de cada función. Las de las ventanas, los espacios, la tira y el explorador son de Trasfondo 2.9.13 en
+ * CoffinOS R65 con tarjeta gráfica (Amiberry, 1280x1024), sacadas el 22/11/2026 con ~/.cache/web-trasfondo.
+ */
+export const IMAGENES: Record<IdFuncion, readonly Imagen[]> = {
+  monitor: [{ src: "/imagenes/panel-rtg-{idioma}.webp", ancho: 870, alto: 696, marco: "Workbench Screen" }],
+  encajar: [{ src: "/imagenes/encajar-{idioma}.webp", ancho: 1024, alto: 819 }],
+  alttab: [
+    { src: "/imagenes/alttab-{idioma}.webp", ancho: 640, alto: 512 },
+    { src: "/imagenes/menu-{idioma}.webp", ancho: 640, alto: 512 },
+  ],
+  espacios: [
+    { src: "/imagenes/espacio-{idioma}.webp", ancho: 1024, alto: 819 },
+    { src: "/imagenes/tira-{idioma}.webp", ancho: 1024, alto: 819 },
+  ],
+  archivos: [
+    { src: "/imagenes/archivos-dos-{idioma}.webp", ancho: 895, alto: 716 },
+    { src: "/imagenes/archivos-iconos-{idioma}.webp", ancho: 895, alto: 716 },
+  ],
+  barra: [{ src: "/imagenes/barra-{idioma}.webp", ancho: 640, alto: 384 }],
+  dock: [{ src: "/imagenes/dock-{idioma}.webp", ancho: 600, alto: 104 }],
+  colores: [
+    { src: "/imagenes/prefs-colores-{idioma}.webp", ancho: ANCHO_PREFS, alto: 421 },
+    { src: "/imagenes/prefs-arranque-{idioma}.webp", ancho: ANCHO_PREFS, alto: 421 },
+  ],
+};
+
+/** Una función de la página: la casilla de la franja (corto y frase) y su sección. */
+export type Funcion = {
+  readonly id: IdFuncion;
+  readonly corto: string;
+  readonly frase: string;
+  readonly titulo: string;
+  readonly entradilla: string;
+  readonly texto: readonly string[];
+  readonly teclas?: readonly (readonly [string, string])[];
+  readonly lista?: readonly { readonly que: string; readonly como: string }[];
+  readonly nota?: string;
+  /** El pie de cada imagen, en el orden de IMAGENES. */
+  readonly pies: readonly string[];
+};
+
+const FUNCIONES_ES: readonly Funcion[] = [
+  {
+    id: "monitor",
+    corto: "Monitor en el fondo",
+    frase: "CPU, memoria, tareas, discos y red, detrás de tus iconos.",
+    titulo: "El monitor, pintado en el fondo",
+    entradilla: "No es una ventana. Está pintado en el fondo del Workbench: no tapa nada ni se queda con tus clics.",
+    texto: ["Sale arriba a la derecha, o en la esquina que elijas. Se pone al día cada 2 segundos, o cada 1, 5 o 10."],
+    lista: [
+      { que: "Fecha y hora", como: "Arriba del todo y en tu idioma, por ejemplo \"sábado 24-oct-26\", con la hora." },
+      { que: "CPU", como: "Lo que trabaja el procesador y una gráfica de los dos últimos minutos: 60 medidas, una cada 2 segundos. Se mide tarea a tarea, no se estima." },
+      { que: "Memoria", como: "La Chip y la Fast libres y, si quieres, una gráfica de la memoria en uso." },
+      { que: "Tareas", como: "Las que más CPU gastan, de una a veinte, cada una con su barra." },
+      { que: "Discos", como: "Lo lleno que está cada volumen y su tamaño. Nunca pide que metas un disco." },
+      { que: "Red y WiFi", como: "Lo que entra y sale por segundo, con gráfica si la quieres. Si el driver la da, la señal de la WiFi en dBm." },
+      { que: "PiStorm", como: "Con Emu68, la temperatura de su Raspberry Pi. En naranja desde 70 °C." },
+    ],
+    pies: ["En CoffinOS con tarjeta gráfica: fondo fijo granate, la gráfica de la memoria y un List del disco entero en marcha"],
+  },
+  {
+    id: "encajar",
+    corto: "Ventanas que encajan",
+    frase: "Suelta una ventana en un borde: media pantalla o un cuarto.",
+    titulo: "Ventanas que encajan",
+    entradilla: "Arrastra una ventana contra un borde y suéltala. Encaja sola.",
+    texto: [
+      "A la izquierda o a la derecha, ocupa media pantalla. En una esquina, un cuarto. Arriba, la pantalla entera, sin tapar la barra ni el dock. Si la separas del borde, vuelve a su tamaño.",
+      "Con Alt pulsada, la mueves desde cualquier punto de la ventana. Al llegar a un borde, un marco enseña dónde va a quedar.",
+      "Doble clic en la barra de título y se maximiza. Otro doble clic y queda como estaba.",
+    ],
+    teclas: [
+      ["Ctrl Alt ↑", "maximizar"],
+      ["Ctrl Alt ← →", "mitad izquierda o derecha"],
+      ["Ctrl Alt T", "todas en mosaico"],
+      ["Alt + botón derecho", "cambiar el tamaño desde cualquier punto"],
+    ],
+    nota: "No parchea el sistema. Va en cualquier pantalla, también con MCP o PowerWindows (los de CoffinOS).",
+    pies: ["Una ventana en la mitad izquierda, otra en el cuarto de arriba y una tercera movida con Alt: el marco azul enseña dónde va a encajar"],
+  },
+  {
+    id: "alttab",
+    corto: "Alt+Tab",
+    frase: "Salta de una ventana a otra con una lista, sin soltar Alt.",
+    titulo: "Alt+Tab y el menú de ventana",
+    entradilla: "Mantén Alt y pulsa Tab: sale la lista de ventanas abiertas. Al soltar Alt, saltas a la elegida.",
+    texto: [
+      "Con el botón central en la barra de título, o con Ctrl Alt Espacio, sale el menú de la ventana: maximizar, mitades, cuartos, delante, detrás, encoger y cerrar.",
+      "El menú se usa con el ratón o con las flechas, Return y Esc.",
+    ],
+    pies: ["Alt+Tab con tres ventanas abiertas", "El menú de la ventana, con el botón central en su barra de título"],
+  },
+  {
+    id: "espacios",
+    corto: "Espacios y tira",
+    frase: "Varios escritorios, o las ventanas en tira como Niri.",
+    titulo: "Espacios virtuales y ventanas en tira",
+    entradilla: "Varios escritorios, uno encima de otro, como en Linux. Vienen cuatro, y pueden ser hasta nueve.",
+    texto: [
+      "Ctrl Alt y un número cambia de espacio: las ventanas de los demás se esconden. Ctrl Alt Mayús y el número lleva allí la ventana activa. Un aviso en el centro y la barra dicen en cuál estás.",
+      "Y el modo tira, como Niri: cada ventana es una columna de una tira más ancha que la pantalla. Las nuevas entran a la derecha y la vista sigue a la activa.",
+    ],
+    teclas: [
+      ["Ctrl Alt 1 … 4", "ir a ese espacio"],
+      ["Ctrl Alt Mayús 1 … 4", "llevar allí la ventana activa"],
+      ["Ctrl Alt ← →", "en la tira, a la columna de al lado"],
+      ["Ctrl Alt R", "el ancho de la columna: 33, 50, 67 o 100 %"],
+    ],
+    nota: "Necesita AmigaOS 3.2, que sabe esconder ventanas.",
+    pies: ["Ctrl Alt 2: un escritorio limpio y el aviso del espacio", "Ventanas en tira: un Shell y dos imágenes, cada una en su columna (aquí al 33 %)"],
+  },
+  {
+    id: "archivos",
+    corto: "Explorador de archivos",
+    frase: "TrasfondoArchivos: dos paneles, papelera, deshacer y miniaturas.",
+    titulo: "TrasfondoArchivos, el explorador",
+    entradilla: "Un explorador de archivos como el Nautilus de Linux. Con F3, dos paneles como en Directory Opus.",
+    texto: [
+      "A la izquierda, los sitios, los discos y la papelera. En medio, una lista con columnas que ordenan, o iconos con miniaturas de las imágenes. Arriba, atrás, adelante y la ruta en trozos que se pulsan.",
+      "Con dos paneles, el activo es el origen y el otro el destino. F5 copia y F6 mueve, con barra de progreso y botón de cancelar. Borrar manda a la papelera, y Amiga+Z lo deshace. Los .info van siempre con su fichero.",
+      "Abajo, botones con su tecla: en una fila, como Opus 5, o en dos filas, como Opus 4. Se abre desde el dock o desde los ajustes rápidos de la barra.",
+    ],
+    teclas: [
+      ["F2", "renombrar ahí mismo"],
+      ["Amiga+F", "filtrar"],
+      ["Amiga+B", "buscar en los subcajones"],
+      ["Amiga+I", "información, comentario y permisos"],
+    ],
+    nota: "Necesita MUI. También acepta iconos arrastrados desde el Workbench.",
+    pies: ["F3: dos paneles, origen y destino, con los botones abajo", "La vista de iconos, con miniaturas de las imágenes"],
+  },
+  {
+    id: "barra",
+    corto: "Barra y avisos",
+    frase: "Hora, tiempo y calendario arriba. Avisos desde cualquier programa.",
+    titulo: "La barra y los avisos",
+    entradilla: "Arriba, la hora, la fecha, el tiempo de tu ciudad, la CPU y la memoria.",
+    texto: [
+      "Pulsa la hora: sale un panel con reloj, calendario, tiempo y avisos. A la derecha, los ajustes rápidos: red, discos, memoria, preferencias, reiniciar y hasta 8 botones tuyos.",
+      "Puede ser una barra entera o ir dentro de la barra de título de la pantalla, sin taparla.",
+      "AmigaOS 3.x no tiene avisos. Trasfondo pone uno, con tres maneras de llegar a él:",
+    ],
+    teclas: [
+      ["Avisa \"Copia terminada\"", "la orden Avisa, desde el Shell o un guion"],
+      ["ADDRESS TRASFONDO 'NOTIFY TITLE=\"Copia\" TEXT=\"hecha\"'", "el puerto ARexx de la barra, que también entiende COUNT y CLEAR"],
+      ["notify(\"Copia terminada\", \"12 ficheros\")", "en un programa escrito en Dash"],
+    ],
+    nota: "Si la barra no está en marcha, el aviso queda guardado y sale al arrancarla. Y Ctrl + Alt izquierda + S guarda la pantalla en PNG, con la fecha en el nombre.",
+    pies: ["El panel de la hora: reloj, tiempo, calendario y dos avisos"],
+  },
+  {
+    id: "dock",
+    corto: "Dock",
+    frase: "Tus programas abiertos y los que fijes, a un clic.",
+    titulo: "El dock",
+    entradilla: "Los programas abiertos y los que fijes, cada uno en una casilla igual.",
+    texto: [
+      "Fijas un programa soltando su icono encima. Lo cambias de sitio arrastrándolo. Al pasar el ratón, sale su nombre. Si mantienes pulsado, un menú: fijar en el dock o abrir otro.",
+      "Va abajo, arriba o a un lado, y puede esconderse hasta que acercas el ratón. Sus programas se ordenan en TrasfondoPrefs.",
+    ],
+    pies: ["El dock en CoffinOS, con el ratón encima del reloj: la casilla se resalta y dice su nombre"],
+  },
+  {
+    id: "colores",
+    corto: "Colores y ajustes",
+    frase: "Todo toma el color de tu fondo. Todo se cambia en TrasfondoPrefs.",
+    titulo: "Colores y preferencias",
+    entradilla: "La barra, los paneles y el dock toman los colores de tu fondo de escritorio.",
+    texto: [
+      "En oscuro o en claro, con varios esquemas. Uno imita los colores del Workbench. TrasfondoPrefs enseña una vista previa.",
+      "Cada pieza es un programa aparte. En TrasfondoPrefs, sección Arranque, marcas las que quieres y se ponen en marcha. Quitas la marca y se paran.",
+    ],
+    nota: "La barra, sus paneles y el dock necesitan una tarjeta gráfica de 15 bits o más. El monitor del fondo y las ventanas van en cualquier pantalla.",
+    pies: ["TrasfondoPrefs, sección Colores, con la vista previa", "TrasfondoPrefs, sección Arranque: qué piezas están en marcha"],
+  },
+];
+
+const FUNCIONES_EN: readonly Funcion[] = [
+  {
+    id: "monitor",
+    corto: "Backdrop monitor",
+    frase: "CPU, memory, tasks, disks and network, behind your icons.",
+    titulo: "The monitor, painted on the backdrop",
+    entradilla: "It isn't a window. It's painted on the Workbench backdrop: it covers nothing and doesn't take your clicks.",
+    texto: ["It sits at the top right, or in the corner you choose. It refreshes every 2 seconds, or every 1, 5 or 10."],
+    lista: [
+      { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
+      { que: "CPU", como: "How hard the CPU works, and a graph of the last two minutes: 60 readings, one every 2 seconds. Measured task by task, not estimated." },
+      { que: "Memory", como: "Free Chip and Fast memory and, if you like, a graph of memory in use." },
+      { que: "Tasks", como: "The ones using the most CPU, one to twenty, each with its bar." },
+      { que: "Disks", como: "How full each volume is and its size. It never asks you to insert a disk." },
+      { que: "Network and WiFi", como: "What comes in and goes out per second, with a graph if you want it. If the driver reports it, the WiFi signal in dBm." },
+      { que: "PiStorm", como: "With Emu68, its Raspberry Pi's temperature. Orange from 70 °C." },
+    ],
+    pies: ["On CoffinOS with a graphics card: solid wine background, the memory graph and a List of the whole disk running"],
+  },
+  {
+    id: "encajar",
+    corto: "Snapping windows",
+    frase: "Drop a window on an edge: half the screen or a quarter.",
+    titulo: "Windows that snap",
+    entradilla: "Drag a window against an edge and let go. It snaps into place.",
+    texto: [
+      "Left or right, it takes half the screen. In a corner, a quarter. At the top, the whole screen, without covering the bar or the dock. Pull it away from the edge and it gets its size back.",
+      "With Alt held, you move it from anywhere inside the window. Near an edge, a frame shows where it will go.",
+      "Double-click the title bar to maximize it. Double-click again and it goes back as it was.",
+    ],
+    teclas: [
+      ["Ctrl Alt ↑", "maximize"],
+      ["Ctrl Alt ← →", "left or right half"],
+      ["Ctrl Alt T", "tile them all"],
+      ["Alt + right button", "resize from anywhere inside"],
+    ],
+    nota: "No system patches. It works on any screen, also with MCP or PowerWindows (the ones in CoffinOS).",
+    pies: ["One window on the left half, another in the top quarter and a third moved with Alt: the blue frame shows where it will snap"],
+  },
+  {
+    id: "alttab",
+    corto: "Alt+Tab",
+    frase: "Jump between windows from a list, holding Alt.",
+    titulo: "Alt+Tab and the window menu",
+    entradilla: "Hold Alt and press Tab: a list of the open windows shows up. Let go of Alt to jump to the one you picked.",
+    texto: [
+      "Middle-click a title bar, or press Ctrl Alt Space, for the window menu: maximize, halves, quarters, front, back, shrink and close.",
+      "The menu works with the mouse or with the arrows, Return and Esc.",
+    ],
+    pies: ["Alt+Tab with three open windows", "The window menu, from a middle click on its title bar"],
+  },
+  {
+    id: "espacios",
+    corto: "Workspaces and strip",
+    frase: "Several desktops, or your windows in a strip like Niri.",
+    titulo: "Virtual workspaces and windows in a strip",
+    entradilla: "Several desktops stacked, as on Linux. Four out of the box, up to nine.",
+    texto: [
+      "Ctrl Alt and a number switches workspace: the other workspaces' windows hide. Ctrl Alt Shift and the number takes the active window there. A notice in the middle and the bar tell you where you are.",
+      "And strip mode, like Niri: each window is a column in a strip wider than the screen. New ones come in on the right and the view follows the active one.",
+    ],
+    teclas: [
+      ["Ctrl Alt 1 … 4", "go to that workspace"],
+      ["Ctrl Alt Shift 1 … 4", "send the active window there"],
+      ["Ctrl Alt ← →", "in the strip, the next column"],
+      ["Ctrl Alt R", "column width: 33, 50, 67 or 100%"],
+    ],
+    nota: "Needs AmigaOS 3.2, which can hide windows.",
+    pies: ["Ctrl Alt 2: a clean desktop and the workspace notice", "Windows in a strip: a Shell and two pictures, each in its own column (here at 33%)"],
+  },
+  {
+    id: "archivos",
+    corto: "File manager",
+    frase: "TrasfondoArchivos: two panes, trash, undo and thumbnails.",
+    titulo: "TrasfondoArchivos, the file manager",
+    entradilla: "A file manager like Linux's Nautilus. Press F3 for two panes, as in Directory Opus.",
+    texto: [
+      "On the left, places, disks and the trash. In the middle, a list with sortable columns, or icons with picture thumbnails. On top, back, forward and the path in pieces you can click.",
+      "With two panes, the active one is the source and the other the destination. F5 copies and F6 moves, with a progress bar and a cancel button. Delete sends to the trash, and Amiga+Z undoes it. .info files always go with their file.",
+      "At the bottom, buttons with their key: in one row, like Opus 5, or in two rows, like Opus 4. Open it from the dock or from the bar's quick settings.",
+    ],
+    teclas: [
+      ["F2", "rename in place"],
+      ["Amiga+F", "filter"],
+      ["Amiga+B", "search the subdrawers"],
+      ["Amiga+I", "information, comment and protection bits"],
+    ],
+    nota: "Needs MUI. It also takes icons dragged from the Workbench.",
+    pies: ["F3: two panes, source and destination, with the buttons at the bottom", "Icon view, with picture thumbnails"],
+  },
+  {
+    id: "barra",
+    corto: "Bar and notifications",
+    frase: "Time, weather and calendar up top. Notifications from any program.",
+    titulo: "The bar and notifications",
+    entradilla: "At the top, the time, the date, your city's weather, the CPU and the memory.",
+    texto: [
+      "Click the time for a panel with a clock, a calendar, the weather and your notifications. On the right, the quick settings: network, disks, memory, preferences, reboot and up to 8 buttons of your own.",
+      "It can be a whole bar or sit inside the screen's title bar, without covering it.",
+      "AmigaOS 3.x has no notifications. Trasfondo brings them, with three ways in:",
+    ],
+    teclas: [
+      ["Avisa \"Backup done\"", "the Avisa command, from the Shell or a script"],
+      ["ADDRESS TRASFONDO 'NOTIFY TITLE=\"Backup\" TEXT=\"done\"'", "the bar's ARexx port, which also understands COUNT and CLEAR"],
+      ["notify(\"Backup done\", \"12 files\")", "in a program written in Dash"],
+    ],
+    nota: "If the bar isn't running, the notification is kept and shows when it starts. And Ctrl + left Alt + S saves the screen as a PNG, with the date in its name.",
+    pies: ["The clock panel: time, weather, calendar and two notifications"],
+  },
+  {
+    id: "dock",
+    corto: "Dock",
+    frase: "Your open and pinned programs, one click away.",
+    titulo: "The dock",
+    entradilla: "The open programs and the ones you pin, each in an equal box.",
+    texto: [
+      "Pin a program by dropping its icon on the dock. Drag it to move it. Hover over it to see its name. Hold the button down for a menu: keep in dock or open another.",
+      "It sits at the bottom, at the top or on a side, and can hide until the mouse gets close. You order its programs in TrasfondoPrefs.",
+    ],
+    pies: ["The dock on CoffinOS, with the mouse over the clock: the box lights up and says its name"],
+  },
+  {
+    id: "colores",
+    corto: "Colours and settings",
+    frase: "Everything takes your backdrop's colours. Change it all in TrasfondoPrefs.",
+    titulo: "Colours and preferences",
+    entradilla: "The bar, the panels and the dock take their colours from your desktop backdrop.",
+    texto: [
+      "Dark or light, with several schemes. One copies the Workbench colours. TrasfondoPrefs shows a preview.",
+      "Each piece is a separate program. In TrasfondoPrefs, Startup section, tick the ones you want and they start. Untick one and it stops.",
+    ],
+    nota: "The bar, its panels and the dock need a graphics card with 15 bits or more. The backdrop monitor and the windows work on any screen.",
+    pies: ["TrasfondoPrefs, Colours section, with the preview", "TrasfondoPrefs, Startup section: which pieces are running"],
+  },
+];
+
 export const CONTENIDO = {
   es: {
-    titulo: "Trasfondo: monitor, barra, dock y avisos para el Workbench",
+    titulo: "Trasfondo: ventanas que encajan, Alt+Tab, explorador, barra y dock para el Workbench",
     descripcion:
-      "Para AmigaOS 3.x: un monitor de recursos pintado en el fondo del Workbench, una barra con calendario y avisos, un dock y teclas para las ventanas. Se pone al día solo. Gratis y libre.",
-    entradilla: "Tu Amiga te cuenta qué hace, sin tapar nada.",
-    subtitulo: "Muestra la fecha y la hora, la CPU, la memoria, las tareas, los discos y la red en el fondo del Workbench, detrás de los iconos. No es una ventana, así que no tapa nada ni se queda con tus clics. Desde la 2.0 trae también una barra arriba, avisos, un dock y teclas para las ventanas, y cada pieza se usa o no.",
+      "Para AmigaOS 3.x: ventanas que encajan en los bordes, Alt+Tab, espacios virtuales, un explorador de dos paneles, una barra con avisos, un dock y un monitor de recursos en el fondo del Workbench. Gratis y libre.",
+    entradilla: "El Workbench de siempre, con lo que esperas de un escritorio de hoy.",
+    subtitulo: "Ventanas que encajan, Alt+Tab, espacios virtuales, un explorador de dos paneles, una barra con avisos, un dock y un monitor de recursos pintado en el fondo. Cada pieza se usa o no. Escrito en Dash, para cualquier Amiga con AmigaOS 3.",
     descargar: `Descargar la ${VERSION}`,
     peso: `${tamano(version.bytes, "es")}, para AmigaOS 3.0 o posterior`,
     verVideo: "Verlo en vídeo",
+    verFunciones: "Qué hace",
     aviso: "Prueba: arrastra un icono por encima del panel",
     escritorioAlt: "Simulación de un escritorio de Workbench con el panel de Trasfondo",
     iconos: { ram: "RAM Disk", sistema: "System", work: "Work", cajon: "Trasfondo", prefs: "TrasfondoPrefs" },
-    panel: {
-      titulo: "Todo a la vista, de un vistazo",
-      texto: "Aparece arriba a la derecha del escritorio y se actualiza cada dos segundos. También puedes elegir uno, cinco o diez:",
-      imagen: "Trasfondo 0.11 en Coffin R65 con tarjeta gráfica: fondo fijo granate, la gráfica de la memoria y un List de todo el disco en marcha",
-      cosas: [
-        { que: "Fecha y hora", como: "Arriba del todo y en tu idioma, por ejemplo \"sábado 24-oct-26\", con la hora." },
-        { que: "CPU", como: "Cuánto trabaja el procesador y una gráfica de los dos últimos minutos (60 medidas, una cada 2 segundos). Se mide tarea a tarea con los ganchos de cambio de tarea de exec, no es una estimación." },
-        { que: "Memoria", como: "La memoria Chip y Fast libre y, si quieres, una gráfica con la memoria en uso sobre el total." },
-        { que: "Tareas", como: "Las tareas que más CPU gastan, de una a veinte, cada una con su barra." },
-        { que: "Discos", como: "Lo lleno que está cada volumen montado y su tamaño. Nunca te pide que metas un disco." },
-        { que: "Red y WiFi", como: "Lo que entra y sale por segundo, con gráfica si la quieres. Si el driver lo permite, también la señal de la WiFi en dBm." },
-        { que: "PiStorm", como: "Si usas una PiStorm con Emu68, la temperatura de su Raspberry Pi. Se pone en naranja a partir de 70 °C." },
-      ],
-    },
+    franja: { titulo: "Qué hace" },
+    funciones: FUNCIONES_ES,
+    teclas: "Teclas",
     cuelgue: {
       titulo: "No se cuelga. Nunca espera",
       frase: "Nunca espera más de un tercio de segundo a que conteste un disco o un driver.",
-      texto: "Si un volumen o una tarjeta de red no contestan, el panel pone \"sin respuesta\" y sigue funcionando. Si se cae la red, lo ves al momento, y cuando vuelve, los datos aparecen otra vez sin reiniciar nada.",
-      ligero: "Gasta poco porque solo vuelve a dibujar lo que cambia. Midiendo cada 2 segundos, usa un 7 % de la CPU de un A1200 y un 11 % de la de un 68030 con tarjeta gráfica (medido en el emulador).",
+      texto: "Si un volumen o una tarjeta de red no contestan, el panel pone \"sin respuesta\" y sigue. Si se cae la red, lo ves al momento, y cuando vuelve, los datos aparecen otra vez sin reiniciar nada.",
+      ligero: "Gasta poco porque solo vuelve a dibujar lo que cambia. Midiendo cada 2 segundos, el monitor del fondo usa un 8 % de la CPU de un A1200 y un 11 % de la de un 68030 con tarjeta gráfica (medido en el emulador).",
     },
     pantallas: {
-      titulo: "Luce en cualquier pantalla",
-      texto: "Con tarjeta gráfica y color real, el panel es translúcido y deja ver el fondo del escritorio. En AGA, ECS o con 256 colores lleva un fondo sólido para que se lea bien. El tipo de fondo y su color se pueden cambiar en TrasfondoPrefs.",
+      titulo: "Se lee en cualquier pantalla",
+      texto: "Con tarjeta gráfica y color real, el panel es translúcido y deja ver el fondo. En AGA, ECS o con 256 colores lleva un fondo sólido para que se lea bien. El tipo de fondo y su color se cambian en TrasfondoPrefs.",
       rtg: "RTG a 1280x1024: el panel translúcido, y un icono encima",
       aga: "AGA a 640x256: fondo sólido",
     },
-    escritorio: {
-      titulo: "Un escritorio entero, pieza a pieza",
-      texto: "Desde la 2.0, Trasfondo trae más piezas para la pantalla del Workbench. Cada una es un programa aparte: en TrasfondoPrefs, sección Arranque, marcas las que quieres y se ponen en marcha; quitas la marca y se paran.",
-      imagen: "Trasfondo 2.3 en AmigaOS 3.2.3 con tarjeta gráfica: la barra arriba, el panel del fondo a la derecha, tres ventanas y el dock abajo",
-      piezas: [
-        { que: "La barra", como: "Arriba, con la hora, la fecha, el tiempo de tu ciudad, la CPU y la memoria. Al pulsar la hora sale un panel con reloj, calendario, tiempo y avisos; a la derecha, los ajustes rápidos: red, discos, memoria, preferencias y reiniciar. Puede ser una barra entera o ir dentro de la barra de título de la pantalla, sin taparla." },
-        { que: "Los avisos", como: "Salen un momento arriba a la derecha y quedan en la lista del panel hasta que los descartas. Los deja la orden Avisa, cualquier guion ARexx o cualquier programa escrito en Dash." },
-        { que: "El dock", como: "Los programas abiertos y los que fijes, en casillas iguales. Fijas uno soltando su icono encima, lo cambias de sitio arrastrándolo y, al pasar el ratón, sale su nombre. Puede ir en cualquier borde y esconderse solo hasta que acercas el ratón." },
-        { que: "Las ventanas", como: "Como en un escritorio moderno: suelta una ventana contra un borde y encaja en una mitad o una esquina, con vista previa; doble clic en su título la maximiza; tiene menú de ventana y Alt+Tab. También teclas para maximizar, restaurar o poner en mosaico, y con Alt y el ratón se mueven y cambian de tamaño desde cualquier punto." },
-        { que: "Los espacios", como: "En AmigaOS 3.2, varios escritorios uno encima de otro, como en Linux: Ctrl Alt y un número cambia de espacio y Ctrl Alt Mayús y el número lleva allí la ventana activa. Y, si quieres, las ventanas en tira como Niri: cada una es una columna y la vista sigue a la activa." },
-        { que: "El explorador", como: "TrasfondoArchivos, un explorador de ficheros como Nautilus, en el dock: sitios y discos a la izquierda, lista con columnas o iconos con miniaturas, y con F3 dos paneles origen y destino como Directory Opus. Copia y mueve con barra de progreso, borra a la papelera y deshace, con botones y su tecla abajo." },
-        { que: "Los colores", como: "La barra, los paneles y el dock toman sus colores del fondo de escritorio, en oscuro o claro, con seis esquemas. Uno imita los colores del Workbench. TrasfondoPrefs enseña una vista previa." },
-      ],
-      panel: "El panel de la barra: reloj, tiempo, calendario y dos avisos",
-      dock: "El dock con el ratón encima de un icono: se resalta y dice su nombre",
-      colores: "TrasfondoPrefs, sección Colores, con la vista previa",
-      arranque: "TrasfondoPrefs, sección Arranque: qué piezas están en marcha",
-      rtg: "La barra, sus paneles y el dock necesitan una tarjeta gráfica (15 bits o más). El fondo y las teclas de las ventanas funcionan en cualquier pantalla.",
-    },
-    avisos: {
-      titulo: "Avisos desde cualquier programa",
-      texto: "AmigaOS 3.x no tiene un sistema de avisos. Trasfondo pone uno, con tres maneras de llegar a él:",
-      formas: [
-        ["Avisa \"Copia terminada\"", "la orden Avisa, desde el Shell o un guion"],
-        ["ADDRESS TRASFONDO 'NOTIFY TITLE=\"Copia\" TEXT=\"hecha\"'", "el puerto ARexx de la barra, que también entiende COUNT y CLEAR"],
-        ["notify(\"Copia terminada\", \"12 ficheros\")", "en un programa escrito en Dash (Dash 2.4)"],
-      ],
-      nota: "Si la barra no está en marcha, el aviso queda guardado y sale cuando arranca.",
-    },
     eliges: {
       titulo: "A tu manera",
-      texto: "En TrasfondoPrefs (en SYS:Prefs) eliges qué secciones salen, incluidas las gráficas de memoria y de red, cuántas tareas se muestran, cada cuánto mide, el fondo y su color, la tecla rápida y si arranca oculto. \"Usar\" aplica los cambios al momento, sin reiniciar, y \"Guardar\" los deja guardados. La ventana se adapta a la fuente de tu pantalla y sale en inglés o en castellano, según el idioma del sistema.",
-      prefs: "TrasfondoPrefs",
+      texto: "En TrasfondoPrefs (en SYS:Prefs) eliges qué sale en el panel, cuántas tareas, cada cuánto mide, el fondo y su color, la tecla rápida y si arranca oculto. \"Usar\" aplica los cambios al momento, sin reiniciar, y \"Guardar\" los deja guardados. La ventana sale en inglés o en castellano, según el idioma del sistema.",
+      prefsAlt: "TrasfondoPrefs 2.9.13, sección Fondo: qué enseña el panel, cada cuánto mide, el fondo y la esquina",
       exchange: "Trasfondo en Exchange",
-      commodity: "Es una commodity, así que desde Exchange se puede ocultar, mostrar, desactivar o cerrar. También se actualiza solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Si prefieres los tooltypes, también los entiende:",
+      commodity: "Es una commodity: desde Exchange se oculta, se muestra, se desactiva o se cierra. Y se pone al día solo: cuando sale una versión nueva, un piloto verde lo avisa en el panel y TrasfondoPrefs la instala con un botón. Desde la 2.9.9 solo instala versiones firmadas. Si prefieres los tooltypes, también los entiende:",
       tooltypes: [
         ["MOSTRAR=FECHA,CPU,DISCOS", "qué secciones salen y en qué orden"],
         ["TAREAS=3", "cuántas tareas"],
@@ -97,92 +388,37 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "Novedades",
-      texto: "Lo último que ha salido y lo que viene, a 18 de noviembre de 2026.",
-      boton: "Novedades",
+      texto: "Las cinco últimas versiones, a 21 de noviembre de 2026.",
+      todas: "Todas las versiones, en GitHub",
       lista: [
         {
-          estado: "Publicada el 18/11",
-          titulo: "Trasfondo 2.9.8",
-          texto: "La velocidad de la red con AmiNetXDuo, que marcaba 0 B/s: ahora sale en paquetes por segundo (lo encontró JaviTecH; a Ferrán García le pasaba igual). Y el panel ya no se queda pintado con DOpus de escritorio (lo contó Ferrán García).",
+          estado: "Publicada el 21/11",
+          titulo: "Trasfondo 2.9.13",
+          texto: "TrasfondoPrefs ya no se cierra al pulsar Guardar o Usar: puedes cambiar varias cosas seguidas. La línea de abajo dice qué se hizo, y el tercer botón es Cerrar.",
         },
         {
-          estado: "Publicada el 18/11",
-          titulo: "Trasfondo 2.9.7",
-          texto: "El dock ya no sale con otra pantalla delante, como la de DOpus (lo contó Ernesto Laura de la Fuente). La temperatura de la barra se pone al día cada 10 segundos, como en el panel (lo contó Ingloriond). Version enseña la versión (lo vio JaviTecH).",
+          estado: "Publicada el 21/11",
+          titulo: "Trasfondo 2.9.12",
+          texto: "Arreglo del dock: al mantener pulsado un programa abierto vuelve a salir su menú (Fijar en el dock, Abrir otro).",
         },
         {
-          estado: "Publicada el 17/11",
-          titulo: "Trasfondo 2.9.6",
-          texto: "Exchange obedece al momento aunque la WiFi tarde en contestar: ocultar, mostrar y eliminar ya no esperan a que acabe la medida de la red (lo contó Ferrán García).",
+          estado: "Publicada el 21/11",
+          titulo: "Trasfondo 2.9.11",
+          texto: "Los tooltypes valen también en un icono de proyecto, por ejemplo uno de WBStartup que arranca una pieza. Antes solo se leían los del programa (lo contó Ferrán García).",
         },
         {
-          estado: "Publicada el 16/11",
-          titulo: "Trasfondo 2.9.5",
-          texto: "El panel rápido abre el explorador y lleva los botones que elijas (Ferrán García). El explorador, con botonera grande en dos filas como Directory Opus 4 (David Martínez), y al renombrar el nombre sale elegido. El dock y las ventanas reconocen los programas arrancados desde WBStartup.",
+          estado: "Publicada el 20/11",
+          titulo: "Trasfondo 2.9.10",
+          texto: "Si todo Trasfondo acabó en WBStartup, un botón en TrasfondoPrefs, sección Arranque, lo pasa a SYS:Utilities/Trasfondo. Y el explorador ya no se abre solo al arrancar (lo contó Ferrán García).",
         },
         {
-          estado: "Publicada el 12/11",
-          titulo: "Trasfondo 2.9.4",
-          texto: "El explorador TrasfondoArchivos viene fijado en el dock, también si ya tenías tu lista, y el Instalar del paquete ya lo copia. Si lo quitas del dock, no vuelve.",
-        },
-        {
-          estado: "Publicada el 12/11",
-          titulo: "Trasfondo 2.9.3",
-          texto: "Espacios virtuales y ventanas en tira como Niri, en AmigaOS 3.2: Ctrl Alt y un número cambia de escritorio. El explorador sale con su icono también a quien actualizó con el botón, y TrasfondoPrefs se abre más rápido.",
-        },
-        {
-          estado: "Publicada el 12/11",
-          titulo: "Trasfondo 2.9.2",
-          texto: "TrasfondoVentanas encaja las ventanas y responde al doble clic también con MCP o PowerWindows, como en CoffinOS, y encaja contra el borde izquierdo (David Martínez y Ferrán García).",
-        },
-        {
-          estado: "Publicada el 12/11",
-          titulo: "Trasfondo 2.9.1",
-          texto: "Botones con su tecla en TrasfondoArchivos, para usar el ratón o el teclado (Ferrán García), y Actualizar pone en marcha la barra, el dock y las ventanas nuevos sin reiniciar.",
-        },
-        {
-          estado: "Publicada el 12/11",
-          titulo: "Trasfondo 2.9",
-          texto: "Ventanas modernas: encajar al soltar contra un borde, doble clic para maximizar, menú de ventana y Alt+Tab. Y TrasfondoArchivos, un explorador de ficheros como Nautilus, con dos paneles origen y destino como Directory Opus, papelera, deshacer y miniaturas. La barra completa va de fondo, con opción Profundidad (Ferrán García).",
-        },
-        {
-          estado: "Publicada el 6/11",
-          titulo: "Trasfondo 2.6",
-          texto: "La barra solo usa la red con la pila TCP/IP en marcha (MiamiDx) y queda pegada al botón de profundidad en todas las pantallas.",
-        },
-        {
-          estado: "Publicada el 5/11",
-          titulo: "Trasfondo 2.5",
-          texto: "El panel del fondo, en cualquier esquina. El Shell del dock con el path del Workbench, pegar con Amiga + V en TrasfondoPrefs y la barra de la de título sin hueco. Las Prefs se reabren solas tras actualizar.",
-        },
-        {
-          estado: "Publicada el 5/11",
-          titulo: "Trasfondo 2.4",
-          texto: "La barra puede ir dentro de la barra de título de la pantalla, sin taparla (idea de Ferrán García). Ya no se para todo al cerrar los paneles pulsando en el escritorio, y busca versiones nuevas cada hora.",
-        },
-        {
-          estado: "Publicada el 5/11",
-          titulo: "Trasfondo 2.3",
-          texto: "Avisos desde cualquier programa: la barra tiene un puerto ARexx, TRASFONDO, y los programas escritos en Dash avisan con notify().",
-        },
-        {
-          estado: "Publicada el 4/11",
-          titulo: "Trasfondo 2.2",
-          texto: "El dock rehecho, con casillas iguales, el nombre al pasar el ratón y la opción de esconderse solo. En Arranque, cada pieza se enciende y se apaga con su casilla. Y lo que contó Ferrán García al probarla en su PiStorm.",
-        },
-        {
-          estado: "Publicadas el 4/11",
-          titulo: "Trasfondo 2.0 y 2.1",
-          texto: "La barra con sus paneles, los avisos, el dock, las teclas de las ventanas y los colores sacados del fondo. Desde la 2.1, el botón Actualizar trae todas las piezas, también si vienes de la 0.11.",
-        },
-        {
-          estado: "Lo que viene",
-          titulo: "Más como un escritorio moderno",
-          texto: "Estilos de barra, un lanzador de programas con buscador, un selector de fondos y un panel grande con música, interruptores y portapapeles.",
+          estado: "Publicada el 19/11",
+          titulo: "Trasfondo 2.9.9",
+          texto: "Actualizaciones firmadas: el botón Actualizar solo instala versiones firmadas, con el SHA-256 de cada fichero (lo propuso Rodrigo Sáez).",
         },
       ],
     },
-    video: { titulo: "Míralo en marcha", texto: "Cinco minutos de la 2.9 en CoffinOS (AmigaOS 3.2) con tarjeta gráfica, en Amiberry: las ventanas que encajan en los bordes, Alt+Tab, los escritorios virtuales, el explorador TrasfondoArchivos y las ventanas en tira como Niri. La música es \"Psilocybin\", de Legend & Yolk.", boton: "Reproducir", titulo_video: "Trasfondo 2.9: ventanas modernas, un explorador y escritorios virtuales para el Workbench" },
+    video: { titulo: "Míralo en marcha", texto: "Cinco minutos de la 2.9 en CoffinOS (AmigaOS 3.2) con tarjeta gráfica: las ventanas que encajan, Alt+Tab, los escritorios virtuales, el explorador TrasfondoArchivos y las ventanas en tira. La música es \"Psilocybin\", de Legend & Yolk.", boton: "Reproducir", titulo_video: "Trasfondo 2.9: ventanas modernas, un explorador y escritorios virtuales para el Workbench" },
     instalar: {
       titulo: "Listo en un minuto",
       pasos: [
@@ -199,14 +435,14 @@ export const CONTENIDO = {
         "AmigaOS 3.0 o posterior, con el Workbench en marcha. También con Directory Opus 5 haciendo de escritorio.",
         "Cualquier 68k: es código de 68000 y no necesita FPU.",
         "OCS, ECS, AGA o tarjeta gráfica (CyberGraphX o Picasso96).",
-        "Para ver la red en KB/s hace falta Roadshow o un driver de red que cuente bytes. Si no, muestra paquetes por segundo.",
-        "La barra, sus paneles y el dock: una tarjeta gráfica de 15 bits o más.",
+        "La barra, sus paneles y el dock: una tarjeta gráfica de 15 bits o más. Los espacios virtuales: AmigaOS 3.2. El explorador: MUI.",
+        "Para ver la red en KB/s hace falta Roadshow o un driver que cuente bytes. Si no, muestra paquetes por segundo.",
       ],
-      probado: "Probado en AmigaOS 3.2.3 (A1200 emulado, con AGA y con tarjeta gráfica) y en Coffin R65, también con Directory Opus 5 como escritorio. Con Scalos debería funcionar, pero no se ha probado. La red y la WiFi solo se han probado con un driver de pruebas. Si lo usas con una tarjeta de red real, cuéntamelo en GitHub.",
+      probado: "Probado en AmigaOS 3.2.3 (A1200 emulado, con AGA y con tarjeta gráfica) y en CoffinOS R65, también con Directory Opus 5 como escritorio. Con Scalos debería ir, pero no se ha probado. Si lo usas en un Amiga de verdad y algo falla, cuéntamelo en GitHub.",
     },
     dash: {
       titulo: "Hecho en Dash",
-      texto: "Trasfondo tiene unas 6.300 líneas de Dash entre todas sus piezas, sin nada de C escrito a mano. Lo que el lenguaje no sabía hacer (dibujar en el fondo del Workbench, medir la CPU de cada tarea, funcionar como commodity, saber qué ventanas tiene cada programa, dibujar iconos a cualquier tamaño, recibir órdenes ARexx) se añadió a Dash para Trasfondo, y ahora lo puede usar cualquier programa.",
+      texto: "Trasfondo está escrito entero en Dash, sin nada de C a mano. Lo que el lenguaje no sabía hacer (dibujar en el fondo del Workbench, medir la CPU de cada tarea, funcionar como commodity, saber qué ventanas tiene cada programa, dibujar iconos a cualquier tamaño, recibir órdenes ARexx) se añadió a Dash para Trasfondo, y ahora lo puede usar cualquier programa.",
       enlace: "Descubre Dash",
     },
     pie: [
@@ -215,78 +451,39 @@ export const CONTENIDO = {
     ],
   },
   en: {
-    titulo: "Trasfondo: monitor, bar, dock and notifications for the Workbench",
+    titulo: "Trasfondo: snapping windows, Alt+Tab, file manager, bar and dock for the Workbench",
     descripcion:
-      "For AmigaOS 3.x: a resource monitor painted on the Workbench backdrop, a bar with a calendar and notifications, a dock and keys for your windows. Updates itself. Free, open source.",
-    entradilla: "Your Amiga tells you what it's up to, without covering anything.",
-    subtitulo: "It shows the date and time, CPU, memory, tasks, disks and network on the Workbench backdrop, behind your icons. It isn't a window, so it doesn't cover anything or take your clicks. Since 2.0 it also brings a bar at the top, notifications, a dock and keys for your windows, and you use each piece or not.",
+      "For AmigaOS 3.x: windows that snap to the edges, Alt+Tab, virtual workspaces, a two-pane file manager, a bar with notifications, a dock and a resource monitor on the Workbench backdrop. Free, open source.",
+    entradilla: "The Workbench you know, with what you expect from a desktop today.",
+    subtitulo: "Windows that snap, Alt+Tab, virtual workspaces, a two-pane file manager, a bar with notifications, a dock and a resource monitor painted on the backdrop. Use each piece or not. Written in Dash, for any Amiga with AmigaOS 3.",
     descargar: `Download ${VERSION}`,
     peso: `${tamano(version.bytes, "en")}, for AmigaOS 3.0 or later`,
     verVideo: "Watch it in action",
+    verFunciones: "What it does",
     aviso: "Try it: drag an icon over the panel",
     escritorioAlt: "Simulated Workbench desktop with the Trasfondo panel",
     iconos: { ram: "RAM Disk", sistema: "System", work: "Work", cajon: "Trasfondo", prefs: "TrasfondoPrefs" },
-    panel: {
-      titulo: "Everything in view, at a glance",
-      texto: "It sits at the top right of the desktop and refreshes every two seconds. You can also choose one, five or ten:",
-      imagen: "Trasfondo 0.11 on Coffin R65 with a graphics card: solid wine background, the memory graph and a List of the whole disk running",
-      cosas: [
-        { que: "Date and time", como: "Right at the top, in your language: the day, the date and the time." },
-        { que: "CPU", como: "How hard the CPU is working, and a graph of the last two minutes (60 readings, one every 2 seconds). It's measured task by task with exec's task-switch hooks, not estimated." },
-        { que: "Memory", como: "Free Chip and Fast memory and, if you like, a graph of memory in use over the total." },
-        { que: "Tasks", como: "The tasks using the most CPU, one to twenty of them, each with its bar." },
-        { que: "Disks", como: "How full each mounted volume is and its size. It never asks you to insert a disk." },
-        { que: "Network and WiFi", como: "What comes in and goes out per second, with a graph if you want it. If the driver reports it, the WiFi signal in dBm too." },
-        { que: "PiStorm", como: "If you use a PiStorm with Emu68, its Raspberry Pi's temperature. It turns orange from 70 °C." },
-      ],
-    },
+    franja: { titulo: "What it does" },
+    funciones: FUNCIONES_EN,
+    teclas: "Keys",
     cuelgue: {
       titulo: "It never hangs. It never waits",
       frase: "It never waits more than a third of a second for a disk or a driver to answer.",
       texto: "If a volume or a network card doesn't answer, the panel says \"no answer\" and keeps going. If the network drops, you see it at once, and when it comes back the figures show up again with nothing to restart.",
-      ligero: "It uses little because it only redraws what changes. Measuring every 2 seconds, it takes about 7% of an A1200's CPU and 11% of a 68030's with a graphics card (measured in the emulator).",
+      ligero: "It uses little because it only redraws what changes. Measuring every 2 seconds, the backdrop monitor takes about 8% of an A1200's CPU and 11% of a 68030's with a graphics card (measured in the emulator).",
     },
     pantallas: {
-      titulo: "Looks good on any screen",
-      texto: "With a graphics card in true colour, the panel is translucent and lets the desktop backdrop show through. On AGA, ECS or 256 colours it gets a solid background so it reads well. You can change the background type and colour in TrasfondoPrefs.",
+      titulo: "Readable on any screen",
+      texto: "With a graphics card in true colour, the panel is translucent and lets the backdrop show through. On AGA, ECS or 256 colours it gets a solid background so it reads well. You can change the background type and colour in TrasfondoPrefs.",
       rtg: "RTG at 1280x1024: the translucent panel, with an icon on top",
       aga: "AGA at 640x256: solid background",
     },
-    escritorio: {
-      titulo: "A whole desktop, piece by piece",
-      texto: "Since 2.0, Trasfondo brings more pieces for the Workbench screen. Each one is a separate program: in TrasfondoPrefs, Startup section, you tick the ones you want and they start; untick one and it stops.",
-      imagen: "Trasfondo 2.3 on AmigaOS 3.2.3 with a graphics card: the bar at the top, the backdrop panel on the right, three windows and the dock at the bottom",
-      piezas: [
-        { que: "The bar", como: "At the top, with the time, the date, your city's weather, the CPU and the memory. Click the time for a panel with a clock, a calendar, the weather and notifications; on the right, the quick settings: network, disks, memory, preferences and reboot. It can be a whole bar or sit inside the screen's title bar, without covering it." },
-        { que: "Notifications", como: "They show for a moment at the top right and stay in the panel's list until you dismiss them. The Avisa command, any ARexx script or any program written in Dash can leave one." },
-        { que: "The dock", como: "The open programs and the ones you pin, in equal boxes. Pin one by dropping its icon on it, move it by dragging it, and hover over it to see its name. It can sit on any edge and hide by itself until the mouse gets close." },
-        { que: "Windows", como: "Like a modern desktop: drop a window against an edge and it snaps to a half or a corner, with a preview; double-click its title to maximize it; there is a window menu and Alt+Tab. Also keys to maximize, restore or tile, and with Alt and the mouse they move and resize from anywhere inside." },
-        { que: "Workspaces", como: "On AmigaOS 3.2, several desktops stacked, as on Linux: Ctrl Alt and a number switches workspace and Ctrl Alt Shift and the number takes the active window there. And, if you like, windows in a strip like Niri: each one is a column and the view follows the active one." },
-        { que: "The file manager", como: "TrasfondoArchivos, a file manager like Nautilus, in the dock: places and disks on the left, a list with columns or icons with thumbnails, and with F3 two source and destination panes like Directory Opus. It copies and moves with a progress bar, deletes to the trash and undoes, with buttons and their keys at the bottom." },
-        { que: "Colours", como: "The bar, the panels and the dock take their colours from the desktop backdrop, dark or light, with six schemes. One copies the Workbench colours. TrasfondoPrefs shows a preview." },
-      ],
-      panel: "The bar's panel: clock, weather, calendar and two notifications",
-      dock: "The dock with the mouse over an icon: it lights up and says its name",
-      colores: "TrasfondoPrefs, Colours section, with the preview",
-      arranque: "TrasfondoPrefs, Startup section: which pieces are running",
-      rtg: "The bar, its panels and the dock need a graphics card (15 bits or more). The backdrop and the window keys work on any screen.",
-    },
-    avisos: {
-      titulo: "Notifications from any program",
-      texto: "AmigaOS 3.x has no notification system. Trasfondo brings one, with three ways in:",
-      formas: [
-        ["Avisa \"Backup done\"", "the Avisa command, from the Shell or a script"],
-        ["ADDRESS TRASFONDO 'NOTIFY TITLE=\"Backup\" TEXT=\"done\"'", "the bar's ARexx port, which also understands COUNT and CLEAR"],
-        ["notify(\"Backup done\", \"12 files\")", "in a program written in Dash (Dash 2.4)"],
-      ],
-      nota: "If the bar isn't running, the notification is kept and shows when it starts.",
-    },
     eliges: {
       titulo: "Your way",
-      texto: "In TrasfondoPrefs (in SYS:Prefs) you choose which sections appear, memory and network graphs included, how many tasks are shown, how often it measures, the background and its colour, the hotkey and whether it starts hidden. Use applies the changes straight away, with nothing to restart, and Save keeps them. The window fits your screen font and appears in English or Spanish, following your system's language.",
-      prefs: "TrasfondoPrefs",
+      texto: "In TrasfondoPrefs (in SYS:Prefs) you choose what the panel shows, how many tasks, how often it measures, the background and its colour, the hotkey and whether it starts hidden. Use applies the changes straight away, with nothing to restart, and Save keeps them. The window appears in English or Spanish, following your system's language.",
+      prefsAlt: "TrasfondoPrefs 2.9.13, Background section: what the panel shows, how often it measures, the background and the corner",
       exchange: "Trasfondo in Exchange",
-      commodity: "It's a commodity, so you can hide, show, disable or quit it from Exchange. It also updates itself: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. If you prefer tooltypes, it understands those too:",
+      commodity: "It's a commodity: hide, show, disable or quit it from Exchange. And it updates itself: when a new version is out, a green light on the panel tells you and TrasfondoPrefs installs it with one button. Since 2.9.9 it only installs signed versions. If you prefer tooltypes, it understands those too:",
       tooltypes: [
         ["SHOW=DATE,CPU,DISKS", "which sections appear, and in what order"],
         ["TASKS=3", "how many tasks"],
@@ -298,92 +495,37 @@ export const CONTENIDO = {
     },
     novedades: {
       titulo: "What's new",
-      texto: "The latest releases and what's coming, as of 18 November 2026.",
-      boton: "What's new",
+      texto: "The last five releases, as of 21 November 2026.",
+      todas: "Every release, on GitHub",
       lista: [
         {
-          estado: "Released 18 Nov",
-          titulo: "Trasfondo 2.9.8",
-          texto: "The network speed with AmiNetXDuo, which showed 0 B/s: it now shows in packets per second (found by JaviTecH; Ferrán García had the same). And the panel no longer stays on screen with DOpus as the desktop (reported by Ferrán García).",
+          estado: "Released 21 Nov",
+          titulo: "Trasfondo 2.9.13",
+          texto: "TrasfondoPrefs no longer closes on Save or Use: change several things in a row. The line at the bottom says what was done, and the third button is now Close.",
         },
         {
-          estado: "Released 18 Nov",
-          titulo: "Trasfondo 2.9.7",
-          texto: "The dock no longer pops up with another screen in front, like DOpus's (reported by Ernesto Laura de la Fuente). The bar's temperature keeps up to date every 10 seconds, like the panel (reported by Ingloriond). Version shows the version (spotted by JaviTecH).",
+          estado: "Released 21 Nov",
+          titulo: "Trasfondo 2.9.12",
+          texto: "Dock fix: holding down a running program's icon shows its menu again (Keep in dock, Open another).",
         },
         {
-          estado: "Released 17 Nov",
-          titulo: "Trasfondo 2.9.6",
-          texto: "Exchange obeys at once even when the WiFi is slow to answer: hide, show and remove no longer wait for the network measurement to finish (reported by Ferrán García).",
+          estado: "Released 21 Nov",
+          titulo: "Trasfondo 2.9.11",
+          texto: "Tooltypes on a project icon now count, for example a WBStartup icon that starts a piece. Before, only the program's own icon was read (reported by Ferrán García).",
         },
         {
-          estado: "Released 16 Nov",
-          titulo: "Trasfondo 2.9.5",
-          texto: "The quick panel opens the file manager and carries the buttons you choose (Ferrán García). The file manager gets a big two-row button bar like Directory Opus 4 (David Martínez), and rename selects the name. The dock and windows recognise programs started from WBStartup.",
+          estado: "Released 20 Nov",
+          titulo: "Trasfondo 2.9.10",
+          texto: "If all of Trasfondo ended up in WBStartup, a button in TrasfondoPrefs, Startup section, moves it to SYS:Utilities/Trasfondo. And the file manager no longer opens by itself at boot (reported by Ferrán García).",
         },
         {
-          estado: "Released 12 Nov",
-          titulo: "Trasfondo 2.9.4",
-          texto: "The TrasfondoArchivos file manager comes pinned to the dock, also if you already had your own list, and the package's Instalar now copies it. If you remove it from the dock, it does not come back.",
-        },
-        {
-          estado: "Released 12 Nov",
-          titulo: "Trasfondo 2.9.3",
-          texto: "Virtual workspaces and windows in a strip like Niri, on AmigaOS 3.2: Ctrl Alt and a number switches desktop. The file manager gets its icon for those who updated with the button too, and TrasfondoPrefs opens faster.",
-        },
-        {
-          estado: "Released 12 Nov",
-          titulo: "Trasfondo 2.9.2",
-          texto: "TrasfondoVentanas snaps windows and answers double clicks with MCP or PowerWindows too, as on CoffinOS, and snaps against the left edge (David Martínez and Ferrán García).",
-        },
-        {
-          estado: "Released 12 Nov",
-          titulo: "Trasfondo 2.9.1",
-          texto: "Buttons with their key in TrasfondoArchivos, to use the mouse or the keyboard (Ferrán García), and Update starts the new bar, dock and windows without rebooting.",
-        },
-        {
-          estado: "Released 12 Nov",
-          titulo: "Trasfondo 2.9",
-          texto: "Modern windows: snap on drop against an edge, double click to maximize, a window menu and Alt+Tab. And TrasfondoArchivos, a file manager like Nautilus, with Directory Opus style source and destination panes, trash, undo and thumbnails. The full bar is a backdrop, with a Depth option (Ferrán García).",
-        },
-        {
-          estado: "Released 6 Nov",
-          titulo: "Trasfondo 2.6",
-          texto: "The bar only uses the network with a running TCP/IP stack (MiamiDx) and sits right next to the depth gadget on every screen.",
-        },
-        {
-          estado: "Released 5 Nov",
-          titulo: "Trasfondo 2.5",
-          texto: "The backdrop panel, in any corner. The dock's Shell with the Workbench's path, pasting with Amiga + V in TrasfondoPrefs and the title-bar bar without a gap. The Prefs reopen by themselves after an update.",
-        },
-        {
-          estado: "Released 5 Nov",
-          titulo: "Trasfondo 2.4",
-          texto: "The bar can sit inside the screen's title bar, without covering it (Ferrán García's idea). Closing the panels by clicking on the desktop no longer freezes everything, and it checks for new versions every hour.",
-        },
-        {
-          estado: "Released 5 Nov",
-          titulo: "Trasfondo 2.3",
-          texto: "Notifications from any program: the bar has an ARexx port, TRASFONDO, and programs written in Dash notify with notify().",
-        },
-        {
-          estado: "Released 4 Nov",
-          titulo: "Trasfondo 2.2",
-          texto: "The dock redone, with equal boxes, the name on hover and the option to hide by itself. In Startup, each piece turns on and off with its checkbox. And what Ferrán García found testing it on his PiStorm.",
-        },
-        {
-          estado: "Released 4 Nov",
-          titulo: "Trasfondo 2.0 and 2.1",
-          texto: "The bar with its panels, notifications, the dock, the window keys and colours taken from the backdrop. Since 2.1, the Update button brings every piece, also if you come from 0.11.",
-        },
-        {
-          estado: "Coming next",
-          titulo: "More like a modern desktop",
-          texto: "Bar styles, a program launcher with search, a backdrop picker and a big panel with music, switches and clipboard.",
+          estado: "Released 19 Nov",
+          titulo: "Trasfondo 2.9.9",
+          texto: "Signed updates: the Update button only installs signed versions, with the SHA-256 of each file (suggested by Rodrigo Sáez).",
         },
       ],
     },
-    video: { titulo: "See it in action", texto: "Five minutes of 2.9 on CoffinOS (AmigaOS 3.2) with a graphics card, in Amiberry: windows that snap to the edges, Alt+Tab, virtual desktops, the TrasfondoArchivos file manager and windows in a strip like Niri. The music is \"Psilocybin\" by Legend & Yolk.", boton: "Play", titulo_video: "Trasfondo 2.9: modern windows, a file manager and virtual desktops for the Workbench" },
+    video: { titulo: "See it in action", texto: "Five minutes of 2.9 on CoffinOS (AmigaOS 3.2) with a graphics card: windows that snap, Alt+Tab, virtual desktops, the TrasfondoArchivos file manager and windows in a strip. The music is \"Psilocybin\" by Legend & Yolk.", boton: "Play", titulo_video: "Trasfondo 2.9: modern windows, a file manager and virtual desktops for the Workbench" },
     instalar: {
       titulo: "Ready in a minute",
       pasos: [
@@ -400,14 +542,14 @@ export const CONTENIDO = {
         "AmigaOS 3.0 or later, with the Workbench running. Also with Directory Opus 5 as your desktop.",
         "Any 68k: it's 68000 code and needs no FPU.",
         "OCS, ECS, AGA or a graphics card (CyberGraphX or Picasso96).",
-        "To see network speed in KB/s you need Roadshow or a network driver that counts bytes. Otherwise it shows packets per second.",
-        "The bar, its panels and the dock: a graphics card with 15 bits or more.",
+        "The bar, its panels and the dock: a graphics card with 15 bits or more. Virtual workspaces: AmigaOS 3.2. The file manager: MUI.",
+        "To see network speed in KB/s you need Roadshow or a driver that counts bytes. Otherwise it shows packets per second.",
       ],
-      probado: "Tested on AmigaOS 3.2.3 (emulated A1200, with AGA and with a graphics card) and on Coffin R65, also with Directory Opus 5 as the desktop. Scalos should work, but it hasn't been tested. Network and WiFi have only been tested with a test driver. If you use it with a real network card, tell me on GitHub.",
+      probado: "Tested on AmigaOS 3.2.3 (emulated A1200, with AGA and with a graphics card) and on CoffinOS R65, also with Directory Opus 5 as the desktop. Scalos should work, but it hasn't been tested. If you use it on a real Amiga and something breaks, tell me on GitHub.",
     },
     dash: {
       titulo: "Made in Dash",
-      texto: "Trasfondo has about 6,300 lines of Dash across all its pieces, with no hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, work as a commodity, know every program's windows, draw icons at any size, receive ARexx commands) was added to Dash for Trasfondo, and now any program can use it.",
+      texto: "Trasfondo is written entirely in Dash, with no hand-written C. What the language couldn't do yet (draw on the Workbench backdrop, measure each task's CPU, work as a commodity, know every program's windows, draw icons at any size, receive ARexx commands) was added to Dash for Trasfondo, and now any program can use it.",
       enlace: "Discover Dash",
     },
     pie: [

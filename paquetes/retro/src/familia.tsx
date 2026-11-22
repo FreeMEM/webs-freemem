@@ -21,7 +21,7 @@ export const SITIOS = [
     nombre: "Trasfondo",
     url: "https://trasfondo.freemem.space",
     icono: "/familia/trasfondo.png",
-    lema: { es: "El monitor", en: "The monitor" },
+    lema: { es: "El escritorio", en: "The desktop" },
   },
   {
     id: "forja",

@@ -1,7 +1,67 @@
 import { Gracias, Cabecera, Novedades, Pie, VentanaWB, VideoYouTube, datosPrograma, type Idioma } from "retro";
 
-import { CONTENIDO, DESCARGA, RELEASE, REPO, VIDEO, VERSION, BASE } from "./contenido";
+import { ANCHO_PREFS, CONTENIDO, DESCARGA, IMAGENES, RELEASE, REPO, VERSIONES, VIDEO, VERSION, BASE, type Funcion } from "./contenido";
 import { EscritorioVivo } from "./EscritorioVivo";
+import { IconoFuncion } from "./IconoFuncion";
+
+/** Una función: el texto a un lado y sus capturas al otro (en las pares, al revés). */
+function SeccionFuncion({ f, idioma, teclas, invertida }: { f: Funcion; idioma: Idioma; teclas: string; invertida: boolean }) {
+  const imagenes = IMAGENES[f.id];
+  return (
+    <section className={`seccion funcion${invertida ? " funcion-invertida" : ""}`} id={f.id} aria-labelledby={`t-${f.id}`}>
+      <div className="funcion-texto">
+        <p className="funcion-marca">
+          <IconoFuncion id={f.id} />
+        </p>
+        <h2 id={`t-${f.id}`}>{f.titulo}</h2>
+        <p className="funcion-entradilla">{f.entradilla}</p>
+        {f.texto.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+        {f.lista && (
+          <dl className="lista-panel">
+            {f.lista.map((c) => (
+              <div key={c.que}>
+                <dt>{c.que}</dt>
+                <dd>{c.como}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {f.teclas && (
+          <dl className="teclas" aria-label={teclas}>
+            {f.teclas.map(([tecla, que]) => (
+              <div key={tecla}>
+                <dt>
+                  <kbd>{tecla}</kbd>
+                </dt>
+                <dd>{que}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {f.nota && <p className="nota">{f.nota}</p>}
+      </div>
+      <div className={`funcion-imagenes funcion-imagenes-${imagenes.length}`}>
+        {imagenes.map((im, i) => {
+          const src = im.src.replace("{idioma}", idioma);
+          const pie = f.pies[i];
+          const ancho = typeof im.ancho === "number" ? im.ancho : im.ancho[idioma];
+          return im.marco ? (
+            <VentanaWB key={src} titulo={im.marco}>
+              <img src={src} width={ancho} height={im.alto} alt={pie} loading="lazy" />
+            </VentanaWB>
+          ) : (
+            <figure key={src} className="captura">
+              <img src={src} width={ancho} height={im.alto} alt={pie} loading="lazy" />
+              <figcaption>{pie}</figcaption>
+            </figure>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
 
 export function Inicio({ idioma }: { idioma: Idioma }) {
   const t = CONTENIDO[idioma];
@@ -31,11 +91,11 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
               <a className="boton" href={DESCARGA}>
                 {t.descargar}
               </a>
+              <a className="boton boton-suave" href="#funciones">
+                {t.verFunciones}
+              </a>
               <a className="boton boton-suave" href="#video">
                 {t.verVideo}
-              </a>
-              <a className="boton boton-suave" href="#novedades">
-                {t.novedades.boton}
               </a>
             </div>
             <p className="peso">{t.peso}</p>
@@ -45,80 +105,23 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           </div>
         </section>
 
-        <section className="seccion seccion-novedades" aria-labelledby="novedades">
-          <h2 id="novedades">{t.novedades.titulo}</h2>
-          <p className="medida">{t.novedades.texto}</p>
-          <Novedades lista={t.novedades.lista} />
-        </section>
-
-        <section className="seccion" aria-labelledby="escritorio">
-          <h2 id="escritorio">{t.escritorio.titulo}</h2>
-          <p className="medida">{t.escritorio.texto}</p>
-          <VentanaWB titulo="Workbench Screen">
-            <img src="/imagenes/escritorio-2.webp" width={1024} height={768} alt={t.escritorio.imagen} loading="lazy" />
-          </VentanaWB>
-          <dl className="lista-panel">
-            {t.escritorio.piezas.map((c) => (
-              <div key={c.que}>
-                <dt>{c.que}</dt>
-                <dd>{c.como}</dd>
-              </div>
+        <nav className="franja" id="funciones" aria-label={t.franja.titulo}>
+          <ul>
+            {t.funciones.map((f) => (
+              <li key={f.id}>
+                <a href={`#${f.id}`}>
+                  <IconoFuncion id={f.id} />
+                  <strong>{f.corto}</strong>
+                  <span>{f.frase}</span>
+                </a>
+              </li>
             ))}
-          </dl>
-          <figure>
-            <img src="/imagenes/panel-avisos.webp" width={1024} height={384} alt={t.escritorio.panel} loading="lazy" />
-            <figcaption>{t.escritorio.panel}</figcaption>
-          </figure>
-          <figure>
-            <img src="/imagenes/dock-nombre.webp" width={524} height={118} alt={t.escritorio.dock} loading="lazy" />
-            <figcaption>{t.escritorio.dock}</figcaption>
-          </figure>
-          <div className="pareja">
-            <figure>
-              <img src="/imagenes/prefs-colores.webp" width={642} height={240} alt={t.escritorio.colores} loading="lazy" />
-              <figcaption>{t.escritorio.colores}</figcaption>
-            </figure>
-            <figure>
-              <img src="/imagenes/prefs-arranque.webp" width={642} height={240} alt={t.escritorio.arranque} loading="lazy" />
-              <figcaption>{t.escritorio.arranque}</figcaption>
-            </figure>
-          </div>
-          <p className="nota">{t.escritorio.rtg}</p>
-        </section>
+          </ul>
+        </nav>
 
-        <section className="seccion" aria-labelledby="avisos">
-          <h2 id="avisos">{t.avisos.titulo}</h2>
-          <p className="medida">{t.avisos.texto}</p>
-          <dl className="tooltypes">
-            {t.avisos.formas.map(([codigo, que]) => (
-              <div key={codigo}>
-                <dt>
-                  <code>{codigo}</code>
-                </dt>
-                <dd>{que}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="nota">{t.avisos.nota}</p>
-        </section>
-
-        <section className="seccion seccion-panel" aria-labelledby="que-ensena">
-          <div>
-            <h2 id="que-ensena">{t.panel.titulo}</h2>
-            <p>{t.panel.texto}</p>
-            <dl className="lista-panel">
-              {t.panel.cosas.map((c) => (
-                <div key={c.que}>
-                  <dt>{c.que}</dt>
-                  <dd>{c.como}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <VentanaWB titulo="Workbench Screen">
-            <img src={`/imagenes/panel-rtg-${idioma}.webp`} width={870} height={696} alt={t.panel.imagen} loading="lazy" />
-          </VentanaWB>
-        </section>
+        {t.funciones.map((f, i) => (
+          <SeccionFuncion key={f.id} f={f} idioma={idioma} teclas={t.teclas} invertida={i % 2 === 1} />
+        ))}
 
         <section className="seccion seccion-cuelgue" aria-labelledby="cuelgues">
           <h2 id="cuelgues">{t.cuelgue.titulo}</h2>
@@ -159,9 +162,10 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
             </dl>
           </div>
           <div className="ventanas">
-            <VentanaWB titulo={t.eliges.prefs}>
-              <img src={`/imagenes/prefs-${idioma}.webp`} width={772} height={520} alt={t.eliges.prefs} loading="lazy" />
-            </VentanaWB>
+            <figure className="captura captura-prefs">
+              <img src={`/imagenes/prefs-fondo-${idioma}.webp`} width={ANCHO_PREFS[idioma]} height={421} alt={t.eliges.prefsAlt} loading="lazy" />
+              <figcaption>{t.eliges.prefsAlt}</figcaption>
+            </figure>
             <VentanaWB titulo="Exchange">
               <img src={`/imagenes/exchange-${idioma}.webp`} width={914} height={568} alt={t.eliges.exchange} loading="lazy" />
             </VentanaWB>
@@ -172,6 +176,15 @@ export function Inicio({ idioma }: { idioma: Idioma }) {
           <h2 id="titulo-video">{t.video.titulo}</h2>
           <p className="medida">{t.video.texto}</p>
           <VideoYouTube id={VIDEO[idioma]} titulo={t.video.titulo_video} portada={`/imagenes/video-${idioma}.jpg`} textoBoton={t.video.boton} />
+        </section>
+
+        <section className="seccion seccion-novedades" aria-labelledby="novedades">
+          <h2 id="novedades">{t.novedades.titulo}</h2>
+          <p className="medida">{t.novedades.texto}</p>
+          <Novedades lista={t.novedades.lista} />
+          <p className="todas">
+            <a href={VERSIONES}>{t.novedades.todas}</a>
+          </p>
         </section>
 
         <section className="seccion seccion-instalar" aria-labelledby="instalar">
