@@ -26,6 +26,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.10.1", es: "Si falla la conexión segura al actualizar o al mirar el tiempo, dice el motivo real y no siempre que el certificado no vale.", en: "When the secure connection fails while updating or fetching the weather, it says the real reason instead of always blaming the certificate." },
         { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
         { version: "2.10.0", es: "Arreglo: un cajón del dock (Prefs) no se abría con el WBRun de Aminet; tampoco en los ajustes rápidos.", en: "Fix: a dock drawer (Prefs) did not open with Aminet's WBRun; nor in the quick settings." },
         { version: "2.10.0", es: "Arreglo: pulsar el icono del fondo en el dock lo apagaba. Y el fondo apunta cuándo arranca y por qué se para.", en: "Fix: clicking the backdrop's icon in the dock stopped it. And the backdrop logs when it starts and why it stops." },
