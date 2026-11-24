@@ -133,6 +133,24 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   dash: [
     {
+      persona: "Jose",
+      aportes: [
+        { version: "2.20.0", es: "Extensión de VS Code 0.6.0: doble clic en un objeto del editor de ventanas lleva al código de su evento.", en: "VS Code extension 0.6.0: a double click on an object in the window editor goes to its event's code." },
+      ],
+    },
+    {
+      persona: "PerspexSphinx",
+      aportes: [
+        { version: "2.20.0", es: "mui_app_iconify, mui_app_iconified y mui_app_icon: iconificar una aplicación MUI desde el programa, para Tachyon.", en: "mui_app_iconify, mui_app_iconified and mui_app_icon: iconify an MUI application from the program, for Tachyon." },
+      ],
+    },
+    {
+      persona: "BordanBordan",
+      aportes: [
+        { version: "2.20.0", es: "Rodeo del fallo del JIT de Emu68 1.1.0-beta.1 con las multiplicaciones de 32 bits: Tachyon se colgaba en una PiStorm.", en: "Workaround for the Emu68 1.1.0-beta.1 JIT bug with 32-bit multiplications: Tachyon hung on a PiStorm." },
+      ],
+    },
+    {
       persona: "Rodrigo Sáez",
       aportes: [
         { version: "2.19.0", es: "net_bg_peer, la dirección real de una conexión, para que Tachyon se proteja del DNS rebinding.", en: "net_bg_peer, the real address of a connection, so Tachyon can guard against DNS rebinding." },
@@ -175,6 +193,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "2.20.0", es: "Rodeo del fallo del JIT de Emu68 1.1.0-beta.1 con las multiplicaciones de 32 bits: Tachyon se colgaba en una PiStorm.", en: "Workaround for the Emu68 1.1.0-beta.1 JIT bug with 32-bit multiplications: Tachyon hung on a PiStorm." },
         { version: "2.13.0", es: "Ventanas modales en MUI: mientras una está abierta, las demás del programa esperan.", en: "Modal windows in MUI: while one is open, the program's other windows wait." },
         { version: "2.11.0", es: "Ctrl-C para un programa que da vueltas: un bucle sin fin ya no obliga a reiniciar el Amiga.", en: "Ctrl-C for a program stuck in a loop: an endless loop no longer means rebooting the Amiga." },
         { version: "2.10.0", es: "Los grupos de las expresiones regulares: regex_group y regex_groups.", en: "Regular expression groups: regex_group and regex_groups." },
