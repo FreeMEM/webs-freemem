@@ -26,6 +26,10 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
+        { version: "2.10.0", es: "Arreglo: un cajón del dock (Prefs) no se abría con el WBRun de Aminet; tampoco en los ajustes rápidos.", en: "Fix: a dock drawer (Prefs) did not open with Aminet's WBRun; nor in the quick settings." },
+        { version: "2.10.0", es: "Arreglo: pulsar el icono del fondo en el dock lo apagaba. Y el fondo apunta cuándo arranca y por qué se para.", en: "Fix: clicking the backdrop's icon in the dock stopped it. And the backdrop logs when it starts and why it stops." },
+        { version: "2.10.0", es: "Pulsar los puntos de los espacios en la barra cambia de espacio.", en: "Clicking the workspace dots in the bar switches workspace." },
         { version: "2.9.11", es: "Valen los tooltypes del icono de proyecto con el que arranca una pieza, como un icono en WBStartup.", en: "The tooltypes of the project icon a piece starts from, like an icon in WBStartup, now count." },
         { version: "2.9.10", es: "El icono de Archivos ya no se crea en WBStartup, y TrasfondoPrefs ofrece pasar Trasfondo a su propio cajón.", en: "The Files icon is no longer created in WBStartup, and TrasfondoPrefs offers to move Trasfondo to its own drawer." },
         { version: "2.9.8", es: "Arreglo: con DOpus de escritorio, el panel se quedaba pintado al ocultarlo.", en: "Fix: with DOpus as the desktop, the panel stayed on screen when hidden." },
@@ -81,7 +85,14 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ernesto Laura de la Fuente",
       aportes: [
+        { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
         { version: "2.9.7", es: "Arreglo: con DOpus en su pantalla, el dock salía y ponía el Workbench delante.", en: "Fix: with DOpus on its own screen, the dock came out and put the Workbench in front." },
+      ],
+    },
+    {
+      persona: "Santi",
+      aportes: [
+        { version: "2.10.0", es: "Pulsar los puntos de los espacios en la barra cambia de espacio.", en: "Clicking the workspace dots in the bar switches workspace." },
       ],
     },
     {
