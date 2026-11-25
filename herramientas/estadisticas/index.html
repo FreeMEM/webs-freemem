@@ -101,6 +101,35 @@
   summary { cursor: pointer; color: var(--tinta-2); }
   .por-programa { display: grid; gap: 1.5rem; }
   .por-programa h3 { font-size: 1rem; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .pestanas { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.75rem; }
+  .pestanas button {
+    display: flex; align-items: center; gap: 0.45rem; font: inherit; font-size: 0.95rem; color: var(--tinta-2);
+    background: transparent; border: 1px solid var(--borde); border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer;
+  }
+  .pestanas button[aria-selected="true"] { background: var(--superficie); color: var(--tinta); border-color: var(--tinta-3); }
+  .pestanas small { color: var(--tinta-3); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .marca { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+  .versiones tr.version { cursor: pointer; }
+  .versiones tr.version:hover td, .versiones tr.version:focus-visible td { background: var(--fondo); }
+  .versiones tr.oculta { display: none; }
+  .versiones .flecha { display: inline-block; width: 1em; color: var(--tinta-3); transition: transform 0.15s; }
+  .versiones tr[aria-expanded="true"] .flecha { transform: rotate(90deg); }
+  .versiones td.barra, .versiones th.barra { width: 40%; }
+  .versiones td.barra span { display: block; height: 8px; border-radius: 4px; min-width: 2px; }
+  .versiones .semana { color: var(--tinta-2); }
+  .versiones .otro-n { color: var(--tinta-3); }
+  .versiones tr.ficheros td { background: var(--fondo); padding: 0.4rem 0.8rem 0.6rem 2.2rem; }
+  .versiones ul { list-style: none; margin: 0; padding: 0; columns: 2 16rem; column-gap: 2rem; font-size: 0.9rem; }
+  .versiones li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.1rem 0; break-inside: avoid; }
+  .versiones li.otro { color: var(--tinta-3); }
+  .versiones li b { font-weight: 500; font-variant-numeric: tabular-nums; }
+  button.mas { margin-top: 0.6rem; font: inherit; font-size: 0.9rem; color: var(--tinta-2); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+  .versiones td:first-child { white-space: nowrap; }
+  @media (max-width: 40rem) {
+    .versiones td.barra, .versiones th.barra { display: none; }
+    .versiones th, .versiones td { padding: 0.5rem 0.45rem; }
+    details { overflow-x: auto; }
+  }
   .error { color: var(--tinta); background: var(--superficie); border: 1px solid var(--borde); padding: 1rem; border-radius: 8px; }
   @media (max-width: 40rem) { .totales { grid-template-columns: 1fr; } }
 </style>
@@ -125,7 +154,7 @@
 
   <h2>Por versión</h2>
   <div class="por-programa" id="por-version"></div>
-  <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Las de GitHub (no Aminet ni otras webs), y las del cliente de Hangar en hangar.freemem.space (estas sin las pruebas propias). Los paquetes (.lha, .vsix) van en los totales; el vídeo y los subtítulos, aparte.</p>
+  <p class="nota">Cuentan descargas, no personas: quien baja un fichero dos veces cuenta dos, y entran las pruebas propias. Las de GitHub (no Aminet ni otras webs), y las del cliente de Hangar en hangar.freemem.space (estas sin las pruebas propias). Los paquetes (.lha, .vsix) van en los totales y en la columna "Paquete"; el resto de ficheros de cada versión (ejecutables sueltos, catálogos, vídeo, subtítulos), en "Otros ficheros". Pulsa una versión para ver sus ficheros.</p>
   <h2>Visitas a las webs</h2>
   <p class="sub" id="visitas-sub">Cargando…</p>
   <section class="totales" id="visitas-totales" aria-label="Visitas por web"></section>
@@ -250,17 +279,74 @@ function pintar(tomas) {
   [...tomas.keys()].reverse().forEach((i) =>
     tabla.append(el("tr", {}, [el("td", { text: fecha(tomas[i].fecha) }), ...serie.map((v) => el("td", { class: "n", text: fmt.format(v[i]) }))])));
 
-  // Por versión, la más nueva arriba; el vídeo y los subtítulos, en gris
+  // Por versión: un programa cada vez (pestañas), una fila por versión con su paquete, el resto de ficheros y lo
+  // que ha subido en 7 días; los ficheros sueltos, al abrir la fila. Las más nuevas arriba y solo unas pocas a la vista.
   const porVersion = document.getElementById("por-version");
-  programas.forEach((p, i) => {
-    const filas = Object.entries(ultima.datos[p] || {});
-    const t = el("table", {}, [el("tr", {}, [el("th", { text: "Versión" }), el("th", { text: "Fichero" }), el("th", { class: "n", text: "Descargas" })])]);
-    filas.forEach(([clave, cuenta]) => {
-      const [version, fichero] = clave.split("/");
-      t.append(el("tr", { class: esPaquete(fichero) ? "" : "otro" }, [el("td", { text: version }), el("td", { text: fichero }), el("td", { class: "n", text: fmt.format(cuenta) })]));
+  const hace7 = tomas[Math.max(0, tomas.length - 8)];
+  const pestanas = el("div", { class: "pestanas", role: "tablist" });
+  const panel = el("div");
+  porVersion.append(pestanas, panel);
+  const VISIBLES = 6;
+  const mostrar = (i) => {
+    const p = programas[i];
+    [...pestanas.children].forEach((b, k) => b.setAttribute("aria-selected", k === i));
+    const antes = hace7.datos[p] || {};
+    const versiones = new Map();
+    Object.entries(ultima.datos[p] || {}).forEach(([clave, cuenta]) => {
+      const corte = clave.indexOf("/");
+      const version = clave.slice(0, corte), fichero = clave.slice(corte + 1);
+      if (!versiones.has(version)) versiones.set(version, { paquete: 0, otros: 0, semana: 0, ficheros: [] });
+      const v = versiones.get(version);
+      v[esPaquete(fichero) ? "paquete" : "otros"] += cuenta;
+      if (esPaquete(fichero)) v.semana += cuenta - (antes[clave] || 0);
+      v.ficheros.push([fichero, cuenta]);
     });
-    porVersion.append(el("div", {}, [el("h3", {}, [el("span", { class: "marca", style: `width:10px;height:10px;border-radius:50%;background:${color(i)}` }), p]), t]));
+    const lista = [...versiones.entries()];
+    const tope = Math.max(1, ...lista.map(([, v]) => v.paquete));
+    const t = el("table", { class: "versiones" }, [el("tr", {}, [
+      el("th", { text: "Versión" }), el("th", { class: "barra", "aria-hidden": "true" }),
+      el("th", { class: "n", text: "Paquete" }), el("th", { class: "n", text: "7 días" }), el("th", { class: "n", text: "Otros ficheros" }),
+    ])]);
+    lista.forEach(([version, v], k) => {
+      const oculta = k >= VISIBLES ? " oculta" : "";
+      const fila = el("tr", { class: `version${oculta}`, tabindex: "0", "aria-expanded": "false", title: "Ver sus ficheros" }, [
+        el("td", {}, [el("span", { class: "flecha", "aria-hidden": "true", text: "▸" }), version]),
+        el("td", { class: "barra" }, [el("span", { style: `width:${(v.paquete / tope) * 100}%;background:${color(i)}` })]),
+        el("td", { class: "n", text: fmt.format(v.paquete) }),
+        el("td", { class: "n semana", text: v.semana ? `+${fmt.format(v.semana)}` : "" }),
+        el("td", { class: "n otro-n", text: v.otros ? fmt.format(v.otros) : "" }),
+      ]);
+      const detalle = el("tr", { class: "ficheros", hidden: "" }, [el("td", { colspan: "5" }, [
+        el("ul", {}, v.ficheros.sort((a, b) => b[1] - a[1]).map(([f, n]) =>
+          el("li", { class: esPaquete(f) ? "" : "otro" }, [el("span", { text: f }), el("b", { text: fmt.format(n) })]))),
+      ])]);
+      const abrir = () => {
+        const abierta = detalle.hidden;
+        detalle.hidden = !abierta;
+        fila.setAttribute("aria-expanded", abierta);
+      };
+      fila.addEventListener("click", abrir);
+      fila.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); abrir(); } });
+      t.append(fila, detalle);
+    });
+    const hijos = [t];
+    if (lista.length > VISIBLES) {
+      const boton = el("button", { class: "mas", type: "button", text: `Ver las ${lista.length - VISIBLES} versiones anteriores` });
+      boton.addEventListener("click", () => {
+        t.querySelectorAll("tr.oculta").forEach((f) => f.classList.remove("oculta"));
+        boton.remove();
+      });
+      hijos.push(boton);
+    }
+    panel.replaceChildren(...hijos);
+  };
+  programas.forEach((p, i) => {
+    const total = serie[i][n - 1];
+    const b = el("button", { type: "button", role: "tab" }, [el("span", { class: "marca", style: `background:${color(i)}` }), p, el("small", { text: fmt.format(total) })]);
+    b.addEventListener("click", () => mostrar(i));
+    pestanas.append(b);
   });
+  mostrar(0);
 }
 
 // Visitas de cada web: visitas.json lo deja herramientas/visitas.py (lo lanza descargas.py cada hora)
