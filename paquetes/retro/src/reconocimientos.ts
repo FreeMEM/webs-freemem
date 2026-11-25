@@ -233,6 +233,18 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
   ],
   tachyon: [
     {
+      persona: "PerspexSphinx",
+      aportes: [
+        { version: "0.12.0-alfa", es: "Iconificar Tachyon (Amiga-I) y cambiar el tamaño del texto (Amiga +, - y 0).", en: "Iconify Tachyon (Amiga-I) and change the text size (Amiga +, - and 0)." },
+      ],
+    },
+    {
+      persona: "BordanBordan",
+      aportes: [
+        { version: "0.12.0-alfa", es: "Avisaron de que Tachyon se colgaba con Emu68 1.1.0-beta.1 en una PiStorm. Arreglado: rodea el fallo del JIT.", en: "Reported that Tachyon hung with Emu68 1.1.0-beta.1 on a PiStorm. Fixed: it works around the JIT bug." },
+      ],
+    },
+    {
       persona: "Rodrigo Sáez",
       aportes: [
         { version: "0.11.2-alfa", es: "Revisó la 0.11.1: la red de casa también se protege en las redirecciones, con direcciones escritas de otra forma y contra el DNS rebinding.", en: "Reviewed 0.11.1: the home network is also protected through redirects, with addresses written in other forms and against DNS rebinding." },
@@ -248,6 +260,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "David Martínez",
       aportes: [
+        { version: "0.12.0-alfa", es: "Avisaron de que Tachyon se colgaba con Emu68 1.1.0-beta.1 en una PiStorm. Arreglado: rodea el fallo del JIT.", en: "Reported that Tachyon hung with Emu68 1.1.0-beta.1 on a PiStorm. Fixed: it works around the JIT bug." },
         { version: "0.9.4", es: "Avisó de que dash.freemem.space se quedaba colgada. Arreglado: el JavaScript ve el texto original, las hojas y scripts atascados tienen tope y reintento, las animaciones que no cambian no se repintan y requestAnimationFrame va a 15 por segundo.", en: "Reported that dash.freemem.space hung. Fixed: JavaScript sees the original text, stuck style sheets and scripts get a limit and a retry, animations that don't change aren't repainted and requestAnimationFrame runs at 15 per second." },
       ],
     },
