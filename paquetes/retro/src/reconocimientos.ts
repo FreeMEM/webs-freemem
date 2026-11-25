@@ -26,6 +26,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.11.1", es: "Arreglo: pulsar el cajón Prefs del dock con su ventana abierta abría otra en vez de traerla delante.", en: "Fix: clicking the Prefs drawer in the dock with its window open opened another one instead of bringing it to the front." },
         { version: "2.10.1", es: "Si falla la conexión segura al actualizar o al mirar el tiempo, dice el motivo real y no siempre que el certificado no vale.", en: "When the secure connection fails while updating or fetching the weather, it says the real reason instead of always blaming the certificate." },
         { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
         { version: "2.10.0", es: "Arreglo: un cajón del dock (Prefs) no se abría con el WBRun de Aminet; tampoco en los ajustes rápidos.", en: "Fix: a dock drawer (Prefs) did not open with Aminet's WBRun; nor in the quick settings." },
@@ -86,6 +87,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ernesto Laura de la Fuente",
       aportes: [
+        { version: "2.11.2", es: "Arreglo: instalado copiando el cajón (con Hangar), al arrancar el Workbench no encontraba la herramienta del icono de WBStartup.", en: "Fix: when installed by copying the drawer (with Hangar), at boot Workbench could not find the tool of the WBStartup icon." },
         { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
         { version: "2.9.7", es: "Arreglo: con DOpus en su pantalla, el dock salía y ponía el Workbench delante.", en: "Fix: with DOpus on its own screen, the dock came out and put the Workbench in front." },
       ],
@@ -93,6 +95,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Santi",
       aportes: [
+        { version: "2.11.1", es: "Arreglo: en AmigaOS 3.1, pulsar el cajón Prefs del dock no hacía nada.", en: "Fix: on AmigaOS 3.1, clicking the Prefs drawer in the dock did nothing." },
         { version: "2.10.0", es: "Pulsar los puntos de los espacios en la barra cambia de espacio.", en: "Clicking the workspace dots in the bar switches workspace." },
       ],
     },
