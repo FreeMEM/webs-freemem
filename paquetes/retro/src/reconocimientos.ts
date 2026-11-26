@@ -26,6 +26,7 @@ export const RECONOCIMIENTOS: Readonly<Record<ProgramaReconocido, readonly Recon
     {
       persona: "Ferrán García",
       aportes: [
+        { version: "2.11.3", es: "Arreglo: al cerrar o iconificar una ventana con DOpus de escritorio, los espacios se liaban y saltaban solos de uno a otro.", en: "Fix: closing or iconifying a window with DOpus as the desktop mixed up the spaces, which jumped from one to another by themselves." },
         { version: "2.11.1", es: "Arreglo: pulsar el cajón Prefs del dock con su ventana abierta abría otra en vez de traerla delante.", en: "Fix: clicking the Prefs drawer in the dock with its window open opened another one instead of bringing it to the front." },
         { version: "2.10.1", es: "Si falla la conexión segura al actualizar o al mirar el tiempo, dice el motivo real y no siempre que el certificado no vale.", en: "When the secure connection fails while updating or fetching the weather, it says the real reason instead of always blaming the certificate." },
         { version: "2.10.0", es: "Pilas en el dock: un cajón fijado que al pulsarlo despliega sus programas, como los subdocks de AmiDock.", en: "Stacks in the dock: a pinned drawer that unfolds its programs when clicked, like AmiDock's subdocks." },
